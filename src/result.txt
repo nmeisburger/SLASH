@@ -1,0 +1,25 @@
+Read top 128 vectors for 10000 Queries
+3401000000
+[readSparse]
+
+[readSparse] Read 1605364156 numbers, 34010000 vectors.
+
+
+================================
+TOP K TREE
+
+[similarityMetric] Averaging output.
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity).
+S@1 = 0.341
+S@10 = 0.304
+S@20 = 0.301
+S@30 = 0.300
+S@32 = 0.300
+S@40 = 0.299
+S@50 = 0.299
+S@64 = 0.298
+S@100 = 0.298
+S@128 = 0.297
+1 10 20 30 32 40 50 64 100 128
+0.341 0.304 0.301 0.300 0.300 0.299 0.299 0.298 0.298 0.297

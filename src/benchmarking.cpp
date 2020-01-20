@@ -867,8 +867,8 @@ void evaluateResults(std::string resultFile) {
   unsigned int *outputs = new unsigned int[NUM_QUERY_VECTORS * TOPK];
   readTopK(resultFile, NUM_QUERY_VECTORS, TOPK, outputs);
 
-  int *sparseIndices = new int[totalNumVectors * DIMENSION];
-  float *sparseVals = new float[totalNumVectors * DIMENSION];
+  int *sparseIndices = new int[((long)totalNumVectors * DIMENSION)];
+  float *sparseVals = new float[((long)totalNumVectors * DIMENSION)];
   int *sparseMarkers = new int[totalNumVectors + 1];
 
   readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals,

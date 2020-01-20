@@ -114,7 +114,8 @@
 #define QUERY_PROBES 1
 #define HASHING_PROBES 1
 
-#define DIMENSION 1237
+// #define DIMENSION 1237
+#define DIMENSION 100
 #define FULL_DIMENSION 54686452
 #define NUM_DATA_VECTORS 34000000
 #define NUM_QUERY_VECTORS 10000
@@ -125,7 +126,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/wiki"
+#define BASEFILE "../../dataset/wiki/wiki"
 #define GTRUTHINDICE ""
 #define GTRUTHDIST ""
 

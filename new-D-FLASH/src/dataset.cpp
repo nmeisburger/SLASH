@@ -12,8 +12,8 @@
    of each vector.
 */
 
-void readSparse(std::string fileName, int offset, int n, int *indices, float *values, int *markers,
-                unsigned int bufferlen) {
+void read_sparse(std::string fileName, unsigned int offset, unsigned int n, unsigned int *indices,
+                 float *values, unsigned int *markers, unsigned int bufferlen) {
     std::cout << "[readSparse]" << std::endl;
 
     /* Fill all the markers with the maximum index for the data, to prevent
