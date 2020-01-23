@@ -40,6 +40,8 @@ class LSH_Hasher {
     void hash(unsigned int num_vectors, unsigned int *vector_indices, unsigned int *vector_markers,
               unsigned int *hashes);
 
+    void showLSHConfig();
+
     ~LSH_Hasher();
 };
 

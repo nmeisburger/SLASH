@@ -27,7 +27,7 @@ CMS::CMS(int L, int B, int numDataStreams, int myRank, int worldSize) {
 
     MPI_Bcast(_hashingSeeds, _numHashes, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
 
-    std::cout << "CMS Initialized in Node " << _myRank << std::endl;
+    printf("CMS Created in Node %d\n", _myRank);
 }
 
 void CMS::getCanidateHashes(int candidate, unsigned int *hashes) {
@@ -81,7 +81,7 @@ void CMS::addSketch(int dataStreamIndx, unsigned int *dataStream, int dataStream
 
     for (int dataIndx = 0; dataIndx < dataStreamLen; dataIndx++) {
         for (int hashIndx = 0; hashIndx < _numHashes; hashIndx++) {
-            if (dataStream[dataIndx] == 0) {
+            if (dataStream[dataIndx] == INT_MAX) {
                 continue;
             }
             unsigned int currentHash = hashIndices[hashLocation(dataIndx, _numHashes, hashIndx)];

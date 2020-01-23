@@ -14,10 +14,14 @@
 #define RESERVOIR_INDEX(table, num_reservoirs, reservoir)                                          \
     (unsigned int)(table * num_reservoirs + reservoir)
 
-#define STORE_LOG_INDEX(table, vector, num_tables) (unsigned int)(vector * num_tables + table)
+#define STORE_LOG_INDEX(table, vector_indx, num_tables)                                            \
+    (unsigned int)(vector_indx * num_tables + table)
+
+#define EXTRACTED_INDEX(reservoir_size, num_tables, vector_indx, table, loc_id)                    \
+    (unsigned int)(reservoir_size * num_tables * vector_indx + table * reservoir_size + loc_id)
 
 struct Location {
-    unsigned int vector;
+    unsigned int vector_indx;
     unsigned int reservoir;
     unsigned int reservoir_location;
 };
@@ -54,7 +58,7 @@ class LSH_Reservoir {
   public:
     LSH_Reservoir(unsigned int L, unsigned int K, unsigned int range_base_2,
                   unsigned int reservoir_size, LSH_Hasher *hash_family, CMS *sketch, int my_rank,
-                  int world_size, unsigned int initial_offset);
+                  int world_size);
 
     void add(unsigned int num_vectors, unsigned int *vector_markers, unsigned int *vector_indices,
              unsigned int offset);
@@ -66,6 +70,10 @@ class LSH_Reservoir {
                     unsigned int dimension, int top_k, unsigned int *outputs);
 
     void extract(unsigned int num_vectors, unsigned int *hashes, unsigned int *result);
+
+    void print();
+
+    void printCounts();
 
     ~LSH_Reservoir();
 };

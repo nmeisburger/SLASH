@@ -30,7 +30,9 @@ void LSH_Reservoir::add_dist(std::string filename, unsigned int read_offset,
     read_sparse(filename, node_offsets[_my_rank], node_vector_counts[_my_rank], data_indices,
                 data_values, data_markers, node_vector_counts[_my_rank] * dimension);
 
-    add(num_vectors, data_markers, data_indices, node_offsets[_my_rank]);
+    add(num_vectors, data_markers, data_indices, node_offsets[_my_rank] + _total_vectors_added);
+
+    _total_vectors_added += num_vectors;
 
     delete[] data_markers;
     delete[] data_indices;
@@ -86,6 +88,14 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
 
     unsigned int len;
 
+    for (int i = 0; i < node_vector_counts[_my_rank]; i++) {
+        printf("Q %d: ", i);
+        for (int j = 0; j < _L; j++) {
+            printf(" %u ", my_query_hashes[HASH_OUTPUT_INDEX(_L, i, j)]);
+        }
+        printf("\n");
+    }
+
     unsigned int *old;
     unsigned int *fin;
 
@@ -104,8 +114,23 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     }
 
     long segment_size = _L * _reservoir_size;
-    unsigned int *extracted_reservoirs = new unsigned int[segment_size * (long)num_vectors];
+    unsigned int *extracted_reservoirs = new unsigned int[segment_size * (long)num_vectors]();
     extract(num_vectors, all_query_hashes, extracted_reservoirs);
+
+    // for (int v = 0; v < num_vectors; v++) {
+    //     printf("\nQuery %d:\n", v);
+    //     for (int t = 0; t < _L; t++) {
+    //         printf("Table %d: ", t);
+    //         for (int i = 0; i < _reservoir_size; i++) {
+    //             if (extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size, _L, v, t, i)] !=
+    //             INT_MAX)
+    //                 printf(" %u ",
+    //                        extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size, _L, v, t, i)]);
+    //         }
+    //         printf("\n");
+    //     }
+    //     printf("\n");
+    // }
 
     _top_k_sketch->add(extracted_reservoirs, segment_size);
 

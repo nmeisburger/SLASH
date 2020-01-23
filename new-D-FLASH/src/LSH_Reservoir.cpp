@@ -2,7 +2,7 @@
 
 LSH_Reservoir::LSH_Reservoir(unsigned int L, unsigned int K, unsigned int range_base_2,
                              unsigned int reservoir_size, LSH_Hasher *hash_family, CMS *sketch,
-                             int my_rank, int world_size, unsigned int initial_offset) {
+                             int my_rank, int world_size) {
     _L = L;
     _K = K;
     _reservoir_size = reservoir_size;
@@ -14,7 +14,6 @@ LSH_Reservoir::LSH_Reservoir(unsigned int L, unsigned int K, unsigned int range_
     _my_rank = my_rank;
     _world_size = world_size;
     _total_vectors_added = 0;
-    _initial_offset = initial_offset;
 
     _reservoirs = new unsigned int *[_num_reservoirs * _L];
     _reservoir_locks = new omp_lock_t[_num_reservoirs * _L];
@@ -26,14 +25,16 @@ LSH_Reservoir::LSH_Reservoir(unsigned int L, unsigned int K, unsigned int range_
     _top_k_sketch = sketch;
 
     srand(13957130);
+
+    printf("LSH_Reservoir Created in Node %d\n", _my_rank);
 }
 
 void LSH_Reservoir::reservoir_sampling(Location *store_log, unsigned int *hashes,
                                        unsigned int num_vectors, unsigned int offset) {
 #pragma omp parallel for default(none) shared(store_log, hashes, num_vectors, offset)
-    for (unsigned int vector = 0; vector < num_vectors; vector++) {
+    for (unsigned int vector_indx = 0; vector_indx < num_vectors; vector_indx++) {
         for (unsigned int table = 0; table < _L; table++) {
-            unsigned int hash_value = hashes[HASH_OUTPUT_INDEX(_L, vector, table)];
+            unsigned int hash_value = hashes[HASH_OUTPUT_INDEX(_L, vector_indx, table)];
 
             omp_set_lock(_reservoir_counter_locks +
                          RESERVOIR_INDEX(table, _num_reservoirs, hash_value));
@@ -42,15 +43,16 @@ void LSH_Reservoir::reservoir_sampling(Location *store_log, unsigned int *hashes
 
             if (count == 0) {
                 _reservoirs[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)] =
-                    new unsigned int[_reservoir_size];
+                    new unsigned int[_reservoir_size]();
             }
             unsigned int location = count;
             if (count >= _reservoir_size) {
                 location = rand() % (count + 1);
             }
-            store_log[STORE_LOG_INDEX(table, vector, _L)].reservoir = hash_value;
-            store_log[STORE_LOG_INDEX(table, vector, _L)].vector = vector + _already_added + offset;
-            store_log[STORE_LOG_INDEX(table, vector, _L)].reservoir_location = location;
+            store_log[STORE_LOG_INDEX(table, vector_indx, _L)].reservoir = hash_value;
+            store_log[STORE_LOG_INDEX(table, vector_indx, _L)].vector_indx =
+                vector_indx + _already_added + offset;
+            store_log[STORE_LOG_INDEX(table, vector_indx, _L)].reservoir_location = location;
             _reservoir_counters[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)]++;
             omp_unset_lock(_reservoir_counter_locks +
                            RESERVOIR_INDEX(table, _num_reservoirs, hash_value));
@@ -62,14 +64,15 @@ void LSH_Reservoir::insert(Location *store_log, unsigned int num_vectors) {
     unsigned int location, reservoir, current_vector;
 #pragma omp parallel for default(none)                                                             \
     shared(store_log, num_vectors) private(location, reservoir, current_vector)
-    for (unsigned int vector = 0; vector < num_vectors; vector++) {
+    for (unsigned int vector_indx = 0; vector_indx < num_vectors; vector_indx++) {
         for (unsigned int table = 0; table < _L; table++) {
-            location = store_log[STORE_LOG_INDEX(table, vector, _L)].reservoir_location;
+            location = store_log[STORE_LOG_INDEX(table, vector_indx, _L)].reservoir_location;
             if (location < _reservoir_size) {
-                current_vector = store_log[STORE_LOG_INDEX(table, vector, _L)].vector;
-                reservoir = store_log[STORE_LOG_INDEX(table, vector, _L)].reservoir;
+                current_vector = store_log[STORE_LOG_INDEX(table, vector_indx, _L)].vector_indx;
+                reservoir = store_log[STORE_LOG_INDEX(table, vector_indx, _L)].reservoir;
                 omp_set_lock(_reservoir_locks + RESERVOIR_INDEX(table, _num_reservoirs, reservoir));
-                _reservoirs[RESERVOIR_INDEX(table, _num_reservoirs, reservoir)][location] = vector;
+                _reservoirs[RESERVOIR_INDEX(table, _num_reservoirs, reservoir)][location] =
+                    current_vector;
                 omp_unset_lock(_reservoir_locks +
                                RESERVOIR_INDEX(table, _num_reservoirs, reservoir));
             }
@@ -89,15 +92,44 @@ void LSH_Reservoir::add(unsigned int num_vectors, unsigned int *vector_markers,
 }
 
 void LSH_Reservoir::extract(unsigned int num_vectors, unsigned int *hashes, unsigned int *results) {
-#pragma omp parallel for shared(num_vectors, hashes, results)
-    for (unsigned int vector = 0; vector < num_vectors; vector++) {
+    unsigned int hash_value;
+#pragma omp parallel for shared(num_vectors, hashes, results) private(hash_value)
+    for (unsigned int vector_indx = 0; vector_indx < num_vectors; vector_indx++) {
         for (unsigned int table = 0; table < _L; table++) {
+            hash_value = hashes[HASH_OUTPUT_INDEX(_L, vector_indx, table)];
             for (unsigned int item = 0; item < _reservoir_size; item++) {
-                if (_reservoir_counters[HASH_OUTPUT_INDEX(_L, vector, table)] > 0) {
-                    results[vector * _reservoir_size * _L + table * _reservoir_size + item] =
-                        _reservoirs[HASH_OUTPUT_INDEX(_L, vector, table)][item];
+                if (_reservoir_counters[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)] > 0) {
+                    results[EXTRACTED_INDEX(_reservoir_size, _L, vector_indx, table, item)] =
+                        _reservoirs[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)][item];
                 }
             }
+        }
+    }
+}
+
+void LSH_Reservoir::print() {
+    for (int t = 0; t < _L; t++) {
+        printf("\nNode %d - Table %d\n", _my_rank, t);
+        for (int h = 0; h < _num_reservoirs; h++) {
+            if (_reservoir_counters[RESERVOIR_INDEX(t, _num_reservoirs, h)] > 0) {
+                printf("[%d]: ", h);
+                for (int r = 0; r < _reservoir_size; r++) {
+                    unsigned int val = _reservoirs[RESERVOIR_INDEX(t, _num_reservoirs, h)][r];
+                    if (val > 0) {
+                        printf("%d ", val);
+                    }
+                }
+                printf("\n");
+            }
+        }
+    }
+}
+
+void LSH_Reservoir::printCounts() {
+    for (int t = 0; t < _L; t++) {
+        printf("\nNode %d - Table %d\n", _my_rank, t);
+        for (int h = 0; h < _num_reservoirs; h++) {
+            printf("[%d]: %d\n", h, _reservoir_counters[RESERVOIR_INDEX(t, _num_reservoirs, h)]);
         }
     }
 }
