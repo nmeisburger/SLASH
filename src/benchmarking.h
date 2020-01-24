@@ -3,9 +3,10 @@
 
 #include <string>
 
+#define UNIT_TESTING
 // #define WEBSPAM
 // #define KDD12
-#define WIKIDUMP
+// #define WIKIDUMP
 
 #ifdef WEBSPAM
 
@@ -140,10 +141,10 @@
 #define BATCH_PRINT 10
 
 #define NUM_HASHES 4
-#define RANGE_POW 8
-#define RANGE_ROW_U 8
+#define RANGE_POW 7
+#define RANGE_ROW_U 7
 
-#define NUM_TABLES 2
+#define NUM_TABLES 4
 #define RESERVOIR_SIZE 128
 #define ALLOC_FRACTION 1
 
@@ -152,18 +153,18 @@
 
 #define DIMENSION 4000
 #define FULL_DIMENSION 16609143
-#define NUM_DATA_VECTORS 64
-#define NUM_QUERY_VECTORS 8
+#define NUM_DATA_VECTORS 1000
+#define NUM_QUERY_VECTORS 10
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 8
-#define AVAILABLE_TOPK 1024
+#define AVAILABLE_TOPK 128
 
 #define CMS_HASHES 2
-#define CMS_BUCKET_SIZE 32
+#define CMS_BUCKET_SIZE 128
 
-#define BASEFILE "../dataset/webspam/webspam_trigram.svm"
-#define GTRUTHINDICE "../dataset/webspam/webspam_tri_gtruth_indices.txt"
-#define GTRUTHDIST "../dataset/webspam/webspam_tri_gtruth_distances.txt"
+#define BASEFILE "../../dataset/webspam/webspam_trigram.svm"
+#define GTRUTHINDICE "../../dataset/webspam/webspam_tri_gtruth_indices.txt"
+#define GTRUTHDIST "../../dataset/webspam/webspam_tri_gtruth_distances.txt"
 
 #endif
 
@@ -171,9 +172,9 @@ void webspam();
 void kdd12();
 void kdd12FileOutput();
 void wikiDump();
-void showConfig(std::string dataset, int numVectors, int queries, int nodes,
-                int tables, int rangePow, int reservoirSize, int hashes,
-                int cmsHashes, int cmsBucketSize, bool cms, bool tree);
+void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
+                int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize,
+                bool cms, bool tree);
 void evaluateResults(std::string resultFile);
 void unitTesting();
 

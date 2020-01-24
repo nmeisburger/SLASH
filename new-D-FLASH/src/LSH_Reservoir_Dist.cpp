@@ -88,13 +88,13 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
 
     unsigned int len;
 
-    for (int i = 0; i < node_vector_counts[_my_rank]; i++) {
-        printf("Q %d: ", i);
-        for (int j = 0; j < _L; j++) {
-            printf(" %u ", my_query_hashes[HASH_OUTPUT_INDEX(_L, i, j)]);
-        }
-        printf("\n");
-    }
+    // for (int i = 0; i < node_vector_counts[_my_rank]; i++) {
+    //     printf("Q %d: ", i);
+    //     for (int j = 0; j < _L; j++) {
+    //         printf(" %u ", my_query_hashes[HASH_OUTPUT_INDEX(_L, i, j)]);
+    //     }
+    //     printf("\n");
+    // }
 
     unsigned int *old;
     unsigned int *fin;

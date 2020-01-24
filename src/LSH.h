@@ -13,10 +13,11 @@
 #define UNIVERSAL_HASH(x, M, a, b) ((unsigned)(a * x + b) >> (32 - M))
 #define BINARY_HASH(x, a, b) ((unsigned)(a * x + b) >> 31)
 
-#define hashIndicesOutputIdx(numHashFamilies, numProbes, numInputs, dataIdx, probeIdx, tb)                             \
+#define hashIndicesOutputIdx(numHashFamilies, numProbes, numInputs, dataIdx, probeIdx, tb)         \
     (unsigned long long)(numInputs * numProbes * tb + dataIdx * numProbes + probeIdx)
-#define hashesOutputIdx(numHashPerFamily, numInputs, dataIdx, tb, hashInFamIdx)                                        \
-    (unsigned long long)(tb * (numInputs * numHashPerFamily) + dataIdx * numHashPerFamily + hashInFamIdx)
+#define hashesOutputIdx(numHashPerFamily, numInputs, dataIdx, tb, hashInFamIdx)                    \
+    (unsigned long long)(tb * (numInputs * numHashPerFamily) + dataIdx * numHashPerFamily +        \
+                         hashInFamIdx)
 
 class LSH {
   private:
@@ -37,10 +38,11 @@ class LSH {
 
   public:
     /** Obtain hash indice given the (sparse) input vector.
-    Hash indice refer to the corresponding "row number" in a hash table, in the form of unsigned integer.
-    This function will only be valid when an CPU implementation exists for that type of hashing.
-    The outputs indexing is defined as hashIndicesOutputIdx(numHashFamilies, numProbes, numInputs, inputIdx, probeIdx,
-    tb) (unsigned)(numInputs * numProbes * tb + inputIdx * numProbes + probeIdx).
+    Hash indice refer to the corresponding "row number" in a hash table, in the form of unsigned
+    integer. This function will only be valid when an CPU implementation exists for that type of
+    hashing. The outputs indexing is defined as hashIndicesOutputIdx(numHashFamilies, numProbes,
+    numInputs, inputIdx, probeIdx, tb) (unsigned)(numInputs * numProbes * tb + inputIdx * numProbes
+    + probeIdx).
 
     @param hashIndices: for storing hash indices for each vector.
     @param probeDataIdx: for storing the index of the vector corresponding to each hash.
@@ -50,13 +52,16 @@ class LSH {
     @param numInputEntries: number of input vectors.
     @param numProbes: number of probes per input.
     */
-    void getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *dataIdx, int *dataMarker,
-                   int numInputEntries, int numProbes);
+    void getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *dataIdx,
+                   int *dataMarker, int numInputEntries, int numProbes);
+
+    void showLSHConfig();
 
     /** Constructor.
 
-    Construct an LSH class for optimal densified min-hash (for more details refer to Anshumali Shrivastava,
-    anshu@rice.edu). This hashing scheme is for very sparse and high dimensional data stored in sparse format.
+    Construct an LSH class for optimal densified min-hash (for more details refer to Anshumali
+    Shrivastava, anshu@rice.edu). This hashing scheme is for very sparse and high dimensional data
+    stored in sparse format.
 
     @param _K_in: the number of hash functions per table.
     @param _L_in: the number of hash tables.

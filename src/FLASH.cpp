@@ -18,19 +18,19 @@
 
 int main() {
 
-  // #ifdef UNIT_TESTING
-  //   unitTesting();
-  // #endif
-  // #ifdef WEBSPAM
-  //   webspam();
-  // #endif
-  // #ifdef KDD12
-  //   kdd12FileOutput();
-  // #endif
-  // #ifdef WIKIDUMP
-  //   wikiDump();
-  // #endif
-
-  evaluateResults("./Tree-Nodes-4");
-  return 0;
+    #ifdef UNIT_TESTING
+        unitTesting();
+    #endif
+    #ifdef WEBSPAM
+        webspam();
+    #endif
+    #ifdef KDD12
+        kdd12FileOutput();
+    #endif
+    #ifdef WIKIDUMP
+        wikiDump();
+    #endif
+    
+        // evaluateResults("./Tree-Nodes-4");
+        return 0;
 }

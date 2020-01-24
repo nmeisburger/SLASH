@@ -33,7 +33,7 @@ int main() {
 
     printf("Add finished\n");
 
-    reservoir->printCounts();
+    // reservoir->printCounts();
 
     unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
 
@@ -41,19 +41,19 @@ int main() {
 
     printf("Query finished\n");
 
-    for (int i = 0; i < NUM_QUERY_VECTORS; i++) {
-        printf("Q %d: ", i);
-        for (int k = 0; k < TOPK; k++) {
-            printf("%d ", outputs[i * TOPK + k]);
-        }
-        printf("\n");
-    }
+    // for (int i = 0; i < NUM_QUERY_VECTORS; i++) {
+    //     printf("Q %d: ", i);
+    //     for (int k = 0; k < TOPK; k++) {
+    //         printf("%d ", outputs[i * TOPK + k]);
+    //     }
+    //     printf("\n");
+    // }
 
     MPI_Finalize();
 
-    // writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
+    writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
 
-    // evaluateResults("test_output");
+    evaluateResults("test_output");
 
     return 0;
 }
