@@ -13,7 +13,6 @@
 #include <time.h>
 
 #define INT_MAX -1
-#define TABLENULL -1
 
 #define hashLocation(dataIndx, numHashes, hashIndx) ((int)(dataIndx * numHashes + hashIndx))
 #define heavyHitterIndx(sketchIndx, sketchSize, bucketSize, hashIndx, hash)                        \
@@ -23,13 +22,13 @@
 #define sketchIndx(sketchIndx, sketchSize) ((int)(sketchIndx * sketchSize))
 
 struct LHH {
-    int heavyHitter;
-    int count;
+    unsigned int heavyHitter;
+    unsigned int count;
 };
 
 class CMS {
   private:
-    int *_LHH;
+    unsigned int *_LHH;
     int _myRank, _worldSize;
     int _numHashes, _bucketSize, _numSketches;
     long _sketchSize;

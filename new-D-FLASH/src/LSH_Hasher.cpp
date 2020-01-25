@@ -15,7 +15,7 @@ LSH_Hasher::LSH_Hasher(unsigned int K, unsigned int L, unsigned int range_base_2
     _hash_function_params = new int[_num_hashes];
 
     if (_my_rank == 0) {
-        for (int i = 0; i < _num_hashes; i++) {
+        for (size_t i = 0; i < _num_hashes; i++) {
             _hash_function_params[i] = rand();
             if (_hash_function_params[i] % 2 == 0) {
                 _hash_function_params[i]++;
@@ -61,11 +61,11 @@ void LSH_Hasher::densified_min_hash(unsigned int *output_hashes, unsigned int *v
     unsigned int binsize = ceil(range / _num_hashes);
     unsigned int temp_hashes[_num_hashes];
 
-    for (unsigned int i = 0; i < _num_hashes; i++) {
+    for (size_t i = 0; i < _num_hashes; i++) {
         temp_hashes[i] = INT_MAX;
     }
 
-    for (unsigned int i = 0; i < len_vector; i++) {
+    for (size_t i = 0; i < len_vector; i++) {
         unsigned int h = vector[i];
         h *= _hash_seed;
         h ^= h >> 13;
@@ -76,7 +76,7 @@ void LSH_Hasher::densified_min_hash(unsigned int *output_hashes, unsigned int *v
             temp_hashes[binid] = curhash;
     }
     /* Densification of the hash. */
-    for (unsigned int i = 0; i < _num_hashes; i++) {
+    for (size_t i = 0; i < _num_hashes; i++) {
         unsigned int next = temp_hashes[i];
         if (next == INT_MAX) {
             unsigned int count = 0;
@@ -84,7 +84,7 @@ void LSH_Hasher::densified_min_hash(unsigned int *output_hashes, unsigned int *v
                 count++;
                 unsigned int index = std::min(random_double_hash(i, count), _num_hashes);
                 next = temp_hashes[index];
-                if (count > 100){  // Densification failure.
+                if (count > 100) { // Densification failure.
                     next = rand() >> (32 - _range_base_2);
                     break;
                 }
@@ -97,15 +97,15 @@ void LSH_Hasher::densified_min_hash(unsigned int *output_hashes, unsigned int *v
 void LSH_Hasher::hash(unsigned int num_vectors, unsigned int *vector_indices,
                       unsigned int *vector_markers, unsigned int *hashes) {
 #pragma omp parallel for default(none) shared(num_vectors, vector_markers, vector_indices, hashes)
-    for (unsigned int vector = 0; vector < num_vectors; vector++) {
+    for (size_t vector = 0; vector < num_vectors; vector++) {
         unsigned int *min_hashes = new unsigned int[_num_hashes];
         unsigned int size_non_zeros = vector_markers[vector + 1] - vector_markers[vector];
 
         densified_min_hash(min_hashes, vector_indices + vector_markers[vector], size_non_zeros);
-        
-        for (unsigned int table = 0; table < _L; table++) {
+
+        for (size_t table = 0; table < _L; table++) {
             unsigned int index = 0;
-            for (unsigned int k = 0; k < _K; k++) {
+            for (size_t k = 0; k < _K; k++) {
                 unsigned int h = min_hashes[_K * table + k];
                 h *= _hash_function_params[_K * table + k];
                 h ^= h >> 13;

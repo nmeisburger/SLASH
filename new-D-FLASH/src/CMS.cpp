@@ -7,7 +7,7 @@ CMS::CMS(int L, int B, int numDataStreams, int myRank, int worldSize) {
     _worldSize = worldSize;
     _numSketches = numDataStreams;
     _sketchSize = _numHashes * _bucketSize * 2;
-    _LHH = new int[_numSketches * _sketchSize]();
+    _LHH = new unsigned int[_numSketches * _sketchSize]();
     _hashingSeeds = new unsigned int[_numHashes];
 
     if (_myRank == 0) {
@@ -81,13 +81,13 @@ void CMS::addSketch(int dataStreamIndx, unsigned int *dataStream, int dataStream
 
     for (int dataIndx = 0; dataIndx < dataStreamLen; dataIndx++) {
         for (int hashIndx = 0; hashIndx < _numHashes; hashIndx++) {
-            if (dataStream[dataIndx] == INT_MAX) {
+            if (dataStream[dataIndx] == INT_MAX || dataStream[dataIndx] == 0) {
                 continue;
             }
             unsigned int currentHash = hashIndices[hashLocation(dataIndx, _numHashes, hashIndx)];
-            int *LHH_ptr = _LHH + heavyHitterIndx(dataStreamIndx, _sketchSize, _bucketSize,
-                                                  hashIndx, currentHash);
-            int *LHH_Count_ptr =
+            unsigned int *LHH_ptr = _LHH + heavyHitterIndx(dataStreamIndx, _sketchSize, _bucketSize,
+                                                           hashIndx, currentHash);
+            unsigned int *LHH_Count_ptr =
                 _LHH + countIndx(dataStreamIndx, _sketchSize, _bucketSize, hashIndx, currentHash);
             if (*LHH_Count_ptr != 0) {
                 if (dataStream[dataIndx] == *LHH_ptr) {
@@ -115,8 +115,8 @@ void CMS::add(unsigned int *dataStreams, int segmentSize) {
 void CMS::topKSketch(int K, int threshold, unsigned int *topK, int sketchIndx) {
 
     LHH *candidates = new LHH[_bucketSize];
-    int count = 0;
-    for (int b = 0; b < _bucketSize; b++) {
+    unsigned int count = 0;
+    for (size_t b = 0; b < _bucketSize; b++) {
         int currentHeavyHitter = _LHH[heavyHitterIndx(sketchIndx, _sketchSize, _bucketSize, 0, b)];
         int currentCount = _LHH[countIndx(sketchIndx, _sketchSize, _bucketSize, 0, b)];
         if (currentCount >= threshold) {
@@ -126,7 +126,7 @@ void CMS::topKSketch(int K, int threshold, unsigned int *topK, int sketchIndx) {
         } else {
             unsigned int *hashes = new unsigned int[_numHashes];
             getCanidateHashes(currentHeavyHitter, hashes);
-            for (int hashIndx = 1; hashIndx < _numHashes; hashIndx++) {
+            for (size_t hashIndx = 1; hashIndx < _numHashes; hashIndx++) {
                 currentCount = _LHH[countIndx(sketchIndx, _sketchSize, _bucketSize, hashIndx,
                                               hashes[hashIndx])];
                 if (currentCount > threshold) {
@@ -139,14 +139,20 @@ void CMS::topKSketch(int K, int threshold, unsigned int *topK, int sketchIndx) {
         }
     }
     for (; count < _bucketSize; count++) {
-        candidates[count].heavyHitter = -1;
-        candidates[count].count = -1;
+        candidates[count].heavyHitter = INT_MAX;
+        candidates[count].count = INT_MAX;
     }
     std::sort(candidates, candidates + _bucketSize,
               [&candidates](LHH a, LHH b) { return a.count > b.count; });
 
-    for (int i = 0; i < K; i++) {
-        if (candidates[i].heavyHitter > -1) {
+    int s = 0;
+    // printf("@1 %u @2 %u @3 %u @10 %u\n", candidates[0].heavyHitter, candidates[1].heavyHitter,
+    //        candidates[2].heavyHitter, candidates[9].heavyHitter);
+    if (candidates[0].heavyHitter == INT_MAX) {
+        s++;
+    }
+    for (int i = s; i < K + s; i++) {
+        if (candidates[i].heavyHitter != INT_MAX) {
             topK[i] = candidates[i].heavyHitter;
         }
     }

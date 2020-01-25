@@ -84,34 +84,26 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     unsigned int *all_query_hashes = new unsigned int[num_vectors * _L];
 
     MPI_Allgatherv(my_query_hashes, node_vector_counts[_my_rank] * _L, MPI_UNSIGNED,
-                   query_hash_buffer, hash_counts, hash_offsets, MPI_UNSIGNED, MPI_COMM_WORLD);
+                   all_query_hashes, hash_counts, hash_offsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
     unsigned int len;
-
-    // for (int i = 0; i < node_vector_counts[_my_rank]; i++) {
-    //     printf("Q %d: ", i);
-    //     for (int j = 0; j < _L; j++) {
-    //         printf(" %u ", my_query_hashes[HASH_OUTPUT_INDEX(_L, i, j)]);
-    //     }
-    //     printf("\n");
-    // }
 
     unsigned int *old;
     unsigned int *fin;
 
-#pragma omp parallel for default(none)                                                             \
-    shared(query_hash_buffer, all_query_hashes, hash_offsets, num_vectors,                         \
-           node_vector_counts) private(len, old, fin)
-    for (unsigned int partition = 0; partition < _world_size; partition++) {
-        len = node_vector_counts[partition];
-        for (unsigned int tb = 0; tb < _L; tb++) {
-            old = query_hash_buffer + hash_offsets[partition] + tb * len;
-            fin = all_query_hashes + tb * num_vectors + (hash_offsets[partition] / _L);
-            for (int l = 0; l < len; l++) {
-                fin[l] = old[l];
-            }
-        }
-    }
+    // #pragma omp parallel for default(none)                                                             \
+//     shared(query_hash_buffer, all_query_hashes, hash_offsets, num_vectors,                         \
+//            node_vector_counts) private(len, old, fin)
+    //     for (unsigned int partition = 0; partition < _world_size; partition++) {
+    //         len = node_vector_counts[partition];
+    //         for (unsigned int tb = 0; tb < _L; tb++) {
+    //             old = query_hash_buffer + hash_offsets[partition] + tb * len;
+    //             fin = all_query_hashes + tb * num_vectors + (hash_offsets[partition] / _L);
+    //             for (int l = 0; l < len; l++) {
+    //                 fin[l] = old[l];
+    //             }
+    //         }
+    //     }
 
     long segment_size = _L * _reservoir_size;
     unsigned int *extracted_reservoirs = new unsigned int[segment_size * (long)num_vectors]();
@@ -131,6 +123,9 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     //     }
     //     printf("\n");
     // }
+
+    for (int i = 0; i < segment_size * num_vectors; i++) {
+    }
 
     _top_k_sketch->add(extracted_reservoirs, segment_size);
 
