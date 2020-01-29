@@ -33,7 +33,8 @@ void LSH_Reservoir::add_dist(std::string filename, unsigned int read_offset,
     read_sparse(filename, node_offsets[_my_rank], node_vector_counts[_my_rank], data_indices,
                 data_values, data_markers, node_vector_counts[_my_rank] * dimension);
 
-    add(num_vectors, data_markers, data_indices, node_offsets[_my_rank] + _total_vectors_added);
+    // add(num_vectors, data_markers, data_indices, node_offsets[_my_rank] +
+    // _total_vectors_added);
 
     _total_vectors_added += num_vectors;
 
@@ -97,12 +98,14 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     // #pragma omp parallel for default(none)                                                             \
 //     shared(query_hash_buffer, all_query_hashes, hash_offsets, num_vectors,                         \
 //            node_vector_counts) private(len, old, fin)
-    //     for (unsigned int partition = 0; partition < _world_size; partition++) {
+    //     for (unsigned int partition = 0; partition < _world_size;
+    //     partition++) {
     //         len = node_vector_counts[partition];
     //         for (unsigned int tb = 0; tb < _L; tb++) {
-    //             old = query_hash_buffer + hash_offsets[partition] + tb * len;
-    //             fin = all_query_hashes + tb * num_vectors + (hash_offsets[partition] / _L);
-    //             for (int l = 0; l < len; l++) {
+    //             old = query_hash_buffer + hash_offsets[partition] + tb *
+    //             len; fin = all_query_hashes + tb * num_vectors +
+    //             (hash_offsets[partition] / _L); for (int l = 0; l < len;
+    //             l++) {
     //                 fin[l] = old[l];
     //             }
     //         }
@@ -117,10 +120,11 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     //     for (int t = 0; t < _L; t++) {
     //         printf("Table %d: ", t);
     //         for (int i = 0; i < _reservoir_size; i++) {
-    //             if (extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size, _L, v, t, i)] !=
-    //             INT_MAX)
+    //             if (extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size,
+    //             _L, v, t, i)] != INT_MAX)
     //                 printf(" %u ",
-    //                        extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size, _L, v, t, i)]);
+    //                        extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size,
+    //                        _L, v, t, i)]);
     //         }
     //         printf("\n");
     //     }
