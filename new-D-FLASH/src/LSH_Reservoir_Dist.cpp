@@ -125,7 +125,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     // }
 
     for (int i = 0; i < segment_size * num_vectors; i++) {
-    }
+        }
 
     _top_k_sketch->add(extracted_reservoirs, segment_size);
 
