@@ -33,8 +33,8 @@ void LSH_Reservoir::add_dist(std::string filename, unsigned int read_offset,
     read_sparse(filename, node_offsets[_my_rank], node_vector_counts[_my_rank], data_indices,
                 data_values, data_markers, node_vector_counts[_my_rank] * dimension);
 
-    // add(num_vectors, data_markers, data_indices, node_offsets[_my_rank] +
-    // _total_vectors_added);
+    add(node_vector_counts[_my_rank], data_markers, data_indices,
+        node_offsets[_my_rank] + _total_vectors_added);
 
     _total_vectors_added += num_vectors;
 
