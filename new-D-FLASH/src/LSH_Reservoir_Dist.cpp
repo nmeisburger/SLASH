@@ -17,15 +17,18 @@ void LSH_Reservoir::add_dist(std::string filename, unsigned int read_offset,
         }
     }
 
-    unsigned int *data_markers = new unsigned int[node_vector_counts[_my_rank] + 1];
-    unsigned int *data_indices = new unsigned int[node_vector_counts[_my_rank] * dimension];
-    float *data_values = new float[node_vector_counts[_my_rank] * dimension];
-
     node_offsets[0] = read_offset;
     for (int i = 1; i < _world_size; i++) {
         node_offsets[i] = std::min(node_offsets[i - 1] + node_vector_counts[i - 1],
                                    num_vectors + read_offset - 1);
     }
+
+    printf("Node %d - Add Counts %d @ offset %d\n", _my_rank, node_vector_counts[_my_rank],
+           node_offsets[_my_rank]);
+
+    unsigned int *data_markers = new unsigned int[node_vector_counts[_my_rank] + 1];
+    unsigned int *data_indices = new unsigned int[node_vector_counts[_my_rank] * dimension];
+    float *data_values = new float[node_vector_counts[_my_rank] * dimension];
 
     read_sparse(filename, node_offsets[_my_rank], node_vector_counts[_my_rank], data_indices,
                 data_values, data_markers, node_vector_counts[_my_rank] * dimension);
@@ -125,7 +128,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     // }
 
     for (int i = 0; i < segment_size * num_vectors; i++) {
-        }
+    }
 
     _top_k_sketch->add(extracted_reservoirs, segment_size);
 
