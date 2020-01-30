@@ -82,6 +82,8 @@ void writeTopK(std::string filename, int numQueries, int k, unsigned int *topK) 
     file.open(filename);
     for (int q = 0; q < numQueries; q++) {
         for (int i = 0; i < k; i++) {
+            if (topK[q * k + i] != 0)
+                printf("%d ", topK[q * k + i]);
             file << topK[q * k + i] << " ";
         }
         file << "\n";
