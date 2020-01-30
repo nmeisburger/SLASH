@@ -38,6 +38,8 @@ void LSH_Reservoir::add_dist(std::string filename, unsigned int read_offset,
 
     _total_vectors_added += num_vectors;
 
+    printf("\n <<<< Data Vectors Added Node %d >>>>>\n", _my_rank);
+
     delete[] data_markers;
     delete[] data_indices;
     delete[] data_values;
@@ -103,6 +105,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     MPI_Allgatherv(my_query_hashes, node_vector_counts[_my_rank] * _L, MPI_UNSIGNED,
                    all_query_hashes, hash_counts, hash_offsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
+    printf("\n <<<< Query Hashes Computed Node %d >>>>>\n", _my_rank);
     // if (_my_rank == 0) {
     //     for (int v = 0; v < num_vectors; v++) {
     //         printf("Vector: %d: ", v);
@@ -120,10 +123,12 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     }
     extract(num_vectors, all_query_hashes, extracted_reservoirs);
 
+    printf("\n <<<< Query Extracted Node %d >>>>>\n", _my_rank);
+
     for (int n = 0; n < _world_size; n++) {
         if (_my_rank == n) {
-            for (int i = 0; i < num_vectors; i++) {
-                printf("VECTOR %d", i);
+            for (int i = 0; i < node_vector_counts; i++) {
+                printf("NODE %d VECTOR %d", n, i);
                 for (int j = 0; j < segment_size; j++) {
                     unsigned int x = extracted_reservoirs[i * segment_size + j];
                     if (x != INT_MAX) {

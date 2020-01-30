@@ -22,13 +22,9 @@ int main() {
 
     reservoir->add_dist(BASEFILE, NUM_QUERY_VECTORS, NUM_DATA_VECTORS, DIMENSION);
 
-    printf("Add finished\n");
-
     unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
 
     reservoir->query_dist(BASEFILE, 0, NUM_QUERY_VECTORS, DIMENSION, TOPK, outputs);
-
-    printf("Query finished\n");
 
     MPI_Finalize();
 
