@@ -28,11 +28,11 @@ int main() {
 
     MPI_Finalize();
 
-    // if (my_rank == 0) {
-    //     writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
+    if (my_rank == 0) {
+        writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
 
-    //     evaluateResults("test_output");
-    // }
+        evaluateResults("test_output");
+    }
     delete[] outputs;
 
     return 0;
