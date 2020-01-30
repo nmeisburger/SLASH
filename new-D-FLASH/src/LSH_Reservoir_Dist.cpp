@@ -99,13 +99,14 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     //     }
     //     MPI_Barrier(MPI_COMM_WORLD);
     // }
+    printf("\n <<<< Query Hashes Computed Node %d >>>>>\n", _my_rank);
 
     unsigned int *all_query_hashes = new unsigned int[num_vectors * _L];
 
-    MPI_Allgatherv(my_query_hashes, node_vector_counts[_my_rank] * _L, MPI_UNSIGNED,
-                   all_query_hashes, hash_counts, hash_offsets, MPI_UNSIGNED, MPI_COMM_WORLD);
+    MPI_Allgatherv(my_query_hashes, hash_counts[_my_rank], MPI_UNSIGNED, all_query_hashes,
+                   hash_counts, hash_offsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
-    printf("\n <<<< Query Hashes Computed Node %d >>>>>\n", _my_rank);
+    printf("\n <<<< Query Hashes Gathered Node %d >>>>>\n", _my_rank);
     // if (_my_rank == 0) {
     //     for (int v = 0; v < num_vectors; v++) {
     //         printf("Vector: %d: ", v);
