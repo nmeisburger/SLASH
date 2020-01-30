@@ -33,11 +33,13 @@ int main() {
 
     printf("Add finished\n");
 
-    // unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
 
-    // reservoir->query_dist(BASEFILE, 0, NUM_QUERY_VECTORS, DIMENSION, TOPK, outputs);
+    reservoir->query_dist(BASEFILE, 0, NUM_QUERY_VECTORS, DIMENSION, TOPK, outputs);
 
-    // printf("Query finished\n");
+    printf("Query finished\n");
+
+    delete[] outputs;
 
     MPI_Finalize();
 

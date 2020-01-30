@@ -84,11 +84,35 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     unsigned int *my_query_hashes = new unsigned int[node_vector_counts[_my_rank] * _L];
     _hash_family->hash(node_vector_counts[_my_rank], query_indices, query_markers, my_query_hashes);
 
-    unsigned int *query_hash_buffer = new unsigned int[num_vectors * _L];
+    MPI_Barrier(MPI_COMM_WORLD);
+    for (int i = 0; i < _world_size; i++) {
+        if (_my_rank == i) {
+            for (int v = 0; v < node_vector_counts[_my_rank]; v++) {
+                printf("Vector: %d: ", v);
+                for (int t = 0; t < _L; t++) {
+                    printf("%d\t", my_query_hashes[HASH_OUTPUT_INDEX(_L, v, t)]);
+                }
+                printf("\n");
+            }
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+    // unsigned int *query_hash_buffer = new unsigned int[num_vectors * _L];
     unsigned int *all_query_hashes = new unsigned int[num_vectors * _L];
 
     MPI_Allgatherv(my_query_hashes, node_vector_counts[_my_rank] * _L, MPI_UNSIGNED,
                    all_query_hashes, hash_counts, hash_offsets, MPI_UNSIGNED, MPI_COMM_WORLD);
+
+    if (_my_rank == 0) {
+        for (int v = 0; v < num_vectors; v++) {
+            printf("Vector: %d: ", v);
+            for (int t = 0; t < _L; t++) {
+                printf("%d\t", all_query_hashes[HASH_OUTPUT_INDEX(_L, v, t)]);
+            }
+            printf("\n");
+        }
+    }
 
     unsigned int len;
 
@@ -115,22 +139,6 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     unsigned int *extracted_reservoirs = new unsigned int[segment_size * (long)num_vectors]();
     extract(num_vectors, all_query_hashes, extracted_reservoirs);
 
-    // for (int v = 0; v < num_vectors; v++) {
-    //     printf("\nQuery %d:\n", v);
-    //     for (int t = 0; t < _L; t++) {
-    //         printf("Table %d: ", t);
-    //         for (int i = 0; i < _reservoir_size; i++) {
-    //             if (extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size,
-    //             _L, v, t, i)] != INT_MAX)
-    //                 printf(" %u ",
-    //                        extracted_reservoirs[EXTRACTED_INDEX(_reservoir_size,
-    //                        _L, v, t, i)]);
-    //         }
-    //         printf("\n");
-    //     }
-    //     printf("\n");
-    // }
-
     for (int i = 0; i < segment_size * num_vectors; i++) {
     }
 
@@ -149,7 +157,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     delete[] hash_counts;
     delete[] hash_offsets;
 
-    delete[] query_hash_buffer;
+    // delete[] query_hash_buffer;
     delete[] all_query_hashes;
 
     delete[] extracted_reservoirs;

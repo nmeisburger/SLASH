@@ -59,6 +59,8 @@ void LSH_Reservoir::reservoir_sampling(Location *store_log, unsigned int *hashes
             _reservoir_counters[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)]++;
             omp_unset_lock(_reservoir_counter_locks +
                            RESERVOIR_INDEX(table, _num_reservoirs, hash_value));
+            // unsigned int xx = STORE_LOG_INDEX(table, vector_indx, _L);
+            // printf("Store Log Check: Position %u vector %u\n", xx, store_log[xx].vector_indx);
         }
     }
 }
@@ -68,7 +70,10 @@ void LSH_Reservoir::insert(Location *store_log, unsigned int num_vectors) {
 #pragma omp parallel for default(none)                                                             \
     shared(store_log, num_vectors) private(location, reservoir, current_vector)
     for (size_t vector_indx = 0; vector_indx < num_vectors; vector_indx++) {
+        printf("Vector Index Check %d\n", store_log[vector_indx * _L].vector_indx);
         for (size_t table = 0; table < _L; table++) {
+            // unsigned int xx = STORE_LOG_INDEX(table, vector_indx, _L);
+            // printf("Store Log Check: Position %u vector %u\n", xx, store_log[xx].vector_indx);
             location = store_log[STORE_LOG_INDEX(table, vector_indx, _L)].reservoir_location;
             if (location < _reservoir_size) {
                 current_vector = store_log[STORE_LOG_INDEX(table, vector_indx, _L)].vector_indx;
@@ -81,7 +86,6 @@ void LSH_Reservoir::insert(Location *store_log, unsigned int num_vectors) {
             }
         }
     }
-    _already_added += num_vectors;
 }
 
 void LSH_Reservoir::add(unsigned int num_vectors, unsigned int *vector_markers,
