@@ -127,7 +127,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
 
     for (int n = 0; n < _world_size; n++) {
         if (_my_rank == n) {
-            for (int i = 0; i < node_vector_counts; i++) {
+            for (int i = 0; i < num_vectors; i++) {
                 printf("NODE %d VECTOR %d", n, i);
                 for (int j = 0; j < segment_size; j++) {
                     unsigned int x = extracted_reservoirs[i * segment_size + j];
