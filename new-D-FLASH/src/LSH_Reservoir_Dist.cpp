@@ -120,17 +120,20 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     }
     extract(num_vectors, all_query_hashes, extracted_reservoirs);
 
-    if (_my_rank == 0) {
-        for (int i = 0; i < num_vectors; i++) {
-            printf("VECTOR %d", i);
-            for (int j = 0; j < segment_size; j++) {
-                unsigned int x = extracted_reservoirs[i * segment_size + j];
-                if (x != INT_MAX) {
-                    printf(" %d ", x);
+    for (int n = 0; n < _world_size; n++) {
+        if (_my_rank == n) {
+            for (int i = 0; i < num_vectors; i++) {
+                printf("VECTOR %d", i);
+                for (int j = 0; j < segment_size; j++) {
+                    unsigned int x = extracted_reservoirs[i * segment_size + j];
+                    if (x != INT_MAX) {
+                        printf(" %d ", x);
+                    }
                 }
+                printf("\n");
             }
-            printf("\n");
         }
+        MPI_Barrier(MPI_COMM_WORLD);
     }
 
     _top_k_sketch->add(extracted_reservoirs, segment_size);

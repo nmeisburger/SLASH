@@ -9,6 +9,8 @@ from pyspark.sql.functions import col
 import time
 
 DIM = 10
+NUM_DATA_VECTORS = 100000
+NUM_QUERY_VECTORS = 10000
 TOPK = 128
 
 
@@ -29,21 +31,17 @@ print("Data Loaded")
 vectors = raw_vectors.map(lambda x: extract_sparse_vector(x)).collect()
 print("Data Parsed")
 
-data_frame = sc.createDataFrame(vectors, ["id", "features"])
+data_frame = sc.createDataFrame(
+    vectors[NUM_QUERY_VECTORS:NUM_DATA_VECTORS + NUM_QUERY_VECTORS], ["id", "features"])
 print("Data Frame Created")
 lsh = MinHashLSH(inputCol="features", outputCol="hashes", seed=12049)
 print("LSH Created")
 lsh_model = lsh.fit(data_frame)
 print("LSH Model Fit")
 
-raw_query_vectors = sc.textFile("kdd12_query")
-print("Queries Loaded")
-query_vectors = raw_vectors.map(lambda x: extract_sparse_vector(x)).collect()
-print("Queries Parsed")
-
 
 start = time.time()
-for id, vector in query_vectors:
+for id, vector in vectors[:NUM_QUERY_VECTORS]:
     lsh_model.approxNearestNeighbors(data_frame, x[1], TOPK).collect()
 end = time.time()
 print("Queries Complete: " + str(end - start))
