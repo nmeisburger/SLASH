@@ -81,7 +81,7 @@ void CMS::addSketch(int dataStreamIndx, unsigned int *dataStream, int dataStream
 
     for (int dataIndx = 0; dataIndx < dataStreamLen; dataIndx++) {
         for (int hashIndx = 0; hashIndx < _numHashes; hashIndx++) {
-            if (dataStream[dataIndx] == INT_MAX || dataStream[dataIndx] == 0) {
+            if (dataStream[dataIndx] == INT_MAX) {
                 continue;
             }
             unsigned int currentHash = hashIndices[hashLocation(dataIndx, _numHashes, hashIndx)];

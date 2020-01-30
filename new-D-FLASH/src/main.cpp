@@ -15,15 +15,6 @@ int main() {
 
     LSH_Hasher *lsh = new LSH_Hasher(NUM_HASHES, NUM_TABLES, RANGE_POW, world_size, my_rank);
 
-    // lsh->showLSHConfig();
-
-    // unsigned int *markers = new unsigned int[NUM_DATA_VECTORS];
-    // unsigned int *indices = new unsigned int[DIMENSION * NUM_DATA_VECTORS];
-    // float *vals = new float[DIMENSION * NUM_DATA_VECTORS];
-
-    // read_sparse(BASEFILE, NUM_QUERY_VECTORS, NUM_DATA_VECTORS, indices, vals, markers,
-    //             DIMENSION * NUM_DATA_VECTORS);
-
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, my_rank, world_size);
 
     LSH_Reservoir *reservoir = new LSH_Reservoir(NUM_TABLES, NUM_HASHES, RANGE_POW, RESERVOIR_SIZE,
@@ -39,15 +30,14 @@ int main() {
 
     printf("Query finished\n");
 
-    delete[] outputs;
-
     MPI_Finalize();
 
-    // if (my_rank == 0) {
-    //     writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
+    if (my_rank == 0) {
+        writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
 
-    //     evaluateResults("test_output");
-    // }
+        evaluateResults("test_output");
+    }
+    delete[] outputs;
 
     return 0;
 }

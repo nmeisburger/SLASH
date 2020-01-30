@@ -70,8 +70,8 @@ void LSH_Reservoir::insert(Location *store_log, unsigned int num_vectors) {
 #pragma omp parallel for default(none)                                                             \
     shared(store_log, num_vectors) private(location, reservoir, current_vector)
     for (size_t vector_indx = 0; vector_indx < num_vectors; vector_indx++) {
-        printf("Node %d Vector Index Check %d\n", _my_rank,
-               store_log[vector_indx * _L].vector_indx);
+        // printf("Node %d Vector Index Check %d\n", _my_rank,
+        //    store_log[vector_indx * _L].vector_indx);
         for (size_t table = 0; table < _L; table++) {
             // unsigned int xx = STORE_LOG_INDEX(table, vector_indx, _L);
             // printf("Store Log Check: Position %u vector %u\n", xx, store_log[xx].vector_indx);
@@ -105,8 +105,8 @@ void LSH_Reservoir::extract(unsigned int num_vectors, unsigned int *hashes, unsi
     for (size_t vector_indx = 0; vector_indx < num_vectors; vector_indx++) {
         for (size_t table = 0; table < _L; table++) {
             hash_value = hashes[HASH_OUTPUT_INDEX(_L, vector_indx, table)];
-            for (size_t item = 0; item < _reservoir_size; item++) {
-                if (_reservoir_counters[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)] > 0) {
+            if (_reservoir_counters[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)] > 0) {
+                for (size_t item = 0; item < _reservoir_size; item++) {
                     results[EXTRACTED_INDEX(_reservoir_size, _L, vector_indx, table, item)] =
                         _reservoirs[RESERVOIR_INDEX(table, _num_reservoirs, hash_value)][item];
                 }

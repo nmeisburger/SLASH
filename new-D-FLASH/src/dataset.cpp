@@ -68,6 +68,9 @@ void read_sparse(std::string fileName, unsigned int offset, unsigned int n, unsi
         if (ct == (offset + n)) {
             break;
         }
+        // if (ct % 1000 == 0) {
+        //     printf("@ %d\n", ct);
+        // }
     }
     markers[ct - offset] = totalLen; // Final length marker.
     std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
