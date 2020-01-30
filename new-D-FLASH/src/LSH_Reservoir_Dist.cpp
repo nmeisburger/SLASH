@@ -88,7 +88,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     for (int i = 0; i < _world_size; i++) {
         if (_my_rank == i) {
             for (int v = 0; v < node_vector_counts[_my_rank]; v++) {
-                printf("Vector: %d: ", v);
+                printf("Node %d Vector: %d: ", i, v);
                 for (int t = 0; t < _L; t++) {
                     printf("%d\t", my_query_hashes[HASH_OUTPUT_INDEX(_L, v, t)]);
                 }
