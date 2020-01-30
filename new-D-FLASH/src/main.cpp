@@ -22,8 +22,6 @@ int main() {
 
     reservoir->add_dist(BASEFILE, NUM_QUERY_VECTORS, NUM_DATA_VECTORS, DIMENSION);
 
-    reservoir->print();
-
     printf("Add finished\n");
 
     unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
@@ -34,11 +32,11 @@ int main() {
 
     MPI_Finalize();
 
-    if (my_rank == 0) {
-        writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
+    // if (my_rank == 0) {
+    //     writeTopK("test_output", NUM_QUERY_VECTORS, TOPK, outputs);
 
-        evaluateResults("test_output");
-    }
+    //     evaluateResults("test_output");
+    // }
     delete[] outputs;
 
     return 0;

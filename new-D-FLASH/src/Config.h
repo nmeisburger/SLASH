@@ -29,7 +29,7 @@
 #ifdef KDD12
 
 #define NUM_HASHES 8
-#define RANGE_POW 8
+#define RANGE_POW 10
 
 #define NUM_TABLES 4
 #define RESERVOIR_SIZE 256
@@ -39,7 +39,7 @@
 // #define NUM_DATA_VECTORS 140000000
 // #define NUM_QUERY_VECTORS 10000
 #define NUM_DATA_VECTORS 100
-#define NUM_QUERY_VECTORS 10
+#define NUM_QUERY_VECTORS 4
 #define TOPK 128
 #define AVAILABLE_TOPK 128
 
