@@ -22,6 +22,8 @@ int main() {
 
     reservoir->add_dist(BASEFILE, NUM_QUERY_VECTORS, NUM_DATA_VECTORS, DIMENSION);
 
+    reservoir->print();
+
     printf("Add finished\n");
 
     unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];

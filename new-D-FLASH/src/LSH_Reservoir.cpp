@@ -116,20 +116,26 @@ void LSH_Reservoir::extract(unsigned int num_vectors, unsigned int *hashes, unsi
 }
 
 void LSH_Reservoir::print() {
-    for (size_t t = 0; t < _L; t++) {
-        printf("\nNode %d - Table %lu\n", _my_rank, t);
-        for (size_t h = 0; h < _num_reservoirs; h++) {
-            if (_reservoir_counters[RESERVOIR_INDEX(t, _num_reservoirs, h)] > 0) {
-                printf("[%lu]: ", h);
-                for (size_t r = 0; r < _reservoir_size; r++) {
-                    unsigned int val = _reservoirs[RESERVOIR_INDEX(t, _num_reservoirs, h)][r];
-                    if (val > 0) {
-                        printf("%d ", val);
+    for (int n = 0; n < _world_size; n++) {
+        if (_my_rank == n) {
+            for (size_t t = 0; t < _L; t++) {
+                printf("\nNode %d - Table %lu\n", _my_rank, t);
+                for (size_t h = 0; h < _num_reservoirs; h++) {
+                    if (_reservoir_counters[RESERVOIR_INDEX(t, _num_reservoirs, h)] > 0) {
+                        printf("[%lu]: ", h);
+                        for (size_t r = 0; r < _reservoir_size; r++) {
+                            unsigned int val =
+                                _reservoirs[RESERVOIR_INDEX(t, _num_reservoirs, h)][r];
+                            if (val != INT_MAX) {
+                                printf("%d ", val);
+                            }
+                        }
+                        printf("\n");
                     }
                 }
-                printf("\n");
             }
         }
+        MPI_Barrier(MPI_COMM_WORLD);
     }
 }
 
