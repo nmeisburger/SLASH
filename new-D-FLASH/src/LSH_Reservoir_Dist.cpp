@@ -147,6 +147,7 @@ void LSH_Reservoir::query_dist(std::string filename, unsigned int read_offset,
     _top_k_sketch->aggregateSketchesTree();
 
     if (_my_rank == 0) {
+        _top_k_sketch->showCMS(0);
         _top_k_sketch->topK(top_k, outputs, 0);
     }
 
