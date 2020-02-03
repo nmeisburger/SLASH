@@ -6,7 +6,7 @@
 #SBATCH --mem=30G
 #SBATCH --mail-user=ncm5@rice.edu
 #SBATCH --mail-type=all
-#SBATCH -time=00:30:00
+#SBATCH --time=00:30:00
 export PROJECTS=/projects/as143/ncm5/benchmark
 export HADOOP_HOME=$PROJECTS/hadoop-2.8.5
 export PATH=$HADOOP_HOME/bin:$PROJECTS/myhadoop/bin:$PATH:$PATH
