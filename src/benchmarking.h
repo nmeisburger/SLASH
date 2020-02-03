@@ -3,10 +3,10 @@
 
 #include <string>
 
-#define UNIT_TESTING
+// #define UNIT_TESTING
 // #define WEBSPAM
 // #define KDD12
-// #define WIKIDUMP
+#define WIKIDUMP
 
 #ifdef WEBSPAM
 
@@ -116,9 +116,9 @@
 #define HASHING_PROBES 1
 
 // #define DIMENSION 1237
-#define DIMENSION 100
+#define DIMENSION 265
 #define FULL_DIMENSION 54686452
-#define NUM_DATA_VECTORS 34000000
+#define NUM_DATA_VECTORS 30000000
 #define NUM_QUERY_VECTORS 10000
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
@@ -127,7 +127,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/wiki/wiki"
+#define BASEFILE "../../dataset/wiki/wiki_hashes"
 #define GTRUTHINDICE ""
 #define GTRUTHDIST ""
 
