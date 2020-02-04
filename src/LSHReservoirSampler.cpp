@@ -16,11 +16,6 @@ void LSHReservoirSampler::add(int numInputEntries, int *dataIdx, float *dataVal,
     _hashFamily->getHashes(allprobsHash, allprobsIdx, dataIdx, dataMarker, numInputEntries,
                            _hashingProbes);
 
-    for (int i = 0; i < _numTables; i++) {
-        printf("HASH VAL %d : %d\n", i,
-               allprobsHash[hashIndicesOutputIdx(_numTables, 1, numInputEntries, 130, 0, i)]);
-    }
-
     unsigned int *storelog = new unsigned int[_numTables * 4 * numProbePerTb]();
 
     reservoirSampling(allprobsHash, allprobsIdx, storelog, numProbePerTb);

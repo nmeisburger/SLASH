@@ -661,7 +661,7 @@ void wikiDump() {
     std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
-    std::string filenameTree("Tree-Nodes-");
+    std::string filenameTree("WikiDump-");
     filenameTree.append(std::to_string(worldSize));
     if (myRank == 0) {
         writeTopK(filenameTree, NUM_QUERY_VECTORS, TOPK, treeOutputs);

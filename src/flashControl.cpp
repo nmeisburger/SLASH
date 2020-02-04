@@ -78,16 +78,6 @@ void flashControl::hashQuery() {
     MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, queryHashBuffer, _hashCts,
                    _hashOffsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
-    for (int i = 0; i < _myQueryVectorsCt; i++) {
-        printf("Q %d: ", i);
-        for (int j = 0; j < _numTables; j++) {
-            printf(
-                " %u ",
-                myPartitionHashes[hashIndicesOutputIdx(_numTables, 1, _myQueryVectorsCt, i, 0, j)]);
-        }
-        printf("\n");
-    }
-
     unsigned int len;
 
     unsigned int *old;
