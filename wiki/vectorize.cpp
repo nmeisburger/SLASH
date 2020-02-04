@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <bitset>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -28,8 +29,8 @@ class Unigram_Hasher {
         map<unsigned, unsigned int> store;
         for (size_t i = 0; i < line.length() - _ngrams + 1; i++) {
             string unigram = line.substr(i, _ngrams);
-            unsigned int hash = hasher(unigram);
-            unsigned int bucket = hash >> (32 - _log_2_range);
+            unsigned int hash = hasher(unigram) >> 1;
+            unsigned int bucket = hash >> (31 - _log_2_range);
             auto value = store.find(bucket);
             if (value != store.end()) {
                 if (value->second < hash) {
@@ -77,7 +78,7 @@ class Unigram_Hasher {
             }
             output << "\n";
             line_hashes->clear();
-            if (n_lines % 10, 000 == 0) {
+            if (n_lines % 10000 == 0) {
                 printf("At %d\n", n_lines);
             }
         }
