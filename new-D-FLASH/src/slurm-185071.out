@@ -1,0 +1,129 @@
+[bc12u13n1:08343] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n1:08340] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n1:08342] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n1:08341] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+LSH_Hasher Created in Node 0
+CMS Created in Node 0
+LSH_Reservoir Created in Node 0
+Node 0 - Add Counts 250 @ offset 10
+[readSparse]
+LSH_Hasher Created in Node 1
+CMS Created in Node 1
+LSH_Reservoir Created in Node 1
+Node 1 - Add Counts 250 @ offset 260
+[readSparse]
+LSH_Hasher Created in Node 2
+CMS Created in Node 2
+LSH_Reservoir Created in Node 2
+Node 2 - Add Counts 250 @ offset 510
+[readSparse]
+LSH_Hasher Created in Node 3
+CMS Created in Node 3
+LSH_Reservoir Created in Node 3
+Node 3 - Add Counts 250 @ offset 760
+[readSparse]
+[readSparse] Read 2750 numbers, 250 vectors. 
+[readSparse] Read 2750 numbers, 250 vectors. 
+
+ <<<< Data Vectors Added Node 1 >>>>>
+[readSparse]
+[readSparse] Read 33 numbers, 3 vectors. 
+
+ <<<< Data Vectors Added Node 0 >>>>>
+[readSparse]
+[readSparse] Read 33 numbers, 3 vectors. 
+[readSparse] Read 2750 numbers, 250 vectors. 
+
+ <<<< Data Vectors Added Node 3 >>>>>
+[readSparse]
+[readSparse] Read 22 numbers, 2 vectors. 
+[readSparse] Read 2750 numbers, 250 vectors. 
+
+ <<<< Data Vectors Added Node 2 >>>>>
+[readSparse]
+[readSparse] Read 22 numbers, 2 vectors. 
+
+ <<<< Query Hashes Computed Node 1 >>>>>
+
+ <<<< Query Hashes Gathered Node 1 >>>>>
+
+ <<<< Query Extracted Node 1 >>>>>
+NODE 1 VECTOR 0 434  435  391 
+NODE 1 VECTOR 1 408 
+NODE 1 VECTOR 2 378 
+NODE 1 VECTOR 3 333 
+NODE 1 VECTOR 4 338  312 
+NODE 1 VECTOR 5 291 
+NODE 1 VECTOR 6
+NODE 1 VECTOR 7
+NODE 1 VECTOR 8 447 
+NODE 1 VECTOR 9
+
+ <<<< Query Hashes Computed Node 3 >>>>>
+
+ <<<< Query Hashes Gathered Node 3 >>>>>
+
+ <<<< Query Extracted Node 3 >>>>>
+NODE 3 VECTOR 0 854 
+NODE 3 VECTOR 1 760  765  835 
+NODE 3 VECTOR 2
+NODE 3 VECTOR 3 947  934  991 
+NODE 3 VECTOR 4 800  958 
+NODE 3 VECTOR 5
+NODE 3 VECTOR 6 923  818 
+NODE 3 VECTOR 7 772 
+NODE 3 VECTOR 8
+NODE 3 VECTOR 9 978  994 
+
+ <<<< Query Hashes Computed Node 2 >>>>>
+
+ <<<< Query Hashes Gathered Node 2 >>>>>
+
+ <<<< Query Extracted Node 2 >>>>>
+NODE 2 VECTOR 0 657 
+NODE 2 VECTOR 1 625 
+NODE 2 VECTOR 2
+NODE 2 VECTOR 3
+NODE 2 VECTOR 4
+NODE 2 VECTOR 5
+NODE 2 VECTOR 6
+NODE 2 VECTOR 7
+NODE 2 VECTOR 8 596 
+NODE 2 VECTOR 9 738  609 
+
+ <<<< Query Hashes Computed Node 0 >>>>>
+
+ <<<< Query Hashes Gathered Node 0 >>>>>
+
+ <<<< Query Extracted Node 0 >>>>>
+NODE 0 VECTOR 0 61 
+NODE 0 VECTOR 1 43 
+NODE 0 VECTOR 2
+NODE 0 VECTOR 3 15  207  220  226  249 
+NODE 0 VECTOR 4
+NODE 0 VECTOR 5 166 
+NODE 0 VECTOR 6 157 
+NODE 0 VECTOR 7
+NODE 0 VECTOR 8
+NODE 0 VECTOR 9
+Read top 128 vectors for 10 Queries
+[readSparse]
+[readSparse] Read 11110 numbers, 1010 vectors. 
+
+
+================================
+TOP K TREE
+
+[similarityMetric] Averaging output. 
+[bc12u13n1:08340] *** Process received signal ***
+[bc12u13n1:08340] Signal: Segmentation fault (11)
+[bc12u13n1:08340] Signal code: Address not mapped (1)
+[bc12u13n1:08340] Failing at address: 0x514f690
+[bc12u13n1:08340] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7fd60121c5d0]
+[bc12u13n1:08340] [ 1] /scratch/ncm5/D-FLASH/new-D-FLASH/src/./runme[0x404620]
+[bc12u13n1:08340] [ 2] /scratch/ncm5/D-FLASH/new-D-FLASH/src/./runme[0x407c6a]
+[bc12u13n1:08340] [ 3] /scratch/ncm5/D-FLASH/new-D-FLASH/src/./runme[0x402ca6]
+[bc12u13n1:08340] [ 4] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fd600e623d5]
+[bc12u13n1:08340] [ 5] /scratch/ncm5/D-FLASH/new-D-FLASH/src/./runme[0x402d77]
+[bc12u13n1:08340] *** End of error message ***
+srun: error: bc12u13n1: task 0: Segmentation fault
