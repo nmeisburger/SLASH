@@ -1,0 +1,166 @@
+[bc12u15n1:21289] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u15n2:42302] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u19n2:37612] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u19n4:14384] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u21n2:25061] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u25n2:02646] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+
+=================
+== WikiDump
+=================
+
+30000000 Vectors, 10000 Queries
+Nodes: 6
+Tables: 16
+RangePow: 18
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+LSH Initialized in Node 2
+LSH Initialized in Node 4
+LSH Initialized in Node 1
+LSH Initialized in Node 3
+LSH Initialized in Node 5
+CMS Initialized in Node 1
+CMS Initialized in Node 0
+CMS Initialized in Node 5
+CMS Initialized in Node 3
+CMS Initialized in Node 4
+CMS Initialized in Node 2
+LSH Reservoir Initialized in Node 5
+LSH Reservoir Initialized in Node 1
+LSH Reservoir Initialized in Node 3
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 2
+FLASH Controller Initialized in Node 1
+
+Reading Data Node 1...
+LSH Reservoir Initialized in Node 0
+FLASH Controller Initialized in Node 5
+
+Reading Data Node 5...
+FLASH Controller Initialized in Node 3
+
+Reading Data Node 3...
+FLASH Controller Initialized in Node 0
+
+Reading Data Node 0...
+FLASH Controller Initialized in Node 4
+
+Reading Data Node 4...
+[readSparse]
+FLASH Controller Initialized in Node 2
+
+Reading Data Node 2...
+[readSparse]
+[readSparse]
+[readSparse]
+[readSparse]
+[readSparse]
+[readSparse] Read 1304158550 numbers, 5000000 vectors. 
+[readSparse] Read 1304259747 numbers, 5000000 vectors. 
+[readSparse] Read 1303612123 numbers, 5000000 vectors. 
+[readSparse] Read 1303321701 numbers, 5000000 vectors. 
+[readSparse] Read 1304239592 numbers, 5000000 vectors. 
+[readSparse] Read 1300530631 numbers, 4990000 vectors. 
+Data Read Node 5: 657.11 Seconds
+
+Data Read Node 1: 657.11 Seconds
+
+Data Read Node 0: 657.11 Seconds
+
+Data Read Node 4: 657.11 Seconds
+
+[readSparse]
+Data Read Node 3: 657.11 Seconds
+
+Data Read Node 2: 657.11 Seconds
+
+[readSparse] Read 2593037 numbers, 10000 vectors. 
+Adding Vectors Node 2...
+Adding Vectors Node 4...
+Adding Vectors Node 5...
+Adding Vectors Node 1...
+Adding Vectors Node 3...
+Adding Vectors Node 0...
+Node 5 Table Mem Usage ranges from 0.305843 to 0.308514, average 0.307469
+Node 5 Table Mem Usage ranges from 0.968750 to 0.971561, average 0.970267
+Node 5 Table Mem Usage ranges from 0.986633 to 0.988171, average 0.987230
+Node 5 Table Mem Usage ranges from 0.987083 to 0.988655, average 0.987686
+Node 5 Table Mem Usage ranges from 0.987103 to 0.988678, average 0.987704
+Vectors Added Node 5: 12.8007 Seconds
+
+Node 1 Table Mem Usage ranges from 0.306358 to 0.308697, average 0.307641
+Node 1 Table Mem Usage ranges from 0.969341 to 0.971462, average 0.970664
+Node 1 Table Mem Usage ranges from 0.986885 to 0.987949, average 0.987504
+Node 1 Table Mem Usage ranges from 0.987328 to 0.988449, average 0.987966
+Node 1 Table Mem Usage ranges from 0.987335 to 0.988468, average 0.987978
+Vectors Added Node 1: 14.7446 Seconds
+
+Node 4 Table Mem Usage ranges from 0.304096 to 0.310459, average 0.307982
+Node 4 Table Mem Usage ranges from 0.966633 to 0.974861, average 0.971174
+Node 4 Table Mem Usage ranges from 0.984917 to 0.991726, average 0.988117
+Node 4 Table Mem Usage ranges from 0.985447 to 0.992233, average 0.988587
+Node 4 Table Mem Usage ranges from 0.985462 to 0.992245, average 0.988599
+Vectors Added Node 4: 14.9345 Seconds
+
+Node 3 Table Mem Usage ranges from 0.307373 to 0.310661, average 0.309283
+Node 3 Table Mem Usage ranges from 0.970726 to 0.975582, average 0.973206
+Node 3 Table Mem Usage ranges from 0.987339 to 0.991699, average 0.990022
+Node 3 Table Mem Usage ranges from 0.987843 to 0.992161, average 0.990496
+Node 3 Table Mem Usage ranges from 0.987850 to 0.992176, average 0.990509
+Vectors Added Node 3: 15.1292 Seconds
+
+Node 2 Table Mem Usage ranges from 0.305260 to 0.311234, average 0.308109
+Node 2 Table Mem Usage ranges from 0.966400 to 0.975536, average 0.970931
+Node 2 Table Mem Usage ranges from 0.984219 to 0.992321, average 0.987821
+Node 2 Table Mem Usage ranges from 0.984783 to 0.992836, average 0.988297
+Node 2 Table Mem Usage ranges from 0.984810 to 0.992847, average 0.988312
+Vectors Added Node 2: 16.6594 Seconds
+
+Computing Query Hashes Node 3...
+Node 0 Table Mem Usage ranges from 0.304001 to 0.307072, average 0.306173
+Node 0 Table Mem Usage ranges from 0.966969 to 0.969105, average 0.968214
+Node 0 Table Mem Usage ranges from 0.984631 to 0.985775, average 0.985199
+Node 0 Table Mem Usage ranges from 0.985043 to 0.986210, average 0.985667
+Node 0 Table Mem Usage ranges from 0.985062 to 0.986214, average 0.985683
+Vectors Added Node 0: 16.9533 Seconds
+
+Computing Query Hashes Node 4...
+Computing Query Hashes Node 5...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 2...
+Query Hashes Computed Node 3: 0.0104927 Seconds
+
+Query Hashes Computed Node 5: 0.010464 Seconds
+
+Query Hashes Computed Node 1: 0.0168054 Seconds
+
+Query Hashes Computed Node 2: 0.0207455 Seconds
+
+Query Hashes Computed Node 4: 0.0199286 Seconds
+
+Extracting Top K (TREE) Node 1...
+Extracting Top K (TREE) Node 3...
+Query Hashes Computed Node 0: 0.0223994 Seconds
+
+Extracting Top K (TREE) Node 0...
+Extracting Top K (TREE) Node 2...
+Extracting Top K (TREE) Node 5...
+Extracting Top K (TREE) Node 4...
+Top K (TREE) Extracted Node 1: 1.02859 Seconds
+
+Top K (TREE) Extracted Node 5: 1.26303 Seconds
+
+Top K (TREE) Extracted Node 3: 1.79988 Seconds
+
+Top K (TREE) Extracted Node 2: 2.09592 Seconds
+
+Top K (TREE) Extracted Node 4: 2.43567 Seconds
+
+Top K (TREE) Extracted Node 0: 2.85814 Seconds
+
