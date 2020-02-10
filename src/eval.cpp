@@ -13,7 +13,7 @@
 #define RESULT_FILE "./WikiDump-6"
 
 void readSparse(std::string fileName, size_t offset, size_t n, int *indices, float *values,
-                int *markers, size_t bufferlen) {
+                size_t *markers, size_t bufferlen) {
     std::cout << "[readSparse]" << std::endl;
 
     /* Fill all the markers with the maximum index for the data, to prevent
@@ -64,6 +64,10 @@ void readSparse(std::string fileName, size_t offset, size_t n, int *indices, flo
             totalLen++;
         } while (iss);
 
+        if (ct % 1000000 == 0) {
+            printf("Read %lu\n", ct);
+        }
+
         ct++;
         if (ct == (offset + n)) {
             break;
@@ -91,12 +95,12 @@ void readTopK(std::string filename, int numQueries, int k, unsigned int *topK) {
     printf("Read top %d vectors for %d Queries\n", k, numQueries);
 }
 
-float SparseVecMul(int *indicesA, float *valuesA, unsigned int sizeA, int *indicesB, float *valuesB,
-                   unsigned int sizeB) {
+float SparseVecMul(int *indicesA, float *valuesA, size_t sizeA, int *indicesB, float *valuesB,
+                   size_t sizeB) {
 
     float result = 0;
-    unsigned int ctA = 0;
-    unsigned int ctB = 0;
+    size_t ctA = 0;
+    size_t ctB = 0;
     unsigned int iA, iB;
 
     /* Maximum iteration: nonzerosA + nonzerosB.*/
@@ -117,8 +121,8 @@ float SparseVecMul(int *indicesA, float *valuesA, unsigned int sizeA, int *indic
     return result;
 }
 
-float cosineDist(int *indiceA, float *valA, int nonzerosA, int *indiceB, float *valB,
-                 int nonzerosB) {
+float cosineDist(int *indiceA, float *valA, size_t nonzerosA, int *indiceB, float *valB,
+                 size_t nonzerosB) {
 
     float up = 0;
     float a = 0;
@@ -136,8 +140,8 @@ float cosineDist(int *indiceA, float *valA, int nonzerosA, int *indiceB, float *
     return up / (a * b);
 }
 
-void similarityMetric(int *queries_indice, float *queries_val, int *queries_marker,
-                      int *bases_indice, float *bases_val, int *bases_marker,
+void similarityMetric(int *queries_indice, float *queries_val, size_t *queries_marker,
+                      int *bases_indice, float *bases_val, size_t *bases_marker,
                       unsigned int *queryOutputs, unsigned int numQueries, unsigned int topk,
                       int *nList, int nCnt) {
 
@@ -145,12 +149,12 @@ void similarityMetric(int *queries_indice, float *queries_val, int *queries_mark
 
     std::cout << "[similarityMetric] Averaging output. " << std::endl;
     /* Output average. */
-    for (unsigned int i = 0; i < numQueries; i++) {
-        int startA, endA;
+    for (size_t i = 0; i < numQueries; i++) {
+        size_t startA, endA;
         startA = queries_marker[i];
         endA = queries_marker[i + 1];
-        for (unsigned int j = 0; j < topk; j++) {
-            int startB, endB;
+        for (size_t j = 0; j < topk; j++) {
+            size_t startB, endB;
             startB = bases_marker[queryOutputs[i * topk + j]];
             endB = bases_marker[queryOutputs[i * topk + j] + 1];
             float dist = cosineDist(queries_indice + startA, queries_val + startA, endA - startA,
