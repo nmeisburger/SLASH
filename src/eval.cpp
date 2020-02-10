@@ -189,7 +189,7 @@ void evaluateResults(std::string resultFile) {
     size_t amountToAllocate = totalNumVectors * (size_t)DIMENSION;
     int *sparseIndices = new int[amountToAllocate];
     float *sparseVals = new float[amountToAllocate];
-    int *sparseMarkers = new int[totalNumVectors + 1];
+    size_t *sparseMarkers = new size_t[totalNumVectors + 1];
 
     readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
                amountToAllocate);
