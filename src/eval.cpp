@@ -12,21 +12,21 @@
 #define BASEFILE "./wiki_hashes"
 #define RESULT_FILE "./WikiDump-6"
 
-void readSparse(std::string fileName, int offset, int n, int *indices, float *values, int *markers,
-                unsigned int bufferlen) {
+void readSparse(std::string fileName, size_t offset, size_t n, int *indices, float *values,
+                int *markers, size_t bufferlen) {
     std::cout << "[readSparse]" << std::endl;
 
     /* Fill all the markers with the maximum index for the data, to prevent
        indexing outside of the range. */
-    for (int i = 0; i <= n; i++) {
+    for (size_t i = 0; i <= n; i++) {
         markers[i] = bufferlen - 1;
     }
 
     std::ifstream file(fileName);
     std::string str;
 
-    unsigned int ct = 0;            // Counting the input vectors.
-    unsigned int totalLen = 0;      // Counting all the elements.
+    size_t ct = 0;                  // Counting the input vectors.
+    size_t totalLen = 0;            // Counting all the elements.
     while (std::getline(file, str)) // Get one vector (one vector per line).
     {
         if (ct < offset) { // If reading with an offset, skip < offset vectors.
@@ -178,16 +178,17 @@ void similarityMetric(int *queries_indice, float *queries_val, int *queries_mark
 
 void evaluateResults(std::string resultFile) {
 
-    int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
+    size_t totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
     unsigned int *outputs = new unsigned int[NUM_QUERY_VECTORS * TOPK];
     readTopK(resultFile, NUM_QUERY_VECTORS, TOPK, outputs);
 
-    int *sparseIndices = new int[((long)totalNumVectors * DIMENSION)];
-    float *sparseVals = new float[((long)totalNumVectors * DIMENSION)];
+    size_t amountToAllocate = totalNumVectors * (size_t)DIMENSION;
+    int *sparseIndices = new int[amountToAllocate];
+    float *sparseVals = new float[amountToAllocate];
     int *sparseMarkers = new int[totalNumVectors + 1];
 
     readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
-               totalNumVectors * DIMENSION);
+               amountToAllocate);
 
     const int nCnt = 10;
     int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
