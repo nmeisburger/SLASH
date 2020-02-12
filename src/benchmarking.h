@@ -4,9 +4,9 @@
 #include <string>
 
 // #define UNIT_TESTING
-// #define WEBSPAM
+#define WEBSPAM
 // #define KDD12
-#define WIKIDUMP
+// #define WIKIDUMP
 
 #ifdef WEBSPAM
 
@@ -30,15 +30,11 @@
 #define RESERVOIR_SIZE 256
 #define ALLOC_FRACTION 1
 
-#define QUERY_PROBES 1
-#define HASHING_PROBES 1
-
 #define DIMENSION 4000
-#define FULL_DIMENSION 16609143
-#define NUM_DATA_VECTORS 340000
-#define NUM_QUERY_VECTORS 10000
-// #define NUM_DATA_VECTORS			10000
-// #define NUM_QUERY_VECTORS			300
+// #define NUM_DATA_VECTORS 340000
+// #define NUM_QUERY_VECTORS 10000
+#define NUM_DATA_VECTORS 10000
+#define NUM_QUERY_VECTORS 300
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024
@@ -79,7 +75,6 @@
 #define HASHING_PROBES 1
 
 #define DIMENSION 15
-#define FULL_DIMENSION 54686452
 // #define NUM_DATA_VECTORS			1000000
 // #define NUM_QUERY_VECTORS			100
 #define NUM_DATA_VECTORS 140000000
@@ -166,15 +161,31 @@
 
 #endif
 
-void webspam();
-void kdd12();
-void kdd12FileOutput();
-void wikiDump();
-void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
-                int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize,
-                bool cms, bool tree);
-void evaluateResults(std::string resultFile);
-void unitTesting();
+void
+webspam();
+void
+kdd12();
+void
+kdd12FileOutput();
+void
+wikiDump();
+void
+showConfig(std::string dataset,
+           int numVectors,
+           int queries,
+           int nodes,
+           int tables,
+           int rangePow,
+           int reservoirSize,
+           int hashes,
+           int cmsHashes,
+           int cmsBucketSize,
+           bool cms,
+           bool tree);
+void
+evaluateResults(std::string resultFile);
+void
+unitTesting();
 
 #if !defined(DENSE_DATASET)
 #define SAMFACTOR 24 // DUMMY.

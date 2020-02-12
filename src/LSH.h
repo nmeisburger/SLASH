@@ -13,8 +13,8 @@
 #define UNIVERSAL_HASH(x, M, a, b) ((unsigned)(a * x + b) >> (32 - M))
 #define BINARY_HASH(x, a, b) ((unsigned)(a * x + b) >> 31)
 
-#define hashIndicesOutputIdx(numHashFamilies, numProbes, numInputs, dataIdx, probeIdx, tb)         \
-    (unsigned long long)(numInputs * numProbes * tb + dataIdx * numProbes + probeIdx)
+#define hashIndicesOutputIdx(numHashFamilies, numInputs, dataIdx, tb)                              \
+    (unsigned long long)(numInputs * tb + dataIdx)
 #define hashesOutputIdx(numHashPerFamily, numInputs, dataIdx, tb, hashInFamIdx)                    \
     (unsigned long long)(tb * (numInputs * numHashPerFamily) + dataIdx * numHashPerFamily +        \
                          hashInFamIdx)
@@ -53,7 +53,7 @@ class LSH {
     @param numProbes: number of probes per input.
     */
     void getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *dataIdx,
-                   int *dataMarker, int numInputEntries, int numProbes);
+                   int *dataMarker, int numInputEntries);
 
     void showLSHConfig();
 

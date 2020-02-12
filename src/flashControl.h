@@ -25,7 +25,7 @@ class flashControl {
     CMS *_mySketch;
 
     // Reservoir Params
-    int _numTables, _numQueryProbes, _reservoirSize;
+    int _numTables, _reservoirSize;
 
     int _numDataVectors, _numQueryVectors,
         _dimension; // Total number of data and query vectors across all nodes
@@ -85,12 +85,11 @@ class flashControl {
     @param numQueryVectors: the total number of queryVectors that will used across all nodes.
     @param dimension: the dimension of each vector (or max for sparse datasets)
     @param numTables: the number of tables in the instance of LSHReservoirSampler.
-    @param numQueryProbes: the number of probes used for each query vector.
     @param reservoirSize: the size of each reservoir in the instance of LSHReservoirSampler.
     */
     flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank, int worldSize,
                  int numDataVectors, int numQueryVectors, int dimension, int numTables,
-                 int numQueryProbes, int reservoirSize);
+                 int reservoirSize);
 
     // Allocates memory in each node and sends each node its partition of the set of data vectors.
     void allocateData(std::string filename);

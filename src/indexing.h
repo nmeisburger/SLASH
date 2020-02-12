@@ -31,17 +31,16 @@
 #define tableMemAllocatorIdx(tb) (unsigned)(tb)
 
 // queue: a particular element in the aggregated queue.
-#define queueElemIdx(segmentSizePow2, tb, queryIdx, probeIdx, elemIdx)                             \
-    (unsigned)(queryIdx * segmentSizePow2 + tb * _reservoirSize * _queryProbes +                   \
-               probeIdx * _reservoirSize + elemIdx) // The start position of the segment for a
-                                                    // particular query giventhe entire segment.
+#define queueElemIdx(segmentSizePow2, tb, queryIdx, elemIdx)                                       \
+    (unsigned)(queryIdx * segmentSizePow2 + tb * _reservoirSize + _reservoirSize +                 \
+               elemIdx) // The start position of the segment for a
+                        // particular query giventhe entire segment.
 // topk queue: the start location of that of a query.
 #define topkIdx(topk, queryIdx) (unsigned)(queryIdx * topk) // Indexing in the topk queue.
 // allprobsHash: the hashIdx of an input-probe, i is its index in numProbePerTb.
 #define allprobsHashSimpleIdx(numProbePerTb, tb, i) (unsigned)(numProbePerTb * tb + i)
 // allprobsHash: the hashIdx of an input-probe.
-#define allprobsHashIdx(numProbes, numInputEntries, tb, inputIdx, probsIdx)                        \
-    (unsigned)(numInputEntries * numProbes * tb + inputIdx * numProbes + probsIdx)
+#define allprobsHashIdx(numInputEntries, tb, inputIdx) (unsigned)(numInputEntries * tb + inputIdx)
 // storelog: the id of an input.
 #define storelogIdIdx(numProbsPerTb, probeIdx, tb) (unsigned)(numProbsPerTb * tb * 4 + 4 * probeIdx)
 // storelog: the assigned counter of an input.

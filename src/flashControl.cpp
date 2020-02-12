@@ -72,8 +72,7 @@ void flashControl::hashQuery() {
     _myReservoir->getQueryHash(_myQueryVectorsCt, _myHashCt, _myQueryIndices, _myQueryVals,
                                _myQueryMarkers, myPartitionHashes);
 
-    unsigned int *queryHashBuffer =
-        new unsigned int[_numQueryVectors * _numQueryProbes * _numTables];
+    unsigned int *queryHashBuffer = new unsigned int[_numQueryVectors * _numTables];
 
     MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, queryHashBuffer, _hashCts,
                    _hashOffsets, MPI_UNSIGNED, MPI_COMM_WORLD);
@@ -83,14 +82,13 @@ void flashControl::hashQuery() {
     unsigned int *old;
     unsigned int *fin;
 
-#pragma omp parallel for default(none) shared(queryHashBuffer, _allQueryHashes, _hashOffsets,      \
-                                              _numQueryProbes, _numTables) private(len, old, fin)
+#pragma omp parallel for default(none)                                                             \
+    shared(queryHashBuffer, _allQueryHashes, _hashOffsets, _numTables) private(len, old, fin)
     for (int partition = 0; partition < _worldSize; partition++) {
-        len = _queryVectorCts[partition] * _numQueryProbes;
+        len = _queryVectorCts[partition];
         for (int tb = 0; tb < _numTables; tb++) {
             old = queryHashBuffer + _hashOffsets[partition] + tb * len;
-            fin = _allQueryHashes + tb * _numQueryVectors * _numQueryProbes +
-                  (_hashOffsets[partition] / _numTables);
+            fin = _allQueryHashes + tb * _numQueryVectors + (_hashOffsets[partition] / _numTables);
             for (int l = 0; l < len; l++) {
                 fin[l] = old[l];
             }
@@ -102,7 +100,7 @@ void flashControl::hashQuery() {
 }
 
 void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
-    long segmentSize = _numTables * _numQueryProbes * _reservoirSize;
+    long segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * (long)_numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
@@ -186,7 +184,7 @@ void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
 }
 
 void flashControl::topKCMSAggregationTree(int topK, unsigned int *outputs, int threshold) {
-    int segmentSize = _numTables * _numQueryProbes * _reservoirSize;
+    int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
@@ -203,7 +201,7 @@ void flashControl::topKCMSAggregationTree(int topK, unsigned int *outputs, int t
 }
 
 void flashControl::topKCMSAggregationLinear(int topK, unsigned int *outputs, int threshold) {
-    int segmentSize = _numTables * _numQueryProbes * _reservoirSize;
+    int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
@@ -249,7 +247,7 @@ void flashControl::checkQueryHashes() {
     }
     if (_myRank == 0) {
         printf("\n\nCombined Query Hashes\n");
-        for (int h = 0; h < _numQueryVectors * _numTables * _numQueryProbes; h++) {
+        for (int h = 0; h < _numQueryVectors * _numTables; h++) {
             printf("\tHash %d: %d\n", h, _allQueryHashes[h]);
         }
     }

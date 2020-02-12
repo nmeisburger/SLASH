@@ -1,7 +1,7 @@
 #include "LSH.h"
 
 void LSH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *dataIdx,
-                    int *dataMarker, int numInputEntries, int numProbes) {
+                    int *dataMarker, int numInputEntries) {
 
 #pragma omp parallel for
     for (int inputIdx = 0; inputIdx < numInputEntries; inputIdx++) {
@@ -22,16 +22,15 @@ void LSH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *
             }
             index = (index << 2) >> (32 - _rangePow);
 
-            hashIndices[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, 0, tb)] =
-                index;
-            probeDataIdx[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, 0, tb)] =
-                inputIdx;
-            for (int k = 1; k < numProbes; k++) {
-                hashIndices[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, k, tb)] =
-                    index ^ (1 << (k - 1));
-                probeDataIdx[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, k,
-                                                  tb)] = inputIdx;
-            }
+            hashIndices[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = index;
+            probeDataIdx[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = inputIdx;
+            // for (int k = 1; k < numProbes; k++) {
+            //     hashIndices[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, k,
+            //     tb)] =
+            //         index ^ (1 << (k - 1));
+            //     probeDataIdx[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, k,
+            //                                       tb)] = inputIdx;
+            // }
         }
         delete[] hashes;
     }

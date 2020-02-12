@@ -19,8 +19,9 @@ void showConfig(std::string dataset, int numVectors, int queries, int nodes, int
 
     printf("%d Vectors, %d Queries\n", numVectors, queries);
 
-    printf("Nodes: %d\nTables: %d\nRangePow: %d\nReservoir Size: %d\nHashes: %d\n", nodes, tables,
-           rangePow, reservoirSize, hashes);
+    printf("Nodes: %d\nTables: %d\nRangePow: %d\nReservoir Size: "
+           "%d\nHashes: %d\n",
+           nodes, tables, rangePow, reservoirSize, hashes);
 
     printf("CMS Bucket Size: %d\nCMS Hashes: %d\n\n", cmsBucketSize, cmsHashes);
 }
@@ -65,16 +66,15 @@ void webspam() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, QUERY_PROBES, HASHING_PROBES,
-                                ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
+        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     flashControl *control =
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, QUERY_PROBES, RESERVOIR_SIZE);
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Reading Data
@@ -232,16 +232,15 @@ void kdd12() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, QUERY_PROBES, HASHING_PROBES,
-                                ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
+        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     flashControl *control =
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, QUERY_PROBES, RESERVOIR_SIZE);
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Reading Data
@@ -418,16 +417,15 @@ void kdd12FileOutput() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, QUERY_PROBES, HASHING_PROBES,
-                                ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
+        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     flashControl *control =
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, QUERY_PROBES, RESERVOIR_SIZE);
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Reading Data
@@ -590,16 +588,15 @@ void wikiDump() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, QUERY_PROBES, HASHING_PROBES,
-                                ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
+        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     flashControl *control =
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, QUERY_PROBES, RESERVOIR_SIZE);
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Reading Data
@@ -720,16 +717,15 @@ void unitTesting() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, QUERY_PROBES, HASHING_PROBES,
-                                ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
+        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     flashControl *control =
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, QUERY_PROBES, RESERVOIR_SIZE);
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Reading Data

@@ -26,8 +26,6 @@ void LSHReservoirSampler::showParams() {
     std::cout << "_rangePow_Rehashed " << _numSecHash << "\n";
     std::cout << "_numTables " << _numTables << "\n";
     std::cout << "_reservoirSize " << _reservoirSize << "\n";
-    std::cout << "_queryProbes " << _queryProbes << "\n";
-    std::cout << "_hashingProbes " << _hashingProbes << "\n";
 
     std::cout << "_dimension " << _dimension << "\n";
     std::cout << "_maxSamples " << _maxSamples << "\n";
