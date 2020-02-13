@@ -1,9 +1,9 @@
 #include "flashControl.h"
 
 void flashControl::allocateData(std::string filename) {
-    _myDataIndices = new int[_myDataVectorsCt * _dimension];
+    _myDataIndices = new unsigned int[_myDataVectorsCt * _dimension];
     _myDataVals = new float[_myDataVectorsCt * _dimension];
-    _myDataMarkers = new int[_myDataVectorsCt + 1];
+    _myDataMarkers = new unsigned int[_myDataVectorsCt + 1];
 
     readSparse(filename, _myDataVectorsOffset, _myDataVectorsCt, _myDataIndices, _myDataVals,
                _myDataMarkers, _myDataVectorsCt * _dimension);
@@ -12,11 +12,11 @@ void flashControl::allocateData(std::string filename) {
 void flashControl::allocateQuery(std::string filename) {
 
     if (_myRank == 0) {
-        _queryIndices = new int[(unsigned)(_numQueryVectors * _dimension)];
+        _queryIndices = new unsigned int[(unsigned)(_numQueryVectors * _dimension)];
         _queryVals = new float[(unsigned)(_numDataVectors * _dimension)];
-        _queryMarkers = new int[(unsigned)(_numQueryVectors + 1)];
-        readSparse(filename, 0, (unsigned)_numQueryVectors, _queryIndices, _queryVals,
-                   _queryMarkers, (unsigned)(_numQueryVectors * _dimension));
+        _queryMarkers = new unsigned int[(unsigned)(_numQueryVectors + 1)];
+        readSparse(filename, 0, _numQueryVectors, _queryIndices, _queryVals, _queryMarkers,
+                   (unsigned)(_numQueryVectors * _dimension));
 
         for (int n = 0; n < _worldSize; n++) {
             _queryOffsets[n] = _queryMarkers[_queryVectorOffsets[n]];
@@ -25,14 +25,14 @@ void flashControl::allocateQuery(std::string filename) {
         }
     }
 
-    MPI_Bcast(_queryOffsets, _worldSize, MPI_INT, 0, MPI_COMM_WORLD);
-    MPI_Bcast(_queryCts, _worldSize, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(_queryOffsets, _worldSize, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
+    MPI_Bcast(_queryCts, _worldSize, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
 
     _myQueryVectorsLen = _queryCts[_myRank];
 
-    _myQueryIndices = new int[_myQueryVectorsLen];
+    _myQueryIndices = new unsigned int[_myQueryVectorsLen];
     _myQueryVals = new float[_myQueryVectorsLen];
-    _myQueryMarkers = new int[_myQueryVectorsCt + 1];
+    _myQueryMarkers = new unsigned int[_myQueryVectorsCt + 1];
 
     int *tempQueryMarkerCts = new int[_worldSize];
     for (int n = 0; n < _worldSize; n++) {
@@ -40,23 +40,23 @@ void flashControl::allocateQuery(std::string filename) {
             _queryVectorCts[n] + 1; // To account for extra element at the end of each marker array
     }
 
-    MPI_Scatterv(_queryIndices, _queryCts, _queryOffsets, MPI_INT, _myQueryIndices,
-                 _myQueryVectorsLen, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Scatterv(_queryIndices, _queryCts, _queryOffsets, MPI_UNSIGNED, _myQueryIndices,
+                 _myQueryVectorsLen, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
     MPI_Scatterv(_queryVals, _queryCts, _queryOffsets, MPI_FLOAT, _myQueryVals, _myQueryVectorsLen,
                  MPI_FLOAT, 0, MPI_COMM_WORLD);
-    MPI_Scatterv(_queryMarkers, tempQueryMarkerCts, _queryVectorOffsets, MPI_INT, _myQueryMarkers,
-                 _myQueryVectorsCt + 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Scatterv(_queryMarkers, tempQueryMarkerCts, _queryVectorOffsets, MPI_UNSIGNED,
+                 _myQueryMarkers, _myQueryVectorsCt + 1, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
 
-    int myQueryOffset = _queryOffsets[_myRank];
-    for (int i = 0; i < _myQueryVectorsCt + 1; i++) {
+    unsigned int myQueryOffset = _queryOffsets[_myRank];
+    for (size_t i = 0; i < _myQueryVectorsCt + 1; i++) {
         _myQueryMarkers[i] -= myQueryOffset;
     }
     delete[] tempQueryMarkerCts;
 }
 
-void flashControl::add(int numBatches, int batchPrint) {
-    int batchSize = _myDataVectorsCt / numBatches;
-    for (int batch = 0; batch < numBatches; batch++) {
+void flashControl::add(unsigned int numBatches, unsigned int batchPrint) {
+    unsigned int batchSize = _myDataVectorsCt / numBatches;
+    for (unsigned int batch = 0; batch < numBatches; batch++) {
         _myReservoir->add(batchSize, _myDataIndices, _myDataVals,
                           _myDataMarkers + batch * batchSize, _myDataVectorsOffset);
         if (batch % batchPrint == 0) {
@@ -84,12 +84,12 @@ void flashControl::hashQuery() {
 
 #pragma omp parallel for default(none)                                                             \
     shared(queryHashBuffer, _allQueryHashes, _hashOffsets, _numTables) private(len, old, fin)
-    for (int partition = 0; partition < _worldSize; partition++) {
+    for (size_t partition = 0; partition < _worldSize; partition++) {
         len = _queryVectorCts[partition];
-        for (int tb = 0; tb < _numTables; tb++) {
+        for (size_t tb = 0; tb < _numTables; tb++) {
             old = queryHashBuffer + _hashOffsets[partition] + tb * len;
             fin = _allQueryHashes + tb * _numQueryVectors + (_hashOffsets[partition] / _numTables);
-            for (int l = 0; l < len; l++) {
+            for (size_t l = 0; l < len; l++) {
                 fin[l] = old[l];
             }
         }
@@ -99,8 +99,8 @@ void flashControl::hashQuery() {
     delete[] myPartitionHashes;
 }
 
-void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
-    long segmentSize = _numTables * _reservoirSize;
+void flashControl::topKBruteForceAggretation(unsigned int topK, unsigned int *outputs) {
+    size_t segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * (long)_numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
@@ -118,19 +118,19 @@ void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
         unsigned int *allReservoirsAllNodesOrdered =
             new unsigned int[segmentSize * _numQueryVectors * _worldSize];
 
-        int queryBlockSize = _worldSize * segmentSize;
+        unsigned int queryBlockSize = _worldSize * segmentSize;
         unsigned int *old;
         unsigned int *final;
 
 #pragma omp parallel for default(none)                                                             \
     shared(allReservoirsAllNodes, allReservoirsAllNodesOrdered, queryBlockSize, segmentSize,       \
            _numQueryVectors) private(old, final)
-        for (int v = 0; v < _numQueryVectors; v++) {
-            for (int n = 0; n < _worldSize; n++) {
+        for (size_t v = 0; v < _numQueryVectors; v++) {
+            for (size_t n = 0; n < _worldSize; n++) {
                 old =
                     allReservoirsAllNodes + v * segmentSize + n * (_numQueryVectors * segmentSize);
                 final = allReservoirsAllNodesOrdered + v * queryBlockSize + n * segmentSize;
-                for (int i = 0; i < segmentSize; i++) {
+                for (size_t i = 0; i < segmentSize; i++) {
                     final[i] = old[i];
                 }
             }
@@ -139,7 +139,7 @@ void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
         delete[] allReservoirsAllNodes;
 
 #pragma omp parallel for default(none) shared(allReservoirsAllNodesOrdered, queryBlockSize)
-        for (int v = 0; v < _numQueryVectors; v++) {
+        for (size_t v = 0; v < _numQueryVectors; v++) {
             std::sort(allReservoirsAllNodesOrdered + v * queryBlockSize,
                       allReservoirsAllNodesOrdered + (v + 1) * queryBlockSize);
         }
@@ -149,11 +149,11 @@ void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
 
 #pragma omp parallel for default(none)                                                             \
     shared(allReservoirsAllNodesOrdered, vectorCnts, queryBlockSize, outputs, topK)
-        for (int v = 0; v < _numQueryVectors; v++) {
-            int uniqueVectors = 0;
+        for (size_t v = 0; v < _numQueryVectors; v++) {
+            unsigned int uniqueVectors = 0;
             unsigned int current = allReservoirsAllNodesOrdered[0];
-            int count = 1;
-            for (int i = 1; i < queryBlockSize; i++) {
+            unsigned int count = 1;
+            for (size_t i = 1; i < queryBlockSize; i++) {
                 if (allReservoirsAllNodesOrdered[i + v * queryBlockSize] == current) {
                     count++;
                 } else {
@@ -176,15 +176,16 @@ void flashControl::topKBruteForceAggretation(int topK, unsigned int *outputs) {
             int s = 0;
             if (vectorCnts[queryBlockSize * v].vector == 0)
                 s++;
-            for (int k = 0; k < topK; k++) {
+            for (size_t k = 0; k < topK; k++) {
                 outputs[k + topK * v] = vectorCnts[s + k + v * queryBlockSize].vector;
             }
         }
     }
 }
 
-void flashControl::topKCMSAggregationTree(int topK, unsigned int *outputs, int threshold) {
-    int segmentSize = _numTables * _reservoirSize;
+void flashControl::topKCMSAggregationTree(unsigned int topK, unsigned int *outputs,
+                                          unsigned int threshold) {
+    unsigned int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
@@ -200,8 +201,9 @@ void flashControl::topKCMSAggregationTree(int topK, unsigned int *outputs, int t
     delete[] allReservoirsExtracted;
 }
 
-void flashControl::topKCMSAggregationLinear(int topK, unsigned int *outputs, int threshold) {
-    int segmentSize = _numTables * _reservoirSize;
+void flashControl::topKCMSAggregationLinear(unsigned int topK, unsigned int *outputs,
+                                            unsigned int threshold) {
+    unsigned int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
@@ -239,8 +241,8 @@ void flashControl::checkQueryHashes() {
         if (_myRank == n) {
             int hashOffset = _hashOffsets[_myRank];
             printf("Query Hashes Node %d\n", n);
-            for (int h = 0; h < _myHashCt; h++) {
-                printf("\tHash %d: %d\n", hashOffset + h, _allQueryHashes[hashOffset + h]);
+            for (size_t h = 0; h < _myHashCt; h++) {
+                printf("\tHash %zu: %d\n", hashOffset + h, _allQueryHashes[hashOffset + h]);
             }
         }
         MPI_Barrier(MPI_COMM_WORLD);

@@ -13,8 +13,9 @@
 
 #define TOPK_BENCHMARK
 
-void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
-                int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize) {
+void showConfig(std::string dataset, unsigned int numVectors, unsigned int queries, int nodes,
+                unsigned int tables, unsigned int rangePow, unsigned int reservoirSize,
+                unsigned int hashes, unsigned int cmsHashes, unsigned int cmsBucketSize) {
     std::cout << "\n=================\n== " << dataset << "\n=================\n" << std::endl;
 
     printf("%d Vectors, %d Queries\n", numVectors, queries);
@@ -163,16 +164,16 @@ void webspam() {
         /* ===============================================================
     Similarity and Accuracy Calculations
     */
-        int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
-        int *sparseIndices = new int[totalNumVectors * DIMENSION];
+        unsigned int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
+        unsigned int *sparseIndices = new unsigned int[totalNumVectors * DIMENSION];
         float *sparseVals = new float[totalNumVectors * DIMENSION];
-        int *sparseMarkers = new int[totalNumVectors + 1];
+        unsigned int *sparseMarkers = new unsigned int[totalNumVectors + 1];
 
         readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
                    totalNumVectors * DIMENSION);
 
-        const int nCnt = 10;
-        int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
+        unsigned int nCnt = 10;
+        unsigned int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
 
         std::cout << "\n\n================================\nTOP K CMS\n" << std::endl;
 
@@ -349,16 +350,16 @@ void kdd12() {
         /* ===============================================================
     Similarity and Accuracy Calculations
     */
-        int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
-        int *sparseIndices = new int[totalNumVectors * DIMENSION];
+        unsigned int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
+        unsigned int *sparseIndices = new unsigned int[totalNumVectors * DIMENSION];
         float *sparseVals = new float[totalNumVectors * DIMENSION];
-        int *sparseMarkers = new int[totalNumVectors + 1];
+        unsigned int *sparseMarkers = new unsigned int[totalNumVectors + 1];
 
         readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
                    totalNumVectors * DIMENSION);
 
-        const int nCnt = 10;
-        int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
+        unsigned int nCnt = 10;
+        unsigned int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
 
         std::cout << "\n\n================================\nTOP K TREE\n" << std::endl;
 
@@ -827,19 +828,19 @@ void unitTesting() {
 
 void evaluateResults(std::string resultFile) {
 
-    int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
+    unsigned int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
     unsigned int *outputs = new unsigned int[NUM_QUERY_VECTORS * TOPK];
     readTopK(resultFile, NUM_QUERY_VECTORS, TOPK, outputs);
 
-    int *sparseIndices = new int[((long)totalNumVectors * DIMENSION)];
+    unsigned int *sparseIndices = new unsigned int[((long)totalNumVectors * DIMENSION)];
     float *sparseVals = new float[((long)totalNumVectors * DIMENSION)];
-    int *sparseMarkers = new int[totalNumVectors + 1];
+    unsigned int *sparseMarkers = new unsigned int[totalNumVectors + 1];
 
     readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
                totalNumVectors * DIMENSION);
 
-    const int nCnt = 10;
-    int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
+    unsigned int nCnt = 10;
+    unsigned int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
 
     std::cout << "\n\n================================\nTOP K TREE\n" << std::endl;
 

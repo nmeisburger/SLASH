@@ -1,8 +1,9 @@
 #include "flashControl.h"
 
 flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank, int worldSize,
-                           int numDataVectors, int numQueryVectors, int dimension, int numTables,
-                           int reservoirSize) {
+                           unsigned int numDataVectors, unsigned int numQueryVectors,
+                           unsigned int dimension, unsigned int numTables,
+                           unsigned int reservoirSize) {
 
     // Core Params
     _myReservoir = reservoir;
@@ -15,8 +16,8 @@ flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank,
     _numTables = numTables;
     _reservoirSize = reservoirSize;
 
-    _dataVectorOffsets = new int[_worldSize];
-    _dataVectorCts = new int[_worldSize]();
+    _dataVectorOffsets = new unsigned int[_worldSize];
+    _dataVectorCts = new unsigned int[_worldSize]();
     // _dataOffsets = new int[_worldSize];
     // _dataCts = new int[_worldSize];
 
@@ -28,10 +29,10 @@ flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank,
     _hashCts = new int[_worldSize];
     _hashOffsets = new int[_worldSize];
 
-    int dataPartitionSize = std::floor((float)_numDataVectors / (float)_worldSize);
-    int dataPartitionRemainder = _numDataVectors % _worldSize;
-    int queryPartitionSize = std::floor((float)_numQueryVectors / (float)_worldSize);
-    int queryPartitionRemainder = _numQueryVectors % _worldSize;
+    unsigned int dataPartitionSize = std::floor((float)_numDataVectors / (float)_worldSize);
+    unsigned int dataPartitionRemainder = _numDataVectors % _worldSize;
+    unsigned int queryPartitionSize = std::floor((float)_numQueryVectors / (float)_worldSize);
+    unsigned int queryPartitionRemainder = _numQueryVectors % _worldSize;
 
     for (int i = 0; i < _worldSize; i++) {
         _dataVectorCts[i] = dataPartitionSize;
@@ -55,7 +56,7 @@ flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank,
             std::min(_dataVectorOffsets[n - 1] + _dataVectorCts[n - 1],
                      _numDataVectors + _numQueryVectors - 1); // Overflow prevention
         _queryVectorOffsets[n] = std::min(_queryVectorOffsets[n - 1] + _queryVectorCts[n - 1],
-                                          _numQueryVectors - 1); // Overflow prevention
+                                          (int)_numQueryVectors - 1); // Overflow prevention
         _hashOffsets[n] = _hashOffsets[n - 1] + _hashCts[n - 1];
     }
 

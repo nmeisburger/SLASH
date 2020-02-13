@@ -12,21 +12,21 @@
    of each vector.
 */
 
-void readSparse(std::string fileName, int offset, int n, int *indices, float *values, int *markers,
-                unsigned int bufferlen) {
+void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsigned int *indices,
+                float *values, unsigned int *markers, unsigned int bufferlen) {
     std::cout << "[readSparse]" << std::endl;
 
     /* Fill all the markers with the maximum index for the data, to prevent
        indexing outside of the range. */
-    for (int i = 0; i <= n; i++) {
+    for (size_t i = 0; i <= n; i++) {
         markers[i] = bufferlen - 1;
     }
 
     std::ifstream file(fileName);
     std::string str;
 
-    unsigned int ct = 0;            // Counting the input vectors.
-    unsigned int totalLen = 0;      // Counting all the elements.
+    size_t ct = 0;                  // Counting the input vectors.
+    size_t totalLen = 0;            // Counting all the elements.
     while (std::getline(file, str)) // Get one vector (one vector per line).
     {
         if (ct < offset) { // If reading with an offset, skip < offset vectors.
@@ -39,10 +39,10 @@ void readSparse(std::string fileName, int offset, int n, int *indices, float *va
         std::string sub;
         iss >> sub;
         // Mark the start location.
-        markers[ct - offset] = std::min(totalLen, bufferlen - 1);
+        markers[ct - offset] = std::min(totalLen, (size_t)bufferlen - 1);
         int pos;
         float val;
-        int curLen = 0; // Counting elements of the current vector.
+        unsigned int curLen = 0; // Counting elements of the current vector.
         do {
             std::string sub;
             iss >> sub;
@@ -74,11 +74,11 @@ void readSparse(std::string fileName, int offset, int n, int *indices, float *va
               << std::endl;
 }
 
-void writeTopK(std::string filename, int numQueries, int k, unsigned int *topK) {
+void writeTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {
     std::ofstream file;
     file.open(filename);
-    for (int q = 0; q < numQueries; q++) {
-        for (int i = 0; i < k; i++) {
+    for (size_t q = 0; q < numQueries; q++) {
+        for (size_t i = 0; i < k; i++) {
             file << topK[q * k + i] << " ";
         }
         file << "\n";
@@ -86,13 +86,13 @@ void writeTopK(std::string filename, int numQueries, int k, unsigned int *topK) 
     file.close();
 }
 
-void readTopK(std::string filename, int numQueries, int k, unsigned int *topK) {
+void readTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {
     std::ifstream file(filename);
     std::string str;
-    int total = 0;
+    unsigned int total = 0;
     while (std::getline(file, str)) {
         std::istringstream iss(str);
-        for (int i = 0; i < k; i++) {
+        for (size_t i = 0; i < k; i++) {
             std::string item;
             iss >> item;
             topK[total] = stoi(item);
@@ -103,26 +103,27 @@ void readTopK(std::string filename, int numQueries, int k, unsigned int *topK) {
     printf("Read top %d vectors for %d Queries\n", k, numQueries);
 }
 
-void similarityMetric(int *queries_indice, float *queries_val, int *queries_marker,
-                      int *bases_indice, float *bases_val, int *bases_marker,
-                      unsigned int *queryOutputs, unsigned int numQueries, unsigned int topk,
-                      unsigned int availableTopk, int *nList, int nCnt) {
+void similarityMetric(unsigned int *queries_indice, float *queries_val,
+                      unsigned int *queries_marker, unsigned int *bases_indice, float *bases_val,
+                      unsigned int *bases_marker, unsigned int *queryOutputs,
+                      unsigned int numQueries, unsigned int topk, unsigned int availableTopk,
+                      unsigned int *nList, unsigned int nCnt) {
 
     float *out_avt = new float[nCnt]();
 
     std::cout << "[similarityMetric] Averaging output. " << std::endl;
     /* Output average. */
-    for (unsigned int i = 0; i < numQueries; i++) {
-        int startA, endA;
+    for (size_t i = 0; i < numQueries; i++) {
+        unsigned int startA, endA;
         startA = queries_marker[i];
         endA = queries_marker[i + 1];
         for (unsigned int j = 0; j < topk; j++) {
-            int startB, endB;
+            unsigned int startB, endB;
             startB = bases_marker[queryOutputs[i * topk + j]];
             endB = bases_marker[queryOutputs[i * topk + j] + 1];
             float dist = cosineDist(queries_indice + startA, queries_val + startA, endA - startA,
                                     bases_indice + startB, bases_val + startB, endB - startB);
-            for (int n = 0; n < nCnt; n++) {
+            for (unsigned int n = 0; n < nCnt; n++) {
                 if (j < nList[n])
                     out_avt[n] += dist;
             }

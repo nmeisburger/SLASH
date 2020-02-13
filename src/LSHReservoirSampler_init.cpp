@@ -64,7 +64,8 @@ void LSHReservoirSampler::initVariables(unsigned int numHashPerFamily, unsigned 
     _tableNull = TABLENULL;
 }
 
-void LSHReservoirSampler::initHelper(int numTablesIn, int numHashPerFamilyIn, int reservoriSizeIn) {
+void LSHReservoirSampler::initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,
+                                     unsigned int reservoriSizeIn) {
 
     // Random initialization of hash functions
     // srand(time(NULL));
@@ -77,7 +78,7 @@ void LSHReservoirSampler::initHelper(int numTablesIn, int numHashPerFamilyIn, in
     _global_rand = new unsigned int[_maxReservoirRand];
 
     _global_rand[0] = 0;
-    for (int i = 1; i < _maxReservoirRand; i++) {
+    for (unsigned int i = 1; i < _maxReservoirRand; i++) {
         _global_rand[i] = rand() % i;
     }
 
@@ -113,10 +114,10 @@ void LSHReservoirSampler::unInit() {
     delete[] _tableMem;
     delete[] _tablePointers;
     delete[] _tableMemAllocator;
-    for (unsigned long long i = 0; i < _tablePointerMax; i++) {
+    for (size_t i = 0; i < _tablePointerMax; i++) {
         omp_destroy_lock(_tablePointersLock + i);
     }
-    for (unsigned long long i = 0; i < _tableMemReservoirMax; i++) {
+    for (size_t i = 0; i < _tableMemReservoirMax; i++) {
         omp_destroy_lock(_tableCountersLock + i);
     }
     delete[] _tablePointersLock;

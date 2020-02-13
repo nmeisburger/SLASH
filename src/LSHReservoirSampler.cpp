@@ -1,9 +1,7 @@
 #include "LSHReservoirSampler.h"
 
-void LSHReservoirSampler::add(int numInputEntries, int *dataIdx, float *dataVal, int *dataMarker,
-                              int dataOffset) {
-
-    const int numProbePerTb = numInputEntries;
+void LSHReservoirSampler::add(unsigned int numInputEntries, unsigned int *dataIdx, float *dataVal,
+                              unsigned int *dataMarker, unsigned int dataOffset) {
 
     if ((unsigned)numInputEntries > _maxSamples) {
         printf("[LSHReservoirSampler::add] Input length %d is too large! \n", numInputEntries);
@@ -15,10 +13,10 @@ void LSHReservoirSampler::add(int numInputEntries, int *dataIdx, float *dataVal,
 
     _hashFamily->getHashes(allprobsHash, allprobsIdx, dataIdx, dataMarker, numInputEntries);
 
-    unsigned int *storelog = new unsigned int[_numTables * 4 * numProbePerTb]();
+    unsigned int *storelog = new unsigned int[_numTables * 4 * numInputEntries]();
 
-    reservoirSampling(allprobsHash, allprobsIdx, storelog, numProbePerTb);
-    addTable(storelog, numProbePerTb, dataOffset);
+    reservoirSampling(allprobsHash, allprobsIdx, storelog, numInputEntries);
+    addTable(storelog, numInputEntries, dataOffset);
 
     delete[] storelog;
     delete[] allprobsHash;
@@ -27,14 +25,14 @@ void LSHReservoirSampler::add(int numInputEntries, int *dataIdx, float *dataVal,
     _sequentialIDCounter_kernel += numInputEntries;
 }
 
-void LSHReservoirSampler::extractReservoirs(int numQueryEntries, int segmentSize,
+void LSHReservoirSampler::extractReservoirs(unsigned int numQueryEntries, unsigned int segmentSize,
                                             unsigned int *queue, unsigned int *hashIndices) {
 
     unsigned int hashIdx, allocIdx;
 #pragma omp parallel for private(hashIdx, allocIdx)
-    for (int tb = 0; tb < _numTables; tb++) {
-        for (int queryIdx = 0; queryIdx < numQueryEntries; queryIdx++) {
-            for (int elemIdx = 0; elemIdx < _reservoirSize; elemIdx++) {
+    for (size_t tb = 0; tb < _numTables; tb++) {
+        for (size_t queryIdx = 0; queryIdx < numQueryEntries; queryIdx++) {
+            for (size_t elemIdx = 0; elemIdx < _reservoirSize; elemIdx++) {
                 // for (unsigned int k = 0; k < _queryProbes; k++) {
                 hashIdx = hashIndices[allprobsHashIdx(numQueryEntries, tb, queryIdx)];
                 allocIdx = _tablePointers[tablePointersIdx(_numReservoirsHashed, hashIdx, tb,
@@ -49,9 +47,12 @@ void LSHReservoirSampler::extractReservoirs(int numQueryEntries, int segmentSize
     }
 }
 
-void LSHReservoirSampler::getQueryHash(int queryPartitionSize, int numQueryPartitionHashes,
-                                       int *queryPartitionIndices, float *queryPartitionVals,
-                                       int *queryPartitionMarkers, unsigned int *queryHashes) {
+void LSHReservoirSampler::getQueryHash(unsigned int queryPartitionSize,
+                                       unsigned int numQueryPartitionHashes,
+                                       unsigned int *queryPartitionIndices,
+                                       float *queryPartitionVals,
+                                       unsigned int *queryPartitionMarkers,
+                                       unsigned int *queryHashes) {
 
     unsigned int *allprobsIdx = new unsigned int[numQueryPartitionHashes];
 

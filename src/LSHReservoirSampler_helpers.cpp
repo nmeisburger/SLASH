@@ -2,15 +2,15 @@
 #include "omp.h"
 
 void LSHReservoirSampler::reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsIdx,
-                                            unsigned int *storelog, int numProbePerTb) {
+                                            unsigned int *storelog, unsigned int numProbePerTb) {
 
     unsigned int counter, allocIdx, reservoirRandNum, TB, hashIdx, inputIdx, ct, reservoir_full,
         location;
 
 #pragma omp parallel for private(TB, hashIdx, inputIdx, ct, allocIdx, counter, reservoir_full,     \
                                  reservoirRandNum, location)
-    for (int probeIdx = 0; probeIdx < numProbePerTb; probeIdx++) {
-        for (unsigned int tb = 0; tb < _numTables; tb++) {
+    for (size_t probeIdx = 0; probeIdx < numProbePerTb; probeIdx++) {
+        for (size_t tb = 0; tb < _numTables; tb++) {
 
             TB = numProbePerTb * tb;
 
@@ -66,13 +66,14 @@ void LSHReservoirSampler::reservoirSampling(unsigned int *allprobsHash, unsigned
     }
 }
 
-void LSHReservoirSampler::addTable(unsigned int *storelog, int numProbePerTb, int dataOffset) {
+void LSHReservoirSampler::addTable(unsigned int *storelog, unsigned int numProbePerTb,
+                                   unsigned int dataOffset) {
 
     unsigned int id, hashIdx, allocIdx;
     unsigned locCapped;
     //#pragma omp parallel for private(allocIdx, id, hashIdx, locCapped)
-    for (int probeIdx = 0; probeIdx < numProbePerTb; probeIdx++) {
-        for (unsigned int tb = 0; tb < _numTables; tb++) {
+    for (size_t probeIdx = 0; probeIdx < numProbePerTb; probeIdx++) {
+        for (size_t tb = 0; tb < _numTables; tb++) {
 
             id = storelog[storelogIdIdx(numProbePerTb, probeIdx, tb)];
             hashIdx = storelog[storelogHashIdxIdx(numProbePerTb, probeIdx, tb)];

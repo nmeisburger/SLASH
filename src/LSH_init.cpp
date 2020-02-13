@@ -4,7 +4,8 @@
 #endif
 #define RANDPROJGROUPSIZE 100
 
-LSH::LSH(int _K_in, int _L_in, int _rangePow_in, int worldSize, int worldRank) {
+LSH::LSH(unsigned int _K_in, unsigned int _L_in, unsigned int _rangePow_in, int worldSize,
+         int worldRank) {
 
     // Constant Parameters accross all nodes
     _K = _K_in;

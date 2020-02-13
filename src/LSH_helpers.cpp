@@ -11,7 +11,8 @@ unsigned int LSH::getRandDoubleHash(int binid, int count) {
            (32 - _lognumhash); // _lognumhash needs to be ceiled.
 }
 
-void LSH::optimalMinHash(unsigned int *hashArray, unsigned int *nonZeros, int sizenonzeros) {
+void LSH::optimalMinHash(unsigned int *hashArray, unsigned int *nonZeros,
+                         unsigned int sizenonzeros) {
     /* This function computes the minhash and perform densification. */
     unsigned int *hashes = new unsigned int[_numhashes];
 
@@ -45,8 +46,7 @@ void LSH::optimalMinHash(unsigned int *hashArray, unsigned int *nonZeros, int si
         unsigned int count = 0;
         while (next == INT_MAX) {
             count++;
-            unsigned int index =
-                std::min((unsigned)getRandDoubleHash((unsigned int)i, count), (unsigned)_numhashes);
+            unsigned int index = std::min((unsigned)getRandDoubleHash(i, count), _numhashes);
             next = hashes[index];
             if (count > 100) // Densification failure.
                 break;

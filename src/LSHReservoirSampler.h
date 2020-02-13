@@ -40,7 +40,7 @@ class LSHReservoirSampler {
     unsigned int *_global_rand;
     unsigned int _numReservoirs, _sequentialIDCounter_kernel, _numReservoirsHashed,
         _aggNumReservoirs;
-    unsigned long long _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
+    size_t _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
     float _zerof;
     unsigned int _sechash_a, _sechash_b, _tableNull, _zero;
 
@@ -48,21 +48,23 @@ class LSHReservoirSampler {
     void initVariables(unsigned int numHashPerFamily, unsigned int numHashFamilies,
                        unsigned int reservoirSize, unsigned int dimension, unsigned int numSecHash,
                        unsigned int maxSamples, float tableAllocFraction);
-    void initHelper(int numTablesIn, int numHashPerFamilyIn, int reservoriSizeIn);
+
+    void initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,
+                    unsigned int reservoriSizeIn);
     void unInit();
 
     // Samples reservoirs and determines where to add data vectors.
     void reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsIdx,
-                           unsigned int *storelog, int numProbePerTb);
+                           unsigned int *storelog, unsigned int numProbePerTb);
 
     // Adds data vectors to tables at locations determined by reservoirSampling function.
     // Param dataOffset is used to account for indexing across nodes.
-    void addTable(unsigned int *storelog, int numProbePerTb, int dataOffset);
+    void addTable(unsigned int *storelog, unsigned int numProbePerTb, unsigned int dataOffset);
 
     /* Debug. */
     void viewTables();
-    int benchCounting(int segmentSize, int *dataIdx, float *dataVal, int *dataMarker,
-                      float *timings);
+    //     int benchCounting(unsigned int segmentSize, unsigned int *dataIdx, float *dataVal,
+    //                       unsigned int *dataMarker, float *timings);
 
   public:
     void restart(LSH *hashFamIn, unsigned int numHashPerFamily, unsigned int numHashFamilies,
@@ -101,7 +103,8 @@ class LSHReservoirSampler {
     @param dataMarker: marks the start index of each vector in dataIdx and dataVal.
             Has an additional marker at the end to mark the (end+1) index.
     */
-    void add(int numInputEntries, int *dataIdx, float *dataVal, int *dataMarker, int dataOffset);
+    void add(unsigned int numInputEntries, unsigned int *dataIdx, float *dataVal,
+             unsigned int *dataMarker, unsigned int dataOffset);
 
     /* Computes hashes for a partition of the set of query vectors.
 
@@ -113,9 +116,9 @@ class LSHReservoirSampler {
             Has an additional marker at the end to mark the (end+1) index.
     @param queryHashes: an array to populate with the query hashes.
     */
-    void getQueryHash(int queryPartitionSize, int numQueryPartitionHashes,
-                      int *queryPartitionIndices, float *queryPartitionVals,
-                      int *queryPartitionMarkers, unsigned int *queryHashes);
+    void getQueryHash(unsigned int queryPartitionSize, unsigned int numQueryPartitionHashes,
+                      unsigned int *queryPartitionIndices, float *queryPartitionVals,
+                      unsigned int *queryPartitionMarkers, unsigned int *queryHashes);
 
     /* Extractes the contents from the reservoirs of each hash table for some number of hashes.
 
@@ -126,8 +129,8 @@ class LSHReservoirSampler {
     @param hashIndices: the hash indices of the query vectors, corresponding to a reservoir(s) in
     each table.
     */
-    void extractReservoirs(int numQueryEntries, int segmentSize, unsigned int *queue,
-                           unsigned int *hashIndices);
+    void extractReservoirs(unsigned int numQueryEntries, unsigned int segmentSize,
+                           unsigned int *queue, unsigned int *hashIndices);
 
     /* Print current parameter settings to the console.
      */

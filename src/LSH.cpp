@@ -1,19 +1,19 @@
 #include "LSH.h"
 
-void LSH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *dataIdx,
-                    int *dataMarker, int numInputEntries) {
+void LSH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, unsigned int *dataIdx,
+                    unsigned int *dataMarker, size_t numInputEntries) {
 
 #pragma omp parallel for
-    for (int inputIdx = 0; inputIdx < numInputEntries; inputIdx++) {
+    for (size_t inputIdx = 0; inputIdx < numInputEntries; inputIdx++) {
 
         unsigned int *hashes = new unsigned int[_numhashes];
-        int sizenonzeros = dataMarker[inputIdx + 1] - dataMarker[inputIdx];
+        unsigned int sizenonzeros = dataMarker[inputIdx + 1] - dataMarker[inputIdx];
 
         optimalMinHash(hashes, (unsigned int *)(dataIdx + dataMarker[inputIdx]), sizenonzeros);
 
-        for (int tb = 0; tb < _L; tb++) {
+        for (size_t tb = 0; tb < _L; tb++) {
             unsigned int index = 0;
-            for (int k = 0; k < _K; k++) {
+            for (size_t k = 0; k < _K; k++) {
                 unsigned int h = hashes[_K * tb + k];
                 h *= _rand1[_K * tb + k];
                 h ^= h >> 13;
@@ -24,13 +24,6 @@ void LSH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, int *
 
             hashIndices[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = index;
             probeDataIdx[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = inputIdx;
-            // for (int k = 1; k < numProbes; k++) {
-            //     hashIndices[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, k,
-            //     tb)] =
-            //         index ^ (1 << (k - 1));
-            //     probeDataIdx[hashIndicesOutputIdx(_L, numProbes, numInputEntries, inputIdx, k,
-            //                                       tb)] = inputIdx;
-            // }
         }
         delete[] hashes;
     }
