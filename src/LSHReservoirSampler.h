@@ -63,8 +63,6 @@ class LSHReservoirSampler {
 
     /* Debug. */
     void viewTables();
-    //     int benchCounting(unsigned int segmentSize, unsigned int *dataIdx, float *dataVal,
-    //                       unsigned int *dataMarker, float *timings);
 
   public:
     void restart(LSH *hashFamIn, unsigned int numHashPerFamily, unsigned int numHashFamilies,
