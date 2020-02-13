@@ -4,8 +4,8 @@
 #include <string>
 
 // #define UNIT_TESTING
-#define WEBSPAM
-// #define KDD12
+// #define WEBSPAM
+#define KDD12
 // #define WIKIDUMP
 
 #ifdef WEBSPAM
@@ -161,31 +161,15 @@
 
 #endif
 
-void
-webspam();
-void
-kdd12();
-void
-kdd12FileOutput();
-void
-wikiDump();
-void
-showConfig(std::string dataset,
-           int numVectors,
-           int queries,
-           int nodes,
-           int tables,
-           int rangePow,
-           int reservoirSize,
-           int hashes,
-           int cmsHashes,
-           int cmsBucketSize,
-           bool cms,
-           bool tree);
-void
-evaluateResults(std::string resultFile);
-void
-unitTesting();
+void webspam();
+void kdd12();
+void kdd12FileOutput();
+void wikiDump();
+void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
+                int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize,
+                bool cms, bool tree);
+void evaluateResults(std::string resultFile);
+void unitTesting();
 
 #if !defined(DENSE_DATASET)
 #define SAMFACTOR 24 // DUMMY.
