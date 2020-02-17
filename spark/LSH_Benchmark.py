@@ -6,16 +6,16 @@ import time
 from pyspark.sql.functions import col
 from pyspark.ml.feature import MinHashLSH
 from pyspark.ml.linalg import Vectors
-from pyspark import SparkConf, SparkContext
+from pyspark import SparkConf, SparkContext  # Skip on AWS
 from pyspark.sql import SQLContext
 
-conf = SparkConf().setAppName("KDD12 Benchmark")
-sc = SparkContext(conf=conf)
+conf = SparkConf().setAppName("KDD12 Benchmark")  # Skip on AWS
+sc = SparkContext(conf=conf)  # Skip on AWS
+
 sqlCtx = SQLContext(sc)
 
-
-DIM = 10
-NUM_DATA_VECTORS = 100000
+DIM = 54686452
+NUM_DATA_VECTORS = 90000
 NUM_QUERY_VECTORS = 10000
 TOPK = 128
 
@@ -33,27 +33,30 @@ def extract_sparse_vector(raw_vector):
     return (id, Vectors.sparse(DIM, indices, values))
 
 
-raw_data_vectors = sc.textFile("hdfs:/user/ncm5/data/kdd12-data")
-print("Data Loaded")
+raw_data_vectors = sc.textFile(
+    "s3://flash-kdd12/kdd12-data")
 data_vectors = raw_data_vectors.map(
     lambda x: extract_sparse_vector(x)).collect()
-print("Data Parsed")
 
-data_frame = sc.createDataFrame(data_vectors, ["id", "features"])
-print("Data Frame Created")
+data_frame = sqlCtx.createDataFrame(data_vectors, ["id", "features"])
 lsh = MinHashLSH(inputCol="features", outputCol="hashes", seed=12049)
-print("LSH Created")
 lsh_model = lsh.fit(data_frame)
-print("LSH Model Fit")
+lsh_model.transform(data_frame).head()
 
-raw_query_vectors = sc.textFile("hdfs:/user/ncm5/data/kdd12-query")
-print("Query Loaded")
+raw_query_vectors = sc.textFile("s3://flash-kdd12/kdd12-query")
 query_vectors = raw_query_vectors.map(
     lambda x: extract_sparse_vector(x)).collect()
-print("Query Parsed")
 
 start = time.time()
-for id, vector in query_vectors:
-    lsh_model.approxNearestNeighbors(data_frame, vector, TOPK).collect()
+query_vectors.map(lambda query: lsh_model.approxNearestNeighbors(
+    data_frame, query[1], TOPK)).collect()
 end = time.time()
 print("Queries Complete: " + str(end - start))
+
+
+def run():
+    start = time.time()
+    for id, vector in query_vectors:
+        lsh_model.approxNearestNeighbors(data_frame, vector, TOPK).collect()
+    end = time.time()
+    print("Queries Complete: " + str(end - start))
