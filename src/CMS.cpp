@@ -7,7 +7,7 @@ CMS::CMS(unsigned int L, unsigned int B, unsigned int numDataStreams, int myRank
     _worldSize = worldSize;
     _numSketches = numDataStreams;
     _sketchSize = _numHashes * _bucketSize * 2;
-    _LHH = new int[_numSketches * _sketchSize]();
+    _LHH = new unsigned int[_numSketches * _sketchSize]();
     _hashingSeeds = new unsigned int[_numHashes];
 
     if (_myRank == 0) {
@@ -87,9 +87,9 @@ void CMS::addSketch(unsigned int dataStreamIndx, unsigned int *dataStream,
                 continue;
             }
             unsigned int currentHash = hashIndices[hashLocation(dataIndx, _numHashes, hashIndx)];
-            int *LHH_ptr = _LHH + heavyHitterIndx(dataStreamIndx, _sketchSize, _bucketSize,
-                                                  hashIndx, currentHash);
-            int *LHH_Count_ptr =
+            unsigned int *LHH_ptr = _LHH + heavyHitterIndx(dataStreamIndx, _sketchSize, _bucketSize,
+                                                           hashIndx, currentHash);
+            unsigned int *LHH_Count_ptr =
                 _LHH + countIndx(dataStreamIndx, _sketchSize, _bucketSize, hashIndx, currentHash);
             if (*LHH_Count_ptr != 0) {
                 if (dataStream[dataIndx] == *LHH_ptr) {
@@ -120,8 +120,9 @@ void CMS::topKSketch(unsigned int K, unsigned int threshold, unsigned int *topK,
     LHH *candidates = new LHH[_bucketSize];
     int count = 0;
     for (int b = 0; b < _bucketSize; b++) {
-        int currentHeavyHitter = _LHH[heavyHitterIndx(sketchIndx, _sketchSize, _bucketSize, 0, b)];
-        int currentCount = _LHH[countIndx(sketchIndx, _sketchSize, _bucketSize, 0, b)];
+        unsigned int currentHeavyHitter =
+            _LHH[heavyHitterIndx(sketchIndx, _sketchSize, _bucketSize, 0, b)];
+        unsigned int currentCount = _LHH[countIndx(sketchIndx, _sketchSize, _bucketSize, 0, b)];
         if (currentCount >= threshold) {
             candidates[count].heavyHitter = currentHeavyHitter;
             candidates[count].count = currentCount;
@@ -129,7 +130,7 @@ void CMS::topKSketch(unsigned int K, unsigned int threshold, unsigned int *topK,
         } else {
             unsigned int *hashes = new unsigned int[_numHashes];
             getCanidateHashes(currentHeavyHitter, hashes);
-            for (int hashIndx = 1; hashIndx < _numHashes; hashIndx++) {
+            for (unsigned int hashIndx = 1; hashIndx < _numHashes; hashIndx++) {
                 currentCount = _LHH[countIndx(sketchIndx, _sketchSize, _bucketSize, hashIndx,
                                               hashes[hashIndx])];
                 if (currentCount > threshold) {
@@ -149,7 +150,7 @@ void CMS::topKSketch(unsigned int K, unsigned int threshold, unsigned int *topK,
               [&candidates](LHH a, LHH b) { return a.count > b.count; });
 
     for (size_t i = 0; i < K; i++) {
-        if (candidates[i].heavyHitter > -1) {
+        if (candidates[i].count > -1) {
             topK[i] = candidates[i].heavyHitter;
         }
     }
@@ -164,31 +165,42 @@ void CMS::topK(unsigned int topK, unsigned int *outputs, unsigned int threshold)
     }
 }
 
-void CMS::combineSketches(int *newLHH) {
+void CMS::combineSketches(unsigned int *newLHH) {
 
 // #pragma omp parallel for default(none) shared(newLHH, _LHH, _numHashes, _bucketSize,
 // _numSketches)
 #pragma omp parallel for default(none) shared(newLHH)
     for (size_t n = 0; n < _numHashes * _bucketSize * _numSketches; n++) {
+        // if (newLHH[n * 2] == _LHH[n * 2]) {
+        //     _LHH[n * 2 + 1] += newLHH[n * 2 + 1];
+        // } else {
+        //     _LHH[n * 2 + 1] -= newLHH[n * 2 + 1];
+        // }
+        // if (_LHH[n * 2 + 1] <= 0) {
+        //     _LHH[n * 2] = newLHH[n * 2];
+        //     _LHH[n * 2 + 1] = -_LHH[n * 2 + 1];
+        // }
         if (newLHH[n * 2] == _LHH[n * 2]) {
             _LHH[n * 2 + 1] += newLHH[n * 2 + 1];
         } else {
-            _LHH[n * 2 + 1] -= newLHH[n * 2 + 1];
-        }
-        if (_LHH[n * 2 + 1] <= 0) {
-            _LHH[n * 2] = newLHH[n * 2];
-            _LHH[n * 2 + 1] = -_LHH[n * 2 + 1];
+            if (_LHH[n * 2 + 1] > newLHH[n * 2 + 1]) {
+                _LHH[n * 2 + 1] -= newLHH[n * 2 + 1];
+            } else {
+                _LHH[n * 2] = newLHH[n * 2];
+                _LHH[n * 2 + 1] = newLHH[n * 2 + 1] - _LHH[n * 2 + 1];
+            }
         }
     }
 }
 
 void CMS::aggregateSketches() {
-    size_t bufferSize = _sketchSize * _numSketches;
-    int *sketchBuffer;
+    unsigned long long bufferSize = _sketchSize * _numSketches;
+    unsigned int *sketchBuffer;
     if (_myRank == 0) {
-        sketchBuffer = new int[bufferSize * (long)_worldSize];
+        sketchBuffer = new unsigned int[bufferSize * (unsigned long long)_worldSize];
     }
-    MPI_Gather(_LHH, bufferSize, MPI_INT, sketchBuffer, bufferSize, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Gather(_LHH, bufferSize, MPI_UNSIGNED, sketchBuffer, bufferSize, MPI_UNSIGNED, 0,
+               MPI_COMM_WORLD);
     if (_myRank == 0) {
         for (int n = 1; n < _worldSize; n++) {
             combineSketches(sketchBuffer + (n * bufferSize));
@@ -198,20 +210,20 @@ void CMS::aggregateSketches() {
 }
 
 void CMS::aggregateSketchesTree() {
-    size_t bufferSize = _sketchSize * _numSketches;
+    unsigned long long bufferSize = _sketchSize * _numSketches;
     unsigned int numIterations = std::ceil(std::log(_worldSize) / std::log(2));
-    int *recvBuffer = new int[bufferSize];
+    unsigned int *recvBuffer = new unsigned int[bufferSize];
     MPI_Status status;
     for (unsigned int iter = 0; iter < numIterations; iter++) {
         if (_myRank % ((int)std::pow(2, iter + 1)) == 0 &&
             (_myRank + std::pow(2, iter)) < _worldSize) {
             int source = _myRank + std::pow(2, iter);
-            MPI_Recv(recvBuffer, bufferSize, MPI_INT, source, iter, MPI_COMM_WORLD, &status);
+            MPI_Recv(recvBuffer, bufferSize, MPI_UNSIGNED, source, iter, MPI_COMM_WORLD, &status);
             combineSketches(recvBuffer);
             // printf("Iteration %d: Node %d: Recv from %d\n", iter, _myRank, source);
         } else if (_myRank % ((int)std::pow(2, iter + 1)) == ((int)std::pow(2, iter))) {
             int destination = _myRank - ((int)std::pow(2, iter));
-            MPI_Send(_LHH, bufferSize, MPI_INT, destination, iter, MPI_COMM_WORLD);
+            MPI_Send(_LHH, bufferSize, MPI_UNSIGNED, destination, iter, MPI_COMM_WORLD);
             // printf("Iteration %d: Node %d: Send from %d\n", iter, _myRank, destination);
         }
     }

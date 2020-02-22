@@ -4,8 +4,8 @@
 #include <string>
 
 // #define UNIT_TESTING
-// #define WEBSPAM
-#define KDD12
+#define WEBSPAM
+// #define KDD12
 // #define WIKIDUMP
 
 #ifdef WEBSPAM
