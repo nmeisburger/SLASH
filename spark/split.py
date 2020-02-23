@@ -1,12 +1,12 @@
 import sys
 
-num_query = 10000
-num_data = 100000
+num_query = 100
+num_data = 10000
 
-filename = "../../dataset/kdd12/kdd12"
+filename = "../../dataset/webspam/webspam_trigram.svm"
 
-query_filename = "kdd12-query"
-data_filename = "kdd12-data"
+query_filename = "webspam-query"
+data_filename = "webspam-data"
 
 file = open(filename)
 lines = file.readlines()
