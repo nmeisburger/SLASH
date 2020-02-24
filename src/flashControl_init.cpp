@@ -80,4 +80,8 @@ flashControl::~flashControl() {
     }
 
     delete[] _allQueryHashes;
+
+    free(myDataIndices);
+    free(myDataVals);
+    free(myDataMarkers);
 }
