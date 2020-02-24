@@ -1,0 +1,115 @@
+[bc12u13n2:70157] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n3:42344] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n4:17335] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+
+=================
+== Webspam
+=================
+
+9900 Vectors, 100 Queries
+Nodes: 3
+Tables: 24
+RangePow: 14
+Reservoir Size: 256
+Hashes: 8
+CMS Bucket Size: 1024
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+LSH Initialized in Node 2
+LSH Initialized in Node 1
+CMS Initialized in Node 1
+CMS Initialized in Node 0
+CMS Initialized in Node 2
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 0
+FLASH Controller Initialized in Node 0
+
+Reading Data Node 0...
+[readSparse]
+FLASH Controller Initialized in Node 2
+
+Reading Data Node 2...
+LSH Reservoir Initialized in Node 1
+FLASH Controller Initialized in Node 1
+
+Reading Data Node 1...
+[readSparse]
+[readSparse]
+[readSparse] Read 12251448 numbers, 3300 vectors. 
+[readSparse] Read 12370609 numbers, 3300 vectors. 
+[readSparse] Read 12232080 numbers, 3300 vectors. 
+Data Read Node 0: 4.70225 Seconds
+
+[readSparse]
+Data Read Node 2: 4.7023 Seconds
+
+Data Read Node 1: 4.70228 Seconds
+
+[readSparse] Read 353581 numbers, 100 vectors. 
+Adding Vectors Node 0...
+Adding Vectors Node 2...
+Adding Vectors Node 1...
+Node 0 Table Mem Usage ranges from 0.003418 to 0.003906, average 0.003708
+Node 0 Table Mem Usage ranges from 0.027832 to 0.034302, average 0.031400
+Node 0 Table Mem Usage ranges from 0.049194 to 0.062378, average 0.056147
+Node 0 Table Mem Usage ranges from 0.067932 to 0.085632, average 0.077052
+Node 0 Table Mem Usage ranges from 0.085632 to 0.107422, average 0.097483
+Vectors Added Node 0: 0.0378852 Seconds
+
+Node 2 Table Mem Usage ranges from 0.003235 to 0.003845, average 0.003583
+Node 2 Table Mem Usage ranges from 0.028809 to 0.034607, average 0.031385
+Node 2 Table Mem Usage ranges from 0.049683 to 0.060791, average 0.054914
+Node 2 Table Mem Usage ranges from 0.069153 to 0.083984, average 0.076108
+Node 2 Table Mem Usage ranges from 0.086853 to 0.107056, average 0.096436
+Vectors Added Node 2: 0.0407713 Seconds
+
+Computing Query Hashes Node 0...
+Node 1 Table Mem Usage ranges from 0.003296 to 0.003845, average 0.003629
+Node 1 Table Mem Usage ranges from 0.029419 to 0.035522, average 0.032654
+Node 1 Table Mem Usage ranges from 0.051819 to 0.062622, average 0.057350
+Node 1 Table Mem Usage ranges from 0.070129 to 0.085876, average 0.078616
+Node 1 Table Mem Usage ranges from 0.087524 to 0.108154, average 0.098447
+Vectors Added Node 1: 0.0423397 Seconds
+
+Computing Query Hashes Node 1...
+Query Hashes Computed Node 0: 0.00445618 Seconds
+
+Computing Query Hashes Node 2...
+Query Hashes Computed Node 1: 0.00446164 Seconds
+
+Extracting Top K (CMS) Node 0...
+Query Hashes Computed Node 2: 0.00446691 Seconds
+
+Extracting Top K (CMS) Node 1...
+Extracting Top K (CMS) Node 2...
+Top K Extracted Node 2: 0.0137463 Seconds
+
+Top K Extracted Node 1: 0.0129933 Seconds
+
+Top K Extracted Node 0: 0.0194275 Seconds
+
+[readSparse]
+[readSparse] Read 37207718 numbers, 10000 vectors. 
+
+
+================================
+TOP K CMS
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.723 
+S@10 = 0.668 
+S@20 = 0.654 
+S@30 = 0.647 
+S@32 = 0.645 
+S@40 = 0.642 
+S@50 = 0.634 
+S@64 = 0.627 
+S@100 = 0.610 
+S@128 = 0.600 
+1 10 20 30 32 40 50 64 100 128 
+0.723 0.668 0.654 0.647 0.645 0.642 0.634 0.627 0.610 0.600 
+Similarity Metric Computed
+Evaluation Complete
