@@ -51,17 +51,13 @@ void LSHReservoirSampler::initVariables(unsigned int numHashPerFamily, unsigned 
     _numSecHash = numSecHash;
     _maxSamples = maxSamples;
     _tableAllocFraction = tableAllocFraction;
-    _segmentSizeModulor = numHashFamilies * reservoirSize - 1;
-    _segmentSizeBitShiftDivisor = getLog2(_segmentSizeModulor);
+    // _segmentSizeModulor = numHashFamilies * reservoirSize - 1;
+    // _segmentSizeBitShiftDivisor = getLog2(_segmentSizeModulor);
 
     _numReservoirs = (unsigned int)pow(2, _rangePow);         // Number of rows in each hashTable.
     _numReservoirsHashed = (unsigned int)pow(2, _numSecHash); // Number of rows in each hashTable.
     _aggNumReservoirs = (unsigned int)_numReservoirsHashed * _tableAllocFraction;
     _maxReservoirRand = (unsigned int)ceil(maxSamples / 10); // TBD.
-
-    _zero = 0;
-    _zerof = 0.0;
-    _tableNull = TABLENULL;
 }
 
 void LSHReservoirSampler::initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,

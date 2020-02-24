@@ -33,7 +33,6 @@ void LSHReservoirSampler::extractReservoirs(unsigned int numQueryEntries, unsign
     for (size_t tb = 0; tb < _numTables; tb++) {
         for (size_t queryIdx = 0; queryIdx < numQueryEntries; queryIdx++) {
             for (size_t elemIdx = 0; elemIdx < _reservoirSize; elemIdx++) {
-                // for (unsigned int k = 0; k < _queryProbes; k++) {
                 hashIdx = hashIndices[allprobsHashIdx(numQueryEntries, tb, queryIdx)];
                 allocIdx = _tablePointers[tablePointersIdx(_numReservoirsHashed, hashIdx, tb,
                                                            _sechash_a, _sechash_b)];
@@ -41,7 +40,6 @@ void LSHReservoirSampler::extractReservoirs(unsigned int numQueryEntries, unsign
                     queue[queueElemIdx(segmentSize, tb, queryIdx, elemIdx)] =
                         _tableMem[tableMemResIdx(tb, allocIdx, _aggNumReservoirs) + elemIdx];
                 }
-                // }
             }
         }
     }
@@ -61,3 +59,5 @@ void LSHReservoirSampler::getQueryHash(unsigned int queryPartitionSize,
 
     delete[] allprobsIdx;
 }
+
+void LSHReservoirSampler::resetSequentialKernalID() { _sequentialIDCounter_kernel = 0; }

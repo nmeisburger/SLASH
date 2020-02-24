@@ -30,8 +30,6 @@ void LSHReservoirSampler::showParams() {
     std::cout << "_dimension " << _dimension << "\n";
     std::cout << "_maxSamples " << _maxSamples << "\n";
     std::cout << "_tableAllocFraction " << _tableAllocFraction << "\n";
-    std::cout << "_segmentSizeModulor " << _segmentSizeModulor << "\n";
-    std::cout << "_segmentSizeBitShiftDivisor " << _segmentSizeBitShiftDivisor << "\n";
     std::cout << "_numReservoirs " << _numReservoirs << "\n";
     std::cout << "_numReservoirsHashed " << _numReservoirsHashed << "\n";
     std::cout << "_aggNumReservoirs " << _aggNumReservoirs << "\n";
@@ -46,7 +44,7 @@ void LSHReservoirSampler::viewTables() {
         unsigned int maxResShow = 0;
         for (unsigned int t = 0; t < _numReservoirs; t++) {
             if (_tablePointers[tablePointersIdx(_numReservoirsHashed, t, which, _sechash_a,
-                                                _sechash_b)] != _tableNull &&
+                                                _sechash_b)] != TABLE_NULL &&
                 maxResShow < DEBUGENTRIES) {
                 unsigned int allocIdx = _tablePointers[tablePointersIdx(
                     _numReservoirsHashed, t, which, _sechash_a, _sechash_b)];

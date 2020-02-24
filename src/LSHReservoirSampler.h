@@ -28,7 +28,7 @@ class LSHReservoirSampler {
 
     LSH *_hashFamily;
     unsigned int _rangePow, _numTables, _reservoirSize, _dimension, _numSecHash, _maxSamples,
-        _maxReservoirRand, _segmentSizeModulor, _segmentSizeBitShiftDivisor;
+        _maxReservoirRand;
     float _tableAllocFraction;
 
     unsigned int *_tableMem;
@@ -41,8 +41,7 @@ class LSHReservoirSampler {
     unsigned int _numReservoirs, _sequentialIDCounter_kernel, _numReservoirsHashed,
         _aggNumReservoirs;
     size_t _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
-    float _zerof;
-    unsigned int _sechash_a, _sechash_b, _tableNull, _zero;
+    unsigned int _sechash_a, _sechash_b;
 
     /* Init. */
     void initVariables(unsigned int numHashPerFamily, unsigned int numHashFamilies,
@@ -129,6 +128,8 @@ class LSHReservoirSampler {
     */
     void extractReservoirs(unsigned int numQueryEntries, unsigned int segmentSize,
                            unsigned int *queue, unsigned int *hashIndices);
+
+    void resetSequentialKernalID();
 
     /* Print current parameter settings to the console.
      */

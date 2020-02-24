@@ -78,20 +78,6 @@ void webspam() {
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
-  Reading Data
-  */
-    std::cout << "\nReading Data Node " << myRank << "..." << std::endl;
-    auto start = std::chrono::system_clock::now();
-
-    control->allocateData(BASEFILE);
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    auto end = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
-    std::cout << "Data Read Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    /* ===============================================================
   Partitioning Query Between Nodes
   */
 
@@ -103,10 +89,13 @@ void webspam() {
   Adding Vectors
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
-    start = std::chrono::system_clock::now();
-    control->add(NUM_BATCHES, BATCH_PRINT);
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
+    auto start = std::chrono::system_clock::now();
+    control->add(BASEFILE, 4000, 100, NUM_BATCHES, BATCH_PRINT);
+
+    control->add(BASEFILE, 5900, 4100, NUM_BATCHES, BATCH_PRINT);
+
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
@@ -249,7 +238,7 @@ void kdd12() {
     std::cout << "\nReading Data Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
 
-    control->allocateData(BASEFILE);
+    // control->allocateData(BASEFILE);
     MPI_Barrier(MPI_COMM_WORLD);
 
     auto end = std::chrono::system_clock::now();
@@ -270,7 +259,7 @@ void kdd12() {
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     start = std::chrono::system_clock::now();
-    control->add(NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
     end = std::chrono::system_clock::now();
     elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
@@ -434,7 +423,7 @@ void kdd12FileOutput() {
     std::cout << "\nReading Data Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
 
-    control->allocateData(BASEFILE);
+    // control->allocateData(BASEFILE);
     MPI_Barrier(MPI_COMM_WORLD);
 
     auto end = std::chrono::system_clock::now();
@@ -455,7 +444,7 @@ void kdd12FileOutput() {
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     start = std::chrono::system_clock::now();
-    control->add(NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
     end = std::chrono::system_clock::now();
     elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
@@ -605,7 +594,7 @@ void wikiDump() {
     std::cout << "\nReading Data Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
 
-    control->allocateData(BASEFILE);
+    // control->allocateData(BASEFILE);
     MPI_Barrier(MPI_COMM_WORLD);
 
     auto end = std::chrono::system_clock::now();
@@ -626,7 +615,7 @@ void wikiDump() {
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     start = std::chrono::system_clock::now();
-    control->add(NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
     end = std::chrono::system_clock::now();
     elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
@@ -736,7 +725,7 @@ void unitTesting() {
     }
     auto start = std::chrono::system_clock::now();
 
-    control->allocateData(BASEFILE);
+    // control->allocateData(BASEFILE);
     MPI_Barrier(MPI_COMM_WORLD);
     auto end = std::chrono::system_clock::now();
 
@@ -756,7 +745,7 @@ void unitTesting() {
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     start = std::chrono::system_clock::now();
-    control->add(NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
     end = std::chrono::system_clock::now();
     elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"

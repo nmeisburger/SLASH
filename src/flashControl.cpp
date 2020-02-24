@@ -1,19 +1,10 @@
 #include "flashControl.h"
 
-void flashControl::allocateData(std::string filename) {
-    _myDataIndices = new unsigned int[_myDataVectorsCt * _dimension];
-    _myDataVals = new float[_myDataVectorsCt * _dimension];
-    _myDataMarkers = new unsigned int[_myDataVectorsCt + 1];
-
-    readSparse(filename, _myDataVectorsOffset, _myDataVectorsCt, _myDataIndices, _myDataVals,
-               _myDataMarkers, _myDataVectorsCt * _dimension);
-}
-
 void flashControl::allocateQuery(std::string filename) {
 
     if (_myRank == 0) {
         _queryIndices = new unsigned int[(unsigned)(_numQueryVectors * _dimension)];
-        _queryVals = new float[(unsigned)(_numDataVectors * _dimension)];
+        _queryVals = new float[(unsigned)(_numQueryVectors * _dimension)];
         _queryMarkers = new unsigned int[(unsigned)(_numQueryVectors + 1)];
         readSparse(filename, 0, _numQueryVectors, _queryIndices, _queryVals, _queryMarkers,
                    (unsigned)(_numQueryVectors * _dimension));
@@ -54,15 +45,50 @@ void flashControl::allocateQuery(std::string filename) {
     delete[] tempQueryMarkerCts;
 }
 
-void flashControl::add(unsigned int numBatches, unsigned int batchPrint) {
-    unsigned int batchSize = _myDataVectorsCt / numBatches;
+void flashControl::add(std::string filename, unsigned int numDataVectors, unsigned int offset,
+                       unsigned int numBatches, unsigned int batchPrint) {
+
+    _myReservoir->resetSequentialKernalID();
+
+    unsigned int dataPartitionSize = numDataVectors / _worldSize;
+    unsigned int dataPartitionRemainder = numDataVectors % _worldSize;
+
+    for (int i = 0; i < _worldSize; i++) {
+        _dataVectorCts[i] = dataPartitionSize;
+        if (i < dataPartitionRemainder) {
+            _dataVectorCts[i]++;
+        }
+    }
+
+    _dataVectorOffsets[0] = offset;
+
+    for (int n = 1; n < _worldSize; n++) {
+        _dataVectorOffsets[n] = std::min(_dataVectorOffsets[n - 1] + _dataVectorCts[n - 1],
+                                         numDataVectors + offset - 1); // Overflow prevention
+    }
+
+    unsigned int myNumDataVectors = _dataVectorCts[_myRank];
+    unsigned int myDataVectorOffset = _dataVectorOffsets[_myRank];
+
+    unsigned int *myDataIndices = new unsigned int[myNumDataVectors * _dimension];
+    float *myDataVals = new float[myNumDataVectors * _dimension];
+    unsigned int *myDataMarkers = new unsigned int[myNumDataVectors + 1];
+
+    readSparse(filename, myDataVectorOffset, myNumDataVectors, myDataIndices, myDataVals,
+               myDataMarkers, myNumDataVectors * _dimension);
+
+    unsigned int batchSize = myNumDataVectors / numBatches;
     for (unsigned int batch = 0; batch < numBatches; batch++) {
-        _myReservoir->add(batchSize, _myDataIndices, _myDataVals,
-                          _myDataMarkers + batch * batchSize, _myDataVectorsOffset);
+        _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers + batch * batchSize,
+                          myDataVectorOffset);
         if (batch % batchPrint == 0) {
             _myReservoir->checkTableMemLoad();
         }
     }
+
+    delete[] myDataIndices;
+    delete[] myDataVals;
+    delete[] myDataMarkers;
 }
 
 void flashControl::hashQuery() {
@@ -229,10 +255,9 @@ void flashControl::printTables() {
 }
 
 void flashControl::showPartitions() {
-    printf("[Status Rank %d]:\n\tData Vector Range: [%d, %d)\n\tQuery Vector Range: [%d, "
+    printf("[Status Rank %d]:\n\tQuery Vector Range: [%d, "
            "%d)\n\tQuery Range: [%d, %d)\n\n",
-           _myRank, _myDataVectorsOffset, _myDataVectorsOffset + _myDataVectorsCt,
-           _queryVectorOffsets[_myRank], _queryVectorOffsets[_myRank] + _myQueryVectorsCt,
+           _myRank, _queryVectorOffsets[_myRank], _queryVectorOffsets[_myRank] + _myQueryVectorsCt,
            _queryOffsets[_myRank], _queryOffsets[_myRank] + _myQueryVectorsLen);
 }
 

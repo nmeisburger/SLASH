@@ -27,32 +27,17 @@ class flashControl {
     // Reservoir Params
     unsigned int _numTables, _reservoirSize;
 
-    unsigned int _numDataVectors, _numQueryVectors,
+    unsigned int _numQueryVectors,
         _dimension; // Total number of data and query vectors across all nodes
 
     unsigned int *_dataVectorCts; // Number of data vectors allocated to each node
     unsigned int
         *_dataVectorOffsets; // Offset, in number of vectors, for the range of vectors of each node
-    // D int* _dataCts; // Total length of all data vectors allocated to each node
-    // D int* _dataOffsets; // Offset, in total length of data vectors, of the data range of each
-    // node
 
     int *_queryVectorCts;     // Number of query vectors allocated to each node
     int *_queryVectorOffsets; // Offset, in number of vectors, for the range of vectors of each node
     int *_queryCts;           // Total length of all query vectors allocated to each node
     int *_queryOffsets; // Offset, in total length of query vectors, of the query range of each node
-
-    // For storing the partition of the data allocated to each node
-    unsigned int _myDataVectorsCt; // Number of data vectors allocated to a specific node
-    // D int _myDataVectorsLen; // Combined length of all of the data vectors allocated to a
-    // specific node
-    unsigned int _myDataVectorsOffset; // Offset of data vector array for a specific node
-    // D int _myDataOffset;
-    unsigned int
-        *_myDataIndices; // Locations of non-zeros within a node's partition of data vectors
-    float *_myDataVals;  // Values of non-zeros within a node's partition of data vectors
-    unsigned int *_myDataMarkers; // Start and end indexes of data vectors within a node's partition
-                                  // of data vectors
 
     // For storing the partition of the query vectors allocated to each node
     int _myQueryVectorsCt;  // Number of query vectors allocated to a specific node
@@ -95,7 +80,7 @@ class flashControl {
                  unsigned int numTables, unsigned int reservoirSize);
 
     // Allocates memory in each node and sends each node its partition of the set of data vectors.
-    void allocateData(std::string filename);
+    // void allocateData(std::string filename);
 
     // Allocates memory in each node and sends each node its partition of the set of query vectors
     // for hashing.
@@ -107,7 +92,8 @@ class flashControl {
     @param batchPrint: after each set of this number of batches the function will print the memory
     usage of each hash table.
     */
-    void add(unsigned int numBatches, unsigned int batchPrint);
+    void add(std::string filename, unsigned int n, unsigned int offset, unsigned int numBatches,
+             unsigned int batchPrint);
 
     // Computes the hashes of each partition of the query vectors in each node, and then combines
     // each partition of hashes into a single set of hashes in every node.
