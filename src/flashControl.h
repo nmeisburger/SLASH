@@ -59,6 +59,10 @@ class flashControl {
     float *_queryVals;
     unsigned int *_queryMarkers;
 
+    unsigned int *myDataIndices;
+    float *myDataVals;
+    unsigned int *myDataMarkers;
+
   public:
     /* Constructor.
         Initializes a FLASH Controller object that manages communication and data partitions between

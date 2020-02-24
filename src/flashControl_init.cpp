@@ -15,6 +15,10 @@ flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank,
     _numTables = numTables;
     _reservoirSize = reservoirSize;
 
+    myDataIndices = (unsigned int *)malloc(40);
+    myDataVals = (float *)malloc(40);
+    myDataMarkers = (unsigned int *)malloc(40);
+
     _dataVectorOffsets = new unsigned int[_worldSize];
     _dataVectorCts = new unsigned int[_worldSize]();
 

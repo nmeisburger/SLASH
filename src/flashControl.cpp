@@ -70,9 +70,13 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
     unsigned int myNumDataVectors = _dataVectorCts[_myRank];
     unsigned int myDataVectorOffset = _dataVectorOffsets[_myRank];
 
-    unsigned int *myDataIndices = new unsigned int[myNumDataVectors * _dimension];
-    float *myDataVals = new float[myNumDataVectors * _dimension];
-    unsigned int *myDataMarkers = new unsigned int[myNumDataVectors + 1];
+    // unsigned int *myDataIndices = new unsigned int[myNumDataVectors * _dimension];
+    // float *myDataVals = new float[myNumDataVectors * _dimension];
+    // unsigned int *myDataMarkers = new unsigned int[myNumDataVectors + 1];
+
+    myDataIndices = (unsigned int *)realloc(myDataIndices, 4 * myNumDataVectors * _dimension);
+    myDataVals = (float *)realloc(myDataVals, 4 * myNumDataVectors * _dimension);
+    myDataMarkers = (unsigned int *)realloc(myDataMarkers, 4 * myNumDataVectors + 4);
 
     readSparse(filename, myDataVectorOffset, myNumDataVectors, myDataIndices, myDataVals,
                myDataMarkers, myNumDataVectors * _dimension);
@@ -86,9 +90,9 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
         }
     }
 
-    delete[] myDataIndices;
-    delete[] myDataVals;
-    delete[] myDataMarkers;
+    // delete[] myDataIndices;
+    // delete[] myDataVals;
+    // delete[] myDataMarkers;
 }
 
 void flashControl::hashQuery() {
