@@ -140,9 +140,13 @@ void webspam() {
   De-allocating Data Structures in Memory
   */
     delete control;
+    printf("deleted control\n");
     delete reservoir;
+    printf("deleted reservoir\n");
     delete lsh;
+    printf("deleted lsh\n");
     delete cms;
+    printf("deleted cms\n");
 
     /* ===============================================================
   MPI Closing
