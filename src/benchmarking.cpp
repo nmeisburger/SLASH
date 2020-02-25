@@ -736,10 +736,6 @@ void criteo() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    if (true) {
-        return;
-    }
-
     /* ===============================================================
     Adding Vectors
     */
@@ -751,6 +747,9 @@ void criteo() {
         control->add(BASEFILE, batchSize, offset + i * batchSize, NUM_BATCHES, BATCH_PRINT);
         if (myRank == 0) {
             printf("Batch %lu complete\n", i);
+        }
+        if (i == 3) {
+            break;
         }
     }
     auto end = std::chrono::system_clock::now();
