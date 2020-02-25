@@ -729,6 +729,10 @@ void criteo() {
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
+    if (myRank == 0) {
+        reservoir->showParams();
+    }
+
     /* ===============================================================
     Partitioning Query Between Nodes
     */

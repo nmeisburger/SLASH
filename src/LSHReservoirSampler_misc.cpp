@@ -34,6 +34,10 @@ void LSHReservoirSampler::showParams() {
     std::cout << "_numReservoirsHashed " << _numReservoirsHashed << "\n";
     std::cout << "_aggNumReservoirs " << _aggNumReservoirs << "\n";
     std::cout << "_maxReservoirRand " << _maxReservoirRand << "\n";
+    std::cout << "_tableMemMax " << _tableMemMax << "\n";
+    std::cout << "_tableMemReservoirMax " << _tableMemReservoirMax << "\n";
+    std::cout << "_tablePointerMax " << _tablePointerMax << "\n";
+
     printf("\n");
 }
 
