@@ -84,7 +84,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/criteo/criteo_tb"
+#define BASEFILE "../../dataset/kdd12/kdd12"
 #define GTRUTHINDICE ""
 #define GTRUTHDIST ""
 
@@ -136,7 +136,7 @@
 #define RESERVOIR_SIZE 256
 #define ALLOC_FRACTION 1
 
-#define DIMENSION 265
+#define DIMENSION 42
 #define NUM_DATA_VECTORS 40000000
 // #define NUM_DATA_VECTORS 4000000000
 #define NUM_QUERY_VECTORS 10000
@@ -147,7 +147,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/wiki/wiki_hashes"
+#define BASEFILE "../../dataset/criteo/criteo_tb"
 #define GTRUTHINDICE ""
 #define GTRUTHDIST ""
 

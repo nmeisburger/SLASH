@@ -15,7 +15,7 @@
 void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsigned int *indices,
                 float *values, unsigned int *markers, unsigned int bufferlen) {
 
-    std::cout << "[readSparse]" << std::endl;
+    // std::cout << "[readSparse]" << std::endl;
 
     /* Fill all the markers with the maximum index for the data, to prevent
        indexing outside of the range. */
@@ -71,8 +71,8 @@ void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsig
         }
     }
     markers[ct - offset] = totalLen; // Final length marker.
-    std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
-              << std::endl;
+    // std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
+    //   << std::endl;
 }
 
 void writeTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {

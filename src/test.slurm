@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#SBATCH --job-name=D-FLASH-WIKI
-#SBATCH --nodes=4
+#SBATCH --job-name=Criteo
+#SBATCH --nodes=10
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=20G
-#SBATCH --time=00:10:00
+#SBATCH --mem=40G
+#SBATCH --time=00:30:00
 #SBATCH --mail-user=ncm5@rice.edu
 #SBATCH --mail-type=all
 #SBATCH --constraint="cascadelake&opath"

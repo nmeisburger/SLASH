@@ -740,14 +740,17 @@ void criteo() {
     Adding Vectors
     */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
-    start = std::chrono::system_clock::now();
+    auto start = std::chrono::system_clock::now();
     size_t offset = NUM_QUERY_VECTORS;
     size_t batchSize = NUM_DATA_VECTORS / 100;
     for (size_t i = 0; i < 100; i++) {
         control->add(BASEFILE, batchSize, offset + i * batchSize, NUM_BATCHES, BATCH_PRINT);
+        if (myRank == 0) {
+            printf("Batch %d complete\n", i);
+        }
     }
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
