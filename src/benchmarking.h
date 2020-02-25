@@ -129,10 +129,10 @@
 #define BATCH_PRINT 50
 
 #define NUM_HASHES 4
-#define RANGE_POW 20
-#define RANGE_ROW_U 20
+#define RANGE_POW 19
+#define RANGE_ROW_U 19
 
-#define NUM_TABLES 18
+#define NUM_TABLES 24
 #define RESERVOIR_SIZE 256
 #define ALLOC_FRACTION 1
 

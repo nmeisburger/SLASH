@@ -752,9 +752,6 @@ void criteo() {
         if (myRank == 0) {
             printf("Batch %lu complete\n", i);
         }
-        if (i == 3) {
-            break;
-        }
     }
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = end - start;
