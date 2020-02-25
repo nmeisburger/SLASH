@@ -18,13 +18,13 @@ void showConfig(std::string dataset, unsigned int numVectors, unsigned int queri
                 unsigned int hashes, unsigned int cmsHashes, unsigned int cmsBucketSize) {
     std::cout << "\n=================\n== " << dataset << "\n=================\n" << std::endl;
 
-    printf("%d Vectors, %d Queries\n", numVectors, queries);
+    printf("%u Vectors, %u Queries\n", numVectors, queries);
 
-    printf("Nodes: %d\nTables: %d\nRangePow: %d\nReservoir Size: "
-           "%d\nHashes: %d\n",
+    printf("Nodes: %u\nTables: %u\nRangePow: %u\nReservoir Size: "
+           "%u\nHashes: %u\n",
            nodes, tables, rangePow, reservoirSize, hashes);
 
-    printf("CMS Bucket Size: %d\nCMS Hashes: %d\n\n", cmsBucketSize, cmsHashes);
+    printf("CMS Bucket Size: %u\nCMS Hashes: %u\n\n", cmsBucketSize, cmsHashes);
 }
 
 /*
@@ -736,6 +736,10 @@ void criteo() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    if (true) {
+        return;
+    }
+
     /* ===============================================================
     Adding Vectors
     */
@@ -746,7 +750,7 @@ void criteo() {
     for (size_t i = 0; i < 100; i++) {
         control->add(BASEFILE, batchSize, offset + i * batchSize, NUM_BATCHES, BATCH_PRINT);
         if (myRank == 0) {
-            printf("Batch %d complete\n", i);
+            printf("Batch %lu complete\n", i);
         }
     }
     auto end = std::chrono::system_clock::now();

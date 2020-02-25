@@ -40,7 +40,7 @@ class LSHReservoirSampler {
     unsigned int *_global_rand;
     unsigned int _numReservoirs, _sequentialIDCounter_kernel, _numReservoirsHashed,
         _aggNumReservoirs;
-    size_t _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
+    unsigned long long int _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
     unsigned int _sechash_a, _sechash_b;
 
     /* Init. */

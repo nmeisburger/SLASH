@@ -8,12 +8,14 @@ void LSHReservoirSampler::add(unsigned int numInputEntries, unsigned int *dataId
         return;
     }
 
-    unsigned int *allprobsHash = new unsigned int[_numTables * numInputEntries];
-    unsigned int *allprobsIdx = new unsigned int[_numTables * numInputEntries];
+    unsigned long long int storeLogSize = _numTables * numInputEntries;
+
+    unsigned int *allprobsHash = new unsigned int[storeLogSize];
+    unsigned int *allprobsIdx = new unsigned int[storeLogSize];
 
     _hashFamily->getHashes(allprobsHash, allprobsIdx, dataIdx, dataMarker, numInputEntries);
 
-    unsigned int *storelog = new unsigned int[_numTables * 4 * numInputEntries]();
+    unsigned int *storelog = new unsigned int[storeLogSize * 4]();
 
     reservoirSampling(allprobsHash, allprobsIdx, storelog, numInputEntries);
     addTable(storelog, numInputEntries, dataOffset);
