@@ -784,7 +784,7 @@ void criteo() {
     std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
-    std::string filenameTree("WikiDump-");
+    std::string filenameTree("Criteo-");
     filenameTree.append(std::to_string(worldSize));
     if (myRank == 0) {
         writeTopK(filenameTree, NUM_QUERY_VECTORS, TOPK, treeOutputs);
