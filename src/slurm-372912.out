@@ -1,0 +1,684 @@
+[bc12u11n2:72490] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n1:02400] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u29n4:81236] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n4:71357] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u27n1:28704] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+
+=================
+== Criteo
+=================
+
+40000000 Vectors, 10000 Queries
+Nodes: 5
+Tables: 32
+RangePow: 19
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+LSH Initialized in Node 2
+LSH Initialized in Node 4
+LSH Initialized in Node 3
+LSH Initialized in Node 1
+CMS Initialized in Node 0
+CMS Initialized in Node 2
+CMS Initialized in Node 4
+CMS Initialized in Node 1
+CMS Initialized in Node 3
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 1
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 3
+LSH Reservoir Initialized in Node 0
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 4
+FLASH Controller Initialized in Node 3
+FLASH Controller Initialized in Node 2
+Adding Vectors Node 1...
+Adding Vectors Node 4...
+Adding Vectors Node 0...
+Adding Vectors Node 2...
+Adding Vectors Node 3...
+Node 0 Table Mem Usage ranges from 0.001949 to 0.002930, average 0.002632
+Batch 0 complete
+Node 0 Table Mem Usage ranges from 0.059523 to 0.114012, average 0.091308
+Batch 1 complete
+Node 0 Table Mem Usage ranges from 0.105795 to 0.204464, average 0.161691
+Batch 2 complete
+Node 0 Table Mem Usage ranges from 0.147261 to 0.280910, average 0.222237
+Batch 3 complete
+Node 0 Table Mem Usage ranges from 0.184431 to 0.347111, average 0.275773
+Batch 4 complete
+Node 0 Table Mem Usage ranges from 0.218742 to 0.405380, average 0.324059
+Batch 5 complete
+Node 0 Table Mem Usage ranges from 0.250540 to 0.457636, average 0.367548
+Batch 6 complete
+Node 0 Table Mem Usage ranges from 0.279951 to 0.503878, average 0.407116
+Batch 7 complete
+Node 0 Table Mem Usage ranges from 0.307667 to 0.545263, average 0.443249
+Batch 8 complete
+Node 0 Table Mem Usage ranges from 0.333054 to 0.582294, average 0.476108
+Batch 9 complete
+Node 0 Table Mem Usage ranges from 0.355562 to 0.615822, average 0.505918
+Batch 10 complete
+Node 0 Table Mem Usage ranges from 0.377542 to 0.645735, average 0.533356
+Batch 11 complete
+Node 0 Table Mem Usage ranges from 0.398104 to 0.672876, average 0.558898
+Batch 12 complete
+Node 0 Table Mem Usage ranges from 0.417116 to 0.697430, average 0.582477
+Batch 13 complete
+Node 0 Table Mem Usage ranges from 0.436415 to 0.720083, average 0.604686
+Batch 14 complete
+Node 0 Table Mem Usage ranges from 0.453632 to 0.740465, average 0.624929
+Batch 15 complete
+Node 0 Table Mem Usage ranges from 0.470728 to 0.759638, average 0.644157
+Batch 16 complete
+Node 0 Table Mem Usage ranges from 0.487591 to 0.777016, average 0.662408
+Batch 17 complete
+Node 0 Table Mem Usage ranges from 0.503511 to 0.793468, average 0.679733
+Batch 18 complete
+Node 0 Table Mem Usage ranges from 0.518187 to 0.808018, average 0.695398
+Batch 19 complete
+Node 0 Table Mem Usage ranges from 0.532505 to 0.821335, average 0.710130
+Batch 20 complete
+Node 0 Table Mem Usage ranges from 0.546223 to 0.833719, average 0.724062
+Batch 21 complete
+Node 0 Table Mem Usage ranges from 0.559198 to 0.844769, average 0.737177
+Batch 22 complete
+Node 0 Table Mem Usage ranges from 0.571817 to 0.855419, average 0.749496
+Batch 23 complete
+Node 0 Table Mem Usage ranges from 0.583912 to 0.865107, average 0.761128
+Batch 24 complete
+Node 0 Table Mem Usage ranges from 0.595509 to 0.874264, average 0.772028
+Batch 25 complete
+Node 0 Table Mem Usage ranges from 0.607384 to 0.882713, average 0.782550
+Batch 26 complete
+Node 0 Table Mem Usage ranges from 0.618237 to 0.890400, average 0.792417
+Batch 27 complete
+Node 0 Table Mem Usage ranges from 0.628790 to 0.897417, average 0.801625
+Batch 28 complete
+Node 0 Table Mem Usage ranges from 0.638945 to 0.903915, average 0.810373
+Batch 29 complete
+Node 0 Table Mem Usage ranges from 0.648815 to 0.910040, average 0.818602
+Batch 30 complete
+Node 0 Table Mem Usage ranges from 0.657949 to 0.915733, average 0.826433
+Batch 31 complete
+Node 0 Table Mem Usage ranges from 0.666977 to 0.921011, average 0.833834
+Batch 32 complete
+Node 0 Table Mem Usage ranges from 0.676252 to 0.926119, average 0.841043
+Batch 33 complete
+Node 0 Table Mem Usage ranges from 0.685007 to 0.930660, average 0.847843
+Batch 34 complete
+Node 0 Table Mem Usage ranges from 0.693279 to 0.934998, average 0.854241
+Batch 35 complete
+Node 0 Table Mem Usage ranges from 0.701546 to 0.939148, average 0.860427
+Batch 36 complete
+Node 0 Table Mem Usage ranges from 0.709387 to 0.942955, average 0.866260
+Batch 37 complete
+Node 0 Table Mem Usage ranges from 0.717207 to 0.946356, average 0.871810
+Batch 38 complete
+Node 0 Table Mem Usage ranges from 0.724627 to 0.949574, average 0.877177
+Batch 39 complete
+Node 0 Table Mem Usage ranges from 0.731842 to 0.952736, average 0.882319
+Batch 40 complete
+Node 0 Table Mem Usage ranges from 0.738979 to 0.955750, average 0.887229
+Batch 41 complete
+Node 0 Table Mem Usage ranges from 0.745935 to 0.958397, average 0.891877
+Batch 42 complete
+Node 0 Table Mem Usage ranges from 0.752859 to 0.960903, average 0.896342
+Batch 43 complete
+Node 1 Table Mem Usage ranges from 0.002037 to 0.002979, average 0.002668
+Node 1 Table Mem Usage ranges from 0.061388 to 0.116320, average 0.092695
+Node 1 Table Mem Usage ranges from 0.107595 to 0.206657, average 0.162625
+Node 1 Table Mem Usage ranges from 0.148113 to 0.282372, average 0.222440
+Node 1 Table Mem Usage ranges from 0.184994 to 0.349001, average 0.276059
+Node 1 Table Mem Usage ranges from 0.219275 to 0.407000, average 0.323997
+Node 1 Table Mem Usage ranges from 0.250679 to 0.458609, average 0.367383
+Node 1 Table Mem Usage ranges from 0.280014 to 0.504826, average 0.406821
+Node 1 Table Mem Usage ranges from 0.307217 to 0.545643, average 0.442757
+Node 1 Table Mem Usage ranges from 0.332666 to 0.582575, average 0.475798
+Node 1 Table Mem Usage ranges from 0.355360 to 0.615921, average 0.505671
+Node 1 Table Mem Usage ranges from 0.376583 to 0.645910, average 0.532594
+Node 1 Table Mem Usage ranges from 0.396616 to 0.672974, average 0.557876
+Node 1 Table Mem Usage ranges from 0.416597 to 0.697901, average 0.581802
+Node 1 Table Mem Usage ranges from 0.435188 to 0.720278, average 0.603723
+Node 1 Table Mem Usage ranges from 0.453476 to 0.741003, average 0.624484
+Node 1 Table Mem Usage ranges from 0.470657 to 0.759832, average 0.643784
+Node 1 Table Mem Usage ranges from 0.486532 to 0.776863, average 0.661673
+Node 1 Table Mem Usage ranges from 0.502472 to 0.793161, average 0.678707
+Node 1 Table Mem Usage ranges from 0.516916 to 0.807463, average 0.694402
+Node 1 Table Mem Usage ranges from 0.531242 to 0.820875, average 0.709100
+Node 1 Table Mem Usage ranges from 0.545204 to 0.833330, average 0.723188
+Node 1 Table Mem Usage ranges from 0.558342 to 0.844784, average 0.736273
+Node 1 Table Mem Usage ranges from 0.571154 to 0.855343, average 0.748761
+Node 1 Table Mem Usage ranges from 0.583717 to 0.865187, average 0.760464
+Node 1 Table Mem Usage ranges from 0.595993 to 0.874218, average 0.771531
+Node 1 Table Mem Usage ranges from 0.607597 to 0.882786, average 0.782068
+Node 1 Table Mem Usage ranges from 0.618296 to 0.890482, average 0.791770
+Node 1 Table Mem Usage ranges from 0.628698 to 0.897640, average 0.801004
+Node 1 Table Mem Usage ranges from 0.638859 to 0.904356, average 0.809828
+Node 1 Table Mem Usage ranges from 0.648745 to 0.910456, average 0.818109
+Node 1 Table Mem Usage ranges from 0.658268 to 0.916143, average 0.826023
+Node 1 Table Mem Usage ranges from 0.667318 to 0.921465, average 0.833552
+Node 1 Table Mem Usage ranges from 0.676394 to 0.926422, average 0.840811
+Node 1 Table Mem Usage ranges from 0.685236 to 0.930834, average 0.847659
+Node 1 Table Mem Usage ranges from 0.693733 to 0.935244, average 0.854123
+Node 1 Table Mem Usage ranges from 0.701834 to 0.939240, average 0.860264
+Node 1 Table Mem Usage ranges from 0.709908 to 0.942825, average 0.866142
+Node 1 Table Mem Usage ranges from 0.717682 to 0.946207, average 0.871736
+Node 1 Table Mem Usage ranges from 0.725014 to 0.949287, average 0.877086
+Node 1 Table Mem Usage ranges from 0.732306 to 0.952379, average 0.882179
+Node 1 Table Mem Usage ranges from 0.739389 to 0.955313, average 0.887092
+Node 1 Table Mem Usage ranges from 0.746151 to 0.957954, average 0.891728
+Node 1 Table Mem Usage ranges from 0.752962 to 0.960468, average 0.896153
+Node 1 Table Mem Usage ranges from 0.759460 to 0.962776, average 0.900362
+Node 1 Table Mem Usage ranges from 0.765503 to 0.964853, average 0.904332
+Node 1 Table Mem Usage ranges from 0.771568 to 0.966955, average 0.908173
+Node 1 Table Mem Usage ranges from 0.777361 to 0.968800, average 0.911830
+Node 1 Table Mem Usage ranges from 0.782953 to 0.970531, average 0.915360
+Node 1 Table Mem Usage ranges from 0.788492 to 0.972223, average 0.918632
+Node 1 Table Mem Usage ranges from 0.793722 to 0.973724, average 0.921715
+Node 1 Table Mem Usage ranges from 0.798641 to 0.975088, average 0.924698
+Node 1 Table Mem Usage ranges from 0.803673 to 0.976540, average 0.927603
+Node 1 Table Mem Usage ranges from 0.808594 to 0.977844, average 0.930384
+Node 1 Table Mem Usage ranges from 0.813477 to 0.978966, average 0.933049
+Node 4 Table Mem Usage ranges from 0.002071 to 0.002985, average 0.002691
+Node 4 Table Mem Usage ranges from 0.062716 to 0.117418, average 0.093617
+Node 4 Table Mem Usage ranges from 0.108660 to 0.207611, average 0.163700
+Node 4 Table Mem Usage ranges from 0.148970 to 0.282949, average 0.223722
+Node 4 Table Mem Usage ranges from 0.186260 to 0.349264, average 0.277278
+Node 4 Table Mem Usage ranges from 0.220020 to 0.407568, average 0.325003
+Node 4 Table Mem Usage ranges from 0.251625 to 0.459444, average 0.368415
+Node 4 Table Mem Usage ranges from 0.280413 to 0.504803, average 0.407488
+Node 4 Table Mem Usage ranges from 0.307896 to 0.545774, average 0.443413
+Node 4 Table Mem Usage ranges from 0.332720 to 0.582630, average 0.475960
+Node 4 Table Mem Usage ranges from 0.355532 to 0.615812, average 0.505520
+Node 4 Table Mem Usage ranges from 0.376558 to 0.645603, average 0.532634
+Node 4 Table Mem Usage ranges from 0.397104 to 0.673059, average 0.558209
+Node 4 Table Mem Usage ranges from 0.416828 to 0.697580, average 0.581886
+Node 4 Table Mem Usage ranges from 0.435665 to 0.720312, average 0.603966
+Node 4 Table Mem Usage ranges from 0.453390 to 0.740656, average 0.624305
+Node 4 Table Mem Usage ranges from 0.470039 to 0.759520, average 0.643438
+Node 4 Table Mem Usage ranges from 0.486792 to 0.777355, average 0.661779
+Node 4 Table Mem Usage ranges from 0.502012 to 0.793200, average 0.678609
+Node 4 Table Mem Usage ranges from 0.516758 to 0.807592, average 0.694215
+Node 4 Table Mem Usage ranges from 0.531437 to 0.821121, average 0.709201
+Node 4 Table Mem Usage ranges from 0.544716 to 0.833176, average 0.722767
+Node 4 Table Mem Usage ranges from 0.557827 to 0.844473, average 0.735926
+Node 4 Table Mem Usage ranges from 0.570513 to 0.855106, average 0.748286
+Node 4 Table Mem Usage ranges from 0.582834 to 0.864878, average 0.759942
+Node 4 Table Mem Usage ranges from 0.594509 to 0.873926, average 0.771005
+Node 4 Table Mem Usage ranges from 0.605785 to 0.882273, average 0.781330
+Node 4 Table Mem Usage ranges from 0.617018 to 0.889977, average 0.791191
+Node 4 Table Mem Usage ranges from 0.627413 to 0.897173, average 0.800539
+Node 4 Table Mem Usage ranges from 0.637810 to 0.903662, average 0.809348
+Node 4 Table Mem Usage ranges from 0.647854 to 0.909908, average 0.817805
+Node 4 Table Mem Usage ranges from 0.657455 to 0.915361, average 0.825670
+Node 4 Table Mem Usage ranges from 0.666628 to 0.920675, average 0.833224
+Node 4 Table Mem Usage ranges from 0.675694 to 0.925619, average 0.840400
+Node 4 Table Mem Usage ranges from 0.684420 to 0.930079, average 0.847222
+Node 4 Table Mem Usage ranges from 0.693014 to 0.934481, average 0.853775
+Node 4 Table Mem Usage ranges from 0.701210 to 0.938437, average 0.859945
+Node 4 Table Mem Usage ranges from 0.709146 to 0.942192, average 0.865827
+Node 4 Table Mem Usage ranges from 0.716862 to 0.945717, average 0.871414
+Node 4 Table Mem Usage ranges from 0.724480 to 0.949055, average 0.876804
+Node 4 Table Mem Usage ranges from 0.731932 to 0.952124, average 0.881982
+Node 4 Table Mem Usage ranges from 0.739141 to 0.954865, average 0.886819
+Node 4 Table Mem Usage ranges from 0.746038 to 0.957487, average 0.891479
+Node 4 Table Mem Usage ranges from 0.752586 to 0.959869, average 0.895852
+Node 4 Table Mem Usage ranges from 0.758919 to 0.962126, average 0.900074
+Node 4 Table Mem Usage ranges from 0.765099 to 0.964231, average 0.904079
+Node 4 Table Mem Usage ranges from 0.771236 to 0.966175, average 0.907875
+Node 4 Table Mem Usage ranges from 0.777275 to 0.968058, average 0.911585
+Node 4 Table Mem Usage ranges from 0.782808 to 0.969767, average 0.915026
+Node 4 Table Mem Usage ranges from 0.788157 to 0.971380, average 0.918271
+Node 4 Table Mem Usage ranges from 0.793432 to 0.972937, average 0.921399
+Node 4 Table Mem Usage ranges from 0.798473 to 0.974400, average 0.924390
+Node 4 Table Mem Usage ranges from 0.803406 to 0.975761, average 0.927294
+Node 4 Table Mem Usage ranges from 0.808508 to 0.977074, average 0.930108
+Node 4 Table Mem Usage ranges from 0.813435 to 0.978264, average 0.932825
+Node 2 Table Mem Usage ranges from 0.002098 to 0.002932, average 0.002666
+Node 2 Table Mem Usage ranges from 0.062254 to 0.117334, average 0.093075
+Node 2 Table Mem Usage ranges from 0.109293 to 0.207518, average 0.163581
+Node 2 Table Mem Usage ranges from 0.149527 to 0.283308, average 0.223318
+Node 2 Table Mem Usage ranges from 0.186630 to 0.348980, average 0.276726
+Node 2 Table Mem Usage ranges from 0.220343 to 0.406906, average 0.324705
+Node 2 Table Mem Usage ranges from 0.251600 to 0.458462, average 0.367901
+Node 2 Table Mem Usage ranges from 0.281189 to 0.504652, average 0.407332
+Node 2 Table Mem Usage ranges from 0.308315 to 0.545296, average 0.443152
+Node 2 Table Mem Usage ranges from 0.333391 to 0.582317, average 0.475872
+Node 2 Table Mem Usage ranges from 0.355545 to 0.615582, average 0.505351
+Node 2 Table Mem Usage ranges from 0.377510 to 0.645744, average 0.532795
+Node 2 Table Mem Usage ranges from 0.397957 to 0.672880, average 0.558144
+Node 2 Table Mem Usage ranges from 0.417273 to 0.697468, average 0.581598
+Node 2 Table Mem Usage ranges from 0.436054 to 0.720346, average 0.603636
+Node 2 Table Mem Usage ranges from 0.453781 to 0.740929, average 0.624156
+Node 2 Table Mem Usage ranges from 0.470549 to 0.760059, average 0.643426
+Node 2 Table Mem Usage ranges from 0.487186 to 0.777472, average 0.661701
+Node 2 Table Mem Usage ranges from 0.502676 to 0.793537, average 0.678464
+Node 2 Table Mem Usage ranges from 0.517286 to 0.808226, average 0.694154
+Node 2 Table Mem Usage ranges from 0.531612 to 0.821711, average 0.709052
+Node 2 Table Mem Usage ranges from 0.544889 to 0.834000, average 0.722910
+Node 2 Table Mem Usage ranges from 0.558378 to 0.845579, average 0.736145
+Node 2 Table Mem Usage ranges from 0.570698 to 0.855993, average 0.748449
+Node 2 Table Mem Usage ranges from 0.582739 to 0.865686, average 0.760016
+Node 2 Table Mem Usage ranges from 0.594168 to 0.874403, average 0.770809
+Node 2 Table Mem Usage ranges from 0.605524 to 0.882776, average 0.781212
+Node 2 Table Mem Usage ranges from 0.616739 to 0.890327, average 0.791062
+Node 2 Table Mem Usage ranges from 0.627398 to 0.897409, average 0.800390
+Node 2 Table Mem Usage ranges from 0.637924 to 0.904034, average 0.809224
+Node 2 Table Mem Usage ranges from 0.647858 to 0.910152, average 0.817621
+Node 2 Table Mem Usage ranges from 0.657482 to 0.915874, average 0.825597
+Node 2 Table Mem Usage ranges from 0.666674 to 0.921207, average 0.833116
+Node 2 Table Mem Usage ranges from 0.676346 to 0.926262, average 0.840515
+Node 2 Table Mem Usage ranges from 0.685249 to 0.930819, average 0.847356
+Node 2 Table Mem Usage ranges from 0.693577 to 0.934994, average 0.853878
+Node 2 Table Mem Usage ranges from 0.701668 to 0.939037, average 0.860039
+Node 2 Table Mem Usage ranges from 0.709614 to 0.942776, average 0.865892
+Node 2 Table Mem Usage ranges from 0.717115 to 0.946215, average 0.871539
+Node 2 Table Mem Usage ranges from 0.724617 to 0.949432, average 0.876895
+Node 2 Table Mem Usage ranges from 0.732023 to 0.952509, average 0.881980
+Node 2 Table Mem Usage ranges from 0.739262 to 0.955286, average 0.886835
+Node 2 Table Mem Usage ranges from 0.746157 to 0.957890, average 0.891488
+Node 2 Table Mem Usage ranges from 0.752953 to 0.960405, average 0.895923
+Node 2 Table Mem Usage ranges from 0.759293 to 0.962715, average 0.900099
+Node 2 Table Mem Usage ranges from 0.765617 to 0.964817, average 0.904104
+Node 2 Table Mem Usage ranges from 0.771776 to 0.966768, average 0.907939
+Node 2 Table Mem Usage ranges from 0.777779 to 0.968616, average 0.911566
+Node 2 Table Mem Usage ranges from 0.783392 to 0.970356, average 0.915055
+Node 2 Table Mem Usage ranges from 0.788652 to 0.972116, average 0.918305
+Node 2 Table Mem Usage ranges from 0.793911 to 0.973631, average 0.921434
+Node 2 Table Mem Usage ranges from 0.799124 to 0.975018, average 0.924441
+Node 2 Table Mem Usage ranges from 0.803986 to 0.976334, average 0.927332
+Node 2 Table Mem Usage ranges from 0.808878 to 0.977654, average 0.930130
+Node 2 Table Mem Usage ranges from 0.813847 to 0.978796, average 0.932844
+Node 3 Table Mem Usage ranges from 0.002090 to 0.002920, average 0.002671
+Node 3 Table Mem Usage ranges from 0.062412 to 0.117184, average 0.093128
+Node 3 Table Mem Usage ranges from 0.109129 to 0.207178, average 0.163532
+Node 3 Table Mem Usage ranges from 0.149881 to 0.283169, average 0.223705
+Node 3 Table Mem Usage ranges from 0.186794 to 0.349016, average 0.276838
+Node 3 Table Mem Usage ranges from 0.220907 to 0.407093, average 0.324668
+Node 3 Table Mem Usage ranges from 0.252512 to 0.458891, average 0.368119
+Node 3 Table Mem Usage ranges from 0.281710 to 0.504793, average 0.407295
+Node 3 Table Mem Usage ranges from 0.309004 to 0.545736, average 0.443218
+Node 3 Table Mem Usage ranges from 0.332716 to 0.582060, average 0.475120
+Node 3 Table Mem Usage ranges from 0.355293 to 0.615038, average 0.504843
+Node 3 Table Mem Usage ranges from 0.377176 to 0.645134, average 0.532243
+Node 3 Table Mem Usage ranges from 0.397478 to 0.672615, average 0.557745
+Node 3 Table Mem Usage ranges from 0.416994 to 0.697319, average 0.581522
+Node 3 Table Mem Usage ranges from 0.435562 to 0.719999, average 0.603541
+Node 3 Table Mem Usage ranges from 0.453417 to 0.740541, average 0.624094
+Node 3 Table Mem Usage ranges from 0.470211 to 0.759235, average 0.643280
+Node 3 Table Mem Usage ranges from 0.486324 to 0.776527, average 0.661249
+Node 3 Table Mem Usage ranges from 0.501862 to 0.792576, average 0.678253
+Node 3 Table Mem Usage ranges from 0.516565 to 0.807192, average 0.694113
+Node 3 Table Mem Usage ranges from 0.531122 to 0.820707, average 0.709031
+Node 3 Table Mem Usage ranges from 0.544931 to 0.833269, average 0.723092
+Node 3 Table Mem Usage ranges from 0.557835 to 0.844774, average 0.736150
+Node 3 Table Mem Usage ranges from 0.570522 to 0.855192, average 0.748609
+Node 3 Table Mem Usage ranges from 0.582775 to 0.864952, average 0.760281
+Node 3 Table Mem Usage ranges from 0.594776 to 0.874060, average 0.771403
+Node 3 Table Mem Usage ranges from 0.606298 to 0.882378, average 0.781892
+Node 3 Table Mem Usage ranges from 0.617037 to 0.889996, average 0.791662
+Node 3 Table Mem Usage ranges from 0.627369 to 0.897036, average 0.800865
+Node 3 Table Mem Usage ranges from 0.637320 to 0.903627, average 0.809619
+Node 3 Table Mem Usage ranges from 0.646900 to 0.909832, average 0.817926
+Node 3 Table Mem Usage ranges from 0.656561 to 0.915472, average 0.825805
+Node 3 Table Mem Usage ranges from 0.665932 to 0.920771, average 0.833383
+Node 3 Table Mem Usage ranges from 0.675240 to 0.925808, average 0.840596
+Node 3 Table Mem Usage ranges from 0.683926 to 0.930336, average 0.847397
+Node 3 Table Mem Usage ranges from 0.692453 to 0.934650, average 0.853888
+Node 3 Table Mem Usage ranges from 0.700712 to 0.938648, average 0.860091
+Node 3 Table Mem Usage ranges from 0.708715 to 0.942415, average 0.865962
+Node 3 Table Mem Usage ranges from 0.716299 to 0.946011, average 0.871575
+Node 3 Table Mem Usage ranges from 0.723843 to 0.949368, average 0.876984
+Node 3 Table Mem Usage ranges from 0.731316 to 0.952299, average 0.882128
+Node 3 Table Mem Usage ranges from 0.738459 to 0.955080, average 0.887000
+Node 3 Table Mem Usage ranges from 0.745096 to 0.957722, average 0.891585
+Node 3 Table Mem Usage ranges from 0.751797 to 0.960136, average 0.896006
+Node 3 Table Mem Usage ranges from 0.758320 to 0.962503, average 0.900236
+Node 3 Table Mem Usage ranges from 0.764509 to 0.964741, average 0.904251
+Node 3 Table Mem Usage ranges from 0.770550 to 0.966772, average 0.908032
+Node 3 Table Mem Usage ranges from 0.776558 to 0.968697, average 0.911748
+Node 3 Table Mem Usage ranges from 0.782269 to 0.970402, average 0.915187
+Node 3 Table Mem Usage ranges from 0.787777 to 0.972050, average 0.918479
+Node 3 Table Mem Usage ranges from 0.792984 to 0.973631, average 0.921615
+Node 3 Table Mem Usage ranges from 0.798203 to 0.975063, average 0.924648
+Node 3 Table Mem Usage ranges from 0.803169 to 0.976486, average 0.927560
+Node 3 Table Mem Usage ranges from 0.808117 to 0.977785, average 0.930348
+Node 3 Table Mem Usage ranges from 0.812899 to 0.979002, average 0.933047
+Node 1 Table Mem Usage ranges from 0.818193 to 0.980078, average 0.935634
+Node 1 Table Mem Usage ranges from 0.822897 to 0.981190, average 0.938134
+Node 1 Table Mem Usage ranges from 0.827478 to 0.982136, average 0.940550
+Node 1 Table Mem Usage ranges from 0.831863 to 0.983118, average 0.942864
+Node 1 Table Mem Usage ranges from 0.836136 to 0.983994, average 0.945086
+Node 1 Table Mem Usage ranges from 0.840429 to 0.984779, average 0.947194
+Node 1 Table Mem Usage ranges from 0.844221 to 0.985569, average 0.949164
+Node 1 Table Mem Usage ranges from 0.848030 to 0.986284, average 0.951047
+Node 1 Table Mem Usage ranges from 0.851833 to 0.986977, average 0.952867
+Node 1 Table Mem Usage ranges from 0.855564 to 0.987606, average 0.954626
+Node 1 Table Mem Usage ranges from 0.859314 to 0.988211, average 0.956337
+Node 1 Table Mem Usage ranges from 0.862795 to 0.988777, average 0.957972
+Node 1 Table Mem Usage ranges from 0.866329 to 0.989342, average 0.959555
+Node 1 Table Mem Usage ranges from 0.869749 to 0.989878, average 0.961083
+Node 1 Table Mem Usage ranges from 0.873127 to 0.990305, average 0.962525
+Node 1 Table Mem Usage ranges from 0.876307 to 0.990808, average 0.963918
+Node 1 Table Mem Usage ranges from 0.879457 to 0.991230, average 0.965293
+Node 1 Table Mem Usage ranges from 0.882519 to 0.991634, average 0.966586
+Node 1 Table Mem Usage ranges from 0.885553 to 0.992022, average 0.967840
+Node 1 Table Mem Usage ranges from 0.888456 to 0.992338, average 0.969040
+Node 1 Table Mem Usage ranges from 0.891190 to 0.992655, average 0.970199
+Node 1 Table Mem Usage ranges from 0.894121 to 0.992916, average 0.971339
+Node 1 Table Mem Usage ranges from 0.896818 to 0.993242, average 0.972412
+Node 1 Table Mem Usage ranges from 0.899563 to 0.993555, average 0.973462
+Node 1 Table Mem Usage ranges from 0.902245 to 0.993809, average 0.974483
+Node 1 Table Mem Usage ranges from 0.904779 to 0.994061, average 0.975432
+Node 1 Table Mem Usage ranges from 0.907331 to 0.994297, average 0.976365
+Node 1 Table Mem Usage ranges from 0.909721 to 0.994522, average 0.977265
+Node 1 Table Mem Usage ranges from 0.912035 to 0.994698, average 0.978134
+Node 1 Table Mem Usage ranges from 0.914324 to 0.994892, average 0.978957
+Node 1 Table Mem Usage ranges from 0.916533 to 0.995083, average 0.979753
+Node 1 Table Mem Usage ranges from 0.918659 to 0.995234, average 0.980512
+Node 1 Table Mem Usage ranges from 0.920816 to 0.995411, average 0.981246
+Node 1 Table Mem Usage ranges from 0.922905 to 0.995543, average 0.981951
+Node 1 Table Mem Usage ranges from 0.925076 to 0.995680, average 0.982627
+Node 1 Table Mem Usage ranges from 0.927187 to 0.995811, average 0.983270
+Node 1 Table Mem Usage ranges from 0.929216 to 0.995920, average 0.983888
+Node 1 Table Mem Usage ranges from 0.931072 to 0.995998, average 0.984483
+Node 1 Table Mem Usage ranges from 0.932781 to 0.996094, average 0.985051
+Node 1 Table Mem Usage ranges from 0.934563 to 0.996168, average 0.985597
+Node 1 Table Mem Usage ranges from 0.936352 to 0.996243, average 0.986128
+Node 1 Table Mem Usage ranges from 0.938133 to 0.996334, average 0.986636
+Node 1 Table Mem Usage ranges from 0.939837 to 0.996420, average 0.987108
+Node 1 Table Mem Usage ranges from 0.941498 to 0.996490, average 0.987566
+Node 1 Table Mem Usage ranges from 0.943111 to 0.996567, average 0.988005
+Vectors Added Node 1: 611.013 Seconds
+
+Node 4 Table Mem Usage ranges from 0.818300 to 0.979366, average 0.935454
+Node 4 Table Mem Usage ranges from 0.822889 to 0.980555, average 0.937939
+Node 4 Table Mem Usage ranges from 0.827517 to 0.981571, average 0.940343
+Node 4 Table Mem Usage ranges from 0.832130 to 0.982479, average 0.942685
+Node 4 Table Mem Usage ranges from 0.836370 to 0.983311, average 0.944884
+Node 4 Table Mem Usage ranges from 0.840649 to 0.984110, average 0.947014
+Node 4 Table Mem Usage ranges from 0.844692 to 0.984785, average 0.948995
+Node 4 Table Mem Usage ranges from 0.848637 to 0.985498, average 0.950926
+Node 4 Table Mem Usage ranges from 0.852432 to 0.986141, average 0.952767
+Node 4 Table Mem Usage ranges from 0.856226 to 0.986851, average 0.954559
+Node 4 Table Mem Usage ranges from 0.859844 to 0.987429, average 0.956269
+Node 4 Table Mem Usage ranges from 0.863365 to 0.988026, average 0.957934
+Node 4 Table Mem Usage ranges from 0.866951 to 0.988556, average 0.959527
+Node 4 Table Mem Usage ranges from 0.870153 to 0.989090, average 0.961035
+Node 4 Table Mem Usage ranges from 0.873568 to 0.989561, average 0.962492
+Node 4 Table Mem Usage ranges from 0.876713 to 0.990004, average 0.963890
+Node 4 Table Mem Usage ranges from 0.879904 to 0.990496, average 0.965251
+Node 4 Table Mem Usage ranges from 0.883089 to 0.990843, average 0.966576
+Node 4 Table Mem Usage ranges from 0.886148 to 0.991253, average 0.967824
+Node 4 Table Mem Usage ranges from 0.889116 to 0.991648, average 0.969045
+Node 4 Table Mem Usage ranges from 0.891958 to 0.991987, average 0.970190
+Node 4 Table Mem Usage ranges from 0.894840 to 0.992313, average 0.971315
+Node 4 Table Mem Usage ranges from 0.897715 to 0.992613, average 0.972417
+Node 4 Table Mem Usage ranges from 0.900587 to 0.992857, average 0.973464
+Node 4 Table Mem Usage ranges from 0.903328 to 0.993122, average 0.974460
+Node 4 Table Mem Usage ranges from 0.905890 to 0.993359, average 0.975410
+Node 4 Table Mem Usage ranges from 0.908453 to 0.993574, average 0.976333
+Node 4 Table Mem Usage ranges from 0.910986 to 0.993797, average 0.977250
+Node 4 Table Mem Usage ranges from 0.913260 to 0.993971, average 0.978092
+Node 4 Table Mem Usage ranges from 0.915386 to 0.994133, average 0.978904
+Node 4 Table Mem Usage ranges from 0.917690 to 0.994314, average 0.979698
+Node 4 Table Mem Usage ranges from 0.919788 to 0.994465, average 0.980445
+Node 4 Table Mem Usage ranges from 0.921860 to 0.994619, average 0.981163
+Node 4 Table Mem Usage ranges from 0.924032 to 0.994768, average 0.981869
+Node 4 Table Mem Usage ranges from 0.925907 to 0.994898, average 0.982524
+Node 4 Table Mem Usage ranges from 0.927895 to 0.995031, average 0.983160
+Node 4 Table Mem Usage ranges from 0.929827 to 0.995150, average 0.983770
+Node 4 Table Mem Usage ranges from 0.931639 to 0.995256, average 0.984352
+Node 4 Table Mem Usage ranges from 0.933489 to 0.995365, average 0.984904
+Node 4 Table Mem Usage ranges from 0.935331 to 0.995459, average 0.985441
+Node 4 Table Mem Usage ranges from 0.937136 to 0.995543, average 0.985958
+Node 4 Table Mem Usage ranges from 0.938795 to 0.995642, average 0.986459
+Node 4 Table Mem Usage ranges from 0.940489 to 0.995710, average 0.986931
+Node 4 Table Mem Usage ranges from 0.942049 to 0.995781, average 0.987380
+Node 4 Table Mem Usage ranges from 0.943708 to 0.995859, average 0.987821
+Vectors Added Node 4: 630.575 Seconds
+
+Node 0 Table Mem Usage ranges from 0.759298 to 0.963156, average 0.900536
+Batch 44 complete
+Node 0 Table Mem Usage ranges from 0.765585 to 0.965324, average 0.904540
+Batch 45 complete
+Node 0 Table Mem Usage ranges from 0.771614 to 0.967243, average 0.908350
+Batch 46 complete
+Node 0 Table Mem Usage ranges from 0.777531 to 0.969172, average 0.911991
+Batch 47 complete
+Node 0 Table Mem Usage ranges from 0.783331 to 0.970921, average 0.915540
+Batch 48 complete
+Node 0 Table Mem Usage ranges from 0.788830 to 0.972521, average 0.918840
+Batch 49 complete
+Node 0 Table Mem Usage ranges from 0.793852 to 0.974072, average 0.921980
+Batch 50 complete
+Node 0 Table Mem Usage ranges from 0.798979 to 0.975515, average 0.924980
+Batch 51 complete
+Node 0 Table Mem Usage ranges from 0.804003 to 0.976864, average 0.927873
+Batch 52 complete
+Node 0 Table Mem Usage ranges from 0.808897 to 0.978102, average 0.930668
+Batch 53 complete
+Node 0 Table Mem Usage ranges from 0.813545 to 0.979303, average 0.933323
+Batch 54 complete
+Node 0 Table Mem Usage ranges from 0.818331 to 0.980444, average 0.935924
+Batch 55 complete
+Node 0 Table Mem Usage ranges from 0.822947 to 0.981487, average 0.938418
+Batch 56 complete
+Node 0 Table Mem Usage ranges from 0.827410 to 0.982456, average 0.940816
+Batch 57 complete
+Node 0 Table Mem Usage ranges from 0.831758 to 0.983339, average 0.943122
+Batch 58 complete
+Node 0 Table Mem Usage ranges from 0.836233 to 0.984251, average 0.945343
+Batch 59 complete
+Node 0 Table Mem Usage ranges from 0.840431 to 0.985039, average 0.947447
+Batch 60 complete
+Node 0 Table Mem Usage ranges from 0.844574 to 0.985830, average 0.949477
+Batch 61 complete
+Node 0 Table Mem Usage ranges from 0.848442 to 0.986586, average 0.951367
+Batch 62 complete
+Node 0 Table Mem Usage ranges from 0.852158 to 0.987261, average 0.953202
+Batch 63 complete
+Node 0 Table Mem Usage ranges from 0.855900 to 0.987886, average 0.954970
+Batch 64 complete
+Node 0 Table Mem Usage ranges from 0.859507 to 0.988462, average 0.956680
+Batch 65 complete
+Node 0 Table Mem Usage ranges from 0.863029 to 0.989037, average 0.958315
+Batch 66 complete
+Node 0 Table Mem Usage ranges from 0.866568 to 0.989595, average 0.959940
+Batch 67 complete
+Node 0 Table Mem Usage ranges from 0.870064 to 0.990093, average 0.961452
+Batch 68 complete
+Node 0 Table Mem Usage ranges from 0.873398 to 0.990564, average 0.962910
+Batch 69 complete
+Node 0 Table Mem Usage ranges from 0.876629 to 0.990984, average 0.964299
+Batch 70 complete
+Node 0 Table Mem Usage ranges from 0.879847 to 0.991394, average 0.965653
+Batch 71 complete
+Node 0 Table Mem Usage ranges from 0.882999 to 0.991785, average 0.966959
+Batch 72 complete
+Node 0 Table Mem Usage ranges from 0.886086 to 0.992144, average 0.968231
+Batch 73 complete
+Node 0 Table Mem Usage ranges from 0.889067 to 0.992498, average 0.969433
+Batch 74 complete
+Node 0 Table Mem Usage ranges from 0.891943 to 0.992765, average 0.970584
+Batch 75 complete
+Node 0 Table Mem Usage ranges from 0.894838 to 0.993103, average 0.971715
+Batch 76 complete
+Node 0 Table Mem Usage ranges from 0.897604 to 0.993410, average 0.972774
+Batch 77 complete
+Node 0 Table Mem Usage ranges from 0.900330 to 0.993687, average 0.973797
+Batch 78 complete
+Node 0 Table Mem Usage ranges from 0.902990 to 0.993937, average 0.974797
+Batch 79 complete
+Node 0 Table Mem Usage ranges from 0.905527 to 0.994183, average 0.975759
+Batch 80 complete
+Node 0 Table Mem Usage ranges from 0.908039 to 0.994402, average 0.976689
+Batch 81 complete
+Node 0 Table Mem Usage ranges from 0.910599 to 0.994640, average 0.977590
+Batch 82 complete
+Node 0 Table Mem Usage ranges from 0.912954 to 0.994818, average 0.978466
+Batch 83 complete
+Node 0 Table Mem Usage ranges from 0.915123 to 0.995014, average 0.979277
+Batch 84 complete
+Node 0 Table Mem Usage ranges from 0.917376 to 0.995167, average 0.980049
+Batch 85 complete
+Node 0 Table Mem Usage ranges from 0.919596 to 0.995317, average 0.980817
+Batch 86 complete
+Node 0 Table Mem Usage ranges from 0.921761 to 0.995461, average 0.981539
+Batch 87 complete
+Node 0 Table Mem Usage ranges from 0.923880 to 0.995586, average 0.982241
+Batch 88 complete
+Node 2 Table Mem Usage ranges from 0.818548 to 0.979927, average 0.935443
+Node 2 Table Mem Usage ranges from 0.823038 to 0.980957, average 0.937948
+Node 2 Table Mem Usage ranges from 0.827456 to 0.982021, average 0.940347
+Node 2 Table Mem Usage ranges from 0.831800 to 0.982933, average 0.942650
+Node 2 Table Mem Usage ranges from 0.836081 to 0.983829, average 0.944870
+Node 2 Table Mem Usage ranges from 0.840319 to 0.984661, average 0.947009
+Node 2 Table Mem Usage ranges from 0.844475 to 0.985447, average 0.948998
+Node 2 Table Mem Usage ranges from 0.848425 to 0.986118, average 0.950920
+Node 2 Table Mem Usage ranges from 0.852142 to 0.986826, average 0.952765
+Node 2 Table Mem Usage ranges from 0.855946 to 0.987473, average 0.954533
+Node 2 Table Mem Usage ranges from 0.859484 to 0.988153, average 0.956257
+Node 2 Table Mem Usage ranges from 0.863022 to 0.988737, average 0.957916
+Node 2 Table Mem Usage ranges from 0.866589 to 0.989227, average 0.959501
+Node 2 Table Mem Usage ranges from 0.870012 to 0.989708, average 0.961023
+Node 2 Table Mem Usage ranges from 0.873474 to 0.990191, average 0.962495
+Node 2 Table Mem Usage ranges from 0.876751 to 0.990685, average 0.963900
+Node 2 Table Mem Usage ranges from 0.879963 to 0.991081, average 0.965245
+Node 2 Table Mem Usage ranges from 0.883078 to 0.991463, average 0.966596
+Node 2 Table Mem Usage ranges from 0.886108 to 0.991861, average 0.967861
+Node 2 Table Mem Usage ranges from 0.889067 to 0.992203, average 0.969064
+Node 2 Table Mem Usage ranges from 0.891909 to 0.992523, average 0.970230
+Node 2 Table Mem Usage ranges from 0.894615 to 0.992813, average 0.971320
+Node 2 Table Mem Usage ranges from 0.897427 to 0.993105, average 0.972407
+Node 2 Table Mem Usage ranges from 0.900129 to 0.993418, average 0.973476
+Node 2 Table Mem Usage ranges from 0.902754 to 0.993645, average 0.974477
+Node 2 Table Mem Usage ranges from 0.905350 to 0.993908, average 0.975430
+Node 2 Table Mem Usage ranges from 0.907803 to 0.994137, average 0.976350
+Node 2 Table Mem Usage ranges from 0.910162 to 0.994318, average 0.977238
+Node 2 Table Mem Usage ranges from 0.912443 to 0.994532, average 0.978102
+Node 2 Table Mem Usage ranges from 0.914795 to 0.994722, average 0.978926
+Node 2 Table Mem Usage ranges from 0.916893 to 0.994862, average 0.979702
+Node 2 Table Mem Usage ranges from 0.919041 to 0.995026, average 0.980459
+Node 2 Table Mem Usage ranges from 0.921104 to 0.995178, average 0.981183
+Node 2 Table Mem Usage ranges from 0.923206 to 0.995281, average 0.981884
+Node 2 Table Mem Usage ranges from 0.925209 to 0.995415, average 0.982550
+Node 2 Table Mem Usage ranges from 0.927261 to 0.995529, average 0.983194
+Node 2 Table Mem Usage ranges from 0.929188 to 0.995678, average 0.983812
+Node 2 Table Mem Usage ranges from 0.931076 to 0.995777, average 0.984411
+Node 2 Table Mem Usage ranges from 0.932817 to 0.995880, average 0.984975
+Node 2 Table Mem Usage ranges from 0.934620 to 0.995951, average 0.985522
+Node 2 Table Mem Usage ranges from 0.936419 to 0.996029, average 0.986055
+Node 2 Table Mem Usage ranges from 0.938055 to 0.996111, average 0.986552
+Node 2 Table Mem Usage ranges from 0.939768 to 0.996172, average 0.987026
+Node 2 Table Mem Usage ranges from 0.941433 to 0.996241, average 0.987494
+Node 2 Table Mem Usage ranges from 0.942940 to 0.996313, average 0.987925
+Vectors Added Node 2: 658.191 Seconds
+
+Node 3 Table Mem Usage ranges from 0.817612 to 0.980110, average 0.935650
+Node 3 Table Mem Usage ranges from 0.822199 to 0.981056, average 0.938139
+Node 3 Table Mem Usage ranges from 0.826935 to 0.982037, average 0.940553
+Node 3 Table Mem Usage ranges from 0.831442 to 0.982971, average 0.942866
+Node 3 Table Mem Usage ranges from 0.835752 to 0.983929, average 0.945091
+Node 3 Table Mem Usage ranges from 0.840090 to 0.984783, average 0.947216
+Node 3 Table Mem Usage ranges from 0.844305 to 0.985563, average 0.949206
+Node 3 Table Mem Usage ranges from 0.848095 to 0.986328, average 0.951117
+Node 3 Table Mem Usage ranges from 0.851839 to 0.987032, average 0.952975
+Node 3 Table Mem Usage ranges from 0.855618 to 0.987654, average 0.954738
+Node 3 Table Mem Usage ranges from 0.859331 to 0.988251, average 0.956453
+Node 3 Table Mem Usage ranges from 0.862700 to 0.988846, average 0.958105
+Node 3 Table Mem Usage ranges from 0.866209 to 0.989393, average 0.959700
+Node 3 Table Mem Usage ranges from 0.869568 to 0.989912, average 0.961225
+Node 3 Table Mem Usage ranges from 0.872831 to 0.990335, average 0.962689
+Node 3 Table Mem Usage ranges from 0.876196 to 0.990738, average 0.964101
+Node 3 Table Mem Usage ranges from 0.879375 to 0.991165, average 0.965428
+Node 3 Table Mem Usage ranges from 0.882435 to 0.991590, average 0.966752
+Node 3 Table Mem Usage ranges from 0.885464 to 0.991947, average 0.967994
+Node 3 Table Mem Usage ranges from 0.888365 to 0.992268, average 0.969204
+Node 3 Table Mem Usage ranges from 0.891302 to 0.992588, average 0.970368
+Node 3 Table Mem Usage ranges from 0.894115 to 0.992912, average 0.971482
+Node 3 Table Mem Usage ranges from 0.896881 to 0.993225, average 0.972569
+Node 3 Table Mem Usage ranges from 0.899553 to 0.993464, average 0.973614
+Node 3 Table Mem Usage ranges from 0.902153 to 0.993698, average 0.974603
+Node 3 Table Mem Usage ranges from 0.904833 to 0.993967, average 0.975576
+Node 3 Table Mem Usage ranges from 0.907431 to 0.994204, average 0.976506
+Node 3 Table Mem Usage ranges from 0.909819 to 0.994440, average 0.977394
+Node 3 Table Mem Usage ranges from 0.912170 to 0.994656, average 0.978259
+Node 3 Table Mem Usage ranges from 0.914400 to 0.994865, average 0.979071
+Node 3 Table Mem Usage ranges from 0.916548 to 0.995033, average 0.979855
+Node 3 Table Mem Usage ranges from 0.918686 to 0.995218, average 0.980612
+Node 3 Table Mem Usage ranges from 0.920792 to 0.995399, average 0.981332
+Node 3 Table Mem Usage ranges from 0.922905 to 0.995523, average 0.982031
+Node 3 Table Mem Usage ranges from 0.924885 to 0.995659, average 0.982691
+Node 3 Table Mem Usage ranges from 0.926836 to 0.995785, average 0.983337
+Node 3 Table Mem Usage ranges from 0.928719 to 0.995882, average 0.983949
+Node 3 Table Mem Usage ranges from 0.930574 to 0.995987, average 0.984550
+Node 3 Table Mem Usage ranges from 0.932394 to 0.996082, average 0.985105
+Node 3 Table Mem Usage ranges from 0.934256 to 0.996193, average 0.985641
+Node 3 Table Mem Usage ranges from 0.936068 to 0.996277, average 0.986174
+Node 3 Table Mem Usage ranges from 0.937752 to 0.996355, average 0.986679
+Node 3 Table Mem Usage ranges from 0.939394 to 0.996418, average 0.987155
+Node 3 Table Mem Usage ranges from 0.941074 to 0.996508, average 0.987619
+Node 3 Table Mem Usage ranges from 0.942617 to 0.996567, average 0.988051
+Vectors Added Node 3: 753.738 Seconds
+
+Node 0 Table Mem Usage ranges from 0.925932 to 0.995729, average 0.982931
+Batch 89 complete
+Node 0 Table Mem Usage ranges from 0.927877 to 0.995846, average 0.983552
+Batch 90 complete
+Node 0 Table Mem Usage ranges from 0.929747 to 0.995935, average 0.984163
+Batch 91 complete
+Node 0 Table Mem Usage ranges from 0.931593 to 0.996025, average 0.984747
+Batch 92 complete
+Node 0 Table Mem Usage ranges from 0.933329 to 0.996128, average 0.985310
+Batch 93 complete
+Node 0 Table Mem Usage ranges from 0.935205 to 0.996239, average 0.985847
+Batch 94 complete
+Node 0 Table Mem Usage ranges from 0.936974 to 0.996344, average 0.986385
+Batch 95 complete
+Node 0 Table Mem Usage ranges from 0.938747 to 0.996437, average 0.986900
+Batch 96 complete
+Node 0 Table Mem Usage ranges from 0.940407 to 0.996525, average 0.987383
+Batch 97 complete
+Node 0 Table Mem Usage ranges from 0.941984 to 0.996611, average 0.987836
+Batch 98 complete
+Node 0 Table Mem Usage ranges from 0.943491 to 0.996702, average 0.988271
+Batch 99 complete
+Computing Query Hashes Node 4...
+Vectors Added Node 0: 775.074 Seconds
+
+Computing Query Hashes Node 2...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 3...
+Query Hashes Computed Node 1: 0.0121882 Seconds
+
+Query Hashes Computed Node 4: 0.0118229 Seconds
+
+Query Hashes Computed Node 2: 0.02123 Seconds
+
+Query Hashes Computed Node 0: 0.0216346 Seconds
+
+Extracting Top K (TREE) Node 0...
+Extracting Top K (TREE) Node 2...
+Extracting Top K (TREE) Node 4...
+Extracting Top K (TREE) Node 1...
+Query Hashes Computed Node 3: 0.0216364 Seconds
+
+Extracting Top K (TREE) Node 3...
+Top K (TREE) Extracted Node 3: 2.43001 Seconds
+
+Top K (TREE) Extracted Node 1: 3.55496 Seconds
+
+Top K (TREE) Extracted Node 2: 4.28991 Seconds
+
+Top K (TREE) Extracted Node 4: 5.00901 Seconds
+
+Top K (TREE) Extracted Node 0: 5.40891 Seconds
+

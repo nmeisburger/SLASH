@@ -1,0 +1,140 @@
+[bc12u11n1:61906] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u11n2:04720] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u29n4:48302] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u27n4:62619] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+[bc12u13n3:78494] mca_base_component_repository_open: unable to open mca_pmix_s1: libslurm.so.29: cannot open shared object file: No such file or directory (ignored)
+
+=================
+== Webspam
+=================
+
+9900 Vectors, 100 Queries
+Nodes: 5
+Tables: 24
+RangePow: 14
+Reservoir Size: 256
+Hashes: 8
+CMS Bucket Size: 1024
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+LSH Initialized in Node 3
+LSH Initialized in Node 1
+LSH Initialized in Node 4
+LSH Initialized in Node 2
+CMS Initialized in Node 2
+CMS Initialized in Node 0
+CMS Initialized in Node 4
+CMS Initialized in Node 3
+CMS Initialized in Node 1
+LSH Reservoir Initialized in Node 0
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 3
+FLASH Controller Initialized in Node 0
+[readSparse]
+LSH Reservoir Initialized in Node 1
+FLASH Controller Initialized in Node 4
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 3
+FLASH Controller Initialized in Node 2
+[readSparse] Read 353581 numbers, 100 vectors. 
+Adding Vectors Node 1...
+Adding Vectors Node 0...
+Adding Vectors Node 4...
+Adding Vectors Node 3...
+[readSparse]
+Adding Vectors Node 2...
+[readSparse]
+[readSparse]
+[readSparse]
+[readSparse]
+[readSparse] Read 2970743 numbers, 800 vectors. 
+Node 1 Table Mem Usage ranges from 0.031311 to 0.038696, average 0.035088
+[readSparse]
+[readSparse] Read 2978879 numbers, 800 vectors. 
+Node 0 Table Mem Usage ranges from 0.030090 to 0.037537, average 0.034269
+[readSparse]
+[readSparse] Read 3097700 numbers, 800 vectors. 
+Node 2 Table Mem Usage ranges from 0.031372 to 0.038269, average 0.034386
+[readSparse]
+[readSparse] Read 2923324 numbers, 800 vectors. 
+[readSparse] Read 2944763 numbers, 800 vectors. 
+Node 4 Table Mem Usage ranges from 0.032532 to 0.039246, average 0.035751
+[readSparse]
+Node 3 Table Mem Usage ranges from 0.032104 to 0.037781, average 0.035301
+[readSparse]
+[readSparse] Read 4407268 numbers, 1180 vectors. 
+[readSparse] Read 4409398 numbers, 1180 vectors. 
+Node 1 Table Mem Usage ranges from 0.067200 to 0.082458, average 0.075350
+Vectors Added Node 1: 2.28745 Seconds
+
+Node 0 Table Mem Usage ranges from 0.066833 to 0.083923, average 0.075600
+Vectors Added Node 0: 2.29215 Seconds
+
+[readSparse] Read 4294119 numbers, 1180 vectors. 
+Node 2 Table Mem Usage ranges from 0.066956 to 0.081909, average 0.073975
+Vectors Added Node 2: 2.41914 Seconds
+
+[readSparse] Read 4346101 numbers, 1180 vectors. 
+Node 4 Table Mem Usage ranges from 0.066589 to 0.083374, average 0.075170
+Vectors Added Node 4: 2.97526 Seconds
+
+[readSparse] Read 4481842 numbers, 1180 vectors. 
+Node 3 Table Mem Usage ranges from 0.068115 to 0.081665, average 0.075640
+Vectors Added Node 3: 3.06408 Seconds
+
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 2...
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 4...
+Computing Query Hashes Node 3...
+Query Hashes Computed Node 1: 0.013174 Seconds
+
+Query Hashes Computed Node 2: 0.0130923 Seconds
+
+Query Hashes Computed Node 0: 0.0131152 Seconds
+
+Query Hashes Computed Node 4: 0.013096 Seconds
+
+Extracting Top K (CMS) Node 0...
+Extracting Top K (CMS) Node 4...
+Extracting Top K (CMS) Node 1...
+Extracting Top K (CMS) Node 2...
+Query Hashes Computed Node 3: 0.0243558 Seconds
+
+Extracting Top K (CMS) Node 3...
+Top K Extracted Node 1: 0.0188195 Seconds
+
+Top K Extracted Node 2: 0.0504377 Seconds
+
+Top K Extracted Node 0: 0.0522845 Seconds
+
+Top K Extracted Node 4: 0.0511085 Seconds
+
+Top K Extracted Node 3: 0.049288 Seconds
+
+[readSparse]
+[readSparse] Read 37207718 numbers, 10000 vectors. 
+
+
+================================
+TOP K CMS
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.722 
+S@10 = 0.669 
+S@20 = 0.655 
+S@30 = 0.648 
+S@32 = 0.646 
+S@40 = 0.641 
+S@50 = 0.634 
+S@64 = 0.626 
+S@100 = 0.610 
+S@128 = 0.600 
+1 10 20 30 32 40 50 64 100 128 
+0.722 0.669 0.655 0.648 0.646 0.641 0.634 0.626 0.610 0.600 
+Similarity Metric Computed
+Evaluation Complete
