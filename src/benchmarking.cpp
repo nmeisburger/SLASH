@@ -42,7 +42,7 @@ void showConfig(std::string dataset, unsigned int numVectors, unsigned int queri
  * WEBSPAM TESTING FUNCTION
  */
 
-void webspam() {
+void testing() {
     /* ===============================================================
   MPI Initialization
   */
@@ -182,22 +182,21 @@ void webspam() {
     delete[] outputs;
 }
 
-/*
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
- * KDD12
+/**
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
+ * Eval With Similarity
  */
 
-void kdd12() {
+void evalWithSimilarity() {
     /* ===============================================================
   MPI Initialization
   */
@@ -207,7 +206,7 @@ void kdd12() {
     MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
     MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
     if (myRank == 0) {
-        showConfig("KDD12", NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
+        showConfig(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
                    RESERVOIR_SIZE, NUM_HASHES, CMS_HASHES, CMS_BUCKET_SIZE);
     }
 
@@ -382,7 +381,19 @@ void kdd12() {
     delete[] bruteforceOutputs;
 }
 
-void kdd12FileOutput() {
+/**
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ * Eval with File Output
+ */
+void evalWithFileOutput() {
     /* ===============================================================
   MPI Initialization
   */
@@ -392,7 +403,7 @@ void kdd12FileOutput() {
     MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
     MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
     if (myRank == 0) {
-        showConfig("KDD12", NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
+        showConfig(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
                    RESERVOIR_SIZE, NUM_HASHES, CMS_HASHES, CMS_BUCKET_SIZE);
     }
 
@@ -672,33 +683,34 @@ void wikiDump() {
 }
 
 /*
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
- * UNIT TESTING FUNCTION
+ * CRITEO
+ * CRITEO
+ * CRITEO
+ * CRITEO
+ * CRITEO
+ * CRITEO
+ * CRITEO
+ * CRITEO
+ * CRITEO
  */
 
-void unitTesting() {
+void criteo() {
     /* ===============================================================
-  MPI Initialization
-  */
+    MPI Initialization
+    */
     int provided;
     MPI_Init_thread(0, 0, MPI_THREAD_FUNNELED, &provided);
     int myRank, worldSize;
     MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
     MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
+    if (myRank == 0) {
+        showConfig("Criteo", NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
+                   RESERVOIR_SIZE, NUM_HASHES, CMS_HASHES, CMS_BUCKET_SIZE);
+    }
 
     /* ===============================================================
-  Data Structure Initialization
-  */
+    Data Structure Initialization
+    */
     LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
     MPI_Barrier(MPI_COMM_WORLD);
@@ -718,46 +730,32 @@ void unitTesting() {
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
-  Reading Data
-  */
-    if (myRank == 0) {
-        std::cout << "\nReading Data Node 0..." << std::endl;
-    }
-    auto start = std::chrono::system_clock::now();
-
-    // control->allocateData(BASEFILE);
-    MPI_Barrier(MPI_COMM_WORLD);
-    auto end = std::chrono::system_clock::now();
-
-    std::chrono::duration<double> elapsed = end - start;
-    if (myRank == 0) {
-        std::cout << "Data Read Node 0: " << elapsed.count() << " Seconds\n" << std::endl;
-    }
-
-    /* ===============================================================
-  Partitioning Query Between Nodes
-  */
+    Partitioning Query Between Nodes
+    */
     control->allocateQuery(BASEFILE);
+
     MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
-  Adding Vectors
-  */
+    Adding Vectors
+    */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     start = std::chrono::system_clock::now();
-    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
+    size_t offset = NUM_QUERY_VECTORS;
+    size_t batchSize = NUM_DATA_VECTORS / 100;
+    for (size_t i = 0; i < 100; i++) {
+        control->add(BASEFILE, batchSize, offset + i * batchSize, NUM_BATCHES, BATCH_PRINT);
+    }
     end = std::chrono::system_clock::now();
     elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
-    control->printTables();
-
     MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
-  Hashing Query Vectors
-  */
+    Hashing Query Vectors
+    */
     std::cout << "Computing Query Hashes Node " << myRank << "..." << std::endl;
     start = std::chrono::system_clock::now();
     control->hashQuery();
@@ -766,52 +764,40 @@ void unitTesting() {
     std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
-    // control->checkQueryHashes();
-
     MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
-  Extracting Reservoirs and Preforming Top-K selection
-  */
-    unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    Extracting Reservoirs and Preforming Top-K selection
+    */
+    unsigned int *treeOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
     start = std::chrono::system_clock::now();
-    std::cout << "Extracting Top K (CMS) Node " << myRank << "..." << std::endl;
-    control->topKCMSAggregationTree(TOPK, outputs, 0);
-
-    for (int i = 0; i < NUM_QUERY_VECTORS; i++) {
-        printf("Q %d: ", i);
-        for (int k = 0; k < TOPK; k++) {
-            printf("%d ", outputs[i * TOPK + k]);
-        }
-        printf("\n");
-    }
-    // control->topKBruteForceAggretation(TOPK, outputs);
+    std::cout << "Extracting Top K (TREE) Node " << myRank << "..." << std::endl;
+    control->topKCMSAggregationTree(TOPK, treeOutputs, 0);
     end = std::chrono::system_clock::now();
     elapsed = end - start;
-    std::cout << "Top K Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
+    std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
-    // if (myRank == 0) {
-    //     printf("Overall Top K\n");
-    //     for (int k = 0; k < TOPK; k++) {
-    //         printf("\tK %d: %d\n", k, outputs[k]);
-    //     }
-    // }
+    std::string filenameTree("WikiDump-");
+    filenameTree.append(std::to_string(worldSize));
+    if (myRank == 0) {
+        writeTopK(filenameTree, NUM_QUERY_VECTORS, TOPK, treeOutputs);
+    }
 
     MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
-  De-allocating Memory
-  */
-    delete[] outputs;
+    De-allocating Data Structures in Memory
+    */
     delete control;
     delete reservoir;
     delete lsh;
     delete cms;
+    delete[] treeOutputs;
 
     /* ===============================================================
-  MPI Closing
-  */
+    MPI Closing
+    */
     MPI_Finalize();
 }
 

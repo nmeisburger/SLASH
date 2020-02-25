@@ -3,10 +3,13 @@
 
 #include <string>
 
+// #define FILE_OUTPUT
+// #define EVAL_SIM
 // #define UNIT_TESTING
-#define WEBSPAM
+// #define WEBSPAM
 // #define KDD12
 // #define WIKIDUMP
+#define CRITEO
 
 #ifdef WEBSPAM
 
@@ -71,12 +74,7 @@
 #define RESERVOIR_SIZE 256
 #define ALLOC_FRACTION 1
 
-#define QUERY_PROBES 1
-#define HASHING_PROBES 1
-
 #define DIMENSION 15
-// #define NUM_DATA_VECTORS			1000000
-// #define NUM_QUERY_VECTORS			100
 #define NUM_DATA_VECTORS 140000000
 #define NUM_QUERY_VECTORS 10000
 #define MAX_RESERVOIR_RAND 35000
@@ -86,7 +84,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/kdd12/kdd12"
+#define BASEFILE "../../dataset/criteo/criteo_tb"
 #define GTRUTHINDICE ""
 #define GTRUTHDIST ""
 
@@ -107,9 +105,6 @@
 #define RESERVOIR_SIZE 256
 #define ALLOC_FRACTION 1
 
-#define QUERY_PROBES 1
-#define HASHING_PROBES 1
-
 #define DIMENSION 265
 #define NUM_DATA_VECTORS 30000000
 #define NUM_QUERY_VECTORS 10000
@@ -126,7 +121,39 @@
 
 #endif
 
-#ifdef UNIT_TESTING
+#ifdef CRITEO
+
+#define SPARSE_DATASET
+
+#define NUM_BATCHES 50
+#define BATCH_PRINT 50
+
+#define NUM_HASHES 4
+#define RANGE_POW 19
+#define RANGE_ROW_U 19
+
+#define NUM_TABLES 32
+#define RESERVOIR_SIZE 256
+#define ALLOC_FRACTION 1
+
+#define DIMENSION 265
+#define NUM_DATA_VECTORS 40000000
+// #define NUM_DATA_VECTORS 4000000000
+#define NUM_QUERY_VECTORS 10000
+#define MAX_RESERVOIR_RAND 35000
+#define TOPK 128
+#define AVAILABLE_TOPK 1024
+
+#define CMS_HASHES 4
+#define CMS_BUCKET_SIZE 2048
+
+#define BASEFILE "../../dataset/wiki/wiki_hashes"
+#define GTRUTHINDICE ""
+#define GTRUTHDIST ""
+
+#endif
+
+#ifdef TESTING
 
 #define SPARSE_DATASET
 
@@ -161,15 +188,15 @@
 
 #endif
 
-void webspam();
-void kdd12();
-void kdd12FileOutput();
+void testing();
+void evalWithSimilarity();
+void evalWithFileOutput();
 void wikiDump();
+void criteo();
 void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
                 int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize,
                 bool cms, bool tree);
 void evaluateResults(std::string resultFile);
-void unitTesting();
 
 #if !defined(DENSE_DATASET)
 #define SAMFACTOR 24 // DUMMY.

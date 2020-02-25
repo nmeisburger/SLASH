@@ -18,19 +18,18 @@
 
 int main() {
 
-    #ifdef UNIT_TESTING
-        unitTesting();
-    #endif
-    #ifdef WEBSPAM
-        webspam();
-    #endif
-    #ifdef KDD12
-        kdd12FileOutput();
-    #endif
-    #ifdef WIKIDUMP
-        wikiDump();
-    #endif
-    
-        // evaluateResults("./Tree-Nodes-4");
-        return 0;
+#ifdef FILE_OUTPUT
+    evalWithFileOutput();
+#endif
+#ifdef EVAL_SIM
+    evalWithSimilarity();
+#endif
+#ifdef WIKIDUMP
+    wikiDump();
+#endif
+#ifdef CRITEO
+    criteo();
+#endif
+
+    return 0;
 }
