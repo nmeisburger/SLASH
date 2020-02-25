@@ -13,14 +13,14 @@ bool sort_by_key(const pair<unsigned int, unsigned int> a,
     return a.first < b.first;
 }
 
-class Unigram_Hasher {
+class NGram_Hasher {
   private:
     hash<string> hasher;
     unsigned int _ngrams;
     unsigned int _log_2_range;
 
   public:
-    Unigram_Hasher(unsigned int ngrams, unsigned int log_2_range) {
+    NGram_Hasher(unsigned int ngrams, unsigned int log_2_range) {
         _ngrams = ngrams;
         _log_2_range = log_2_range;
     }
@@ -50,7 +50,7 @@ class Unigram_Hasher {
         input.open(input_filename);
         ofstream output;
         output.open(output_filename);
-        unsigned int n_lines;
+        unsigned int n_lines = 0;
         unsigned int max_length = 0;
         unsigned int total_dim = 0;
 
@@ -59,10 +59,10 @@ class Unigram_Hasher {
         string line;
         while (getline(input, line)) {
             unsigned int id_loc = line.find_first_of(":");
-            if (id_loc == string::npos || n_lines < offset) {
+            n_lines++;
+            if (id_loc == string::npos || n_lines <= offset) {
                 continue;
             }
-            n_lines++;
             string id = line.substr(0, id_loc);
             hash_line(line.substr(id_loc, line.length() - id_loc), line_hashes);
             unsigned int line_length = line_hashes->size();
@@ -90,7 +90,7 @@ class Unigram_Hasher {
 };
 
 int main() {
-    Unigram_Hasher h(5, 20);
+    NGram_Hasher h(5, 20);
 
     h.hash_file("wiki_paragraphs", "wiki_hashes", 0);
 
