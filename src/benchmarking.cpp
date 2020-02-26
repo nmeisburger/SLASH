@@ -90,9 +90,11 @@ void testing() {
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
-    control->add(BASEFILE, 4000, 100, NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, 5000, 300, NUM_BATCHES, BATCH_PRINT);
 
-    control->add(BASEFILE, 5900, 4100, NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, 5000, 5300, NUM_BATCHES, BATCH_PRINT);
+
+    control->add(BASEFILE, 5000, 10300, NUM_BATCHES, BATCH_PRINT);
 
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = end - start;

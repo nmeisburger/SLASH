@@ -5,11 +5,12 @@
 
 // #define FILE_OUTPUT
 // #define EVAL_SIM
+#define TEST_RUN
 // #define UNIT_TESTING
-// #define WEBSPAM
+#define WEBSPAM
 // #define KDD12
 // #define WIKIDUMP
-#define CRITEO
+// #define CRITEO
 
 #ifdef WEBSPAM
 
@@ -36,8 +37,8 @@
 #define DIMENSION 4000
 // #define NUM_DATA_VECTORS 340000
 // #define NUM_QUERY_VECTORS 10000
-#define NUM_DATA_VECTORS 9900
-#define NUM_QUERY_VECTORS 100
+#define NUM_DATA_VECTORS 15000
+#define NUM_QUERY_VECTORS 300
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024

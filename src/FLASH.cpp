@@ -18,8 +18,11 @@
 
 int main() {
 
+#ifdef TEST_RUN
+    testing()
+#endif
 #ifdef FILE_OUTPUT
-    evalWithFileOutput();
+        evalWithFileOutput();
 #endif
 #ifdef EVAL_SIM
     evalWithSimilarity();
