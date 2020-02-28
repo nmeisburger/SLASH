@@ -234,20 +234,6 @@ void evalWithSimilarity() {
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
-  Reading Data
-  */
-    std::cout << "\nReading Data Node " << myRank << "..." << std::endl;
-    auto start = std::chrono::system_clock::now();
-
-    // control->allocateData(BASEFILE);
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    auto end = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
-    std::cout << "Data Read Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    /* ===============================================================
   Partitioning Query Between Nodes
   */
 
@@ -259,10 +245,10 @@ void evalWithSimilarity() {
   Adding Vectors
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
-    start = std::chrono::system_clock::now();
+    auto start = std::chrono::system_clock::now();
     control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
@@ -363,7 +349,9 @@ void evalWithSimilarity() {
                          sparseMarkers, linearOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
                          nList, nCnt);
 
-        std::cout << "\n\n================================\nTOP K BRUTEFORCE\n" << std::endl;
+        std::cout << "\n\n================================\nTOP K "
+                     "BRUTEFORCE\n"
+                  << std::endl;
 
         similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
                          sparseMarkers, bruteforceOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
@@ -754,12 +742,12 @@ void criteo() {
     }
     for (size_t i = 0; i < 100; i++) {
         control->add(BASEFILE, batchSize, offset + i * batchSize, NUM_BATCHES, BATCH_PRINT);
-	if (i  % 5 == 0) {
-	    MPI_Barrier(MPI_COMM_WORLD);
+        if (i % 5 == 0) {
+            MPI_Barrier(MPI_COMM_WORLD);
             if (myRank == 0) {
-                std::cout << "Batch Complete: " << i << std::endl;	
+                std::cout << "Batch Complete: " << i << std::endl;
             }
-	}
+        }
     }
     // control->add(BASEFILE, 1000000, 0, 10, 10);
     auto end = std::chrono::system_clock::now();
