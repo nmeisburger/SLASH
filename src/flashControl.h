@@ -7,6 +7,7 @@
 #include "dataset.h"
 #include "mpi.h"
 #include <algorithm>
+#include <chrono>
 #include <iostream>
 #include <string>
 

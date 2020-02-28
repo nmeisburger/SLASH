@@ -78,8 +78,15 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
     myDataVals = (float *)realloc(myDataVals, 4 * myNumDataVectors * _dimension);
     myDataMarkers = (unsigned int *)realloc(myDataMarkers, 4 * myNumDataVectors + 4);
 
+    auto start = std::chrono::system_clock::now();
+
     readSparse(filename, myDataVectorOffset, myNumDataVectors, myDataIndices, myDataVals,
                myDataMarkers, myNumDataVectors * _dimension);
+
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    std::cout << "Vectors Read Node " << _myRank << ": " << elapsed.count() << " Seconds\n"
+              << std::endl;
 
     unsigned int batchSize = myNumDataVectors / numBatches;
     for (unsigned int batch = 0; batch < numBatches; batch++) {
