@@ -19,7 +19,7 @@
 int main() {
 
 #ifdef TEST_RUN
-    testing()
+    testing();
 #endif
 #ifdef FILE_OUTPUT
         evalWithFileOutput();
