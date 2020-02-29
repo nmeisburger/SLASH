@@ -27,6 +27,8 @@ class Splitter {
 
         char *buffer = new char[split_size];
 
+	printf("Starting Process\nBuffer Created\n");
+
         for (unsigned int i = 0; i < num_splits; i++) {
             unsigned long long int len = fread(buffer, 1, split_size, file);
             if (len != split_size) {
@@ -38,6 +40,8 @@ class Splitter {
             std::string output_file(filename);
 
             output_file.append(std::to_string(i));
+
+	    std::cout << "Creating File " << i << " " << output_file << std::endl;
 
             FILE *output = fopen(output_file.c_str(), "w");
 
@@ -64,8 +68,10 @@ int main() {
 
     char x[] = DATAFILE;
 
-    Splitter *splitter = new Splitter(3, 300, x);
+    Splitter *splitter = new Splitter(NUM_PARTITIONS, PARTITION_SIZE, x);
 
+    printf("Splitter created\n");
+	
     splitter->split();
 
     return 0;
