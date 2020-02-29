@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 
+#define NUM_PARTITIONS 10
+#define PARTITION_SIZE 30000000000
+#define DATAFILE "../../../dataset/criteo/criteo_tb"
+
 class Splitter {
 
   private:
@@ -58,7 +62,7 @@ class Splitter {
 
 int main() {
 
-    char x[] = "../kdd12/kdd12";
+    char x[] = DATAFILE;
 
     Splitter *splitter = new Splitter(3, 300, x);
 
