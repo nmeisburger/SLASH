@@ -1,0 +1,84 @@
+
+=================
+== Criteo
+=================
+
+LSH Initialized in Node 4
+LSH Initialized in Node 6
+LSH Initialized in Node 8
+LSH Initialized in Node 5
+LSH Initialized in Node 9
+LSH Initialized in Node 2
+LSH Initialized in Node 7
+LSH Initialized in Node 1
+LSH Initialized in Node 3
+100000000 Vectors, 10000 Queries
+Nodes: 10
+Tables: 24
+RangePow: 19
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 1024
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+CMS Initialized in Node 6
+CMS Initialized in Node 9
+CMS Initialized in Node 8
+CMS Initialized in Node 7
+CMS Initialized in Node 5
+CMS Initialized in Node 1
+CMS Initialized in Node 4
+CMS Initialized in Node 2
+CMS Initialized in Node 0
+CMS Initialized in Node 3
+LSH Reservoir Initialized in Node 6
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 1
+LSH Reservoir Initialized in Node 8
+LSH Reservoir Initialized in Node 7
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 9
+LSH Reservoir Initialized in Node 3
+LSH Reservoir Initialized in Node 5
+LSH Reservoir Initialized in Node 0
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 4
+FLASH Controller Initialized in Node 8
+FLASH Controller Initialized in Node 2
+FLASH Controller Initialized in Node 5
+FLASH Controller Initialized in Node 9
+FLASH Controller Initialized in Node 7
+FLASH Controller Initialized in Node 6
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 3
+Adding Vectors Node 6...
+Adding Vectors Node 9...
+Adding Vectors Node 4...
+Adding Vectors Node 2...
+Adding Vectors Node 7...
+Adding Vectors Node 5...
+Adding Vectors Node 0...
+<<Reading from file ../../dataset/criteo/criteo_tb0 in node 0>>
+Adding Vectors Node 8...
+Adding Vectors Node 1...
+Adding Vectors Node 3...
+<<Reading from file ../../dataset/criteo/criteo_tb4 in node 4>>
+<<Reading from file ../../dataset/criteo/criteo_tb2 in node 2>>
+<<Reading from file ../../dataset/criteo/criteo_tb7 in node 7>>
+<<Reading from file ../../dataset/criteo/criteo_tb8 in node 8>>
+<<Reading from file ../../dataset/criteo/criteo_tb6 in node 6>>
+<<Reading from file ../../dataset/criteo/criteo_tb1 in node 1>>
+<<Reading from file ../../dataset/criteo/criteo_tb9 in node 9>>
+<<Reading from file ../../dataset/criteo/criteo_tb5 in node 5>>
+<<Reading from file ../../dataset/criteo/criteo_tb3 in node 3>>
+Read Complete: 112.560377s 10000000 vectors, total dim: 389998007
+Batch 0 Complete node 6
+Read Complete: 105.817970s 10000000 vectors, total dim: 389997994
+Batch 0 Complete node 8
+Read Complete: 109.576613s 10000000 vectors, total dim: 389997877
+Batch 0 Complete node 7
+Read Complete: 106.916410s 10000000 vectors, total dim: 389997983
+Batch 0 Complete node 9
+Read Complete: 130.154520s 10000000 vectors, total dim: 389998175
+Batch 0 Complete node 2
