@@ -1,0 +1,15 @@
+Splitter created
+Starting Process
+Buffer Created
+
+Creating File 0 ../../../dataset/criteo/criteo_tb0
+Creating File 1 ../../../dataset/criteo/criteo_tb1
+Creating File 2 ../../../dataset/criteo/criteo_tb2
+Creating File 3 ../../../dataset/criteo/criteo_tb3
+Creating File 4 ../../../dataset/criteo/criteo_tb4
+Creating File 5 ../../../dataset/criteo/criteo_tb5
+Creating File 6 ../../../dataset/criteo/criteo_tb6
+Creating File 7 ../../../dataset/criteo/criteo_tb7
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 397245 ON bc6u23n4 CANCELLED AT 2020-02-29T16:21:32 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 397245.0 ON bc6u23n4 CANCELLED AT 2020-02-29T16:21:32 DUE TO TIME LIMIT ***

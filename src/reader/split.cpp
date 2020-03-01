@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 #define NUM_PARTITIONS 10
 #define PARTITION_SIZE 30000000000
@@ -20,6 +21,9 @@ class Splitter {
     }
 
     void split() {
+
+	std::string convert[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
         FILE *file = fopen(filename, "r");
         if (file == NULL) {
             return;
@@ -39,7 +43,7 @@ class Splitter {
 
             std::string output_file(filename);
 
-            output_file.append(std::to_string(i));
+            output_file.append(convert[i]);
 
             std::cout << "Creating File " << i << " " << output_file << std::endl;
 
