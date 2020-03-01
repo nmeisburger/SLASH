@@ -82,3 +82,273 @@ Read Complete: 106.916410s 10000000 vectors, total dim: 389997983
 Batch 0 Complete node 9
 Read Complete: 130.154520s 10000000 vectors, total dim: 389998175
 Batch 0 Complete node 2
+Read Complete: 128.956081s 10000000 vectors, total dim: 389998483
+Batch 0 Complete node 1
+Read Complete: 127.849008s 10000000 vectors, total dim: 389998349
+Batch 0 Complete node 4
+Read Complete: 134.094777s 10000000 vectors, total dim: 389998255
+Batch 0 Complete node 5
+Read Complete: 128.073233s 10000000 vectors, total dim: 389998686
+Batch 0 Complete node 0
+Read Complete: 143.133583s 10000000 vectors, total dim: 389998045
+Batch 0 Complete node 3
+Read Complete: 107.859469s 10000000 vectors, total dim: 389997909
+Batch 1 Complete node 6
+Read Complete: 100.052537s 10000000 vectors, total dim: 389997946
+Batch 1 Complete node 8
+Read Complete: 101.193007s 10000000 vectors, total dim: 389997879
+Batch 1 Complete node 7
+Read Complete: 120.489852s 10000000 vectors, total dim: 389998270
+Batch 1 Complete node 2
+Read Complete: 107.224456s 10000000 vectors, total dim: 389997898
+Batch 1 Complete node 9
+Read Complete: 126.609278s 10000000 vectors, total dim: 389998417
+Batch 1 Complete node 1
+Read Complete: 125.879309s 10000000 vectors, total dim: 389997970
+Batch 1 Complete node 4
+Read Complete: 136.016340s 10000000 vectors, total dim: 389998151
+Batch 1 Complete node 5
+Read Complete: 103.625062s 10000000 vectors, total dim: 389997798
+Batch 2 Complete node 6
+Read Complete: 129.377724s 10000000 vectors, total dim: 389998663
+Batch 1 Complete node 0
+Read Complete: 135.807149s 10000000 vectors, total dim: 389998052
+Batch 1 Complete node 3
+Read Complete: 98.334587s 10000000 vectors, total dim: 389997820
+Batch 2 Complete node 7
+Read Complete: 107.806925s 10000000 vectors, total dim: 389998202
+Batch 2 Complete node 8
+Read Complete: 104.897801s 10000000 vectors, total dim: 389998243
+Batch 2 Complete node 2
+Read Complete: 98.256673s 10000000 vectors, total dim: 389997755
+Batch 2 Complete node 9
+Read Complete: 107.471870s 10000000 vectors, total dim: 389998292
+Batch 2 Complete node 1
+Read Complete: 126.642339s 10000000 vectors, total dim: 389998503
+Batch 2 Complete node 4
+Read Complete: 106.490607s 10000000 vectors, total dim: 389997837
+Batch 3 Complete node 6
+Read Complete: 104.839497s 10000000 vectors, total dim: 389998250
+Batch 3 Complete node 2
+Read Complete: 102.877027s 10000000 vectors, total dim: 389998110
+Batch 3 Complete node 7
+Read Complete: 101.454274s 10000000 vectors, total dim: 389998351
+Batch 3 Complete node 8
+Read Complete: 114.409500s 10000000 vectors, total dim: 389998572
+Batch 2 Complete node 0
+Read Complete: 107.656387s 10000000 vectors, total dim: 389998285
+Batch 3 Complete node 1
+Read Complete: 157.601648s 10000000 vectors, total dim: 389998054
+Batch 2 Complete node 5
+Read Complete: 110.574563s 10000000 vectors, total dim: 389997815
+Batch 3 Complete node 9
+Read Complete: 141.012307s 10000000 vectors, total dim: 389998067
+Batch 2 Complete node 3
+Read Complete: 104.212110s 10000000 vectors, total dim: 389997867
+Batch 4 Complete node 6
+Read Complete: 125.962988s 10000000 vectors, total dim: 389998530
+Batch 3 Complete node 4
+Read Complete: 104.305551s 10000000 vectors, total dim: 389998106
+Batch 4 Complete node 2
+Read Complete: 104.172978s 10000000 vectors, total dim: 389998214
+Batch 4 Complete node 7
+Read Complete: 103.545633s 10000000 vectors, total dim: 389998134
+Batch 4 Complete node 8
+Read Complete: 107.394199s 10000000 vectors, total dim: 389998383
+Batch 4 Complete node 1
+Read Complete: 101.579647s 10000000 vectors, total dim: 389997734
+Batch 4 Complete node 9
+Read Complete: 107.635300s 10000000 vectors, total dim: 389998507
+Batch 3 Complete node 0
+Read Complete: 88.179526s 10000000 vectors, total dim: 389997808
+Batch 5 Complete node 6
+Read Complete: 144.144739s 10000000 vectors, total dim: 389998112
+Batch 3 Complete node 5
+Read Complete: 104.272021s 10000000 vectors, total dim: 389997985
+Batch 5 Complete node 2
+Read Complete: 85.277936s 10000000 vectors, total dim: 389997986
+Batch 5 Complete node 7
+Read Complete: 139.294622s 10000000 vectors, total dim: 389998188
+Batch 3 Complete node 3
+Read Complete: 85.929544s 10000000 vectors, total dim: 389998313
+Batch 5 Complete node 8
+Read Complete: 126.504013s 10000000 vectors, total dim: 389998347
+Batch 4 Complete node 4
+Read Complete: 107.535891s 10000000 vectors, total dim: 389998192
+Batch 5 Complete node 1
+Read Complete: 85.037593s 10000000 vectors, total dim: 389997679
+Batch 6 Complete node 6
+Read Complete: 85.799884s 10000000 vectors, total dim: 389997739
+Batch 5 Complete node 9
+Read Complete: 107.604072s 10000000 vectors, total dim: 389998496
+Batch 4 Complete node 0
+Read Complete: 106.461647s 10000000 vectors, total dim: 389997856
+Batch 6 Complete node 2
+Read Complete: 100.282898s 10000000 vectors, total dim: 389997959
+Batch 6 Complete node 7
+Read Complete: 102.150967s 10000000 vectors, total dim: 389998196
+Batch 6 Complete node 8
+Read Complete: 148.516444s 10000000 vectors, total dim: 389998096
+Batch 4 Complete node 5
+Read Complete: 110.963501s 10000000 vectors, total dim: 389998204
+Batch 6 Complete node 1
+Read Complete: 113.823795s 10000000 vectors, total dim: 389997769
+Batch 7 Complete node 6
+Read Complete: 113.454438s 10000000 vectors, total dim: 389998321
+Batch 5 Complete node 4
+Read Complete: 107.143401s 10000000 vectors, total dim: 389997763
+Batch 6 Complete node 9
+Read Complete: 144.431497s 10000000 vectors, total dim: 389998280
+Batch 4 Complete node 3
+Read Complete: 107.715333s 10000000 vectors, total dim: 389997910
+Batch 7 Complete node 2
+Read Complete: 118.544230s 10000000 vectors, total dim: 389998352
+Batch 5 Complete node 0
+Read Complete: 111.955031s 10000000 vectors, total dim: 389998162
+Batch 7 Complete node 1
+Read Complete: 115.711348s 10000000 vectors, total dim: 389997945
+Batch 7 Complete node 7
+Read Complete: 114.934183s 10000000 vectors, total dim: 389998214
+Batch 7 Complete node 8
+Read Complete: 118.842796s 10000000 vectors, total dim: 389997745
+Batch 8 Complete node 6
+Read Complete: 122.445966s 10000000 vectors, total dim: 389998088
+Batch 5 Complete node 5
+Read Complete: 114.044868s 10000000 vectors, total dim: 389998252
+Batch 6 Complete node 4
+Read Complete: 114.500118s 10000000 vectors, total dim: 389997709
+Batch 7 Complete node 9
+Read Complete: 107.585292s 10000000 vectors, total dim: 389997928
+Batch 8 Complete node 2
+Read Complete: 121.879416s 10000000 vectors, total dim: 389998187
+Batch 5 Complete node 3
+Read Complete: 111.856927s 10000000 vectors, total dim: 389998324
+Batch 8 Complete node 1
+Read Complete: 115.432192s 10000000 vectors, total dim: 389998277
+Batch 6 Complete node 0
+Read Complete: 119.242686s 10000000 vectors, total dim: 389997838
+Batch 9 Complete node 6
+Vectors Added Node 6: 1371.74 Seconds
+
+Read Complete: 116.413038s 10000000 vectors, total dim: 389997969
+Batch 8 Complete node 7
+Read Complete: 114.692463s 10000000 vectors, total dim: 389998268
+Batch 8 Complete node 8
+Read Complete: 114.032054s 10000000 vectors, total dim: 389998282
+Batch 7 Complete node 4
+Read Complete: 118.451777s 10000000 vectors, total dim: 389998010
+Batch 6 Complete node 5
+Read Complete: 107.545906s 10000000 vectors, total dim: 389997943
+Batch 9 Complete node 2
+Vectors Added Node 2: 1421.49 Seconds
+
+Read Complete: 115.228012s 10000000 vectors, total dim: 389997724
+Batch 8 Complete node 9
+Read Complete: 118.636542s 10000000 vectors, total dim: 389998052
+Batch 6 Complete node 3
+Read Complete: 111.689749s 10000000 vectors, total dim: 389998165
+Batch 9 Complete node 1
+Vectors Added Node 1: 1490.34 Seconds
+
+Read Complete: 114.743894s 10000000 vectors, total dim: 389997909
+Batch 9 Complete node 7
+Vectors Added Node 7: 1538.91 Seconds
+
+Read Complete: 115.701414s 10000000 vectors, total dim: 389998133
+Batch 9 Complete node 8
+Vectors Added Node 8: 1551.87 Seconds
+
+Read Complete: 115.802598s 10000000 vectors, total dim: 389998364
+Batch 7 Complete node 0
+Read Complete: 114.205131s 10000000 vectors, total dim: 389998216
+Batch 8 Complete node 4
+Read Complete: 117.474767s 10000000 vectors, total dim: 389998022
+Batch 7 Complete node 5
+Read Complete: 117.838334s 10000000 vectors, total dim: 389997736
+Batch 9 Complete node 9
+Vectors Added Node 9: 1628.18 Seconds
+
+Read Complete: 118.541971s 10000000 vectors, total dim: 389998187
+Batch 7 Complete node 3
+Read Complete: 114.844008s 10000000 vectors, total dim: 389998298
+Batch 8 Complete node 0
+Read Complete: 114.055899s 10000000 vectors, total dim: 389998270
+Batch 9 Complete node 4
+Vectors Added Node 4: 1744.95 Seconds
+
+Read Complete: 117.658655s 10000000 vectors, total dim: 389997938
+Batch 8 Complete node 5
+Read Complete: 118.436340s 10000000 vectors, total dim: 389998049
+Batch 8 Complete node 3
+Read Complete: 115.183034s 10000000 vectors, total dim: 389998343
+Batch 9 Complete node 0
+Vectors Added Node 0: 1930.4 Seconds
+
+Read Complete: 119.399474s 10000000 vectors, total dim: 389998010
+Batch 9 Complete node 5
+Vectors Added Node 5: 1955.69 Seconds
+
+Read Complete: 118.609462s 10000000 vectors, total dim: 389998121
+Batch 9 Complete node 3
+Vectors Added Node 3: 2054.68 Seconds
+
+Computing Query Hashes Node 3...
+Computing Query Hashes Node 6...
+Computing Query Hashes Node 9...
+Computing Query Hashes Node 8...
+Computing Query Hashes Node 7...
+Computing Query Hashes Node 5...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 4...
+Computing Query Hashes Node 2...
+Computing Query Hashes Node 0...
+Query Hashes Computed Node 5: 0.0156506 Seconds
+
+Query Hashes Computed Node 1: 0.0155361 Seconds
+
+Query Hashes Computed Node 2: 0.0157401 Seconds
+
+Query Hashes Computed Node 0: 0.0154498 Seconds
+
+Query Hashes Computed Node 3: 0.0158254 Seconds
+
+Query Hashes Computed Node 9: 0.015582 Seconds
+
+Query Hashes Computed Node 6: 0.0212984 Seconds
+
+Query Hashes Computed Node 8: 0.0155802 Seconds
+
+Query Hashes Computed Node 7: 0.0213769 Seconds
+
+Extracting Top K (TREE) Node 6...
+Extracting Top K (TREE) Node 9...
+Extracting Top K (TREE) Node 8...
+Extracting Top K (TREE) Node 7...
+Extracting Top K (TREE) Node 5...
+Query Hashes Computed Node 4: 0.0267295 Seconds
+
+Extracting Top K (TREE) Node 2...
+Extracting Top K (TREE) Node 0...
+Extracting Top K (TREE) Node 3...
+Extracting Top K (TREE) Node 1...
+Extracting Top K (TREE) Node 4...
+Top K (TREE) Extracted Node 7: 1.56902 Seconds
+
+Top K (TREE) Extracted Node 5: 1.58562 Seconds
+
+Top K (TREE) Extracted Node 9: 1.5886 Seconds
+
+Top K (TREE) Extracted Node 6: 1.64446 Seconds
+
+Top K (TREE) Extracted Node 3: 1.67004 Seconds
+
+Top K (TREE) Extracted Node 1: 1.67294 Seconds
+
+Top K (TREE) Extracted Node 2: 1.78235 Seconds
+
+Top K (TREE) Extracted Node 4: 1.92077 Seconds
+
+Top K (TREE) Extracted Node 8: 2.03384 Seconds
+
+Top K (TREE) Extracted Node 0: 2.14748 Seconds
+
