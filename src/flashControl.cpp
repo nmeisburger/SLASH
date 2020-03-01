@@ -129,9 +129,10 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
                            _dimension * batchSize);
 
         _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers, myOffset);
-        if (batch % batchPrint == 0) {
-            _myReservoir->checkTableMemLoad();
-        }
+        // if (batch % batchPrint == 0) {
+        //     _myReservoir->checkTableMemLoad();
+        // }
+        std::cout << "Batch " << batch << " Complete node " << _myRank << std::endl;
     }
 
     delete[] myDataIndices;

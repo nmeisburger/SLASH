@@ -22,8 +22,8 @@ class Reader {
 
     ~Reader() { fclose(file); }
 
-    void readSparse(std::string xxx, unsigned int xxxx, unsigned int n, unsigned int *indices,
-                    float *values, unsigned int *markers, unsigned int _buffer_len) {
+    void readSparse(unsigned int n, unsigned int *indices, float *values, unsigned int *markers,
+                    unsigned int _buffer_len) {
 
         auto start = std::chrono::system_clock::now();
 
@@ -103,30 +103,40 @@ int main() {
 
     char x[] = "../../../dataset/kdd12/kdd12";
 
-    Reader *r = new Reader(x, 150);
+    // Reader *r = new Reader(x, 150);
 
-    unsigned int *indices = new unsigned int[1500];
-    unsigned int *markers = new unsigned int[104];
-    float *values = new float[1500];
-    r->readSparse("./test", 0, 3, indices, values, markers, 1500);
+    // unsigned int *indices = new unsigned int[1500];
+    // unsigned int *markers = new unsigned int[104];
+    // float *values = new float[1500];
+    // r->readSparse("./test", 0, 3, indices, values, markers, 1500);
 
-    for (int i = 0; i < 3; i++) {
-        printf("Vector %d: %u - %u\n", i, markers[i], markers[i + 1]);
-        for (unsigned int j = markers[i]; j < markers[i + 1]; j++) {
-            printf("(%u, %f)", indices[j], values[j]);
-        }
-        printf("\n");
-    }
+    // for (int i = 0; i < 3; i++) {
+    //     printf("Vector %d: %u - %u\n", i, markers[i], markers[i + 1]);
+    //     for (unsigned int j = markers[i]; j < markers[i + 1]; j++) {
+    //         printf("(%u, %f)", indices[j], values[j]);
+    //     }
+    //     printf("\n");
+    // }
 
-    r->readSparse("./test", 0, 4, indices, values, markers, 1500);
+    // r->readSparse("./test", 0, 4, indices, values, markers, 1500);
 
-    for (int i = 0; i < 3; i++) {
-        printf("Vector %d\n", i);
-        for (unsigned int j = markers[i]; j < markers[i + 1]; j++) {
-            printf("(%u, %f)", indices[j], values[j]);
-        }
-        printf("\n");
-    }
+    // for (int i = 0; i < 3; i++) {
+    //     printf("Vector %d\n", i);
+    //     for (unsigned int j = markers[i]; j < markers[i + 1]; j++) {
+    //         printf("(%u, %f)", indices[j], values[j]);
+    //     }
+    //     printf("\n");
+    // }
+
+    unsigned int num = 100000;
+
+    Reader *reader = new Reader(x, 2000000);
+
+    unsigned int *indices = new unsigned int[15 * num];
+    float *values = new float[15 * num];
+    unsigned int *markers = new unsigned int[num + 1];
+
+    reader->readSparse(num, indices, values, markers, 15 * num);
 
     return 0;
 }

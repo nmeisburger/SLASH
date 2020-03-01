@@ -6,6 +6,7 @@
 #include "benchmarking.h"
 #include "dataset.h"
 #include "mpi.h"
+#include "reader.h"
 #include <algorithm>
 #include <chrono>
 #include <iostream>

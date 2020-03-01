@@ -719,9 +719,9 @@ void criteo() {
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
-    if (myRank == 0) {
-        reservoir->showParams();
-    }
+    // if (myRank == 0) {
+    //     reservoir->showParams();
+    // }
 
     /* ===============================================================
     Partitioning Query Between Nodes
@@ -750,15 +750,15 @@ void criteo() {
     //     }
     // }
     // control->add(BASEFILE, 1000000, 0, 10, 10);
-    // control->addPartitioned(BASEFILE, NUM_DATA_VECTORS, 1, 1);
+    control->addPartitioned(BASEFILE, NUM_DATA_VECTORS, 10, 10);
 
-    for (unsigned int i = 0; i < 3; i++) {
-        std::string thisFile(BASEFILE);
-        thisFile.append(std::to_string(i));
-        std::cout << "Adding from file " << thisFile << std::endl;
-        control->add(thisFile, NUM_DATA_VECTORS, 0, 1, 1);
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
+    // for (unsigned int i = 0; i < 3; i++) {
+    //     std::string thisFile(BASEFILE);
+    //     thisFile.append(std::to_string(i));
+    //     std::cout << "Adding from file " << thisFile << std::endl;
+    //     control->add(thisFile, NUM_DATA_VECTORS, 0, 1, 1);
+    //     MPI_Barrier(MPI_COMM_WORLD);
+    // }
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
