@@ -88,6 +88,8 @@ class Reader {
             fseek(file, delta, SEEK_CUR);
         }
 
+        markers[num_vecs] = total_dim;
+
         auto end = std::chrono::system_clock::now();
 
         std::chrono::duration<double> elapsed = end - start;
@@ -99,15 +101,32 @@ class Reader {
 
 int main() {
 
-    char x[] = "../kdd12/kdd12";
+    char x[] = "../../../dataset/kdd12/kdd12";
 
     Reader *r = new Reader(x, 150);
 
     unsigned int *indices = new unsigned int[1500];
     unsigned int *markers = new unsigned int[104];
     float *values = new float[1500];
-    r->readSparse("./test", 0, 100, indices, values, markers, 1500);
-    r->readSparse("./test", 0, 100, indices, values, markers, 1500);
+    r->readSparse("./test", 0, 3, indices, values, markers, 1500);
+
+    for (int i = 0; i < 3; i++) {
+        printf("Vector %d: %u - %u\n", i, markers[i], markers[i + 1]);
+        for (unsigned int j = markers[i]; j < markers[i + 1]; j++) {
+            printf("(%u, %f)", indices[j], values[j]);
+        }
+        printf("\n");
+    }
+
+    r->readSparse("./test", 0, 4, indices, values, markers, 1500);
+
+    for (int i = 0; i < 3; i++) {
+        printf("Vector %d\n", i);
+        for (unsigned int j = markers[i]; j < markers[i + 1]; j++) {
+            printf("(%u, %f)", indices[j], values[j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }

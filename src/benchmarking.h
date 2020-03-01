@@ -4,13 +4,13 @@
 #include <string>
 
 // #define FILE_OUTPUT
-#define EVAL_SIM
+// #define EVAL_SIM
 // #define TEST_RUN
 // #define UNIT_TESTING
-#define WEBSPAM
+// #define WEBSPAM
 // #define KDD12
 // #define WIKIDUMP
-// #define CRITEO
+#define CRITEO
 
 #ifdef WEBSPAM
 
@@ -132,15 +132,15 @@
 #define ALLOC_FRACTION 1
 
 #define DIMENSION 42
-#define NUM_DATA_VECTORS 1000000000
-// #define NUM_DATA_VECTORS 4000000000
+// #define NUM_DATA_VECTORS 1000000000
+#define NUM_DATA_VECTORS 10000000
 #define NUM_QUERY_VECTORS 10000
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024
 
 #define CMS_HASHES 4
-#define CMS_BUCKET_SIZE 2048
+#define CMS_BUCKET_SIZE 1024
 
 #define BASEFILE "../../dataset/criteo/criteo_tb"
 #define GTRUTHINDICE ""

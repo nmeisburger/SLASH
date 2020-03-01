@@ -100,8 +100,11 @@ class flashControl {
     void add(std::string filename, unsigned int n, unsigned int offset, unsigned int numBatches,
              unsigned int batchPrint);
 
-    // Computes the hashes of each partition of the query vectors in each node, and then combines
-    // each partition of hashes into a single set of hashes in every node.
+    void addPartitioned(std::string base_filename, unsigned int numDataVectorsPerNode,
+                        unsigned int numBatches, unsigned int batchPrint);
+
+    // Computes the hashes of each partition of the query vectors in each node, and then
+    // combines each partition of hashes into a single set of hashes in every node.
     void hashQuery();
 
     /* Extracts reservoirs from each node's hash tables, and sends these top k candidates to

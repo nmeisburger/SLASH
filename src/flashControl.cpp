@@ -102,6 +102,43 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
     // delete[] myDataMarkers;
 }
 
+void flashControl::addPartitioned(std::string base_filename, unsigned int numDataVectorsPerNode,
+                                  unsigned int numBatches, unsigned int batchPrint) {
+
+    _myReservoir->resetSequentialKernalID();
+
+    unsigned int batchSize = numDataVectorsPerNode / numBatches;
+
+    unsigned int myOffset = _myRank * numDataVectorsPerNode;
+
+    std::string filename(base_filename);
+
+    filename.append(std::to_string(_myRank));
+
+    std::cout << "<<Reading from file " << filename << " in node " << _myRank << ">>" << std::endl;
+
+    Reader *reader = new Reader(filename.c_str(), 2000000000);
+
+    unsigned int *myDataIndices = new unsigned int[batchSize * _dimension];
+    float *myDataVals = new float[batchSize * _dimension];
+    unsigned int *myDataMarkers = new unsigned int[batchSize + 1];
+
+    for (unsigned int batch = 0; batch < numBatches; batch++) {
+
+        reader->readSparse(batchSize, myDataIndices, myDataVals, myDataMarkers,
+                           _dimension * batchSize);
+
+        _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers, myOffset);
+        if (batch % batchPrint == 0) {
+            _myReservoir->checkTableMemLoad();
+        }
+    }
+
+    delete[] myDataIndices;
+    delete[] myDataVals;
+    delete[] myDataMarkers;
+}
+
 void flashControl::hashQuery() {
 
     unsigned int *myPartitionHashes = new unsigned int[_myHashCt];
