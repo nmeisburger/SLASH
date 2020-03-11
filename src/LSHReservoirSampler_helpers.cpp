@@ -35,13 +35,13 @@ void LSHReservoirSampler::reservoirSampling(unsigned int *allprobsHash, unsigned
             // ATOMIC: Obtain the counter, and increment the counter. (Counter initialized to 0
             // automatically). Counter counts from 0 to currentCount-1.
             omp_set_lock(_tableCountersLock +
-                         tableCountersLockIdx(tb, allocIdx, _aggNumReservoirs));
+                         tableCountersLockIdx(tb, allocIdx, _numReservoirsHashed));
 
             counter = _tableMem[tableMemCtIdx(tb, allocIdx,
-                                              _aggNumReservoirs)]; // Potentially overflowable.
-            _tableMem[tableMemCtIdx(tb, allocIdx, _aggNumReservoirs)]++;
+                                              _numReservoirsHashed)]; // Potentially overflowable.
+            _tableMem[tableMemCtIdx(tb, allocIdx, _numReservoirsHashed)]++;
             omp_unset_lock(_tableCountersLock +
-                           tableCountersLockIdx(tb, allocIdx, _aggNumReservoirs));
+                           tableCountersLockIdx(tb, allocIdx, _numReservoirsHashed));
 
             // The counter here is the old counter. Current count is already counter + 1.
             // If current count is larger than _reservoirSize, current item needs to be sampled.
@@ -84,7 +84,7 @@ void LSHReservoirSampler::addTable(unsigned int *storelog, unsigned int numProbe
             locCapped = storelog[storelogLocationIdx(numProbePerTb, probeIdx, tb)];
 
             if (locCapped < _reservoirSize) {
-                _tableMem[tableMemResIdx(tb, allocIdx, _aggNumReservoirs) + locCapped] =
+                _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirsHashed) + locCapped] =
                     id + _sequentialIDCounter_kernel + dataOffset;
             }
         }

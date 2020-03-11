@@ -67,9 +67,9 @@ void testing() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
-        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir =
+        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -125,9 +125,9 @@ void testing() {
     unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
     start = std::chrono::system_clock::now();
     std::cout << "Extracting Top K (CMS) Node " << myRank << "..." << std::endl;
-#ifdef CMS_AGGREGATION
+    // #ifdef CMS_AGGREGATION
     control->topKCMSAggregationTree(TOPK, outputs, 0);
-#endif
+// #endif
 #ifdef BF_AGGREGATION
     control->topKBruteForceAggretation(TOPK, outputs);
 #endif
@@ -223,9 +223,9 @@ void evalWithSimilarity() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
-        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir =
+        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -408,9 +408,9 @@ void evalWithFileOutput() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
-        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir =
+        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -579,9 +579,9 @@ void wikiDump() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
-        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir =
+        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -709,9 +709,9 @@ void criteo() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    LSHReservoirSampler *reservoir = new LSHReservoirSampler(
-        lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-        NUM_DATA_VECTORS + NUM_QUERY_VECTORS, ALLOC_FRACTION, myRank, worldSize);
+    LSHReservoirSampler *reservoir =
+        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
+                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
 

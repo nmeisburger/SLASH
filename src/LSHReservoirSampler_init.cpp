@@ -5,8 +5,7 @@
 LSHReservoirSampler::LSHReservoirSampler(LSH *hashFamIn, unsigned int numHashPerFamily,
                                          unsigned int numHashFamilies, unsigned int reservoirSize,
                                          unsigned int dimension, unsigned int numSecHash,
-                                         unsigned int maxSamples, float tableAllocFraction,
-                                         int myRank, int worldSize) {
+                                         unsigned int maxSamples, int myRank, int worldSize) {
 
 #if !defined SECONDARY_HASHING
     if (numHashPerFamily != numSecHash) {
@@ -20,7 +19,7 @@ LSHReservoirSampler::LSHReservoirSampler(LSH *hashFamIn, unsigned int numHashPer
     _worldSize = worldSize;
 
     initVariables(numHashPerFamily, numHashFamilies, reservoirSize, dimension, numSecHash,
-                  maxSamples, tableAllocFraction);
+                  maxSamples);
 
     _hashFamily = hashFamIn;
 
@@ -32,32 +31,29 @@ LSHReservoirSampler::LSHReservoirSampler(LSH *hashFamIn, unsigned int numHashPer
 void LSHReservoirSampler::restart(LSH *hashFamIn, unsigned int numHashPerFamily,
                                   unsigned int numHashFamilies, unsigned int reservoirSize,
                                   unsigned int dimension, unsigned int numSecHash,
-                                  unsigned int maxSamples, float tableAllocFraction) {
+                                  unsigned int maxSamples) {
     unInit();
     initVariables(numHashPerFamily, numHashFamilies, reservoirSize, dimension, numSecHash,
-                  maxSamples, tableAllocFraction);
+                  maxSamples);
     _hashFamily = hashFamIn;
     initHelper(_numTables, _rangePow, _reservoirSize);
 }
 
 void LSHReservoirSampler::initVariables(unsigned int numHashPerFamily, unsigned int numHashFamilies,
                                         unsigned int reservoirSize, unsigned int dimension,
-                                        unsigned int numSecHash, unsigned int maxSamples,
-                                        float tableAllocFraction) {
+                                        unsigned int numSecHash, unsigned int maxSamples) {
     _rangePow = numHashPerFamily;
     _numTables = numHashFamilies;
     _reservoirSize = reservoirSize;
     _dimension = dimension;
     _numSecHash = numSecHash;
     _maxSamples = maxSamples;
-    _tableAllocFraction = tableAllocFraction;
     // _segmentSizeModulor = numHashFamilies * reservoirSize - 1;
     // _segmentSizeBitShiftDivisor = getLog2(_segmentSizeModulor);
 
     _numReservoirs = (unsigned int)pow(2, _rangePow);         // Number of rows in each hashTable.
     _numReservoirsHashed = (unsigned int)pow(2, _numSecHash); // Number of rows in each hashTable.
-    _aggNumReservoirs = (unsigned int)_numReservoirsHashed * _tableAllocFraction;
-    _maxReservoirRand = (unsigned int)ceil(maxSamples / 10); // TBD.
+    _maxReservoirRand = (unsigned int)ceil(maxSamples / 10);  // TBD.
 }
 
 void LSHReservoirSampler::initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,
@@ -79,7 +75,7 @@ void LSHReservoirSampler::initHelper(unsigned int numTablesIn, unsigned int numH
     }
 
     /* Hash tables. */
-    _tableMemReservoirMax = (_numTables - 1) * _aggNumReservoirs + _numReservoirsHashed;
+    _tableMemReservoirMax = _numTables * _numReservoirsHashed;
     _tableMemMax = _tableMemReservoirMax * (1 + _reservoirSize);
     _tablePointerMax = _numTables * _numReservoirsHashed;
 

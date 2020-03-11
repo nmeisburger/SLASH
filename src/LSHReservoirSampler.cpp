@@ -40,7 +40,7 @@ void LSHReservoirSampler::extractReservoirs(unsigned int numQueryEntries, unsign
                                                            _sechash_a, _sechash_b)];
                 if (allocIdx != TABLENULL) {
                     queue[queueElemIdx(segmentSize, tb, queryIdx, elemIdx)] =
-                        _tableMem[tableMemResIdx(tb, allocIdx, _aggNumReservoirs) + elemIdx];
+                        _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirsHashed) + elemIdx];
                 }
             }
         }

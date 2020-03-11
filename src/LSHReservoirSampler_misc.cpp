@@ -15,8 +15,8 @@ void LSHReservoirSampler::checkTableMemLoad() {
     }
 
     printf("Node %d Table Mem Usage ranges from %f to %f, average %f\n", _myRank,
-           ((float)minn) / (float)_aggNumReservoirs, ((float)maxx) / (float)_aggNumReservoirs,
-           ((float)tt) / (float)(_numTables * _aggNumReservoirs));
+           ((float)minn) / (float)_numReservoirsHashed, ((float)maxx) / (float)_numReservoirsHashed,
+           ((float)tt) / (float)(_numTables * _numReservoirsHashed));
 }
 
 void LSHReservoirSampler::showParams() {
@@ -29,10 +29,8 @@ void LSHReservoirSampler::showParams() {
 
     std::cout << "_dimension " << _dimension << "\n";
     std::cout << "_maxSamples " << _maxSamples << "\n";
-    std::cout << "_tableAllocFraction " << _tableAllocFraction << "\n";
     std::cout << "_numReservoirs " << _numReservoirs << "\n";
     std::cout << "_numReservoirsHashed " << _numReservoirsHashed << "\n";
-    std::cout << "_aggNumReservoirs " << _aggNumReservoirs << "\n";
     std::cout << "_maxReservoirRand " << _maxReservoirRand << "\n";
     std::cout << "_tableMemMax " << _tableMemMax << "\n";
     std::cout << "_tableMemReservoirMax " << _tableMemReservoirMax << "\n";
@@ -53,11 +51,11 @@ void LSHReservoirSampler::viewTables() {
                 unsigned int allocIdx = _tablePointers[tablePointersIdx(
                     _numReservoirsHashed, t, which, _sechash_a, _sechash_b)];
                 printf("Reservoir %d (%u): ", t,
-                       _tableMem[tableMemCtIdx(which, allocIdx, _aggNumReservoirs)]);
+                       _tableMem[tableMemCtIdx(which, allocIdx, _numReservoirsHashed)]);
                 for (unsigned int h = 0; h < std::min(_reservoirSize, (unsigned)DEBUGENTRIES);
                      h++) {
                     printf("%u ",
-                           _tableMem[tableMemResIdx(which, allocIdx, _aggNumReservoirs) + h]);
+                           _tableMem[tableMemResIdx(which, allocIdx, _numReservoirsHashed) + h]);
                 }
                 printf("\n");
                 maxResShow++;
@@ -79,11 +77,12 @@ void LSHReservoirSampler::tableContents() {
             }
             printf("[%d]: ", b);
             for (int i = 0; i < _reservoirSize; i++) {
-                if (_tableMem[tableMemResIdx(t, hashBucketLocation, _aggNumReservoirs) + i] == 0) {
+                if (_tableMem[tableMemResIdx(t, hashBucketLocation, _numReservoirsHashed) + i] ==
+                    0) {
                     break;
                 }
                 printf("%d ",
-                       _tableMem[tableMemResIdx(t, hashBucketLocation, _aggNumReservoirs) + i]);
+                       _tableMem[tableMemResIdx(t, hashBucketLocation, _numReservoirsHashed) + i]);
             }
             printf("\n");
         }

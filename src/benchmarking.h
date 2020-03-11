@@ -6,11 +6,11 @@
 // #define FILE_OUTPUT
 // #define EVAL_SIM
 // #define TEST_RUN
-// #define UNIT_TESTING
-// #define WEBSPAM
+#define TEST_RUN
+#define WEBSPAM
 // #define KDD12
 // #define WIKIDUMP
-#define CRITEO
+// #define CRITEO
 
 #ifdef WEBSPAM
 
@@ -26,13 +26,12 @@
 // #define NUM_TABLES				    32
 #define NUM_TABLES 24
 #define RESERVOIR_SIZE 256
-#define ALLOC_FRACTION 1
 
 #define DIMENSION 4000
-#define NUM_DATA_VECTORS 340000
-#define NUM_QUERY_VECTORS 10000
-// #define NUM_DATA_VECTORS 15000
-// #define NUM_QUERY_VECTORS 300
+// #define NUM_DATA_VECTORS 340000
+// #define NUM_QUERY_VECTORS 10000
+#define NUM_DATA_VECTORS 15000
+#define NUM_QUERY_VECTORS 300
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024
@@ -67,7 +66,6 @@
 
 #define NUM_TABLES 16
 #define RESERVOIR_SIZE 256
-#define ALLOC_FRACTION 1
 
 #define DIMENSION 15
 #define NUM_DATA_VECTORS 140000000
@@ -98,7 +96,6 @@
 
 #define NUM_TABLES 16
 #define RESERVOIR_SIZE 256
-#define ALLOC_FRACTION 1
 
 #define DIMENSION 265
 #define NUM_DATA_VECTORS 30000000
@@ -129,7 +126,6 @@
 
 #define NUM_TABLES 24
 #define RESERVOIR_SIZE 256
-#define ALLOC_FRACTION 1
 
 #define DIMENSION 42
 // #define NUM_DATA_VECTORS 1000000000
@@ -161,7 +157,6 @@
 
 #define NUM_TABLES 4
 #define RESERVOIR_SIZE 128
-#define ALLOC_FRACTION 1
 
 #define QUERY_PROBES 1
 #define HASHING_PROBES 1

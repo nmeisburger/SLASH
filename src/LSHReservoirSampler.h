@@ -29,7 +29,6 @@ class LSHReservoirSampler {
     LSH *_hashFamily;
     unsigned int _rangePow, _numTables, _reservoirSize, _dimension, _numSecHash, _maxSamples,
         _maxReservoirRand;
-    float _tableAllocFraction;
 
     unsigned int *_tableMem;
     unsigned int *_tableMemAllocator; // Special value MAX - 1.
@@ -38,15 +37,14 @@ class LSHReservoirSampler {
     omp_lock_t *_tableCountersLock;
 
     unsigned int *_global_rand;
-    unsigned int _numReservoirs, _sequentialIDCounter_kernel, _numReservoirsHashed,
-        _aggNumReservoirs;
+    unsigned int _numReservoirs, _sequentialIDCounter_kernel, _numReservoirsHashed;
     unsigned long long int _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
     unsigned int _sechash_a, _sechash_b;
 
     /* Init. */
     void initVariables(unsigned int numHashPerFamily, unsigned int numHashFamilies,
                        unsigned int reservoirSize, unsigned int dimension, unsigned int numSecHash,
-                       unsigned int maxSamples, float tableAllocFraction);
+                       unsigned int maxSamples);
 
     void initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,
                     unsigned int reservoriSizeIn);
@@ -66,7 +64,7 @@ class LSHReservoirSampler {
   public:
     void restart(LSH *hashFamIn, unsigned int numHashPerFamily, unsigned int numHashFamilies,
                  unsigned int reservoirSize, unsigned int dimension, unsigned int numSecHash,
-                 unsigned int maxSamples, float tableAllocFraction);
+                 unsigned int maxSamples);
 
     /* Constructor.
 
@@ -82,13 +80,11 @@ class LSHReservoirSampler {
     shrink the original range of the LSH for better table occupancy. Only a number <=
     numHashPerFamily makes sense.
     @param maxSamples: the maximum number incoming data points to be hashed and added.
-    @param tableAllocFraction: fraction of reservoirs to allocate for each table, will share with
     other table if overflows.
     */
     LSHReservoirSampler(LSH *hashFam, unsigned int numHashPerFamily, unsigned int numHashFamilies,
                         unsigned int reservoirSize, unsigned int dimension, unsigned int numSecHash,
-                        unsigned int maxSamples, float tableAllocFraction, int myRank,
-                        int worldSize);
+                        unsigned int maxSamples, int myRank, int worldSize);
 
     /* Adds input vectors (in sparse format) to the hash table.
     Each vector is assigned ascending identification starting 0.
