@@ -735,30 +735,9 @@ void criteo() {
     */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
-    // size_t offset = NUM_QUERY_VECTORS;
-    // size_t batchSize = NUM_DATA_VECTORS / 100;
-    // if (myRank == 0) {
-    //     printf("Batch Size: %lu For 100 Batches", batchSize);
-    // }
-    // for (size_t i = 0; i < 100; i++) {
-    //     control->add(BASEFILE, batchSize, offset + i * batchSize, NUM_BATCHES, BATCH_PRINT);
-    //     if (i % 5 == 0) {
-    //         MPI_Barrier(MPI_COMM_WORLD);
-    //         if (myRank == 0) {
-    //             std::cout << "Batch Complete: " << i << std::endl;
-    //         }
-    //     }
-    // }
-    // control->add(BASEFILE, 1000000, 0, 10, 10);
-    control->addPartitioned(BASEFILE, NUM_DATA_VECTORS, 10, 10);
 
-    // for (unsigned int i = 0; i < 3; i++) {
-    //     std::string thisFile(BASEFILE);
-    //     thisFile.append(std::to_string(i));
-    //     std::cout << "Adding from file " << thisFile << std::endl;
-    //     control->add(thisFile, NUM_DATA_VECTORS, 0, 1, 1);
-    //     MPI_Barrier(MPI_COMM_WORLD);
-    // }
+    control->addPartitioned(BASEFILE, NUM_DATA_VECTORS, 40, 40);
+
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
