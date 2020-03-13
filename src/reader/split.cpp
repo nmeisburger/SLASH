@@ -71,15 +71,15 @@ class Splitter {
 
             for (unsigned int iii = 1; iii < iterations; iii++) {
                 len = fread(buffer, 1, split_size, file);
-                if (len != split_size) {
-                    printf("Error: fread\n");
-                    return;
-                }
+                // if (len != split_size) {
+                //     printf("Error: fread\n");
+                //     return;
+                // }
                 len = fwrite(buffer, 1, split_size, output);
-                if (len != split_size) {
-                    printf("Error: fwrite\n");
-                    return;
-                }
+                // if (len != split_size) {
+                //     printf("Error: fwrite\n");
+                //     return;
+                // }
             }
 
             fclose(output);
