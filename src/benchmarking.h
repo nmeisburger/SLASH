@@ -3,14 +3,12 @@
 
 #include <string>
 
-// #define FILE_OUTPUT
+#define FILE_OUTPUT
 // #define EVAL_SIM
-// #define TEST_RUN
-// #define TEST_RUN
-// #define WEBSPAM
+#define WEBSPAM
 // #define KDD12
 // #define WIKIDUMP
-#define CRITEO
+// #define CRITEO
 
 #ifdef WEBSPAM
 
@@ -23,39 +21,26 @@
 #define RANGE_POW 18
 #define RANGE_ROW_U 18
 
-// #define NUM_TABLES				    32
 #define NUM_TABLES 24
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 4000
-// #define NUM_DATA_VECTORS 340000
-// #define NUM_QUERY_VECTORS 10000
-#define NUM_DATA_VECTORS 15000
-#define NUM_QUERY_VECTORS 300
+#define NUM_DATA_VECTORS 340000
+#define NUM_QUERY_VECTORS 10000
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024
 
-// #define CMS_HASHES                  8
 #define CMS_HASHES 4
-// #define CMS_BUCKET_SIZE             2048
 #define CMS_BUCKET_SIZE 1024
 
 #define BASEFILE "../../dataset/webspam/webspam_trigram.svm"
-#define GTRUTHINDICE "../../dataset/webspam/webspam_tri_gtruth_indices.txt"
-#define GTRUTHDIST "../../dataset/webspam/webspam_tri_gtruth_distances.txt"
 
 #endif
 
 #ifdef KDD12
 
 #define SPARSE_DATASET
-
-#define TREE_AGGREGATION
-// #define LINEAR_AGGREGATION
-
-#define CMS_AGGREGATION
-// #define BF_AGGREGATION
 
 #define NUM_BATCHES 50
 #define BATCH_PRINT 10
@@ -78,8 +63,6 @@
 #define CMS_BUCKET_SIZE 2048
 
 #define BASEFILE "../../dataset/kdd12/kdd12"
-#define GTRUTHINDICE ""
-#define GTRUTHDIST ""
 
 #endif
 
@@ -108,8 +91,6 @@
 #define CMS_BUCKET_SIZE 2048
 
 #define BASEFILE "../../dataset/wiki/wiki_hashes"
-#define GTRUTHINDICE ""
-#define GTRUTHDIST ""
 
 #endif
 
@@ -128,7 +109,6 @@
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 42
-// #define NUM_DATA_VECTORS 1000000000
 #define NUM_DATA_VECTORS 400000000
 #define NUM_QUERY_VECTORS 10000
 #define MAX_RESERVOIR_RAND 35000
@@ -139,8 +119,6 @@
 #define CMS_BUCKET_SIZE 1024
 
 #define BASEFILE "../../dataset/criteo/criteo_tb"
-#define GTRUTHINDICE ""
-#define GTRUTHDIST ""
 
 #endif
 
