@@ -3,8 +3,7 @@ Sketching based distributed locally sensitive hashing algorithm for similarity s
 
 ## Instructions
 1. Download and unzip either the `criteo_tb`, `webspam_wc_normalized_trigram.svm.bz2`, or `kdd12.bz2` from https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html. 
-* Note that the run on criteo the system requires that the dataset is split into a new file for each MPI process (i.e. criteo_tb0, criteo_tb1, ... , criteo_tb9 for a cluster of 10 nodes). 
-* The naming convention is the value of `BASEFILE` as defined in `benchmarking.h` followed by the number of the MPI process. 
+* Note that the run on criteo the system requires that the dataset is split into a new file for each MPI process. The naming convention for this is the value of `BASEFILE` as defined in `benchmarking.h` followed by the number of the MPI process that file is for. Ex: criteo_tb0, criteo_tb1, ... , criteo_tb9 for a cluster of 10 nodes.
 * Partitioning the dataset in this way allows for more efficient parallel file IO and better maximizes the parallel file system which is important with a dataset of this size. 
 * The code for preforming the partition can be found in `src/reader/split.cpp` and `src/reader/split.slurm`
 * Note also that for criteo the `NUM_DATA_VECTORS` value in `benchmarking.h` denotes the number of vectors per node in the cluster vs the total number accross all nodes for the other configs for webspam or kdd12.
