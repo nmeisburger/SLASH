@@ -12,7 +12,7 @@ Sketching based distributed locally sensitive hashing algorithm for similarity s
 * Note that there is a separate config section in `benchmarking.h` for different datasets, make sure to adjust the correct one.
 * Each section of `benchmarking.h` sets various hyper parameters for a dataset (i.e. number of hashtables, number of input vectors etc.).
 * Note also that for criteo the `NUM_DATA_VECTORS` value in `benchmarking.h` denotes the number of vectors per node in the cluster vs the total number accross all nodes for the other configs for webspam or kdd12.
-3. Compile the program. On NOTS or a similar HPC cluster running `$ source setup.sh` from the `src` directory will load the necessary MPI library and compiler. We compile and ran our system using OpenMPI/3.1.4 and the mpicxx compiler in GCC/8.3.0.
+3. Compile the program. On NOTS or a similar HPC cluster running `$ source src/setup.sh` from the root of the project to load the necessary MPI library and compiler. We compile and ran our system using OpenMPI/3.1.4 and the mpicxx compiler in GCC/8.3.0.
 4. Run `$ make clean; make` to compile the program.
 5. The *.slurm files contain the slurm scripts for running the system using the slurm job scheduler. You can edit the size of the cluster as well as some other properties here. Make sure to set the job name at the top and the email that slurm will send notifications to.
 6. Run `$ sbatch myjob.slurm` for webspam or kdd12 or `$ sbatch criteo.slurm` for criteo.
