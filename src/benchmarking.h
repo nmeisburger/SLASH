@@ -5,8 +5,8 @@
 
 #define FILE_OUTPUT
 // #define EVAL_SIM
-#define WEBSPAM
-// #define KDD12
+// #define WEBSPAM
+#define KDD12
 // #define WIKIDUMP
 // #define CRITEO
 
@@ -62,7 +62,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/kdd12/kdd12"
+#define BASEFILE "/scratch/ncm5/dataset/kdd12/kdd12"
 
 #endif
 
