@@ -5,15 +5,22 @@
 #include <math.h>
 #include <sstream>
 
-#define NUM_DATA_VECTORS 30000000
-#define NUM_QUERY_VECTORS 10000
+// #define NUM_DATA_VECTORS 6
+// #define NUM_QUERY_VECTORS 2
+// #define TOPK 2
+// #define DIMENSION 40
+// #define BASEFILE "./criteo_tb0"
+// #define RESULT_FILE "./check"
+
+#define NUM_DATA_VECTORS 100000
+#define NUM_QUERY_VECTORS 100
 #define TOPK 128
-#define DIMENSION 265
-#define BASEFILE "./wiki_hashes"
-#define RESULT_FILE "./WikiDump-6"
+#define DIMENSION 15
+#define BASEFILE "../../../dataset/kdd12/kdd12"
+#define RESULT_FILE "../Tree-Nodes-1"
 
 void readSparse(std::string fileName, size_t offset, size_t n, int *indices, float *values,
-                size_t *markers, size_t bufferlen) {
+                unsigned int *markers, size_t bufferlen) {
     std::cout << "[readSparse]" << std::endl;
 
     /* Fill all the markers with the maximum index for the data, to prevent
@@ -91,6 +98,7 @@ void readTopK(std::string filename, int numQueries, int k, unsigned int *topK) {
             total++;
         }
     }
+    printf("Total %d\n", total);
     assert(total == numQueries * k);
     printf("Read top %d vectors for %d Queries\n", k, numQueries);
 }
@@ -140,8 +148,15 @@ float cosineDist(int *indiceA, float *valA, size_t nonzerosA, int *indiceB, floa
     return up / (a * b);
 }
 
-void similarityMetric(int *queries_indice, float *queries_val, size_t *queries_marker,
-                      int *bases_indice, float *bases_val, size_t *bases_marker,
+void print_vec(int *indices, float *vals, unsigned int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%d:%f ", indices[i], vals[i]);
+    }
+    printf("\n");
+}
+
+void similarityMetric(int *queries_indice, float *queries_val, unsigned int *queries_marker,
+                      int *bases_indice, float *bases_val, unsigned int *bases_marker,
                       unsigned int *queryOutputs, unsigned int numQueries, unsigned int topk,
                       int *nList, int nCnt) {
 
@@ -157,8 +172,16 @@ void similarityMetric(int *queries_indice, float *queries_val, size_t *queries_m
             size_t startB, endB;
             startB = bases_marker[queryOutputs[i * topk + j]];
             endB = bases_marker[queryOutputs[i * topk + j] + 1];
+
+            // printf("Query: \n");
+            // print_vec(queries_indice + startA, queries_val + startA, endA - startA);
+
+            // printf("Result: \n");
+            // print_vec(bases_indice + startB, bases_val + startB, endB - startB);
             float dist = cosineDist(queries_indice + startA, queries_val + startA, endA - startA,
                                     bases_indice + startB, bases_val + startB, endB - startB);
+            // printf("Q: %llu V: %u: %f\n", i, queryOutputs[i * topk + j], dist);
+
             for (int n = 0; n < nCnt; n++) {
                 if (j < nList[n])
                     out_avt[n] += dist;
@@ -187,15 +210,21 @@ void evaluateResults(std::string resultFile) {
     readTopK(resultFile, NUM_QUERY_VECTORS, TOPK, outputs);
 
     size_t amountToAllocate = totalNumVectors * (size_t)DIMENSION;
+
     int *sparseIndices = new int[amountToAllocate];
+
     float *sparseVals = new float[amountToAllocate];
-    size_t *sparseMarkers = new size_t[totalNumVectors + 1];
+
+    unsigned int *sparseMarkers = new unsigned int[totalNumVectors + 1];
 
     readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
                amountToAllocate);
 
-    const int nCnt = 10;
-    int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
+    // const int nCnt = 10;
+    // int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
+
+    const int nCnt = 2;
+    int nList[nCnt] = {1, 2};
 
     std::cout << "\n\n================================\nTOP K TREE\n" << std::endl;
 
