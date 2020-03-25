@@ -7,6 +7,7 @@
 #include <math.h>
 #include <set>
 #include <sstream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ using namespace std;
 #define NUM_QUERY 10000
 
 #define BUFFER_SIZE 500000000
-#define VEC_LEN 4000
+#define VEC_LEN 40
 
 float SparseVecMul(unsigned int *indicesA, float *valuesA, unsigned int sizeA,
                    unsigned int *indicesB, float *valuesB, unsigned int sizeB) {
@@ -109,15 +110,16 @@ void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsig
     std::ifstream file(fileName);
     std::string str;
 
-    size_t ct = 0;                  // Counting the input vectors.
-    size_t totalLen = 0;            // Counting all the elements.
-    while (std::getline(file, str)) // Get one vector (one vector per line).
-    {
-        if (ct < offset) { // If reading with an offset, skip < offset vectors.
+    size_t ct = 0;       // Counting the input vectors.
+    size_t totalLen = 0; // Counting all the elements.
+    while (std::getline(file, str)) {
+        if (ct < offset) { // If reading with an offset, skip < offset
+                           // vectors.
             ct++;
             continue;
         }
-        // Constructs an istringstream object iss with a copy of str as content.
+        // Constructs an istringstream object iss with a copy of str as
+        // content.
         std::istringstream iss(str);
         // Removes label.
         std::string sub;
@@ -143,7 +145,8 @@ void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsig
                 indices[totalLen] = pos;
                 values[totalLen] = val;
             } else {
-                std::cout << "[readSparse] Buffer is too small, data is truncated!\n";
+                std::cout << "[readSparse] Buffer is too "
+                             "small, data is truncated!\n";
                 return;
             }
             curLen++;
@@ -156,7 +159,8 @@ void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsig
         }
     }
     markers[ct - offset] = totalLen; // Final length marker.
-    // std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
+    // std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct -
+    // offset << " vectors. "
     //   << std::endl;
 }
 
@@ -209,17 +213,15 @@ class Checker {
         for (unsigned int file = 0; file < num_files; file++) {
             this->lengths[file] = ids[file].size();
             this->sorted_ids[file] = new unsigned int[lengths[file]];
-            printf("File %u len %u\n", file, lengths[file]);
             unsigned int ct = 0;
             for (unsigned int i : ids[file]) {
                 this->sorted_ids[file][ct] = i;
                 ct++;
             }
-            printf("Array created\n");
             sort(this->sorted_ids[file], this->sorted_ids[file] + lengths[file]);
-            printf("Sorted\n");
+            printf("File %u len %u\n", file, lengths[file]);
         }
-        printf("<<Results File Read>>\n");
+        printf("Results File Read\n");
     }
 
     void process_file(unsigned int file_index) {
@@ -237,7 +239,7 @@ class Checker {
         char *line_start;
 
         string filename(this->basefile);
-        // filename.append(to_string(file_index));
+        filename.append(to_string(file_index));
         FILE *file = fopen(filename.c_str(), "r");
         if (file == NULL) {
             printf("Error opening file\n");
@@ -251,7 +253,8 @@ class Checker {
             for (size_t i = 0; i < len; i++) {
                 int x = buffer[i];
                 if (x == '\n' && num_vecs == current_search) {
-                    // printf("current search %u num_vecs %u\n", current_search, num_vecs);
+                    // printf("current search %u num_vecs
+                    // %u\n", current_search, num_vecs);
 
                     buffer[i] = '\0';
                     // printf("%s\n\n\n", line_start);
@@ -281,12 +284,17 @@ class Checker {
                         }
                         val = stof(sub.substr(pos + 1, (str.length() - 1 - pos)));
                         pos = stoi(sub.substr(0, pos));
-                        // printf("{%u, %f}\n", pos, val);
+                        // printf("{%u, %f}\n", pos,
+                        // val);
                         if (cur_len < VEC_LEN) {
                             vec->indices[cur_len] = pos;
                             vec->values[cur_len] = val;
                         } else {
-                            std::cout << "[readSparse] Buffer is too small, vector is truncated!\n";
+                            std::cout << "[readSparse] "
+                                         "Buffer is too "
+                                         "small, vector "
+                                         "is "
+                                         "truncated!\n";
                             return;
                         }
                         cur_len++;
@@ -316,11 +324,13 @@ class Checker {
             fseek(file, delta, SEEK_CUR);
         }
         fclose(file);
+        cout << filename << ": Processed" << endl;
     }
 
     void process_files() {
         for (unsigned int i = 0; i < num_files; i++) {
             process_file(i);
+            cout << flush;
         }
     }
 
@@ -349,11 +359,9 @@ class Checker {
             }
         }
         assert(total == num_queries * k);
-
-        // int n_count = 10;
-        // int n_counts[] = {1, 10, 20, 30, 32, 40, 50, 64, 100, 128};
-        int n_count = 2;
-        int n_counts[] = {1, 2};
+        printf("Loaded Results\n");
+        int n_count = 10;
+        int n_counts[] = {1, 10, 20, 30, 32, 40, 50, 64, 100, 128};
 
         float *avgs = new float[10]();
 
@@ -368,12 +376,13 @@ class Checker {
                 unsigned int start = markers[q];
                 unsigned int end = markers[q + 1];
                 // printf("Query: \n");
-                // print_vec(indices + start, values + start, end - start);
-                // printf("Result \n");
+                // print_vec(indices + start, values + start,
+                // end - start); printf("Result \n");
                 // print_sparse_vector(other);
                 float dist = cosineDist(other->indices, other->values, other->len, indices + start,
                                         values + start, end - start);
-                // printf("Q: %llu V: %u: %f\n", q, top_k[q * this->k + r], dist);
+                // printf("Q: %llu V: %u: %f\n", q, top_k[q *
+                // this->k + r], dist);
 
                 for (unsigned int i = 0; i < n_count; i++) {
                     if (r < n_counts[i]) {
@@ -399,9 +408,9 @@ int main() {
 
     c.read_results();
 
-    // c.process_files();
+    c.process_files();
 
-    // c.evaluate();
+    c.evaluate();
 
     return 0;
 }
