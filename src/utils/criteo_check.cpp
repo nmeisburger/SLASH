@@ -209,13 +209,15 @@ class Checker {
         for (unsigned int file = 0; file < num_files; file++) {
             this->lengths[file] = ids[file].size();
             this->sorted_ids[file] = new unsigned int[lengths[file]];
+            printf("File %u len %u\n", file, lengths[file]);
             unsigned int ct = 0;
             for (unsigned int i : ids[file]) {
                 this->sorted_ids[file][ct] = i;
                 ct++;
             }
+            printf("Array created\n");
             sort(this->sorted_ids[file], this->sorted_ids[file] + lengths[file]);
-            // printf("File %u len %u\n", file, lengths[file]);
+            printf("Sorted\n");
         }
         printf("<<Results File Read>>\n");
     }
@@ -397,9 +399,9 @@ int main() {
 
     c.read_results();
 
-    c.process_file(0);
+    // c.process_files();
 
-    c.evaluate();
+    // c.evaluate();
 
     return 0;
 }
