@@ -5,11 +5,18 @@
 #include <iostream>
 #include <map>
 #include <math.h>
+#include <mpi.h>
 #include <set>
 #include <sstream>
 #include <stdio.h>
 
 using namespace std;
+
+// #define BASEFILE "../../../dataset/kdd12/kdd12"
+// #define RESULT_FILE "./file"
+// #define NUM_QUERY 2
+// #define TOPK 2
+// #define FILE_SIZE 10
 
 #define BASEFILE "../../../dataset/criteo/criteo_tb"
 #define RESULT_FILE "../../results/criteo/Criteo-20"
@@ -241,6 +248,12 @@ class Checker {
         string filename(this->basefile);
         filename.append(to_string(file_index));
         FILE *file = fopen(filename.c_str(), "r");
+
+        string output_filename("Subset");
+        output_filename.append(to_string(file_index));
+
+        ofstream output(output_filename);
+
         if (file == NULL) {
             printf("Error opening file\n");
             return;
@@ -264,45 +277,8 @@ class Checker {
                     // printf("%s\n\n", line_start);
                     line_start = buffer + (i + 1);
 
-                    std::istringstream iss(str);
-                    std::string sub;
-                    iss >> sub;
-
-                    int label = stoi(sub);
-
-                    sparse_vector *vec = make_sparse_vector(label);
-
-                    int pos;
-                    float val;
-                    unsigned int cur_len = 0;
-                    do {
-                        std::string sub;
-                        iss >> sub;
-                        pos = sub.find_first_of(":");
-                        if (pos == std::string::npos) {
-                            continue;
-                        }
-                        val = stof(sub.substr(pos + 1, (str.length() - 1 - pos)));
-                        pos = stoi(sub.substr(0, pos));
-                        // printf("{%u, %f}\n", pos,
-                        // val);
-                        if (cur_len < VEC_LEN) {
-                            vec->indices[cur_len] = pos;
-                            vec->values[cur_len] = val;
-                        } else {
-                            std::cout << "[readSparse] "
-                                         "Buffer is too "
-                                         "small, vector "
-                                         "is "
-                                         "truncated!\n";
-                            return;
-                        }
-                        cur_len++;
-                    } while (iss);
-
-                    vec->len = cur_len;
-
-                    (*store)[sorted_ids[file_index][search_index]] = vec;
+                    output << sorted_ids[file_index][search_index] << " ";
+                    output << str << "\n";
 
                     num_vecs++;
                     search_index++;
@@ -325,13 +301,6 @@ class Checker {
         }
         fclose(file);
         cout << filename << ": Processed" << endl;
-    }
-
-    void process_files() {
-        for (unsigned int i = 0; i < num_files; i++) {
-            process_file(i);
-            cout << flush;
-        }
     }
 
     void evaluate() {
@@ -404,13 +373,20 @@ class Checker {
 
 int main() {
 
+    MPI_Init(0, 0);
+    int my_rank;
+
+    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+
+    printf("Node %d Activated\n", my_rank);
+
     Checker c(BASEFILE, RESULT_FILE, FILE_SIZE, NUM_FILES, NUM_QUERY, TOPK);
 
     c.read_results();
 
-    c.process_files();
+    c.process_file(my_rank);
 
-    c.evaluate();
+    MPI_Finalize();
 
     return 0;
 }
