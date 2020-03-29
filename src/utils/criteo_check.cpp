@@ -5,7 +5,7 @@
 #include <iostream>
 #include <map>
 #include <math.h>
-#include <mpi.h>
+// #include <mpi.h>
 #include <set>
 #include <sstream>
 #include <stdio.h>
@@ -371,22 +371,133 @@ class Checker {
     }
 };
 
-int main() {
+void eval(string basefile, string result_file, unsigned int num_queries, unsigned int k) {
+    unsigned int *indices = new unsigned int[num_queries * VEC_LEN];
+    float *values = new float[num_queries * VEC_LEN];
+    unsigned int *markers = new unsigned int[num_queries + 1];
+    int *labels = new int[num_queries];
 
-    MPI_Init(0, 0);
-    int my_rank;
+    readSparse(basefile, 0, num_queries, indices, values, markers, labels, num_queries * VEC_LEN);
 
-    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+    unsigned int *top_k = new unsigned int[num_queries * k];
 
-    printf("Node %d Activated\n", my_rank);
+    ifstream file(result_file);
+    string str;
+    unsigned int total = 0;
+    while (std::getline(file, str)) {
+        istringstream iss(str);
+        for (size_t i = 0; i < k; i++) {
+            std::string item;
+            iss >> item;
+            unsigned int val = stoul(item, nullptr, 10);
+            top_k[total] = val;
+            total++;
+        }
+    }
+    file.close();
+    assert(total == num_queries * k);
+    printf("Loaded Results\n");
 
-    Checker c(BASEFILE, RESULT_FILE, FILE_SIZE, NUM_FILES, NUM_QUERY, TOPK);
+    map<unsigned int, sparse_vector *> store;
 
-    c.read_results();
+    for (int i = 0; i < 20; i++) {
+        string name("subsets/Subset");
+        name.append(to_string(i));
+        ifstream subset(name);
+        string str;
 
-    c.process_file(my_rank);
+        while (std::getline(subset, str)) {
+            std::istringstream iss(str);
+            std::string sub;
+            iss >> sub;
+            unsigned int key = stoul(sub, nullptr, 10);
+            iss >> sub;
+            int label = stoi(sub);
+            int pos;
+            float val;
 
-    MPI_Finalize();
+            sparse_vector *vec = make_sparse_vector(label);
 
-    return 0;
+            unsigned int curLen = 0;
+            do {
+                std::string sub;
+                iss >> sub;
+                pos = sub.find_first_of(":");
+                if (pos == std::string::npos) {
+                    continue;
+                }
+                val = stof(sub.substr(pos + 1, (str.length() - 1 - pos)));
+                pos = stoi(sub.substr(0, pos));
+                vec->indices[curLen] = pos;
+                vec->values[curLen] = val;
+                curLen++;
+            } while (iss);
+
+            vec->len = curLen;
+
+            store[key] = vec;
+        }
+        subset.close();
+    }
+
+    int n_count = 10;
+    int n_counts[] = {1, 10, 20, 30, 32, 40, 50, 64, 100, 128};
+
+    float *avgs = new float[10]();
+
+    unsigned int correct_labels = 0;
+    for (size_t q = 0; q < num_queries; q++) {
+        unsigned int query_correct = 0;
+        for (size_t r = 0; r < k; r++) {
+            sparse_vector *other = store[top_k[q * k + r]];
+            if (labels[q] == other->label) {
+                query_correct++;
+            }
+            unsigned int start = markers[q];
+            unsigned int end = markers[q + 1];
+            // printf("Query: \n");
+            // print_vec(indices + start, values + start,
+            // end - start); printf("Result \n");
+            // print_sparse_vector(other);
+            float dist = cosineDist(other->indices, other->values, other->len, indices + start,
+                                    values + start, end - start);
+            // printf("Q: %llu V: %u: %f\n", q, top_k[q *
+            // this->k + r], dist);
+
+            for (unsigned int i = 0; i < n_count; i++) {
+                if (r < n_counts[i]) {
+                    avgs[i] += dist;
+                }
+            }
+        }
+        if (query_correct >= k / 2) {
+            correct_labels++;
+        }
+    }
+    for (int i = 0; i < n_count; i++) {
+        printf("S@%d = %1.3f \n", n_counts[i], avgs[i] / (n_counts[i] * num_queries));
+    }
+    printf("Label Accuracy: %u / %u\n", correct_labels, num_queries);
 }
+
+// int main() {
+
+//     MPI_Init(0, 0);
+//     int my_rank;
+
+//     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+
+//     printf("Node %d Activated\n", my_rank);
+
+//     Checker c(BASEFILE, RESULT_FILE, FILE_SIZE, NUM_FILES, NUM_QUERY, TOPK);
+
+//     c.read_results();
+
+//     c.process_file(my_rank);
+
+//     MPI_Finalize();
+
+//     return 0;
+// }
+
+int main() { eval(BASEFILE, RESULT_FILE, NUM_QUERY, TOPK); }
