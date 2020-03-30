@@ -30,6 +30,8 @@ CMS::CMS(unsigned int L, unsigned int B, unsigned int numDataStreams, int myRank
     std::cout << "CMS Initialized in Node " << _myRank << std::endl;
 }
 
+void CMS::reset() { _LHH = new unsigned int[_numSketches * _sketchSize](); }
+
 void CMS::getCanidateHashes(unsigned int candidate, unsigned int *hashes) {
     for (size_t hashIndx = 1; hashIndx < _numHashes; hashIndx++) {
         unsigned int h = _hashingSeeds[hashIndx];
@@ -78,7 +80,10 @@ void CMS::getHashes(unsigned int *dataStream, unsigned int dataStreamLen,
 void CMS::addSketch(unsigned int dataStreamIndx, unsigned int *dataStream,
                     unsigned int dataStreamLen) {
 
-    unsigned int *hashIndices = new unsigned int[_numHashes * dataStreamLen];
+    // unsigned int *hashIndices = new unsigned int[_numHashes * dataStreamLen];
+    unsigned int *hashIndices =
+        (unsigned int *)malloc(sizeof(unsigned int) * _numHashes * dataStreamLen);
+    printf("malloced hashes in sketch\n");
     getHashes(dataStream, dataStreamLen, hashIndices);
 
     for (size_t dataIndx = 0; dataIndx < dataStreamLen; dataIndx++) {
@@ -104,6 +109,8 @@ void CMS::addSketch(unsigned int dataStreamIndx, unsigned int *dataStream,
             }
         }
     }
+    // delete[] hashIndices;
+    free(hashIndices);
 }
 
 void CMS::add(unsigned int *dataStreams, unsigned int segmentSize) {

@@ -54,6 +54,10 @@ flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank,
     _myQueryVectorsCt = _queryVectorCts[_myRank];
     _myHashCt = _hashCts[_myRank];
 
+    _queryIndices = new unsigned int[(unsigned)(_numQueryVectors * _dimension)];
+    _queryVals = new float[(unsigned)(_numQueryVectors * _dimension)];
+    _queryMarkers = new unsigned int[(unsigned)(_numQueryVectors + 1)];
+
     std::cout << "FLASH Controller Initialized in Node " << _myRank << std::endl;
 }
 

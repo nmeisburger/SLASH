@@ -81,6 +81,8 @@ class CMS {
     */
     CMS(unsigned int L, unsigned int B, unsigned int S, int myRank, int worldSize);
 
+    void reset();
+
     /* Adds to each of the n sketches with n data streams
 
     @param dataStreams: The array holding all of the data streams to be

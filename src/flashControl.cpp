@@ -27,8 +27,8 @@ void flashControl::allocateQuery(std::string filename) {
 
     int *tempQueryMarkerCts = new int[_worldSize];
     for (int n = 0; n < _worldSize; n++) {
-        tempQueryMarkerCts[n] =
-            _queryVectorCts[n] + 1; // To account for extra element at the end of each marker array
+        tempQueryMarkerCts[n] = _queryVectorCts[n] + 1; // To account for extra element at
+                                                        // the end of each marker array
     }
 
     MPI_Scatterv(_queryIndices, _queryCts, _queryOffsets, MPI_UNSIGNED, _myQueryIndices,
@@ -43,6 +43,72 @@ void flashControl::allocateQuery(std::string filename) {
         _myQueryMarkers[i] -= myQueryOffset;
     }
     delete[] tempQueryMarkerCts;
+}
+
+std::streampos flashControl::allocateQuery2(std::string filename, std::streampos offset) {
+
+    std::streampos end = 0;
+    if (_myRank == 0) {
+        // _queryIndices = new unsigned int[(unsigned)(_numQueryVectors * _dimension)];
+        // _queryVals = new float[(unsigned)(_numQueryVectors * _dimension)];
+        // _queryMarkers = new unsigned int[(unsigned)(_numQueryVectors + 1)];
+        end = readSparse2(filename, offset, 0, _numQueryVectors, _queryIndices, _queryVals,
+                          _queryMarkers, (unsigned)(_numQueryVectors * _dimension));
+
+        for (int n = 0; n < _worldSize; n++) {
+            _queryOffsets[n] = _queryMarkers[_queryVectorOffsets[n]];
+            _queryCts[n] =
+                _queryMarkers[_queryVectorOffsets[n] + _queryVectorCts[n]] - _queryOffsets[n];
+        }
+    }
+
+    MPI_Bcast(_queryOffsets, _worldSize, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
+    MPI_Bcast(_queryCts, _worldSize, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
+
+    _myQueryVectorsLen = _queryCts[_myRank];
+
+    _myQueryIndices = new unsigned int[_myQueryVectorsLen];
+    _myQueryVals = new float[_myQueryVectorsLen];
+    _myQueryMarkers = new unsigned int[_myQueryVectorsCt + 1];
+
+    int *tempQueryMarkerCts = new int[_worldSize];
+    for (int n = 0; n < _worldSize; n++) {
+        tempQueryMarkerCts[n] = _queryVectorCts[n] + 1; // To account for extra element at
+                                                        // the end of each marker array
+    }
+
+    MPI_Scatterv(_queryIndices, _queryCts, _queryOffsets, MPI_UNSIGNED, _myQueryIndices,
+                 _myQueryVectorsLen, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
+    MPI_Scatterv(_queryVals, _queryCts, _queryOffsets, MPI_FLOAT, _myQueryVals, _myQueryVectorsLen,
+                 MPI_FLOAT, 0, MPI_COMM_WORLD);
+    MPI_Scatterv(_queryMarkers, tempQueryMarkerCts, _queryVectorOffsets, MPI_UNSIGNED,
+                 _myQueryMarkers, _myQueryVectorsCt + 1, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
+
+    unsigned int myQueryOffset = _queryOffsets[_myRank];
+    for (size_t i = 0; i < _myQueryVectorsCt + 1; i++) {
+        _myQueryMarkers[i] -= myQueryOffset;
+    }
+    delete[] tempQueryMarkerCts;
+
+    return end;
+}
+
+void flashControl::query(std::string filename, std::string outputFilename, unsigned int batches,
+                         unsigned int topK) {
+
+    std::streampos last = 0;
+    unsigned int *topKOutputs = new unsigned int[_numQueryVectors * topK];
+    for (unsigned int batch = 0; batch < batches; batch++) {
+        last = this->allocateQuery2(filename, last);
+        printf("Reallocated query\n");
+        this->hashQuery();
+        printf("Hashed query\n");
+        this->topKCMSAggregationTree(topK, topKOutputs, 0);
+        printf("aggregated tree\n");
+        writeTopK2(outputFilename, _numQueryVectors, topK, topKOutputs);
+        printf("wrote topk\n");
+        _mySketch->reset();
+    }
 }
 
 void flashControl::add(std::string filename, unsigned int numDataVectors, unsigned int offset,
@@ -70,9 +136,10 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
     unsigned int myNumDataVectors = _dataVectorCts[_myRank];
     unsigned int myDataVectorOffset = _dataVectorOffsets[_myRank];
 
-    // unsigned int *myDataIndices = new unsigned int[myNumDataVectors * _dimension];
-    // float *myDataVals = new float[myNumDataVectors * _dimension];
-    // unsigned int *myDataMarkers = new unsigned int[myNumDataVectors + 1];
+    // unsigned int *myDataIndices = new unsigned int[myNumDataVectors *
+    // _dimension]; float *myDataVals = new float[myNumDataVectors *
+    // _dimension]; unsigned int *myDataMarkers = new unsigned
+    // int[myNumDataVectors + 1];
 
     myDataIndices = (unsigned int *)realloc(myDataIndices, 4 * myNumDataVectors * _dimension);
     myDataVals = (float *)realloc(myDataVals, 4 * myNumDataVectors * _dimension);
@@ -264,15 +331,17 @@ void flashControl::topKCMSAggregationTree(unsigned int topK, unsigned int *outpu
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
-
+    printf("reservoirs extracted\n");
     _mySketch->add(allReservoirsExtracted, segmentSize);
+    printf("sketched added\n");
 
     _mySketch->aggregateSketchesTree();
+    printf("sketched aggregated\n");
 
     if (_myRank == 0) {
         _mySketch->topK(topK, outputs, threshold);
     }
-
+    printf("TOPK\n");
     delete[] allReservoirsExtracted;
 }
 
@@ -282,15 +351,11 @@ void flashControl::topKCMSAggregationLinear(unsigned int topK, unsigned int *out
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
-
     _mySketch->add(allReservoirsExtracted, segmentSize);
-
     _mySketch->aggregateSketches();
-
     if (_myRank == 0) {
         _mySketch->topK(topK, outputs, threshold);
     }
-
     delete[] allReservoirsExtracted;
 }
 

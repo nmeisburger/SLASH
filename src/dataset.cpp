@@ -71,13 +71,96 @@ void readSparse(std::string fileName, unsigned int offset, unsigned int n, unsig
         }
     }
     markers[ct - offset] = totalLen; // Final length marker.
-    // std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
-    //   << std::endl;
+    std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
+              << std::endl;
+}
+
+std::streampos readSparse2(std::string fileName, std::streampos fileOffset, unsigned int offset,
+                           unsigned int n, unsigned int *indices, float *values,
+                           unsigned int *markers, unsigned int bufferlen) {
+
+    // std::cout << "[readSparse]" << std::endl;
+
+    /* Fill all the markers with the maximum index for the data, to prevent
+       indexing outside of the range. */
+
+    std::ifstream file(fileName);
+
+    file.seekg(fileOffset);
+
+    for (size_t i = 0; i <= n; i++) {
+        markers[i] = bufferlen - 1;
+    }
+
+    std::string str;
+
+    size_t ct = 0;                  // Counting the input vectors.
+    size_t totalLen = 0;            // Counting all the elements.
+    while (std::getline(file, str)) // Get one vector (one vector per line).
+    {
+        if (ct < offset) { // If reading with an offset, skip < offset vectors.
+            ct++;
+            continue;
+        }
+        // Constructs an istringstream object iss with a copy of str as content.
+        std::istringstream iss(str);
+        // Removes label.
+        std::string sub;
+        iss >> sub;
+        // Mark the start location.
+        markers[ct - offset] = std::min(totalLen, (size_t)bufferlen - 1);
+        int pos;
+        float val;
+        unsigned int curLen = 0; // Counting elements of the current vector.
+        do {
+            std::string sub;
+            iss >> sub;
+            pos = sub.find_first_of(":");
+            if (pos == std::string::npos) {
+                continue;
+            }
+            val = stof(sub.substr(pos + 1, (str.length() - 1 - pos)));
+            pos = stoi(sub.substr(0, pos));
+
+            if (totalLen < bufferlen) {
+                indices[totalLen] = pos;
+                values[totalLen] = val;
+            } else {
+                std::cout << "[readSparse] Buffer is too small, data is truncated!\n";
+                return 0;
+            }
+            curLen++;
+            totalLen++;
+        } while (iss);
+
+        ct++;
+        if (ct == (offset + n)) {
+            break;
+        }
+    }
+    markers[ct - offset] = totalLen; // Final length marker.
+    std::cout << "[readSparse] Read " << totalLen << " numbers, " << ct - offset << " vectors. "
+              << std::endl;
+
+    std::streampos end = file.tellg();
+    file.close();
+    return end;
 }
 
 void writeTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {
     std::ofstream file;
     file.open(filename);
+    for (size_t q = 0; q < numQueries; q++) {
+        for (size_t i = 0; i < k; i++) {
+            file << topK[q * k + i] << " ";
+        }
+        file << "\n";
+    }
+    file.close();
+}
+
+void writeTopK2(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {
+    std::ofstream file(filename, std::ios::app);
     for (size_t q = 0; q < numQueries; q++) {
         for (size_t i = 0; i < k; i++) {
             file << topK[q * k + i] << " ";

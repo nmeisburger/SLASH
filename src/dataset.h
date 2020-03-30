@@ -16,7 +16,13 @@ using namespace std;
 void readSparse(string fileName, unsigned int offset, unsigned int n, unsigned int *indices,
                 float *values, unsigned int *markers, unsigned int bufferlen);
 
+std::streampos readSparse2(std::string fileName, std::streampos fileOffset, unsigned int offset,
+                           unsigned int n, unsigned int *indices, float *values,
+                           unsigned int *markers, unsigned int bufferlen);
+
 void writeTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK);
+
+void writeTopK2(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK);
 
 void readTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK);
 

@@ -12,12 +12,12 @@
 // #define BASEFILE "./criteo_tb0"
 // #define RESULT_FILE "./check"
 
-#define NUM_DATA_VECTORS 100000
-#define NUM_QUERY_VECTORS 100
+#define NUM_DATA_VECTORS 10000
+#define NUM_QUERY_VECTORS 300
 #define TOPK 128
-#define DIMENSION 15
-#define BASEFILE "../../../dataset/kdd12/kdd12"
-#define RESULT_FILE "../Tree-Nodes-1"
+#define DIMENSION 4000
+#define BASEFILE "../../dataset/webspam/webspam_trigram.svm"
+#define RESULT_FILE "./Tree-Nodes-1"
 
 void readSparse(std::string fileName, size_t offset, size_t n, int *indices, float *values,
                 unsigned int *markers, size_t bufferlen) {
@@ -220,11 +220,8 @@ void evaluateResults(std::string resultFile) {
     readSparse(BASEFILE, 0, totalNumVectors, sparseIndices, sparseVals, sparseMarkers,
                amountToAllocate);
 
-    // const int nCnt = 10;
-    // int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
-
-    const int nCnt = 2;
-    int nList[nCnt] = {1, 2};
+    const int nCnt = 10;
+    int nList[nCnt] = {1, 10, 20, 30, 32, 40, 50, 64, 100, TOPK};
 
     std::cout << "\n\n================================\nTOP K TREE\n" << std::endl;
 

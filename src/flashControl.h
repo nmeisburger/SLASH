@@ -92,11 +92,13 @@ class flashControl {
     // for hashing.
     void allocateQuery(std::string filename);
 
+    std::streampos allocateQuery2(std::string filename, std::streampos offset);
+
     /* Adds a nodes set of data vectors to its LSHReservoirSampler object.
 
     @param numBatches: the number of batches to break the data into when adding.
-    @param batchPrint: after each set of this number of batches the function will print the memory
-    usage of each hash table.
+    @param batchPrint: after each set of this number of batches the function will print the
+    memory usage of each hash table.
     */
     void add(std::string filename, unsigned int n, unsigned int offset, unsigned int numBatches,
              unsigned int batchPrint);
@@ -107,6 +109,9 @@ class flashControl {
     // Computes the hashes of each partition of the query vectors in each node, and then
     // combines each partition of hashes into a single set of hashes in every node.
     void hashQuery();
+
+    void query(std::string filename, std::string outputFileName, unsigned int batches,
+               unsigned int topK);
 
     /* Extracts reservoirs from each node's hash tables, and sends these top k candidates to
        node 0, which preforms frequency counts and selects the top-k.
