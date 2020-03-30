@@ -105,8 +105,10 @@ void flashControl::query(std::string filename, std::string outputFilename, unsig
         printf("Hashed query\n");
         this->topKCMSAggregationTree(topK, topKOutputs, 0);
         printf("aggregated tree\n");
-        writeTopK2(outputFilename, _numQueryVectors, topK, topKOutputs);
-        printf("wrote topk\n");
+        if (_myRank == 0) {
+            writeTopK2(outputFilename, _numQueryVectors, topK, topKOutputs);
+            printf("wrote topk\n");
+        }
         _mySketch->reset();
     }
 }

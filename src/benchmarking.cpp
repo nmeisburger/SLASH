@@ -432,7 +432,7 @@ void evalWithFileOutput() {
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
-    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, NUM_DATA_VECTORS, 2 * NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
@@ -450,8 +450,8 @@ void evalWithFileOutput() {
     //   control->hashQuery();
     //   end = std::chrono::system_clock::now();
     //   elapsed = end - start;
-    //   std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() << "
-    //   Seconds\n"
+    //   std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() <<
+    //   "Seconds\n "
     //             << std::endl;
 
     //   MPI_Barrier(MPI_COMM_WORLD);
@@ -465,8 +465,8 @@ void evalWithFileOutput() {
     //   control->topKCMSAggregationTree(TOPK, treeOutputs, 0);
     //   end = std::chrono::system_clock::now();
     //   elapsed = end - start;
-    //   std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << "
-    //   Seconds\n"
+    //   std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() <<
+    //   "Seconds\n "
     //             << std::endl;
 
     //   std::string filenameTree("Tree-Nodes-");

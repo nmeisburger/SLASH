@@ -12,11 +12,11 @@
 // #define BASEFILE "./criteo_tb0"
 // #define RESULT_FILE "./check"
 
-#define NUM_DATA_VECTORS 10000
-#define NUM_QUERY_VECTORS 300
+#define NUM_DATA_VECTORS 100000
+#define NUM_QUERY_VECTORS 200
 #define TOPK 128
-#define DIMENSION 4000
-#define BASEFILE "../../dataset/webspam/webspam_trigram.svm"
+#define DIMENSION 15
+#define BASEFILE "../../dataset/kdd12/kdd12"
 #define RESULT_FILE "./Tree-Nodes-1"
 
 void readSparse(std::string fileName, size_t offset, size_t n, int *indices, float *values,

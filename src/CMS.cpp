@@ -83,7 +83,6 @@ void CMS::addSketch(unsigned int dataStreamIndx, unsigned int *dataStream,
     // unsigned int *hashIndices = new unsigned int[_numHashes * dataStreamLen];
     unsigned int *hashIndices =
         (unsigned int *)malloc(sizeof(unsigned int) * _numHashes * dataStreamLen);
-    printf("malloced hashes in sketch\n");
     getHashes(dataStream, dataStreamLen, hashIndices);
 
     for (size_t dataIndx = 0; dataIndx < dataStreamLen; dataIndx++) {
