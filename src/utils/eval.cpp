@@ -12,8 +12,8 @@
 // #define BASEFILE "./criteo_tb0"
 // #define RESULT_FILE "./check"
 
-#define NUM_DATA_VECTORS 100000
-#define NUM_QUERY_VECTORS 200
+#define NUM_DATA_VECTORS 140000000
+#define NUM_QUERY_VECTORS 10000
 #define TOPK 128
 #define DIMENSION 15
 #define BASEFILE "../../dataset/kdd12/kdd12"

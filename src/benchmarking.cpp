@@ -423,7 +423,7 @@ void evalWithFileOutput() {
   Partitioning Query Between Nodes
   */
 
-    // control->allocateQuery(BASEFILE);
+    control->allocateQuery(BASEFILE);
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -440,83 +440,79 @@ void evalWithFileOutput() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    control->query(BASEFILE, "Tree-Nodes-1", 2, 128);
-
     /* ===============================================================
   Hashing Query Vectors
   */
-    //   std::cout << "Computing Query Hashes Node " << myRank << "..." << std::endl;
-    //   start = std::chrono::system_clock::now();
-    //   control->hashQuery();
-    //   end = std::chrono::system_clock::now();
-    //   elapsed = end - start;
-    //   std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() <<
-    //   "Seconds\n "
-    //             << std::endl;
+    std::cout << "Computing Query Hashes Node " << myRank << "..." << std::endl;
+    start = std::chrono::system_clock::now();
+    control->hashQuery();
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() << "Seconds\n "
+              << std::endl;
 
-    //   MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
-    //   /* ===============================================================
-    // Extracting Reservoirs and Preforming Top-K selection
-    // */
-    //   unsigned int *treeOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    //   start = std::chrono::system_clock::now();
-    //   std::cout << "Extracting Top K (TREE) Node " << myRank << "..." << std::endl;
-    //   control->topKCMSAggregationTree(TOPK, treeOutputs, 0);
-    //   end = std::chrono::system_clock::now();
-    //   elapsed = end - start;
-    //   std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() <<
-    //   "Seconds\n "
-    //             << std::endl;
+    /* ===============================================================
+  Extracting Reservoirs and Preforming Top-K selection
+  */
+    unsigned int *treeOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    start = std::chrono::system_clock::now();
+    std::cout << "Extracting Top K (TREE) Node " << myRank << "..." << std::endl;
+    control->topKCMSAggregationTree(TOPK, treeOutputs, 0);
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << "Seconds\n "
+              << std::endl;
 
-    //   std::string filenameTree("Tree-Nodes-");
-    //   filenameTree.append(std::to_string(worldSize));
-    //   if (myRank == 0) {
-    //       writeTopK(filenameTree, NUM_QUERY_VECTORS, TOPK, treeOutputs);
-    //   }
+    std::string filenameTree("Tree-Nodes-");
+    filenameTree.append(std::to_string(worldSize));
+    if (myRank == 0) {
+        writeTopK(filenameTree, NUM_QUERY_VECTORS, TOPK, treeOutputs);
+    }
 
-    //   cms->reset();
-    //   MPI_Barrier(MPI_COMM_WORLD);
+    cms->reset();
+    MPI_Barrier(MPI_COMM_WORLD);
 
-    //   // ==============================================
+    // ==============================================
 
-    //   unsigned int *linearOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    //   start = std::chrono::system_clock::now();
-    //   std::cout << "Extracting Top K (LINEAR) Node " << myRank << "..." << std::endl;
-    //   control->topKCMSAggregationLinear(TOPK, linearOutputs, 0);
-    //   end = std::chrono::system_clock::now();
-    //   elapsed = end - start;
-    //   std::cout << "Top K (LINEAR) Extracted Node " << myRank << ": " << elapsed.count()
-    //             << " Seconds\n"
-    //             << std::endl;
+    unsigned int *linearOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    start = std::chrono::system_clock::now();
+    std::cout << "Extracting Top K (LINEAR) Node " << myRank << "..." << std::endl;
+    control->topKCMSAggregationLinear(TOPK, linearOutputs, 0);
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Top K (LINEAR) Extracted Node " << myRank << ": " << elapsed.count()
+              << " Seconds\n"
+              << std::endl;
 
-    //   std::string filenameLinear("Linear-Nodes-");
-    //   filenameLinear.append(std::to_string(worldSize));
-    //   if (myRank == 0) {
-    //       writeTopK(filenameLinear, NUM_QUERY_VECTORS, TOPK, linearOutputs);
-    //   }
+    std::string filenameLinear("Linear-Nodes-");
+    filenameLinear.append(std::to_string(worldSize));
+    if (myRank == 0) {
+        writeTopK(filenameLinear, NUM_QUERY_VECTORS, TOPK, linearOutputs);
+    }
 
-    //   MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
-    //   // ==============================================
+    // ==============================================
 
-    //   unsigned int *bruteforceOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    //   start = std::chrono::system_clock::now();
-    //   std::cout << "Extracting Top K (BRUTEFORCE) Node " << myRank << "..." << std::endl;
-    //   control->topKBruteForceAggretation(TOPK, bruteforceOutputs);
-    //   end = std::chrono::system_clock::now();
-    //   elapsed = end - start;
-    //   std::cout << "Top K (BRUTEFORCE) Extracted Node " << myRank << ": " << elapsed.count()
-    //             << " Seconds\n"
-    //             << std::endl;
+    unsigned int *bruteforceOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    start = std::chrono::system_clock::now();
+    std::cout << "Extracting Top K (BRUTEFORCE) Node " << myRank << "..." << std::endl;
+    control->topKBruteForceAggretation(TOPK, bruteforceOutputs);
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Top K (BRUTEFORCE) Extracted Node " << myRank << ": " << elapsed.count()
+              << " Seconds\n"
+              << std::endl;
 
-    //   std::string filenameBruteforce("Bruteforce-Nodes-");
-    //   filenameBruteforce.append(std::to_string(worldSize));
-    //   if (myRank == 0) {
-    //       writeTopK(filenameBruteforce, NUM_QUERY_VECTORS, TOPK, bruteforceOutputs);
-    //   }
+    std::string filenameBruteforce("Bruteforce-Nodes-");
+    filenameBruteforce.append(std::to_string(worldSize));
+    if (myRank == 0) {
+        writeTopK(filenameBruteforce, NUM_QUERY_VECTORS, TOPK, bruteforceOutputs);
+    }
 
-    //   MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
   De-allocating Data Structures in Memory
