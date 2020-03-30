@@ -22,7 +22,7 @@ int main() {
     testing();
 #endif
 #ifdef FILE_OUTPUT
-        evalWithFileOutput();
+    evalWithFileOutput();
 #endif
 #ifdef EVAL_SIM
     evalWithSimilarity();
@@ -32,6 +32,9 @@ int main() {
 #endif
 #ifdef CRITEO
     criteo();
+#endif
+#ifdef CRITEO2
+    criteoTesting();
 #endif
 
     return 0;

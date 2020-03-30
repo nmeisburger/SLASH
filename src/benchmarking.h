@@ -3,12 +3,13 @@
 
 #include <string>
 
-#define FILE_OUTPUT
+// #define FILE_OUTPUT
 // #define EVAL_SIM
 // #define WEBSPAM
-#define KDD12
+// #define KDD12
 // #define WIKIDUMP
 // #define CRITEO
+#define CRITEO2
 
 #ifdef WEBSPAM
 
@@ -100,7 +101,7 @@
 
 #endif
 
-#ifdef CRITEO
+#if defined(CRITEO) || defined(CRITEO2)
 
 #define SPARSE_DATASET
 
@@ -167,6 +168,7 @@ void evalWithSimilarity();
 void evalWithFileOutput();
 void wikiDump();
 void criteo();
+void criteoTesting();
 void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
                 int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize,
                 bool cms, bool tree);
