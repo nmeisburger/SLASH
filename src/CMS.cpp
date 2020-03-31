@@ -30,7 +30,10 @@ CMS::CMS(unsigned int L, unsigned int B, unsigned int numDataStreams, int myRank
     std::cout << "CMS Initialized in Node " << _myRank << std::endl;
 }
 
-void CMS::reset() { _LHH = new unsigned int[_numSketches * _sketchSize](); }
+void CMS::reset() {
+    delete[] _LHH;
+    _LHH = new unsigned int[_numSketches * _sketchSize]();
+}
 
 void CMS::getCanidateHashes(unsigned int candidate, unsigned int *hashes) {
     for (size_t hashIndx = 1; hashIndx < _numHashes; hashIndx++) {
@@ -146,6 +149,7 @@ void CMS::topKSketch(unsigned int K, unsigned int threshold, unsigned int *topK,
                     break;
                 }
             }
+            delete[] hashes;
         }
     }
     for (; count < _bucketSize; count++) {
