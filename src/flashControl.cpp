@@ -100,14 +100,17 @@ void flashControl::query(std::string filename, std::string outputFilename, unsig
     unsigned int *topKOutputs = new unsigned int[_numQueryVectors * topK];
     for (unsigned int batch = 0; batch < batches; batch++) {
         last = this->allocateQuery2(filename, last);
-        printf("Reallocated query\n");
+        // printf("Reallocated query\n");
         this->hashQuery();
-        printf("Hashed query\n");
+        // printf("Hashed query\n");
         this->topKCMSAggregationTree(topK, topKOutputs, 0);
-        printf("aggregated tree\n");
+        // printf("aggregated tree\n");
         if (_myRank == 0) {
             writeTopK2(outputFilename, _numQueryVectors, topK, topKOutputs);
-            printf("wrote topk\n");
+            // printf("wrote topk\n");
+            if (batch % 1000 == 0) {
+		printf("Query Batch %lu Complete\n", batch);
+	    }
         }
         _mySketch->reset();
     }
@@ -201,7 +204,9 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
         // if (batch % batchPrint == 0) {
         //     _myReservoir->checkTableMemLoad();
         // }
-        std::cout << "Batch " << batch << " Complete node " << _myRank << std::endl;
+        if (batch % 100 == 0) {
+            std::cout << "Batch " << batch << " Complete node " << _myRank << std::endl;
+	}
     }
 
     delete[] myDataIndices;
@@ -333,17 +338,17 @@ void flashControl::topKCMSAggregationTree(unsigned int topK, unsigned int *outpu
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
     _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
                                     _allQueryHashes);
-    printf("reservoirs extracted\n");
+    // printf("reservoirs extracted\n");
     _mySketch->add(allReservoirsExtracted, segmentSize);
-    printf("sketched added\n");
+    // printf("sketched added\n");
 
     _mySketch->aggregateSketchesTree();
-    printf("sketched aggregated\n");
+    // printf("sketched aggregated\n");
 
     if (_myRank == 0) {
         _mySketch->topK(topK, outputs, threshold);
     }
-    printf("TOPK\n");
+    // printf("TOPK\n");
     delete[] allReservoirsExtracted;
 }
 

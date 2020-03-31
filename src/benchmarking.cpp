@@ -847,7 +847,11 @@ void criteoTesting() {
 
     queryFile.append("_testing");
 
-    control->query(queryFile, "CriteoTesting", 10, 100);
+    start = std::chrono::system_clock::now();
+    control->query(queryFile, "CriteoTesting", 10000, 100);
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Query complete Node " << myRank << ": " << elapsed.count() << " Seconds\n" << std::endl;	
 
     /* ===============================================================
     De-allocating Data Structures in Memory
