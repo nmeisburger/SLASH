@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-#define NUM_PARTITIONS 10
+#define NUM_PARTITIONS 1
 #define ITERATIONS 3
-#define NUM_SKIP 0
-#define PARTITION_SIZE 34000000000
+#define NUM_SKIP 20
+#define PARTITION_SIZE 19000000000
 #define DATAFILE "../../../dataset/criteo/criteo_tb"
 
 // #define NUM_PARTITIONS 3
