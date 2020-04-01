@@ -8,8 +8,8 @@
 // #define WEBSPAM
 // #define KDD12
 // #define WIKIDUMP
-// #define CRITEO
-#define CRITEO2
+#define CRITEO
+// #define CRITEO2
 
 #ifdef WEBSPAM
 
