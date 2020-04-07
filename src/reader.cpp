@@ -17,6 +17,17 @@ void Reader::readSparse(unsigned int n, unsigned int *indices, float *values, un
     while (num_vecs < n) {
         len = fread(buffer, 1, block_size, file);
 
+        if (len != block_size) {
+            if (feof(file)) {
+                printf("ERROR: Reached end of file\n");
+            } else if (ferror(file)) {
+                printf("ERROR: Failure when reading file.\n");
+            } else {
+                printf("ERROR: fead failed.\n");
+            }
+            exit(1);
+        }
+
         line_start = buffer;
 
         for (size_t i = 0; i < len; i++) {
@@ -74,6 +85,6 @@ void Reader::readSparse(unsigned int n, unsigned int *indices, float *values, un
 
     std::chrono::duration<double> elapsed = end - start;
 
-    printf("Read Complete: %fs %llu vectors, total dim: %llu\n", elapsed.count(), num_vecs,
-           total_dim);
+    // printf("Read Complete: %fs %llu vectors, total dim: %llu\n", elapsed.count(), num_vecs,
+    //        total_dim);
 }
