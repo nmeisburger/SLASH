@@ -62,6 +62,7 @@ void Reader::readSparse(unsigned int n, unsigned int *indices, float *values, un
                         values[total_dim] = val;
                     } else {
                         std::cout << "[readSparse] Buffer is too small, data is truncated!\n";
+                        exit(1);
                         return;
                     }
                     curLen++;
