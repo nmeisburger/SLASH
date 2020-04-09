@@ -1,0 +1,185 @@
+
+=================
+== ../../dataset/webspam/webspam_trigram.svm
+=================
+
+LSH Initialized in Node 2
+LSH Initialized in Node 1
+LSH Initialized in Node 3
+340000 Vectors, 10000 Queries
+Nodes: 4
+Tables: 24
+RangePow: 18
+Reservoir Size: 256
+Hashes: 8
+CMS Bucket Size: 1024
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+CMS Initialized in Node 2
+CMS Initialized in Node 0
+CMS Initialized in Node 1
+CMS Initialized in Node 3
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 0
+LSH Reservoir Initialized in Node 3
+FLASH Controller Initialized in Node 0
+LSH Reservoir Initialized in Node 1
+FLASH Controller Initialized in Node 2
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 3
+[readSparse] Read 37207718 numbers, 10000 vectors. 
+Adding Vectors Node 0...
+Adding Vectors Node 2...
+Adding Vectors Node 3...
+Adding Vectors Node 1...
+[readSparse] Read 316858307 numbers, 85000 vectors. 
+Vectors Read Node 0: 127.163 Seconds
+
+Node 0 Table Mem Usage ranges from 0.003971 to 0.004990, average 0.004533
+Node 0 Table Mem Usage ranges from 0.030075 to 0.039993, average 0.035944
+Node 0 Table Mem Usage ranges from 0.050667 to 0.067856, average 0.060900
+Node 0 Table Mem Usage ranges from 0.068493 to 0.092663, average 0.082808
+Node 0 Table Mem Usage ranges from 0.085209 to 0.115669, average 0.103058
+Vectors Added Node 0: 128.507 Seconds
+
+[readSparse] Read 316320716 numbers, 85000 vectors. 
+Vectors Read Node 1: 156.295 Seconds
+
+Node 1 Table Mem Usage ranges from 0.003990 to 0.005085, average 0.004593
+Node 1 Table Mem Usage ranges from 0.029976 to 0.040016, average 0.036040
+Node 1 Table Mem Usage ranges from 0.050381 to 0.068508, average 0.061033
+Node 1 Table Mem Usage ranges from 0.068607 to 0.093628, average 0.083270
+Node 1 Table Mem Usage ranges from 0.085331 to 0.116711, average 0.103728
+Vectors Added Node 1: 157.578 Seconds
+
+[readSparse] Read 317907487 numbers, 85000 vectors. 
+Vectors Read Node 2: 267.098 Seconds
+
+Node 2 Table Mem Usage ranges from 0.003880 to 0.004997, average 0.004433
+Node 2 Table Mem Usage ranges from 0.030056 to 0.039902, average 0.035820
+Node 2 Table Mem Usage ranges from 0.050438 to 0.068073, average 0.060747
+Node 2 Table Mem Usage ranges from 0.068863 to 0.093693, average 0.083281
+Node 2 Table Mem Usage ranges from 0.085258 to 0.116547, average 0.103402
+Vectors Added Node 2: 268.445 Seconds
+
+[readSparse] Read 316403218 numbers, 85000 vectors. 
+Vectors Read Node 3: 285.425 Seconds
+
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 2...
+Node 3 Table Mem Usage ranges from 0.003975 to 0.005035, average 0.004528
+Node 3 Table Mem Usage ranges from 0.030251 to 0.040287, average 0.036014
+Node 3 Table Mem Usage ranges from 0.050972 to 0.068150, average 0.061361
+Node 3 Table Mem Usage ranges from 0.069218 to 0.093201, average 0.083558
+Node 3 Table Mem Usage ranges from 0.085739 to 0.116146, average 0.103813
+Vectors Added Node 3: 286.927 Seconds
+
+Computing Query Hashes Node 3...
+Query Hashes Computed Node 0: 0.0545986 Seconds
+
+Extracting Top K (TREE) Node 0...
+Query Hashes Computed Node 1: 0.0536621 Seconds
+
+Extracting Top K (TREE) Node 1...
+Query Hashes Computed Node 2: 0.0537785 Seconds
+
+Extracting Top K (TREE) Node 2...
+Query Hashes Computed Node 3: 0.0536664 Seconds
+
+Extracting Top K (TREE) Node 3...
+Top K (TREE) Extracted Node 1: 1.20375 Seconds
+
+Top K (TREE) Extracted Node 3: 1.30945 Seconds
+
+Top K (TREE) Extracted Node 2: 1.42649 Seconds
+
+Top K (TREE) Extracted Node 0: 1.58229 Seconds
+
+Extracting Top K (LINEAR) Node 0...
+Extracting Top K (LINEAR) Node 2...
+Extracting Top K (LINEAR) Node 1...
+Extracting Top K (LINEAR) Node 3...
+Top K (LINEAR) Extracted Node 1: 1.20725 Seconds
+
+Top K (LINEAR) Extracted Node 2: 1.61816 Seconds
+
+Top K (LINEAR) Extracted Node 3: 1.75596 Seconds
+
+Top K (LINEAR) Extracted Node 0: 2.1218 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 0...
+Extracting Top K (BRUTEFORCE) Node 1...
+Extracting Top K (BRUTEFORCE) Node 2...
+Extracting Top K (BRUTEFORCE) Node 3...
+Top K (BRUTEFORCE) Extracted Node 1: 0.218146 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 2: 0.324057 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 3: 0.556573 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 0: 4.49087 Seconds
+
+[readSparse] Read 1304697446 numbers, 350000 vectors. 
+
+
+================================
+TOP K TREE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.896 
+S@10 = 0.846 
+S@20 = 0.824 
+S@30 = 0.811 
+S@32 = 0.809 
+S@40 = 0.801 
+S@50 = 0.794 
+S@64 = 0.785 
+S@100 = 0.771 
+S@128 = 0.763 
+1 10 20 30 32 40 50 64 100 128 
+0.896 0.846 0.824 0.811 0.809 0.801 0.794 0.785 0.771 0.763 
+
+
+================================
+TOP K LINEAR
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.895 
+S@10 = 0.846 
+S@20 = 0.824 
+S@30 = 0.810 
+S@32 = 0.808 
+S@40 = 0.801 
+S@50 = 0.793 
+S@64 = 0.784 
+S@100 = 0.770 
+S@128 = 0.761 
+1 10 20 30 32 40 50 64 100 128 
+0.895 0.846 0.824 0.810 0.808 0.801 0.793 0.784 0.770 0.761 
+
+
+================================
+TOP K BRUTEFORCE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.900 
+S@10 = 0.852 
+S@20 = 0.831 
+S@30 = 0.818 
+S@32 = 0.816 
+S@40 = 0.809 
+S@50 = 0.802 
+S@64 = 0.795 
+S@100 = 0.781 
+S@128 = 0.773 
+1 10 20 30 32 40 50 64 100 128 
+0.900 0.852 0.831 0.818 0.816 0.809 0.802 0.795 0.781 0.773 
+Similarity Metric Computed
