@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=labels
-#SBATCH --nodes=1
+#SBATCH --nodes=20
 #SBATCH -p scavenge
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1

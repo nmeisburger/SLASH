@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string>
 
-#define USE_MPI
+// #define USE_MPI
 
 #ifdef USE_MPI
 #include <mpi.h>
@@ -194,8 +194,11 @@ void save_labels_dist(string filename, size_t n, string destination_file) {
 
 int main() {
 
-    save_labels_dist("../../../dataset/criteo/criteo_split", 200000000,
-                     "../../../dataset/criteo/criteo_labels");
+    // save_labels_dist("../../../dataset/criteo/criteo_split", 200000000,
+    //                  "../../../dataset/criteo/criteo_labels");
+
+    predict("./criteo_labels", 20, 200000000, "./criteo_test_label", 150000000, "CriteoTesting",
+            50);
 
     return 0;
 }
