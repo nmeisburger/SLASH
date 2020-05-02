@@ -1,12 +1,13 @@
 #include "flashControl.h"
 
-flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank, int worldSize,
+flashControl::flashControl(LSH *lsh, CMS *cms, DOPH *doph, int myRank, int worldSize,
                            unsigned int numDataVectors, unsigned int numQueryVectors,
                            unsigned int dimension, unsigned int numTables,
                            unsigned int reservoirSize) {
 
     // Core Params
-    _myReservoir = reservoir;
+    _lsh = lsh;
+    _doph = doph;
     _mySketch = cms;
     _myRank = myRank;
     _worldSize = worldSize;
@@ -57,6 +58,10 @@ flashControl::flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank,
     _queryIndices = new unsigned int[(unsigned)(_numQueryVectors * _dimension)];
     _queryVals = new float[(unsigned)(_numQueryVectors * _dimension)];
     _queryMarkers = new unsigned int[(unsigned)(_numQueryVectors + 1)];
+
+    _myQueryIndices = new unsigned int[2];
+    _myQueryVals = new float[2];
+    _myQueryMarkers = new unsigned int[2];
 
     std::cout << "FLASH Controller Initialized in Node " << _myRank << std::endl;
 }

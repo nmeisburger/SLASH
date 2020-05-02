@@ -2,14 +2,15 @@
 #define _FLASH_CONTROL_H
 
 #include "CMS.h"
-#include "LSHReservoirSampler.h"
+#include "DOPH.h"
+#include "LSH.h"
 #include "benchmarking.h"
 #include "dataset.h"
-#include "mpi.h"
 #include "reader.h"
 #include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <mpi.h>
 #include <string>
 
 struct VectorFrequency {
@@ -22,7 +23,9 @@ class flashControl {
   private:
     int _myRank, _worldSize;
 
-    LSHReservoirSampler *_myReservoir;
+    LSH *_lsh;
+
+    DOPH *_doph;
 
     CMS *_mySketch;
 
@@ -81,7 +84,7 @@ class flashControl {
     @param numTables: the number of tables in the instance of LSHReservoirSampler.
     @param reservoirSize: the size of each reservoir in the instance of LSHReservoirSampler.
     */
-    flashControl(LSHReservoirSampler *reservoir, CMS *cms, int myRank, int worldSize,
+    flashControl(LSH *lsh, CMS *cms, DOPH *doph, int myRank, int worldSize,
                  unsigned int numDataVectors, unsigned int numQueryVectors, unsigned int dimension,
                  unsigned int numTables, unsigned int reservoirSize);
 

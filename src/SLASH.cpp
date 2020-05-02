@@ -1,10 +1,8 @@
 #include "CMS.h"
 #include "LSH.h"
-#include "LSHReservoirSampler.h"
 #include "benchmarking.h"
 #include "dataset.h"
 #include "flashControl.h"
-#include "indexing.h"
 #include "mathUtils.h"
 #include "omp.h"
 

@@ -2,12 +2,11 @@
 #include "omp.h"
 
 #include "CMS.h"
+#include "DOPH.h"
 #include "LSH.h"
-#include "LSHReservoirSampler.h"
 #include "benchmarking.h"
 #include "dataset.h"
 #include "flashControl.h"
-#include "indexing.h"
 #include "mathUtils.h"
 #include <chrono>
 
@@ -59,23 +58,17 @@ void testing() {
     /* ===============================================================
   Data Structure Initialization
   */
-    LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
+    DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
     flashControl *control =
-        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
   Partitioning Query Between Nodes
@@ -142,7 +135,7 @@ void testing() {
   De-allocating Data Structures in Memory
   */
     delete control;
-    delete reservoir;
+    delete doph;
     delete lsh;
     delete cms;
 
@@ -215,23 +208,17 @@ void evalWithSimilarity() {
     /* ===============================================================
   Data Structure Initialization
   */
-    LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
+    DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
     flashControl *control =
-        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
   Partitioning Query Between Nodes
@@ -314,7 +301,7 @@ void evalWithSimilarity() {
   De-allocating Data Structures in Memory
   */
     delete control;
-    delete reservoir;
+    delete doph;
     delete lsh;
     delete cms;
 
@@ -401,23 +388,17 @@ void evalWithFileOutput() {
     /* ===============================================================
   Data Structure Initialization
   */
-    LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
+    DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
     flashControl *control =
-        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
   Partitioning Query Between Nodes
@@ -518,142 +499,12 @@ void evalWithFileOutput() {
   De-allocating Data Structures in Memory
   */
     delete control;
-    delete reservoir;
+    delete doph;
     delete lsh;
     delete cms;
     // delete[] treeOutputs;
     // delete[] linearOutputs;
     // delete[] bruteforceOutputs;
-    /* ===============================================================
-  MPI Closing
-  */
-    MPI_Finalize();
-}
-
-/*
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- * WIKIDUMP
- */
-
-void wikiDump() {
-    /* ===============================================================
-  MPI Initialization
-  */
-    int provided;
-    MPI_Init_thread(0, 0, MPI_THREAD_FUNNELED, &provided);
-    int myRank, worldSize;
-    MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
-    MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
-    if (myRank == 0) {
-        showConfig("WikiDump", NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES,
-                   RANGE_POW, RESERVOIR_SIZE, NUM_HASHES, CMS_HASHES, CMS_BUCKET_SIZE);
-    }
-
-    /* ===============================================================
-  Data Structure Initialization
-  */
-    LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    flashControl *control =
-        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
-
-    /* ===============================================================
-  Reading Data
-  */
-    std::cout << "\nReading Data Node " << myRank << "..." << std::endl;
-    auto start = std::chrono::system_clock::now();
-
-    // control->allocateData(BASEFILE);
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    auto end = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
-    std::cout << "Data Read Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    /* ===============================================================
-  Partitioning Query Between Nodes
-  */
-
-    control->allocateQuery(BASEFILE);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    /* ===============================================================
-  Adding Vectors
-  */
-    std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
-    start = std::chrono::system_clock::now();
-    control->add(BASEFILE, NUM_DATA_VECTORS, NUM_QUERY_VECTORS, NUM_BATCHES, BATCH_PRINT);
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
-    std::cout << "Vectors Added Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    /* ===============================================================
-  Hashing Query Vectors
-  */
-    std::cout << "Computing Query Hashes Node " << myRank << "..." << std::endl;
-    start = std::chrono::system_clock::now();
-    control->hashQuery();
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
-    std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    /* ===============================================================
-  Extracting Reservoirs and Preforming Top-K selection
-  */
-    unsigned int *treeOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    start = std::chrono::system_clock::now();
-    std::cout << "Extracting Top K (TREE) Node " << myRank << "..." << std::endl;
-    control->topKCMSAggregationTree(TOPK, treeOutputs, 0);
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
-    std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    std::string filenameTree("WikiDump-");
-    filenameTree.append(std::to_string(worldSize));
-    if (myRank == 0) {
-        writeTopK(filenameTree, NUM_QUERY_VECTORS, TOPK, treeOutputs);
-    }
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    /* ===============================================================
-  De-allocating Data Structures in Memory
-  */
-    delete control;
-    delete reservoir;
-    delete lsh;
-    delete cms;
-    delete[] treeOutputs;
-
     /* ===============================================================
   MPI Closing
   */
@@ -689,23 +540,17 @@ void criteo() {
     /* ===============================================================
     Data Structure Initialization
     */
-    LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
+    DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
     flashControl *control =
-        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     // if (myRank == 0) {
     //     reservoir->showParams();
@@ -770,7 +615,7 @@ void criteo() {
     De-allocating Data Structures in Memory
     */
     delete control;
-    delete reservoir;
+    delete doph;
     delete lsh;
     delete cms;
     delete[] treeOutputs;
@@ -810,23 +655,17 @@ void criteoTesting() {
     /* ===============================================================
     Data Structure Initialization
     */
-    LSH *lsh = new LSH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
+    DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    LSHReservoirSampler *reservoir =
-        new LSHReservoirSampler(lsh, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION, RANGE_ROW_U,
-                                NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
     flashControl *control =
-        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
     Adding Vectors
@@ -858,7 +697,7 @@ void criteoTesting() {
     De-allocating Data Structures in Memory
     */
     delete control;
-    delete reservoir;
+    delete doph;
     delete lsh;
     delete cms;
 

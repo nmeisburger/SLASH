@@ -4,11 +4,11 @@
 #include <string>
 
 // #define FILE_OUTPUT
-// #define EVAL_SIM
+#define EVAL_SIM
 // #define WEBSPAM
-// #define KDD12
+#define KDD12
 // #define WIKIDUMP
-#define CRITEO
+// #define CRITEO
 // #define CRITEO2
 
 #ifdef WEBSPAM
@@ -56,11 +56,11 @@
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 15
-#define NUM_DATA_VECTORS 140000000
-#define NUM_QUERY_VECTORS 10000
+// #define NUM_DATA_VECTORS 140000000
+// #define NUM_QUERY_VECTORS 10000
 
-// #define NUM_DATA_VECTORS 100000
-// #define NUM_QUERY_VECTORS 200
+#define NUM_DATA_VECTORS 1000000
+#define NUM_QUERY_VECTORS 1000
 
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
