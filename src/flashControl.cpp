@@ -309,11 +309,16 @@ void flashControl::topKBruteForceAggretation(unsigned int topK, unsigned int *ou
             std::sort(
                 vectorCnts + v * queryBlockSize, vectorCnts + (v + 1) * queryBlockSize,
                 [&vectorCnts](VectorFrequency a, VectorFrequency b) { return a.count > b.count; });
-            int s = 0;
-            if (vectorCnts[queryBlockSize * v].vector == 0)
-                s++;
-            for (size_t k = 0; k < topK; k++) {
-                outputs[k + topK * v] = vectorCnts[s + k + v * queryBlockSize].vector;
+            int k = 0;
+            for (size_t s = 0; s < queryBlockSize; s++) {
+                if (vectorCnts[s + v * queryBlockSize].vector != -1 &&
+                    vectorCnts[s + v * queryBlockSize].count != -1) {
+                    outputs[k + topK * v] = vectorCnts[s + v * queryBlockSize].vector;
+                    k++;
+                    if (k == topK) {
+                        break;
+                    }
+                }
             }
         }
 
