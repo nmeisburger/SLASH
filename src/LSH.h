@@ -1,7 +1,6 @@
-#ifndef _LSH_RESERVOIR_SAMPLER_H
-#define _LSH_RESERVOIR_SAMPLER_H
+#ifndef _LSH_H
+#define _LSH_H
 
-#define _CRT_SECURE_NO_DEPRECATE
 #include "DOPH.h"
 #include "indexing.h"
 #include "mathUtils.h"
@@ -30,7 +29,6 @@ class LSH {
     unsigned int *_global_rand;
     unsigned int _numReservoirs, _sequentialIDCounter_kernel;
     unsigned long long int _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
-    unsigned int _sechash_a, _sechash_b;
 
     void initVariables(unsigned int numHashPerFamily, unsigned int numHashFamilies,
                        unsigned int reservoirSize, unsigned int dimension, unsigned int maxSamples);

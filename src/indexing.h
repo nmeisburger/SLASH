@@ -20,13 +20,9 @@
     (unsigned long long)(tb * aggNumReservoirs * (_reservoirSize + 1) +                            \
                          allocIdx * (_reservoirSize + 1))
 // _tablePointers & _tablePointersLock: location of a pointer.
-#if defined SECONDARY_HASHING
-#define tablePointersIdx(numReservoirsHashed, hashIdx, tb, a, b)                                   \
-    (unsigned long long)(tb * numReservoirsHashed + HASH(hashIdx, _numSecHash, a, b))
-#else
-#define tablePointersIdx(numReservoirsHashed, hashIdx, tb, a, b)                                   \
+
+#define tablePointersIdx(numReservoirsHashed, hashIdx, tb)                                         \
     (unsigned long long)(tb * numReservoirsHashed + hashIdx)
-#endif // SECONDARY_HASHING.
 // _tableMemAllocator: counter for allocating _tableMem, one per table.
 #define tableMemAllocatorIdx(tb) (unsigned)(tb)
 

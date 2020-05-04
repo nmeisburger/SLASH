@@ -36,8 +36,7 @@ void LSH::extractReservoirs(unsigned int numQueryEntries, unsigned int segmentSi
         for (size_t queryIdx = 0; queryIdx < numQueryEntries; queryIdx++) {
             for (size_t elemIdx = 0; elemIdx < _reservoirSize; elemIdx++) {
                 hashIdx = hashIndices[allprobsHashIdx(numQueryEntries, tb, queryIdx)];
-                allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb, _sechash_a,
-                                                           _sechash_b)];
+                allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)];
                 if (allocIdx != TABLENULL) {
                     queue[queueElemIdx(segmentSize, tb, queryIdx, elemIdx)] =
                         _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirs) + elemIdx];
@@ -65,18 +64,14 @@ void LSH::reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsId
             ct = 0;
 
             /* Allocate the reservoir if non-existent. */
-            omp_set_lock(_tablePointersLock +
-                         tablePointersIdx(_numReservoirs, hashIdx, tb, _sechash_a, _sechash_b));
-            allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb, _sechash_a,
-                                                       _sechash_b)];
+            omp_set_lock(_tablePointersLock + tablePointersIdx(_numReservoirs, hashIdx, tb));
+            allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)];
             if (allocIdx == TABLENULL) {
                 allocIdx = _tableMemAllocator[tableMemAllocatorIdx(tb)];
                 _tableMemAllocator[tableMemAllocatorIdx(tb)]++;
-                _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb, _sechash_a,
-                                                _sechash_b)] = allocIdx;
+                _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)] = allocIdx;
             }
-            omp_unset_lock(_tablePointersLock +
-                           tablePointersIdx(_numReservoirs, hashIdx, tb, _sechash_a, _sechash_b));
+            omp_unset_lock(_tablePointersLock + tablePointersIdx(_numReservoirs, hashIdx, tb));
 
             // ATOMIC: Obtain the counter, and increment the counter. (Counter initialized to 0
             // automatically). Counter counts from 0 to currentCount-1.
@@ -120,8 +115,7 @@ void LSH::addTable(unsigned int *storelog, unsigned int numProbePerTb, unsigned 
 
             id = storelog[storelogIdIdx(numProbePerTb, probeIdx, tb)];
             hashIdx = storelog[storelogHashIdxIdx(numProbePerTb, probeIdx, tb)];
-            allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb, _sechash_a,
-                                                       _sechash_b)];
+            allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)];
             // If item_i spills out of the reservoir, it is capped to the dummy location at
             // _reservoirSize.
             locCapped = storelog[storelogLocationIdx(numProbePerTb, probeIdx, tb)];
@@ -189,8 +183,7 @@ void LSH::tableContents() {
     for (int t = 0; t < _numTables; t++) {
         printf("\nNode %d - Table %d\n", _myRank, t);
         for (int b = 0; b < std::min(_numReservoirs, (unsigned)256); b++) {
-            hashBucketLocation =
-                _tablePointers[tablePointersIdx(_numReservoirs, b, t, _sechash_a, _sechash_b)];
+            hashBucketLocation = _tablePointers[tablePointersIdx(_numReservoirs, b, t)];
             if (hashBucketLocation == TABLE_NULL) {
                 continue;
             }

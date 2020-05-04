@@ -41,8 +41,6 @@ void LSH::initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,
 
     // Fixed random seeds for hash functions
     srand(712376);
-    _sechash_a = rand() * 2 + 1;
-    _sechash_b = rand();
 
     _global_rand = new unsigned int[_maxReservoirRand];
 

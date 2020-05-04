@@ -62,7 +62,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../../dataset/kdd12/kdd12"
+#define BASEFILE "../../dataset/kdd12/kdd12"
 
 #endif
 
