@@ -2,7 +2,6 @@
 #define _FLASH_CONTROL_H
 
 #include "CMS.h"
-#include "DOPH.h"
 #include "LSH.h"
 #include "benchmarking.h"
 #include "dataset.h"
@@ -23,9 +22,7 @@ class flashControl {
   private:
     int _myRank, _worldSize;
 
-    LSH *_lsh;
-
-    DOPH *_doph;
+    LSH *_myReservoir;
 
     CMS *_mySketch;
 
@@ -84,7 +81,7 @@ class flashControl {
     @param numTables: the number of tables in the instance of LSHReservoirSampler.
     @param reservoirSize: the size of each reservoir in the instance of LSHReservoirSampler.
     */
-    flashControl(LSH *lsh, CMS *cms, DOPH *doph, int myRank, int worldSize,
+    flashControl(LSH *reservoir, CMS *cms, int myRank, int worldSize,
                  unsigned int numDataVectors, unsigned int numQueryVectors, unsigned int dimension,
                  unsigned int numTables, unsigned int reservoirSize);
 

@@ -21,10 +21,6 @@ void flashControl::allocateQuery(std::string filename) {
 
     _myQueryVectorsLen = _queryCts[_myRank];
 
-    delete[] _myQueryIndices;
-    delete[] _myQueryVals;
-    delete[] _myQueryMarkers;
-
     _myQueryIndices = new unsigned int[_myQueryVectorsLen];
     _myQueryVals = new float[_myQueryVectorsLen];
     _myQueryMarkers = new unsigned int[_myQueryVectorsCt + 1];
@@ -53,6 +49,9 @@ std::streampos flashControl::allocateQuery2(std::string filename, std::streampos
 
     std::streampos end = 0;
     if (_myRank == 0) {
+        // _queryIndices = new unsigned int[(unsigned)(_numQueryVectors * _dimension)];
+        // _queryVals = new float[(unsigned)(_numQueryVectors * _dimension)];
+        // _queryMarkers = new unsigned int[(unsigned)(_numQueryVectors + 1)];
         end = readSparse2(filename, offset, 0, _numQueryVectors, _queryIndices, _queryVals,
                           _queryMarkers, (unsigned)(_numQueryVectors * _dimension));
 
@@ -67,10 +66,6 @@ std::streampos flashControl::allocateQuery2(std::string filename, std::streampos
     MPI_Bcast(_queryCts, _worldSize, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
 
     _myQueryVectorsLen = _queryCts[_myRank];
-
-    delete[] _myQueryIndices;
-    delete[] _myQueryVals;
-    delete[] _myQueryMarkers;
 
     _myQueryIndices = new unsigned int[_myQueryVectorsLen];
     _myQueryVals = new float[_myQueryVectorsLen];
@@ -124,6 +119,8 @@ void flashControl::query(std::string filename, std::string outputFilename, unsig
 void flashControl::add(std::string filename, unsigned int numDataVectors, unsigned int offset,
                        unsigned int numBatches, unsigned int batchPrint) {
 
+    _myReservoir->resetSequentialKernalID();
+
     unsigned int dataPartitionSize = numDataVectors / _worldSize;
     unsigned int dataPartitionRemainder = numDataVectors % _worldSize;
 
@@ -144,6 +141,11 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
     unsigned int myNumDataVectors = _dataVectorCts[_myRank];
     unsigned int myDataVectorOffset = _dataVectorOffsets[_myRank];
 
+    // unsigned int *myDataIndices = new unsigned int[myNumDataVectors *
+    // _dimension]; float *myDataVals = new float[myNumDataVectors *
+    // _dimension]; unsigned int *myDataMarkers = new unsigned
+    // int[myNumDataVectors + 1];
+
     myDataIndices = (unsigned int *)realloc(myDataIndices, 4 * myNumDataVectors * _dimension);
     myDataVals = (float *)realloc(myDataVals, 4 * myNumDataVectors * _dimension);
     myDataMarkers = (unsigned int *)realloc(myDataMarkers, 4 * myNumDataVectors + 4);
@@ -159,23 +161,23 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
               << std::endl;
 
     unsigned int batchSize = myNumDataVectors / numBatches;
-
-    unsigned int *ids = new unsigned int[batchSize];
-    unsigned int *hashes = new unsigned int[batchSize * _numTables];
     for (unsigned int batch = 0; batch < numBatches; batch++) {
-
-        _doph->getHashes(hashes, ids, myDataIndices, myDataMarkers + batch * batchSize, batchSize,
-                         myDataVectorOffset + batch * batchSize);
-
-        _lsh->insert(batchSize, hashes, ids);
+        _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers + batch * batchSize,
+                          myDataVectorOffset);
+        if (batch % batchPrint == 0) {
+            _myReservoir->checkTableMemLoad();
+        }
     }
 
-    delete[] ids;
-    delete[] hashes;
+    // delete[] myDataIndices;
+    // delete[] myDataVals;
+    // delete[] myDataMarkers;
 }
 
 void flashControl::addPartitioned(std::string base_filename, unsigned int numDataVectorsPerNode,
                                   unsigned int numBatches, unsigned int batchPrint) {
+
+    _myReservoir->resetSequentialKernalID();
 
     unsigned int batchSize = numDataVectorsPerNode / numBatches;
 
@@ -194,19 +196,19 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
     float *myDataVals = new float[batchSize * _dimension];
     unsigned int *myDataMarkers = new unsigned int[batchSize + 1];
 
-    unsigned int *ids = new unsigned int[batchSize];
-    unsigned int *hashes = new unsigned int[batchSize * _numTables];
-
     for (unsigned int batch = 0; batch < numBatches; batch++) {
 
         reader->readSparse(batchSize, myDataIndices, myDataVals, myDataMarkers,
                            _dimension * batchSize);
 
-        _doph->getHashes(hashes, ids, myDataIndices, myDataMarkers + batch * batchSize, batchSize,
-                         myOffset + batch * batchSize);
+        // last = readSparse2(filename, last, 0, batchSize, myDataIndices, myDataVals,
+        // myDataMarkers,
+        //                    (batchSize * _dimension));
 
-        _lsh->insert(batchSize, hashes, ids);
-
+        _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers, myOffset);
+        // if (batch % batchPrint == 0) {
+        //     _myReservoir->checkTableMemLoad();
+        // }
         if (batch % 100 == 0) {
             std::cout << "Batch " << batch << " Complete node " << _myRank << std::endl;
         }
@@ -215,29 +217,47 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
     delete[] myDataIndices;
     delete[] myDataVals;
     delete[] myDataMarkers;
-    delete[] ids;
-    delete[] myDataMarkers;
-    delete reader;
 }
 
 void flashControl::hashQuery() {
 
     unsigned int *myPartitionHashes = new unsigned int[_myHashCt];
 
-    _doph->getHashes(myPartitionHashes, NULL, _myQueryIndices, _myQueryMarkers, _myQueryVectorsCt,
-                     0);
+    _myReservoir->getQueryHash(_myQueryVectorsCt, _myHashCt, _myQueryIndices, _myQueryVals,
+                               _myQueryMarkers, myPartitionHashes);
 
-    MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, _allQueryHashes, _hashCts,
+    unsigned int *queryHashBuffer = new unsigned int[_numQueryVectors * _numTables];
+
+    MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, queryHashBuffer, _hashCts,
                    _hashOffsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
+    unsigned int len;
+
+    unsigned int *old;
+    unsigned int *fin;
+
+#pragma omp parallel for default(none)                                                             \
+    shared(queryHashBuffer, _allQueryHashes, _hashOffsets, _numTables) private(len, old, fin)
+    for (size_t partition = 0; partition < _worldSize; partition++) {
+        len = _queryVectorCts[partition];
+        for (size_t tb = 0; tb < _numTables; tb++) {
+            old = queryHashBuffer + _hashOffsets[partition] + tb * len;
+            fin = _allQueryHashes + tb * _numQueryVectors + (_hashOffsets[partition] / _numTables);
+            for (size_t l = 0; l < len; l++) {
+                fin[l] = old[l];
+            }
+        }
+    }
+
+    delete[] queryHashBuffer;
     delete[] myPartitionHashes;
 }
 
 void flashControl::topKBruteForceAggretation(unsigned int topK, unsigned int *outputs) {
     size_t segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * (long)_numQueryVectors];
-
-    _lsh->retrieve(_numQueryVectors, _allQueryHashes, allReservoirsExtracted);
+    _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
+                                    _allQueryHashes);
 
     unsigned int *allReservoirsAllNodes;
     if (_myRank == 0) {
@@ -247,8 +267,6 @@ void flashControl::topKBruteForceAggretation(unsigned int topK, unsigned int *ou
     MPI_Gather(allReservoirsExtracted, segmentSize * _numQueryVectors, MPI_UNSIGNED,
                allReservoirsAllNodes, segmentSize * _numQueryVectors, MPI_UNSIGNED, 0,
                MPI_COMM_WORLD);
-
-    delete[] allReservoirsExtracted;
 
     if (_myRank == 0) {
         unsigned int *allReservoirsAllNodesOrdered =
@@ -309,30 +327,22 @@ void flashControl::topKBruteForceAggretation(unsigned int topK, unsigned int *ou
             std::sort(
                 vectorCnts + v * queryBlockSize, vectorCnts + (v + 1) * queryBlockSize,
                 [&vectorCnts](VectorFrequency a, VectorFrequency b) { return a.count > b.count; });
-            int k = 0;
-            for (size_t s = 0; s < queryBlockSize; s++) {
-                if (vectorCnts[s + v * queryBlockSize].vector != -1 &&
-                    vectorCnts[s + v * queryBlockSize].count != -1) {
-                    outputs[k + topK * v] = vectorCnts[s + v * queryBlockSize].vector;
-                    k++;
-                    if (k == topK) {
-                        break;
-                    }
-                }
+            int s = 0;
+            if (vectorCnts[queryBlockSize * v].vector == 0)
+                s++;
+            for (size_t k = 0; k < topK; k++) {
+                outputs[k + topK * v] = vectorCnts[s + k + v * queryBlockSize].vector;
             }
         }
-
-        delete[] allReservoirsAllNodesOrdered;
     }
 }
 
 void flashControl::topKCMSAggregationTree(unsigned int topK, unsigned int *outputs,
                                           unsigned int threshold) {
-
     unsigned int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
-
-    _lsh->retrieve(_numQueryVectors, _allQueryHashes, allReservoirsExtracted);
+    _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
+                                    _allQueryHashes);
     // printf("reservoirs extracted\n");
     _mySketch->add(allReservoirsExtracted, segmentSize);
     // printf("sketched added\n");
@@ -351,8 +361,8 @@ void flashControl::topKCMSAggregationLinear(unsigned int topK, unsigned int *out
                                             unsigned int threshold) {
     unsigned int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
-    _lsh->retrieve(_numQueryVectors, _allQueryHashes, allReservoirsExtracted);
-
+    _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
+                                    _allQueryHashes);
     _mySketch->add(allReservoirsExtracted, segmentSize);
     _mySketch->aggregateSketches();
     if (_myRank == 0) {
@@ -364,7 +374,7 @@ void flashControl::topKCMSAggregationLinear(unsigned int topK, unsigned int *out
 void flashControl::printTables() {
     for (int n = 0; n < _worldSize; n++) {
         if (_myRank == n) {
-            _lsh->view();
+            _myReservoir->tableContents();
         }
         MPI_Barrier(MPI_COMM_WORLD);
     }

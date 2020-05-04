@@ -1,7 +1,7 @@
 #include "DOPH.h"
 
-void DOPH::getHashes(unsigned int *hashIndices, unsigned int *dataIds, unsigned int *dataIdx,
-                     unsigned int *dataMarker, size_t numInputEntries, unsigned int idOffset) {
+void DOPH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, unsigned int *dataIdx,
+                     unsigned int *dataMarker, size_t numInputEntries) {
 
 #pragma omp parallel for
     for (size_t inputIdx = 0; inputIdx < numInputEntries; inputIdx++) {
@@ -22,22 +22,10 @@ void DOPH::getHashes(unsigned int *hashIndices, unsigned int *dataIds, unsigned 
             }
             index = (index << 2) >> (32 - _rangePow);
 
-            hashIndices[inputIdx * _L + tb] = index;
-            if (dataIds != NULL) {
-                dataIds[inputIdx] = inputIdx + idOffset;
-            }
+            hashIndices[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = index;
+            probeDataIdx[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = inputIdx;
         }
         delete[] hashes;
-    }
-}
-
-void DOPH::showDOPHConfig() {
-    printf("Random Seed 1: %d\n", _randHash[0]);
-    printf("Random Seed 2: %d\n", _randHash[1]);
-    printf("Hash Seed: %d\n", _randa);
-
-    for (int i = 0; i < _K * _L; i++) {
-        printf("Hash Param %d: %d\n", i, _rand1[i]);
     }
 }
 
@@ -57,7 +45,7 @@ void DOPH::optimalMinHash(unsigned int *hashArray, unsigned int *nonZeros,
     unsigned int binsize = ceil(range / _numhashes);
 
     for (size_t i = 0; i < _numhashes; i++) {
-        hashes[i] = UINT32_MAX;
+        hashes[i] = NULL_HASH;
     }
 
     for (size_t i = 0; i < sizenonzeros; i++) {
@@ -75,22 +63,87 @@ void DOPH::optimalMinHash(unsigned int *hashArray, unsigned int *nonZeros,
     /* Densification of the hash. */
     for (unsigned int i = 0; i < _numhashes; i++) {
         unsigned int next = hashes[i];
-        if (next != UINT32_MAX) {
+        if (next != NULL_HASH) {
             hashArray[i] = hashes[i];
             continue;
         }
         unsigned int count = 0;
-        while (next == UINT32_MAX) {
+        while (next == NULL_HASH) {
             count++;
             unsigned int index = std::min((unsigned)getRandDoubleHash(i, count), _numhashes);
             next = hashes[index];
-            if (count > 100) { // Densification failure.
-                printf("Densification Failure.\n");
-                exit(1);
+            if (count > 100) // Densification failure.
                 break;
-            }
         }
         hashArray[i] = next;
     }
     delete[] hashes;
+}
+
+void DOPH::showDOPHConfig() {
+    printf("Random Seed 1: %d\n", _randHash[0]);
+    printf("Random Seed 2: %d\n", _randHash[1]);
+    printf("Hash Seed: %d\n", _randa);
+
+    for (int i = 0; i < _K * _L; i++) {
+        printf("Hash Param %d: %d\n", i, _rand1[i]);
+    }
+}
+
+DOPH::DOPH(unsigned int _K_in, unsigned int _L_in, unsigned int _rangePow_in, int worldSize,
+           int worldRank) {
+
+    // Constant Parameters accross all nodes
+    _K = _K_in;
+    _L = _L_in;
+    _numTables = _L_in;
+    _rangePow = _rangePow_in;
+    _numhashes = _K * _L;
+    _lognumhash = log2(_numhashes);
+
+    _rand1 = new int[_K * _L];
+    _randHash = new int[2];
+
+    // Random hash functions
+    // srand(time(NULL));
+
+    // Fixed random seed for hash functions
+    srand(145297);
+
+    // MPI
+
+    _worldSize = worldSize;
+    _worldRank = worldRank;
+
+    if (_worldRank == 0) {
+        for (int i = 0; i < _numhashes; i++) {
+            _rand1[i] = rand();
+            if (_rand1[i] % 2 == 0)
+                _rand1[i]++;
+        }
+
+        // _randa and _randHash* are random odd numbers.
+        _randa = rand();
+        if (_randa % 2 == 0)
+            _randa++;
+        _randHash[0] = rand();
+        if (_randHash[0] % 2 == 0)
+            _randHash[0]++;
+        _randHash[1] = rand();
+        if (_randHash[1] % 2 == 0)
+            _randHash[1]++;
+    }
+
+    MPI_Bcast(&_randa, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    MPI_Bcast(_randHash, 2, MPI_INT, 0, MPI_COMM_WORLD);
+
+    MPI_Bcast(_rand1, _numhashes, MPI_INT, 0, MPI_COMM_WORLD);
+
+    std::cout << "LSH Initialized in Node " << _worldRank << std::endl;
+}
+
+DOPH::~DOPH() {
+    delete[] _randHash;
+    delete[] _rand1;
 }

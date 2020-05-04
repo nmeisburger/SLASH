@@ -7,6 +7,7 @@
 #include "benchmarking.h"
 #include "dataset.h"
 #include "flashControl.h"
+#include "indexing.h"
 #include "mathUtils.h"
 #include <chrono>
 
@@ -60,15 +61,20 @@ void testing() {
   */
     DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    flashControl *control =
-        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    LSH *reservoir = new LSH(doph, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION,
+                             NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    flashControl *control =
+        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Partitioning Query Between Nodes
@@ -135,8 +141,8 @@ void testing() {
   De-allocating Data Structures in Memory
   */
     delete control;
+    delete reservoir;
     delete doph;
-    delete lsh;
     delete cms;
 
     /* ===============================================================
@@ -210,15 +216,20 @@ void evalWithSimilarity() {
   */
     DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    flashControl *control =
-        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    LSH *reservoir = new LSH(doph, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION,
+                             NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    flashControl *control =
+        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Partitioning Query Between Nodes
@@ -271,38 +282,38 @@ void evalWithSimilarity() {
 
     // ==============================================
 
-    unsigned int *linearOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    start = std::chrono::system_clock::now();
-    std::cout << "Extracting Top K (LINEAR) Node " << myRank << "..." << std::endl;
-    control->topKCMSAggregationLinear(TOPK, linearOutputs, 0);
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
-    std::cout << "Top K (LINEAR) Extracted Node " << myRank << ": " << elapsed.count()
-              << " Seconds\n"
-              << std::endl;
+    // unsigned int *linearOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    // start = std::chrono::system_clock::now();
+    // std::cout << "Extracting Top K (LINEAR) Node " << myRank << "..." << std::endl;
+    // control->topKCMSAggregationLinear(TOPK, linearOutputs, 0);
+    // end = std::chrono::system_clock::now();
+    // elapsed = end - start;
+    // std::cout << "Top K (LINEAR) Extracted Node " << myRank << ": " << elapsed.count()
+    //           << " Seconds\n"
+    //           << std::endl;
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    // MPI_Barrier(MPI_COMM_WORLD);
 
     // ==============================================
 
-    unsigned int *bruteforceOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    start = std::chrono::system_clock::now();
-    std::cout << "Extracting Top K (BRUTEFORCE) Node " << myRank << "..." << std::endl;
-    control->topKBruteForceAggretation(TOPK, bruteforceOutputs);
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
-    std::cout << "Top K (BRUTEFORCE) Extracted Node " << myRank << ": " << elapsed.count()
-              << " Seconds\n"
-              << std::endl;
+    // unsigned int *bruteforceOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    // start = std::chrono::system_clock::now();
+    // std::cout << "Extracting Top K (BRUTEFORCE) Node " << myRank << "..." << std::endl;
+    // control->topKBruteForceAggretation(TOPK, bruteforceOutputs);
+    // end = std::chrono::system_clock::now();
+    // elapsed = end - start;
+    // std::cout << "Top K (BRUTEFORCE) Extracted Node " << myRank << ": " << elapsed.count()
+    //           << " Seconds\n"
+    //           << std::endl;
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    // MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
   De-allocating Data Structures in Memory
   */
     delete control;
+    delete reservoir;
     delete doph;
-    delete lsh;
     delete cms;
 
     /* ===============================================================
@@ -331,19 +342,19 @@ void evalWithSimilarity() {
                          sparseMarkers, treeOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK, nList,
                          nCnt);
 
-        std::cout << "\n\n================================\nTOP K LINEAR\n" << std::endl;
+        // std::cout << "\n\n================================\nTOP K LINEAR\n" << std::endl;
 
-        similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
-                         sparseMarkers, linearOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
-                         nList, nCnt);
+        // similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
+        //                  sparseMarkers, linearOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
+        //                  nList, nCnt);
 
-        std::cout << "\n\n================================\nTOP K "
-                     "BRUTEFORCE\n"
-                  << std::endl;
+        // std::cout << "\n\n================================\nTOP K "
+        //              "BRUTEFORCE\n"
+        //           << std::endl;
 
-        similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
-                         sparseMarkers, bruteforceOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
-                         nList, nCnt);
+        // similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
+        //                  sparseMarkers, bruteforceOutputs, NUM_QUERY_VECTORS, TOPK,
+        //                  AVAILABLE_TOPK, nList, nCnt);
 
         std::cout << "Similarity Metric Computed" << std::endl;
 
@@ -355,8 +366,8 @@ void evalWithSimilarity() {
         delete[] sparseMarkers;
     }
     delete[] treeOutputs;
-    delete[] linearOutputs;
-    delete[] bruteforceOutputs;
+    // delete[] linearOutputs;
+    // delete[] bruteforceOutputs;
 }
 
 /**
@@ -390,15 +401,20 @@ void evalWithFileOutput() {
   */
     DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    flashControl *control =
-        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    LSH *reservoir = new LSH(doph, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION,
+                             NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    flashControl *control =
+        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
   Partitioning Query Between Nodes
@@ -499,8 +515,8 @@ void evalWithFileOutput() {
   De-allocating Data Structures in Memory
   */
     delete control;
+    delete reservoir;
     delete doph;
-    delete lsh;
     delete cms;
     // delete[] treeOutputs;
     // delete[] linearOutputs;
@@ -542,15 +558,20 @@ void criteo() {
     */
     DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    flashControl *control =
-        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    LSH *reservoir = new LSH(doph, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION,
+                             NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    flashControl *control =
+        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     // if (myRank == 0) {
     //     reservoir->showParams();
@@ -615,8 +636,8 @@ void criteo() {
     De-allocating Data Structures in Memory
     */
     delete control;
+    delete reservoir;
     delete doph;
-    delete lsh;
     delete cms;
     delete[] treeOutputs;
 
@@ -657,15 +678,20 @@ void criteoTesting() {
     */
     DOPH *doph = new DOPH(NUM_HASHES, NUM_TABLES, RANGE_POW, worldSize, myRank);
 
-    LSH *lsh = new LSH(NUM_TABLES, RESERVOIR_SIZE, RANGE_POW, myRank, worldSize);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     CMS *cms = new CMS(CMS_HASHES, CMS_BUCKET_SIZE, NUM_QUERY_VECTORS, myRank, worldSize);
 
-    flashControl *control =
-        new flashControl(lsh, cms, doph, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
-                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    LSH *reservoir = new LSH(doph, RANGE_POW, NUM_TABLES, RESERVOIR_SIZE, DIMENSION,
+                             NUM_DATA_VECTORS + NUM_QUERY_VECTORS, myRank, worldSize);
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    flashControl *control =
+        new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
+                         DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
     Adding Vectors
@@ -697,8 +723,8 @@ void criteoTesting() {
     De-allocating Data Structures in Memory
     */
     delete control;
+    delete reservoir;
     delete doph;
-    delete lsh;
     delete cms;
 
     /* ===============================================================

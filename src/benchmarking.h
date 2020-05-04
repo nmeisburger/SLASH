@@ -7,20 +7,16 @@
 #define EVAL_SIM
 // #define WEBSPAM
 #define KDD12
-// #define WIKIDUMP
 // #define CRITEO
 // #define CRITEO2
 
 #ifdef WEBSPAM
-
-#define SPARSE_DATASET
 
 #define NUM_BATCHES 50
 #define BATCH_PRINT 10
 
 #define NUM_HASHES 8
 #define RANGE_POW 18
-#define RANGE_ROW_U 18
 
 #define NUM_TABLES 24
 #define RESERVOIR_SIZE 256
@@ -43,24 +39,21 @@
 
 #ifdef KDD12
 
-#define SPARSE_DATASET
-
 #define NUM_BATCHES 50
 #define BATCH_PRINT 10
 
 #define NUM_HASHES 4
 #define RANGE_POW 18
-#define RANGE_ROW_U 18
 
 #define NUM_TABLES 16
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 15
-#define NUM_DATA_VECTORS 140000000
-#define NUM_QUERY_VECTORS 10000
+// #define NUM_DATA_VECTORS 140000000
+// #define NUM_QUERY_VECTORS 10000
 
-// #define NUM_DATA_VECTORS 1000000
-// #define NUM_QUERY_VECTORS 1000
+#define NUM_DATA_VECTORS 100000
+#define NUM_QUERY_VECTORS 1000
 
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
@@ -69,48 +62,17 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/kdd12/kdd12"
-
-#endif
-
-#ifdef WIKIDUMP
-
-#define SPARSE_DATASET
-
-#define NUM_BATCHES 50
-#define BATCH_PRINT 10
-
-#define NUM_HASHES 4
-#define RANGE_POW 18
-#define RANGE_ROW_U 18
-
-#define NUM_TABLES 16
-#define RESERVOIR_SIZE 256
-
-#define DIMENSION 265
-#define NUM_DATA_VECTORS 30000000
-#define NUM_QUERY_VECTORS 10000
-#define MAX_RESERVOIR_RAND 35000
-#define TOPK 128
-#define AVAILABLE_TOPK 1024
-
-#define CMS_HASHES 4
-#define CMS_BUCKET_SIZE 2048
-
-#define BASEFILE "../../dataset/wiki/wiki_hashes"
+#define BASEFILE "../../../dataset/kdd12/kdd12"
 
 #endif
 
 #if defined(CRITEO) || defined(CRITEO2)
-
-#define SPARSE_DATASET
 
 #define NUM_BATCHES 50
 #define BATCH_PRINT 50
 
 #define NUM_HASHES 4
 #define RANGE_POW 19
-#define RANGE_ROW_U 19
 
 #define NUM_TABLES 24
 #define RESERVOIR_SIZE 256
@@ -131,14 +93,11 @@
 
 #ifdef TESTING
 
-#define SPARSE_DATASET
-
 #define NUM_BATCHES 1
 #define BATCH_PRINT 10
 
 #define NUM_HASHES 4
 #define RANGE_POW 7
-#define RANGE_ROW_U 7
 
 #define NUM_TABLES 4
 #define RESERVOIR_SIZE 128
@@ -166,20 +125,11 @@
 void testing();
 void evalWithSimilarity();
 void evalWithFileOutput();
-void wikiDump();
 void criteo();
 void criteoTesting();
 void showConfig(std::string dataset, int numVectors, int queries, int nodes, int tables,
                 int rangePow, int reservoirSize, int hashes, int cmsHashes, int cmsBucketSize,
                 bool cms, bool tree);
 void evaluateResults(std::string resultFile);
-
-#if !defined(DENSE_DATASET)
-#define SAMFACTOR 24 // DUMMY.
-#endif
-
-#if !defined(SPARSE_DATASET)
-#define K 10 // DUMMY
-#endif
 
 #endif

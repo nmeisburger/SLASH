@@ -3,8 +3,9 @@
 #include "benchmarking.h"
 #include "dataset.h"
 #include "flashControl.h"
+#include "indexing.h"
 #include "mathUtils.h"
-#include "omp.h"
+#include <omp.h>
 
 #include <algorithm>
 #include <cmath>
