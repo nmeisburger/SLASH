@@ -33,33 +33,12 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 1024
 
-#define BASEFILE "../../dataset/webspam/webspam_trigram.svm"
+#define BASEFILE "scratch/ncm5/dataset/webspam/webspam_trigram.svm"
 
 #endif
 
 #ifdef KDD12
-// #define NUM_BATCHES 50
-// #define BATCH_PRINT 10
 
-// #define NUM_HASHES 4
-// #define RANGE_POW 6
-
-// #define NUM_TABLES 4
-// #define RESERVOIR_SIZE 128
-
-// #define DIMENSION 15
-
-// #define NUM_DATA_VECTORS 300
-// #define NUM_QUERY_VECTORS 10
-
-// #define MAX_RESERVOIR_RAND 35000
-// #define TOPK 128
-// #define AVAILABLE_TOPK 1024
-
-// #define CMS_HASHES 4
-// #define CMS_BUCKET_SIZE 2048
-
-// #define BASEFILE "../../dataset/kdd12/kdd12"
 #define NUM_BATCHES 50
 #define BATCH_PRINT 10
 
@@ -83,7 +62,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "../../dataset/kdd12/kdd12"
+#define BASEFILE "scratch/ncm5/dataset/kdd12/kdd12"
 
 #endif
 
@@ -108,7 +87,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 1024
 
-#define BASEFILE "../../dataset/criteo/criteo_tb"
+#define BASEFILE "scratch/ncm5/dataset/criteo/criteo_tb"
 
 #endif
 
@@ -137,9 +116,7 @@
 #define CMS_HASHES 2
 #define CMS_BUCKET_SIZE 128
 
-#define BASEFILE "../../dataset/webspam/webspam_trigram.svm"
-#define GTRUTHINDICE "../../dataset/webspam/webspam_tri_gtruth_indices.txt"
-#define GTRUTHDIST "../../dataset/webspam/webspam_tri_gtruth_distances.txt"
+#define BASEFILE "scratch/ncm5/dataset/webspam/webspam_trigram.svm"
 
 #endif
 
