@@ -22,8 +22,8 @@ void DOPH::getHashes(unsigned int *hashIndices, unsigned int *probeDataIdx, unsi
             }
             index = (index << 2) >> (32 - _rangePow);
 
-            hashIndices[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = index;
-            probeDataIdx[hashIndicesOutputIdx(_L, numInputEntries, inputIdx, tb)] = inputIdx;
+            hashIndices[hashIndicesOutputIdx(_L, inputIdx, tb)] = index;
+            probeDataIdx[hashIndicesOutputIdx(_L, inputIdx, tb)] = inputIdx;
         }
         delete[] hashes;
     }

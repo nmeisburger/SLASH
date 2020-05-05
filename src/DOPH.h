@@ -12,11 +12,9 @@
 #define UNIVERSAL_HASH(x, M, a, b) ((unsigned)(a * x + b) >> (32 - M))
 #define BINARY_HASH(x, a, b) ((unsigned)(a * x + b) >> 31)
 
-#define hashIndicesOutputIdx(numHashFamilies, numInputs, dataIdx, tb)                              \
-    (unsigned long long)(numInputs * tb + dataIdx)
-#define hashesOutputIdx(numHashPerFamily, numInputs, dataIdx, tb, hashInFamIdx)                    \
-    (unsigned long long)(tb * (numInputs * numHashPerFamily) + dataIdx * numHashPerFamily +        \
-                         hashInFamIdx)
+#define hashIndicesOutputIdx(numTables, dataIndx, tb)                                              \
+    (unsigned long long)(numTables * dataIndx + tb)
+
 #define NULL_HASH -1
 
 class DOPH {

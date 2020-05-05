@@ -21,28 +21,21 @@ class LSH {
     unsigned int _rangePow, _numTables, _reservoirSize, _dimension, _maxSamples, _maxReservoirRand;
 
     unsigned int *_tableMem;
-    unsigned int *_tableMemAllocator;
-    unsigned int *_tablePointers;
-    omp_lock_t *_tablePointersLock;
-    omp_lock_t *_tableCountersLock;
+    unsigned int **_reservoirs;
+    omp_lock_t *_reservoirsLock;
 
     unsigned int *_global_rand;
     unsigned int _numReservoirs, _sequentialIDCounter_kernel;
-    unsigned long long int _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
-
-    void initVariables(unsigned int numHashPerFamily, unsigned int numHashFamilies,
-                       unsigned int reservoirSize, unsigned int dimension, unsigned int maxSamples);
-
-    void initHelper(unsigned int numTablesIn, unsigned int numHashPerFamilyIn,
-                    unsigned int reservoriSizeIn);
+    //     unsigned long long int _tableMemMax, _tableMemReservoirMax, _tablePointerMax;
 
     // Samples reservoirs and determines where to add data vectors.
-    void reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsIdx,
-                           unsigned int *storelog, unsigned int numProbePerTb);
+    //     void reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsIdx,
+    //                            unsigned int *storelog, unsigned int numProbePerTb);
 
     // Adds data vectors to tables at locations determined by reservoirSampling function.
     // Param dataOffset is used to account for indexing across nodes.
-    void addTable(unsigned int *storelog, unsigned int numProbePerTb, unsigned int dataOffset);
+    void addTable(unsigned int *hashes, unsigned int *ids, unsigned int numInsertions,
+                  unsigned int dataOffset);
 
   public:
     LSH(DOPH *hashFam, unsigned int numHashPerFamily, unsigned int numHashFamilies,
@@ -85,8 +78,7 @@ class LSH {
     @param hashIndices: the hash indices of the query vectors, corresponding to a reservoir(s) in
     each table.
     */
-    void extractReservoirs(unsigned int numQueryEntries, unsigned int segmentSize,
-                           unsigned int *queue, unsigned int *hashIndices);
+    void extractReservoirs(unsigned int numQuery, unsigned int *output, unsigned int *hashIndices);
 
     void resetSequentialKernalID();
 
@@ -96,7 +88,7 @@ class LSH {
 
     /* Check the memory load of the hash table.
      */
-    void checkTableMemLoad();
+    //     void checkTableMemLoad();
 
     /* Prints contents of each hash table.
      */

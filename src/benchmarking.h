@@ -38,7 +38,28 @@
 #endif
 
 #ifdef KDD12
+// #define NUM_BATCHES 50
+// #define BATCH_PRINT 10
 
+// #define NUM_HASHES 4
+// #define RANGE_POW 6
+
+// #define NUM_TABLES 4
+// #define RESERVOIR_SIZE 128
+
+// #define DIMENSION 15
+
+// #define NUM_DATA_VECTORS 300
+// #define NUM_QUERY_VECTORS 10
+
+// #define MAX_RESERVOIR_RAND 35000
+// #define TOPK 128
+// #define AVAILABLE_TOPK 1024
+
+// #define CMS_HASHES 4
+// #define CMS_BUCKET_SIZE 2048
+
+// #define BASEFILE "../../dataset/kdd12/kdd12"
 #define NUM_BATCHES 50
 #define BATCH_PRINT 10
 
@@ -52,7 +73,7 @@
 // #define NUM_DATA_VECTORS 140000000
 // #define NUM_QUERY_VECTORS 10000
 
-#define NUM_DATA_VECTORS 100000
+#define NUM_DATA_VECTORS 1000000
 #define NUM_QUERY_VECTORS 1000
 
 #define MAX_RESERVOIR_RAND 35000

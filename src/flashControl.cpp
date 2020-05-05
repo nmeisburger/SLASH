@@ -165,7 +165,7 @@ void flashControl::add(std::string filename, unsigned int numDataVectors, unsign
         _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers + batch * batchSize,
                           myDataVectorOffset);
         if (batch % batchPrint == 0) {
-            _myReservoir->checkTableMemLoad();
+            // _myReservoir->checkTableMemLoad();
         }
     }
 
@@ -226,38 +226,37 @@ void flashControl::hashQuery() {
     _myReservoir->getQueryHash(_myQueryVectorsCt, _myHashCt, _myQueryIndices, _myQueryVals,
                                _myQueryMarkers, myPartitionHashes);
 
-    unsigned int *queryHashBuffer = new unsigned int[_numQueryVectors * _numTables];
+    // unsigned int *queryHashBuffer = new unsigned int[_numQueryVectors * _numTables];
 
-    MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, queryHashBuffer, _hashCts,
+    MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, _allQueryHashes, _hashCts,
                    _hashOffsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
-    unsigned int len;
+    //     unsigned int len;
 
-    unsigned int *old;
-    unsigned int *fin;
+    //     unsigned int *old;
+    //     unsigned int *fin;
 
-#pragma omp parallel for default(none)                                                             \
-    shared(queryHashBuffer, _allQueryHashes, _hashOffsets, _numTables) private(len, old, fin)
-    for (size_t partition = 0; partition < _worldSize; partition++) {
-        len = _queryVectorCts[partition];
-        for (size_t tb = 0; tb < _numTables; tb++) {
-            old = queryHashBuffer + _hashOffsets[partition] + tb * len;
-            fin = _allQueryHashes + tb * _numQueryVectors + (_hashOffsets[partition] / _numTables);
-            for (size_t l = 0; l < len; l++) {
-                fin[l] = old[l];
-            }
-        }
-    }
+    // #pragma omp parallel for default(none)                                                             \
+//     shared(queryHashBuffer, _allQueryHashes, _hashOffsets, _numTables) private(len, old, fin)
+    //     for (size_t partition = 0; partition < _worldSize; partition++) {
+    //         len = _queryVectorCts[partition];
+    //         for (size_t tb = 0; tb < _numTables; tb++) {
+    //             old = queryHashBuffer + _hashOffsets[partition] + tb * len;
+    //             fin = _allQueryHashes + tb * _numQueryVectors + (_hashOffsets[partition] /
+    //             _numTables); for (size_t l = 0; l < len; l++) {
+    //                 fin[l] = old[l];
+    //             }
+    //         }
+    //     }
 
-    delete[] queryHashBuffer;
+    // delete[] queryHashBuffer;
     delete[] myPartitionHashes;
 }
 
 void flashControl::topKBruteForceAggretation(unsigned int topK, unsigned int *outputs) {
     size_t segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * (long)_numQueryVectors];
-    _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
-                                    _allQueryHashes);
+    _myReservoir->extractReservoirs(_numQueryVectors, allReservoirsExtracted, _allQueryHashes);
 
     unsigned int *allReservoirsAllNodes;
     if (_myRank == 0) {
@@ -341,8 +340,7 @@ void flashControl::topKCMSAggregationTree(unsigned int topK, unsigned int *outpu
                                           unsigned int threshold) {
     unsigned int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
-    _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
-                                    _allQueryHashes);
+    _myReservoir->extractReservoirs(_numQueryVectors, allReservoirsExtracted, _allQueryHashes);
     // printf("reservoirs extracted\n");
     _mySketch->add(allReservoirsExtracted, segmentSize);
     // printf("sketched added\n");
@@ -361,8 +359,7 @@ void flashControl::topKCMSAggregationLinear(unsigned int topK, unsigned int *out
                                             unsigned int threshold) {
     unsigned int segmentSize = _numTables * _reservoirSize;
     unsigned int *allReservoirsExtracted = new unsigned int[segmentSize * _numQueryVectors];
-    _myReservoir->extractReservoirs(_numQueryVectors, segmentSize, allReservoirsExtracted,
-                                    _allQueryHashes);
+    _myReservoir->extractReservoirs(_numQueryVectors, allReservoirsExtracted, _allQueryHashes);
     _mySketch->add(allReservoirsExtracted, segmentSize);
     _mySketch->aggregateSketches();
     if (_myRank == 0) {

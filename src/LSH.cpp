@@ -10,43 +10,48 @@ void LSH::add(unsigned int numInputEntries, unsigned int *dataIdx, float *dataVa
 
     unsigned long long int storeLogSize = _numTables * numInputEntries;
 
-    unsigned int *allprobsHash = new unsigned int[storeLogSize];
-    unsigned int *allprobsIdx = new unsigned int[storeLogSize];
+    unsigned int *allHashes = new unsigned int[storeLogSize];
+    unsigned int *allIds = new unsigned int[storeLogSize];
 
-    _hashFamily->getHashes(allprobsHash, allprobsIdx, dataIdx, dataMarker, numInputEntries);
+    _hashFamily->getHashes(allHashes, allIds, dataIdx, dataMarker, numInputEntries);
 
-    unsigned int *storelog = new unsigned int[storeLogSize * 4]();
+    addTable(allHashes, allIds, numInputEntries, dataOffset);
 
-    reservoirSampling(allprobsHash, allprobsIdx, storelog, numInputEntries);
-    addTable(storelog, numInputEntries, dataOffset);
-
-    delete[] storelog;
-    delete[] allprobsHash;
-    delete[] allprobsIdx;
+    delete[] allHashes;
+    delete[] allIds;
 
     _sequentialIDCounter_kernel += numInputEntries;
 }
 
-void LSH::extractReservoirs(unsigned int numQueryEntries, unsigned int segmentSize,
-                            unsigned int *queue, unsigned int *hashIndices) {
+void LSH::extractReservoirs(unsigned int numQuery, unsigned int *output,
+                            unsigned int *hashIndices) {
 
-    unsigned int hashIdx, allocIdx;
-#pragma omp parallel for private(hashIdx, allocIdx)
-    for (size_t tb = 0; tb < _numTables; tb++) {
-        for (size_t queryIdx = 0; queryIdx < numQueryEntries; queryIdx++) {
-            for (size_t elemIdx = 0; elemIdx < _reservoirSize; elemIdx++) {
-                hashIdx = hashIndices[allprobsHashIdx(numQueryEntries, tb, queryIdx)];
-                allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)];
-                if (allocIdx != TABLENULL) {
-                    queue[queueElemIdx(segmentSize, tb, queryIdx, elemIdx)] =
-                        _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirs) + elemIdx];
-                }
-            }
+    unsigned int segmentSize = _numTables * _reservoirSize;
+#pragma omp parallel for default(none) shared(segmentSize, numQuery, output, hashIndices)
+    for (size_t query = 0; query < numQuery; query++) {
+        for (size_t table = 0; table < _numTables; table++) {
+            unsigned int *tableReservoir =
+                _reservoirs[table * _numReservoirs + hashIndices[query * _numTables + table]];
+            std::copy(tableReservoir + 1, tableReservoir + _reservoirSize + 1,
+                      output + query * segmentSize + table * _reservoirSize);
         }
     }
+    // for (size_t tb = 0; tb < _numTables; tb++) {
+    //     for (size_t queryIdx = 0; queryIdx < numQueryEntries; queryIdx++) {
+    //         for (size_t elemIdx = 0; elemIdx < _reservoirSize; elemIdx++) {
+    // hashIdx = hashIndices[allprobsHashIdx(numQueryEntries, tb, queryIdx)];
+    //             allocIdx = _reservoirs[tablePointersIdx(_numReservoirs, hashIdx, tb)];
+    //             if (allocIdx != TABLENULL) {
+    //                 queue[queueElemIdx(segmentSize, tb, queryIdx, elemIdx)] =
+    //                     _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirs) + elemIdx];
+    //             }
+    //         }
+    //     }
+    // }
 }
 
-void LSH::reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsIdx,
+/*
+void LSH::reservoirSampling(unsigned int *hashIndices, unsigned int *allprobsIdx,
                             unsigned int *storelog, unsigned int numProbePerTb) {
 
     unsigned int counter, allocIdx, reservoirRandNum, TB, hashIdx, inputIdx, ct, reservoir_full,
@@ -63,13 +68,13 @@ void LSH::reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsId
             inputIdx = allprobsIdx[allprobsHashSimpleIdx(numProbePerTb, tb, probeIdx)];
             ct = 0;
 
-            /* Allocate the reservoir if non-existent. */
+            // Allocate the reservoir if non-existent.
             omp_set_lock(_tablePointersLock + tablePointersIdx(_numReservoirs, hashIdx, tb));
-            allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)];
+            allocIdx = _reservoirs[tablePointersIdx(_numReservoirs, hashIdx, tb)];
             if (allocIdx == TABLENULL) {
                 allocIdx = _tableMemAllocator[tableMemAllocatorIdx(tb)];
                 _tableMemAllocator[tableMemAllocatorIdx(tb)]++;
-                _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)] = allocIdx;
+                _reservoirs[tablePointersIdx(_numReservoirs, hashIdx, tb)] = allocIdx;
             }
             omp_unset_lock(_tablePointersLock + tablePointersIdx(_numReservoirs, hashIdx, tb));
 
@@ -104,28 +109,52 @@ void LSH::reservoirSampling(unsigned int *allprobsHash, unsigned int *allprobsId
         }
     }
 }
+*/
 
-void LSH::addTable(unsigned int *storelog, unsigned int numProbePerTb, unsigned int dataOffset) {
+void LSH::addTable(unsigned int *hashes, unsigned int *ids, unsigned int numInsertions,
+                   unsigned int dataOffset) {
 
-    unsigned int id, hashIdx, allocIdx;
-    unsigned locCapped;
-    //#pragma omp parallel for private(allocIdx, id, hashIdx, locCapped)
-    for (size_t probeIdx = 0; probeIdx < numProbePerTb; probeIdx++) {
-        for (size_t tb = 0; tb < _numTables; tb++) {
-
-            id = storelog[storelogIdIdx(numProbePerTb, probeIdx, tb)];
-            hashIdx = storelog[storelogHashIdxIdx(numProbePerTb, probeIdx, tb)];
-            allocIdx = _tablePointers[tablePointersIdx(_numReservoirs, hashIdx, tb)];
-            // If item_i spills out of the reservoir, it is capped to the dummy location at
-            // _reservoirSize.
-            locCapped = storelog[storelogLocationIdx(numProbePerTb, probeIdx, tb)];
-
-            if (locCapped < _reservoirSize) {
-                _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirs) + locCapped] =
-                    id + _sequentialIDCounter_kernel + dataOffset;
+    unsigned int id, hashIndex, counter, location, *reservoir;
+#pragma omp parallel for default(none) shared(hashes, ids, numInsertions, dataOffset) private(     \
+    id, hashIndex, counter, location, reservoir)
+    for (size_t elem = 0; elem < numInsertions; elem++) {
+        for (size_t table = 0; table < _numTables; table++) {
+            hashIndex = hashes[hashIndicesOutputIdx(_numTables, elem, table)];
+            id = ids[hashIndicesOutputIdx(_numTables, elem, table)];
+            reservoir = _reservoirs[table * _numReservoirs + hashIndex];
+            omp_set_lock(_reservoirsLock + table * _numReservoirs + hashIndex);
+            counter = reservoir[0];
+            reservoir[0]++;
+            omp_unset_lock(_reservoirsLock + table * _numReservoirs + hashIndex);
+            if (counter < _reservoirSize) {
+                reservoir[counter + 1] = id + dataOffset + _sequentialIDCounter_kernel;
+            } else {
+                location = _global_rand[std::min((unsigned int)(_maxReservoirRand - 1), counter)];
+                if (location < _reservoirSize) {
+                    reservoir[location + 1] = id + dataOffset + _sequentialIDCounter_kernel;
+                }
             }
         }
     }
+    // unsigned int id, hashIdx, allocIdx;
+    // unsigned locCapped;
+    // //#pragma omp parallel for private(allocIdx, id, hashIdx, locCapped)
+    // for (size_t probeIdx = 0; probeIdx < numProbePerTb; probeIdx++) {
+    //     for (size_t tb = 0; tb < _numTables; tb++) {
+
+    //         id = storelog[storelogIdIdx(numProbePerTb, probeIdx, tb)];
+    //         hashIdx = storelog[storelogHashIdxIdx(numProbePerTb, probeIdx, tb)];
+    //         allocIdx = _reservoirs[tablePointersIdx(_numReservoirs, hashIdx, tb)];
+    //         // If item_i spills out of the reservoir, it is capped to the dummy location at
+    //         // _reservoirSize.
+    //         locCapped = storelog[storelogLocationIdx(numProbePerTb, probeIdx, tb)];
+
+    //         if (locCapped < _reservoirSize) {
+    //             _tableMem[tableMemResIdx(tb, allocIdx, _numReservoirs) + locCapped] =
+    //                 id + _sequentialIDCounter_kernel + dataOffset;
+    //         }
+    //     }
+    // }
 }
 
 void LSH::getQueryHash(unsigned int queryPartitionSize, unsigned int numQueryPartitionHashes,
@@ -142,24 +171,24 @@ void LSH::getQueryHash(unsigned int queryPartitionSize, unsigned int numQueryPar
 
 void LSH::resetSequentialKernalID() { _sequentialIDCounter_kernel = 0; }
 
-void LSH::checkTableMemLoad() {
-    unsigned int maxx = 0;
-    unsigned int minn = _numReservoirs;
-    unsigned int tt = 0;
-    for (unsigned int i = 0; i < _numTables; i++) {
-        if (_tableMemAllocator[i] < minn) {
-            minn = _tableMemAllocator[i];
-        }
-        if (_tableMemAllocator[i] > maxx) {
-            maxx = _tableMemAllocator[i];
-        }
-        tt += _tableMemAllocator[i];
-    }
+// void LSH::checkTableMemLoad() {
+//     unsigned int maxx = 0;
+//     unsigned int minn = _numReservoirs;
+//     unsigned int tt = 0;
+//     for (unsigned int i = 0; i < _numTables; i++) {
+//         if (_tableMemAllocator[i] < minn) {
+//             minn = _tableMemAllocator[i];
+//         }
+//         if (_tableMemAllocator[i] > maxx) {
+//             maxx = _tableMemAllocator[i];
+//         }
+//         tt += _tableMemAllocator[i];
+//     }
 
-    printf("Node %d Table Mem Usage ranges from %f to %f, average %f\n", _myRank,
-           ((float)minn) / (float)_numReservoirs, ((float)maxx) / (float)_numReservoirs,
-           ((float)tt) / (float)(_numTables * _numReservoirs));
-}
+//     printf("Node %d Table Mem Usage ranges from %f to %f, average %f\n", _myRank,
+//            ((float)minn) / (float)_numReservoirs, ((float)maxx) / (float)_numReservoirs,
+//            ((float)tt) / (float)(_numTables * _numReservoirs));
+// }
 
 void LSH::showParams() {
     printf("\n");
@@ -172,29 +201,23 @@ void LSH::showParams() {
     std::cout << "_maxSamples " << _maxSamples << "\n";
     std::cout << "_numReservoirs " << _numReservoirs << "\n";
     std::cout << "_maxReservoirRand " << _maxReservoirRand << "\n";
-    std::cout << "_tableMemMax " << _tableMemMax << "\n";
-    std::cout << "_tableMemReservoirMax " << _tableMemReservoirMax << "\n";
-    std::cout << "_tablePointerMax " << _tablePointerMax << "\n";
     printf("\n");
 }
 
 void LSH::tableContents() {
-    unsigned int hashBucketLocation;
+    unsigned int *reservoir;
     for (int t = 0; t < _numTables; t++) {
         printf("\nNode %d - Table %d\n", _myRank, t);
         for (int b = 0; b < std::min(_numReservoirs, (unsigned)256); b++) {
-            hashBucketLocation = _tablePointers[tablePointersIdx(_numReservoirs, b, t)];
-            if (hashBucketLocation == TABLE_NULL) {
-                continue;
-            }
-            printf("[%d]: ", b);
-            for (int i = 0; i < _reservoirSize; i++) {
-                if (_tableMem[tableMemResIdx(t, hashBucketLocation, _numReservoirs) + i] == 0) {
-                    break;
+            reservoir = _reservoirs[t * _numReservoirs + b];
+            printf("[%d->%u]: ", b, reservoir[0]);
+            if (reservoir[0] > 0) {
+                printf("[%d]: ", b);
+                for (int i = 0; i < reservoir[0]; i++) {
+                    printf("%d ", reservoir[i + 1]);
                 }
-                printf("%d ", _tableMem[tableMemResIdx(t, hashBucketLocation, _numReservoirs) + i]);
+                printf("\n");
             }
-            printf("\n");
         }
         printf("\n");
     }

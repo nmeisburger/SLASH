@@ -252,6 +252,10 @@ void evalWithSimilarity() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    // control->printTables();
+
+    // exit(1);
+
     /* ===============================================================
   Hashing Query Vectors
   */
