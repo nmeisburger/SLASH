@@ -286,31 +286,31 @@ void evalWithSimilarity() {
 
     // ==============================================
 
-    // unsigned int *linearOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    // start = std::chrono::system_clock::now();
-    // std::cout << "Extracting Top K (LINEAR) Node " << myRank << "..." << std::endl;
-    // control->topKCMSAggregationLinear(TOPK, linearOutputs, 0);
-    // end = std::chrono::system_clock::now();
-    // elapsed = end - start;
-    // std::cout << "Top K (LINEAR) Extracted Node " << myRank << ": " << elapsed.count()
-    //           << " Seconds\n"
-    //           << std::endl;
+    unsigned int *linearOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    start = std::chrono::system_clock::now();
+    std::cout << "Extracting Top K (LINEAR) Node " << myRank << "..." << std::endl;
+    control->topKCMSAggregationLinear(TOPK, linearOutputs, 0);
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Top K (LINEAR) Extracted Node " << myRank << ": " << elapsed.count()
+              << " Seconds\n"
+              << std::endl;
 
-    // MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     // ==============================================
 
-    // unsigned int *bruteforceOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
-    // start = std::chrono::system_clock::now();
-    // std::cout << "Extracting Top K (BRUTEFORCE) Node " << myRank << "..." << std::endl;
-    // control->topKBruteForceAggretation(TOPK, bruteforceOutputs);
-    // end = std::chrono::system_clock::now();
-    // elapsed = end - start;
-    // std::cout << "Top K (BRUTEFORCE) Extracted Node " << myRank << ": " << elapsed.count()
-    //           << " Seconds\n"
-    //           << std::endl;
+    unsigned int *bruteforceOutputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
+    start = std::chrono::system_clock::now();
+    std::cout << "Extracting Top K (BRUTEFORCE) Node " << myRank << "..." << std::endl;
+    control->topKBruteForceAggretation(TOPK, bruteforceOutputs);
+    end = std::chrono::system_clock::now();
+    elapsed = end - start;
+    std::cout << "Top K (BRUTEFORCE) Extracted Node " << myRank << ": " << elapsed.count()
+              << " Seconds\n"
+              << std::endl;
 
-    // MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
   De-allocating Data Structures in Memory
@@ -348,17 +348,17 @@ void evalWithSimilarity() {
 
         // std::cout << "\n\n================================\nTOP K LINEAR\n" << std::endl;
 
-        // similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
-        //                  sparseMarkers, linearOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
-        //                  nList, nCnt);
+        similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
+                         sparseMarkers, linearOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
+                         nList, nCnt);
 
-        // std::cout << "\n\n================================\nTOP K "
-        //              "BRUTEFORCE\n"
-        //           << std::endl;
+        std::cout << "\n\n================================\nTOP K "
+                     "BRUTEFORCE\n"
+                  << std::endl;
 
-        // similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
-        //                  sparseMarkers, bruteforceOutputs, NUM_QUERY_VECTORS, TOPK,
-        //                  AVAILABLE_TOPK, nList, nCnt);
+        similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
+                         sparseMarkers, bruteforceOutputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK,
+                         nList, nCnt);
 
         std::cout << "Similarity Metric Computed" << std::endl;
 
@@ -370,8 +370,8 @@ void evalWithSimilarity() {
         delete[] sparseMarkers;
     }
     delete[] treeOutputs;
-    // delete[] linearOutputs;
-    // delete[] bruteforceOutputs;
+    delete[] linearOutputs;
+    delete[] bruteforceOutputs;
 }
 
 /**
