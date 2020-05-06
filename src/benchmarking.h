@@ -8,7 +8,7 @@
 // #define WEBSPAM
 #define KDD12
 // #define CRITEO
-// #define CRITEO2
+// #define FULL_CRITEO
 
 #ifdef WEBSPAM
 
@@ -33,7 +33,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 1024
 
-#define BASEFILE "scratch/ncm5/dataset/webspam/webspam_trigram.svm"
+#define BASEFILE "/scratch/ncm5/dataset/webspam/webspam_trigram.svm"
 
 #endif
 
@@ -49,11 +49,11 @@
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 15
-// #define NUM_DATA_VECTORS 140000000
-// #define NUM_QUERY_VECTORS 10000
+#define NUM_DATA_VECTORS 140000000
+#define NUM_QUERY_VECTORS 10000
 
-#define NUM_DATA_VECTORS 1000000
-#define NUM_QUERY_VECTORS 1000
+// #define NUM_DATA_VECTORS 1000000
+// #define NUM_QUERY_VECTORS 1000
 
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
@@ -62,11 +62,11 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 2048
 
-#define BASEFILE "scratch/ncm5/dataset/kdd12/kdd12"
+#define BASEFILE "/scratch/ncm5/dataset/kdd12/kdd12"
 
 #endif
 
-#if defined(CRITEO) || defined(CRITEO2)
+#if defined(CRITEO) || defined(FULL_CRITEO)
 
 #define NUM_BATCHES 50
 #define BATCH_PRINT 50
@@ -87,7 +87,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 1024
 
-#define BASEFILE "scratch/ncm5/dataset/criteo/criteo_tb"
+#define BASEFILE "/scratch/ncm5/dataset/criteo/criteo_tb"
 
 #endif
 

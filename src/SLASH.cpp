@@ -32,7 +32,7 @@ int main() {
 #ifdef CRITEO
     criteo();
 #endif
-#ifdef CRITEO2
+#ifdef FULL_CRITEO
     criteoTesting();
 #endif
 

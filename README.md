@@ -1,7 +1,44 @@
 # SLASH
 Sketching based distributed locally sensitive hashing algorithm for similarity search with ultra high dimensionality datasets.
 
-## Instructions
+## Criteo Nearest Neighbor Classifier Instructions
+
+### To get the list of nearest neighbors foreach query
+1. Clone this repository on NOTS. 
+2. Navigate to src directory `$ cd SLASH/src`.
+3. Load MPI compiler and library `$ source scripts/setup.sh`.
+4. Make sure that only `#define FULL_CRITEO` is uncommented at the top of `benchmarking.h`.
+5. Compile program `$ make clean ; make`.
+6. Navigate to slurm script `$ cd scripts`.
+7. Submit job request `$ sbatch criteo.slurm`.
+8. The output will be in the file `CriteoKNNResults`.
+
+### To analyze these results
+1. Move the data to yogi `$ scp CriteoKNNResults <netid>@yogi.cs.rice.edu:`
+2. Move the analysis programs to yogi `$ scp utils/predict.cpp <netid>@yogi.cs.rice.edu:` and `$ scp utils/precision_recall.cpp <netid>@yogi.cs.rice.edu:`.
+3. Login to yogi and compile the 2 analysis programs.
+4. Run `predict` to generate the predictions. Make sure that the paths defined at the top of the code are correct for the nearest neighbors and labels, and that the output file specified is correct.
+5. To compute precision and recall run `precision_recall`. Make sure that the path to the labels and preditions are again correct. 
+6. To compute ROC AUC run the following program:
+
+```python
+import numpy as np
+from sklearn.metrics import roc_auc_score
+
+PREDICTIONS_FILE = "predictions"
+LABEL_FILE = "criteo_testing_labels"
+
+
+predictions_file = open(PREDICTIONS_FILE, "rb")
+labels_file = open(LABEL_FILE, "rb")
+
+predictions = np.fromfile(predictions_file, dtype="uint8")
+labels = np.fromfile(labels_file, dtype="uint8")
+
+print(roc_auc_score(predictions, labels))
+```
+
+## Instructions for General Use
 1. Download and unzip either the `criteo_tb`, `webspam_wc_normalized_trigram.svm.bz2`, or `kdd12.bz2` from https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html. 
 * Note that the run on criteo the system requires that the dataset is split into a new file for each MPI process. Each MPI process will read from the file given by the value of `BASEFILE` in `benchmarking.h` concatentated with its MPI process id. For example process 0 will read from "criteo_tb0" and process 4 would read from "criteo_tb4". 
 * Partitioning the dataset in this way allows for more efficient parallel file IO and better maximizes the parallel file system which is important with a dataset of this size. 

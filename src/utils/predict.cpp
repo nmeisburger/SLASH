@@ -5,8 +5,16 @@
 #include <stdio.h>
 #include <string>
 
-// #define USE_MPI
+#define TOPK_USED 20
+#define THRESHOLD 3
+#define PATH_TO_KNN_RESULTS "CriteoKNNResults"
+#define PREDICTION_OUTPUT_FILE "./predictions"
 
+// For YOGI
+#define PATH_TO_DATA_LABELS "/home/ncm5/labels/criteo_labels"
+#define PATH_TO_TEST_LABELS "/home/ncm5/criteo_testing_labels"
+
+// #define USE_MPI
 #ifdef USE_MPI
 #include <mpi.h>
 #endif
@@ -110,6 +118,7 @@ void predict(string data_label_file, size_t num_data_files, size_t num_data_per_
              string test_label_file, size_t num_test, string result_file, unsigned int k) {
 
     uint8_t *data_labels = new uint8_t[num_data_files * num_data_per_file];
+    uint8_t *preds = new uint8_t[num_test];
 
     for (size_t i = 0; i < num_data_files; i++) {
         string temp(data_label_file);
@@ -149,20 +158,43 @@ void predict(string data_label_file, size_t num_data_files, size_t num_data_per_
     unsigned int num_correct = 0;
 
     for (size_t q = 0; q < num_test; q++) {
-        unsigned int matches = 0;
+        unsigned int ones = 0;
         uint8_t correct_label = test_labels[q];
         for (size_t i = 0; i < k; i++) {
             unsigned int pred = results[k * q + i];
-            if (data_labels[pred] == correct_label) {
-                matches++;
+            if (data_labels[pred] == 1) {
+                ones++;
             }
         }
-        if (matches >= k / 2) {
-            num_correct++;
+        if (ones >= THRESHOLD) {
+            preds[q] = 1;
+            if (correct_label == 1) {
+                num_correct++;
+            }
+        } else {
+            preds[q] = 0;
+            if (correct_label == 0) {
+                num_correct++;
+            }
+        }
+        // if (matches >= 1) {
+        //    num_correct++;
+        //    preds[q] = test_labels[q];
+        //} else {
+        //    preds[q] = (test_labels[q] + 1) % 2;
+        //}
+        if (q % 10000000 == 0) {
+            printf("%lu Complete\n", q);
         }
     }
 
-    printf("Correct: %u / %u\n", num_correct, k);
+    FILE *pred_file = fopen(PREDICTION_OUTPUT_FILE, "w");
+
+    if (fwrite(preds, 1, num_test, pred_file) != num_test) {
+        printf("Error writing predictions\n");
+    }
+
+    printf("Correct: %u / %lu\n", num_correct, num_test);
 }
 
 #ifdef USE_MPI
@@ -197,8 +229,8 @@ int main() {
     // save_labels_dist("../../../dataset/criteo/criteo_split", 200000000,
     //                  "../../../dataset/criteo/criteo_labels");
 
-    predict("./criteo_labels", 20, 200000000, "./criteo_test_label", 150000000, "CriteoTesting",
-            50);
+    predict(PATH_TO_DATA_LABELS, 20, 200000000, PATH_TO_TEST_LABELS, 150000000, PATH_TO_KNN_RESULTS,
+            TOPK_USED);
 
     return 0;
 }
