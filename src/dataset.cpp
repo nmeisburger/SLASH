@@ -160,14 +160,17 @@ void writeTopK(std::string filename, unsigned int numQueries, unsigned int k, un
 }
 
 void writeTopK2(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {
-    std::ofstream file(filename, std::ios::app);
-    for (size_t q = 0; q < numQueries; q++) {
-        for (size_t i = 0; i < k; i++) {
-            file << topK[q * k + i] << " ";
-        }
-        file << "\n";
+    FILE *file = fopen(filename.c_str(), "a");
+    if (file == NULL) {
+        printf("Error opening results file.\n");
+        exit(1);
     }
-    file.close();
+
+    if (fwrite(topK, sizeof(unsigned int), k * numQueries, file) != k * numQueries) {
+        printf("Error writing to results file.\n");
+        exit(1);
+    }
+    fclose(file);
 }
 
 void readTopK(std::string filename, unsigned int numQueries, unsigned int k, unsigned int *topK) {

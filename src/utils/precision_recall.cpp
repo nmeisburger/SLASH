@@ -2,8 +2,8 @@
 #include <iostream>
 #include <stdio.h>
 
-#define TEST_LABEL_FILE "/home/ncm5/criteo_testing_labels"
-#define PREDICTION_FILE "predictions2"
+#define TEST_LABEL_FILE "criteo_testing_labels"
+#define PREDICTION_FILE "predictions"
 
 #define SIZE 150000000
 int main() {
@@ -64,9 +64,9 @@ int main() {
 
     printf("Label 1: Precision %lf Recall: %lf\n", true1 / pred1, true1 / total1);
 
-    printf("Check: %lf\n", pred0 + pred1);
-    printf("Check: %lf\n", total0 + total1);
-    printf("Check: %lf\n", true0 + true1);
+    // printf("Check: %lf\n", pred0 + pred1);
+    // printf("Check: %lf\n", total0 + total1);
+    // printf("Check: %lf\n", true0 + true1);
 
     return 0;
 }
