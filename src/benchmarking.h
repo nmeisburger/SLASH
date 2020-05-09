@@ -4,11 +4,11 @@
 #include <string>
 
 // #define FILE_OUTPUT
-#define EVAL_SIM
+// #define EVAL_SIM
 // #define WEBSPAM
-#define KDD12
+//#define KDD12
 // #define CRITEO
-// #define FULL_CRITEO
+#define FULL_CRITEO
 
 #ifdef WEBSPAM
 
@@ -87,7 +87,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 1024
 
-#define BASEFILE "/scratch/ncm5/dataset/criteo/criteo_tb"
+#define BASEFILE "/scratch/ncm5/dataset/criteo/criteo_split"
 
 #endif
 
