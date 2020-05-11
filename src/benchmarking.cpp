@@ -712,9 +712,7 @@ void criteoTesting() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    std::string queryFile(BASEFILE);
-
-    queryFile.append(".t");
+    std::string queryFile("/scratch/ncm5/dataset/criteo_tb.t");
 
     start = std::chrono::system_clock::now();
     control->query(queryFile, "CriteoKNNResults", 10000, 100);

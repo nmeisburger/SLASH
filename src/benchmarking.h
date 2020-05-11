@@ -4,11 +4,11 @@
 #include <string>
 
 // #define FILE_OUTPUT
-#define EVAL_SIM
+// #define EVAL_SIM
 // #define WEBSPAM
-#define KDD12
+// #define KDD12
 // #define CRITEO
-// #define FULL_CRITEO
+#define FULL_CRITEO
 
 #ifdef WEBSPAM
 
@@ -22,10 +22,10 @@
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 4000
-// #define NUM_DATA_VECTORS 340000
-// #define NUM_QUERY_VECTORS 10000
-#define NUM_DATA_VECTORS 10000
-#define NUM_QUERY_VECTORS 150
+#define NUM_DATA_VECTORS 340000
+#define NUM_QUERY_VECTORS 10000
+// #define NUM_DATA_VECTORS 10000
+// #define NUM_QUERY_VECTORS 150
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024
@@ -87,7 +87,7 @@
 #define CMS_HASHES 4
 #define CMS_BUCKET_SIZE 1024
 
-#define BASEFILE "/scratch/ncm5/dataset/criteo/criteo_tb"
+#define BASEFILE "/scratch/ncm5/dataset/criteo/criteo_partition"
 
 #endif
 

@@ -185,12 +185,16 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
 
     std::string filename(base_filename);
 
+    if (-_myRank < 10) {
+        filename.append("0");
+    }
+
     filename.append(std::to_string(_myRank));
 
     std::cout << "<<Reading from file " << filename << " in node " << _myRank << ">>" << std::endl;
 
     Reader *reader = new Reader(filename.c_str(), 2000000000);
-    // std::streampos last = 0;
+    std::streampos last = 0;
 
     unsigned int *myDataIndices = new unsigned int[batchSize * _dimension];
     float *myDataVals = new float[batchSize * _dimension];
@@ -198,12 +202,11 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
 
     for (unsigned int batch = 0; batch < numBatches; batch++) {
 
-        reader->readSparse(batchSize, myDataIndices, myDataVals, myDataMarkers,
-                           _dimension * batchSize);
+        // reader->readSparse(batchSize, myDataIndices, myDataVals, myDataMarkers,
+        //                    _dimension * batchSize);
 
-        // last = readSparse2(filename, last, 0, batchSize, myDataIndices, myDataVals,
-        // myDataMarkers,
-        //                    (batchSize * _dimension));
+        last = readSparse2(filename, last, 0, batchSize, myDataIndices, myDataVals, myDataMarkers,
+                           (batchSize * _dimension));
 
         _myReservoir->add(batchSize, myDataIndices, myDataVals, myDataMarkers, myOffset);
         // if (batch % batchPrint == 0) {
