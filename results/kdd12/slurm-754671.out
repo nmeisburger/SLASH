@@ -1,0 +1,204 @@
+
+=================
+== /scratch/ncm5/dataset/kdd12/kdd12
+=================
+
+LSH Initialized in Node 4
+LSH Initialized in Node 2
+LSH Initialized in Node 1
+LSH Initialized in Node 3
+LSH Initialized in Node 5
+140000000 Vectors, 10000 Queries
+Nodes: 6
+Tables: 16
+RangePow: 18
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+CMS Initialized in Node 1
+CMS Initialized in Node 4
+CMS Initialized in Node 0
+CMS Initialized in Node 2
+CMS Initialized in Node 3
+CMS Initialized in Node 5
+LSH Reservoir Initialized in Node 5
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 1
+LSH Reservoir Initialized in Node 3
+LSH Reservoir Initialized in Node 0
+LSH Reservoir Initialized in Node 2
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 3
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 5
+FLASH Controller Initialized in Node 4
+FLASH Controller Initialized in Node 2
+[readSparse] Read 110000 numbers, 10000 vectors. 
+Adding Vectors Node 0...
+Adding Vectors Node 3...
+Adding Vectors Node 1...
+Adding Vectors Node 5...
+Adding Vectors Node 4...
+Adding Vectors Node 2...
+[readSparse] Read 256666674 numbers, 23333334 vectors. 
+Vectors Read Node 0: 107.952 Seconds
+
+[readSparse] Read 256666674 numbers, 23333334 vectors. 
+Vectors Read Node 1: 139.404 Seconds
+
+Vectors Added Node 0: 152.942 Seconds
+
+[readSparse] Read 256666663 numbers, 23333333 vectors. 
+Vectors Read Node 2: 174.135 Seconds
+
+Vectors Added Node 1: 184.502 Seconds
+
+[readSparse] Read 256666663 numbers, 23333333 vectors. 
+Vectors Read Node 3: 194.072 Seconds
+
+[readSparse] Read 256666663 numbers, 23333333 vectors. 
+Vectors Read Node 4: 197.583 Seconds
+
+Vectors Added Node 2: 217.651 Seconds
+
+Vectors Added Node 4: 227.559 Seconds
+
+[readSparse] Read 256666663 numbers, 23333333 vectors. 
+Vectors Read Node 5: 230.685 Seconds
+
+Vectors Added Node 3: 235.75 Seconds
+
+Computing Query Hashes Node 3...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 4...
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 2...
+Vectors Added Node 5: 257.634 Seconds
+
+Computing Query Hashes Node 5...
+Query Hashes Computed Node 0: 0.00489449 Seconds
+
+Query Hashes Computed Node 1: 0.00494302 Seconds
+
+Extracting Top K (TREE) Node 1...
+Extracting Top K (TREE) Node 0...
+Query Hashes Computed Node 3: 0.00506635 Seconds
+
+Extracting Top K (TREE) Node 3...
+Query Hashes Computed Node 5: 0.00467823 Seconds
+
+Extracting Top K (TREE) Node 5...
+Query Hashes Computed Node 4: 0.0046924 Seconds
+
+Extracting Top K (TREE) Node 4...
+Query Hashes Computed Node 2: 0.00499521 Seconds
+
+Extracting Top K (TREE) Node 2...
+Top K (TREE) Extracted Node 5: 0.812842 Seconds
+
+Top K (TREE) Extracted Node 3: 1.17935 Seconds
+
+Top K (TREE) Extracted Node 1: 1.69882 Seconds
+
+Top K (TREE) Extracted Node 2: 2.24083 Seconds
+
+Top K (TREE) Extracted Node 4: 2.76442 Seconds
+
+Top K (TREE) Extracted Node 0: 3.15699 Seconds
+
+Extracting Top K (LINEAR) Node 3...
+Extracting Top K (LINEAR) Node 1...
+Extracting Top K (LINEAR) Node 5...
+Extracting Top K (LINEAR) Node 4...
+Extracting Top K (LINEAR) Node 0...
+Extracting Top K (LINEAR) Node 2...
+Top K (LINEAR) Extracted Node 1: 1.40062 Seconds
+
+Top K (LINEAR) Extracted Node 2: 1.79814 Seconds
+
+Top K (LINEAR) Extracted Node 3: 2.19613 Seconds
+
+Top K (LINEAR) Extracted Node 4: 2.97315 Seconds
+
+Top K (LINEAR) Extracted Node 5: 3.53083 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 1...
+Extracting Top K (BRUTEFORCE) Node 5...
+Extracting Top K (BRUTEFORCE) Node 4...
+Top K (LINEAR) Extracted Node 0: 4.84947 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 2...
+Extracting Top K (BRUTEFORCE) Node 3...
+Extracting Top K (BRUTEFORCE) Node 0...
+Top K (BRUTEFORCE) Extracted Node 1: 0.169872 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 2: 0.287048 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 3: 0.399111 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 4: 0.497978 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 5: 0.695967 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 0: 6.04842 Seconds
+
+[readSparse] Read 1540110000 numbers, 140010000 vectors. 
+
+
+================================
+TOP K TREE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.833 
+S@10 = 0.793 
+S@20 = 0.771 
+S@30 = 0.754 
+S@32 = 0.751 
+S@40 = 0.740 
+S@50 = 0.728 
+S@64 = 0.714 
+S@100 = 0.688 
+S@128 = 0.671 
+1 10 20 30 32 40 50 64 100 128 
+0.833 0.793 0.771 0.754 0.751 0.740 0.728 0.714 0.688 0.671 
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.830 
+S@10 = 0.789 
+S@20 = 0.765 
+S@30 = 0.748 
+S@32 = 0.744 
+S@40 = 0.733 
+S@50 = 0.721 
+S@64 = 0.706 
+S@100 = 0.678 
+S@128 = 0.659 
+1 10 20 30 32 40 50 64 100 128 
+0.830 0.789 0.765 0.748 0.744 0.733 0.721 0.706 0.678 0.659 
+
+
+================================
+TOP K BRUTEFORCE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.847 
+S@10 = 0.815 
+S@20 = 0.797 
+S@30 = 0.785 
+S@32 = 0.783 
+S@40 = 0.775 
+S@50 = 0.766 
+S@64 = 0.756 
+S@100 = 0.741 
+S@128 = 0.730 
+1 10 20 30 32 40 50 64 100 128 
+0.847 0.815 0.797 0.785 0.783 0.775 0.766 0.756 0.741 0.730 
+Similarity Metric Computed

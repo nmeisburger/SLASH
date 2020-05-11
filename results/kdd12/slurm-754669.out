@@ -1,0 +1,116 @@
+
+=================
+== /scratch/ncm5/dataset/kdd12/kdd12
+=================
+
+LSH Initialized in Node 1
+140000000 Vectors, 10000 Queries
+Nodes: 2
+Tables: 16
+RangePow: 18
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+CMS Initialized in Node 1
+CMS Initialized in Node 0
+LSH Reservoir Initialized in Node 0
+LSH Reservoir Initialized in Node 1
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 1
+[readSparse] Read 110000 numbers, 10000 vectors. 
+Adding Vectors Node 0...
+Adding Vectors Node 1...
+[readSparse] Read 770000000 numbers, 70000000 vectors. 
+Vectors Read Node 0: 196.603 Seconds
+
+[readSparse] Read 770000000 numbers, 70000000 vectors. 
+Vectors Read Node 1: 214.184 Seconds
+
+Vectors Added Node 0: 272.546 Seconds
+
+Computing Query Hashes Node 0...
+Vectors Added Node 1: 285.046 Seconds
+
+Computing Query Hashes Node 1...
+Query Hashes Computed Node 0: 0.0146517 Seconds
+
+Extracting Top K (TREE) Node 0...
+Query Hashes Computed Node 1: 0.0147195 Seconds
+
+Extracting Top K (TREE) Node 1...
+Top K (TREE) Extracted Node 1: 1.02827 Seconds
+
+Top K (TREE) Extracted Node 0: 1.26371 Seconds
+
+Extracting Top K (LINEAR) Node 1...
+Extracting Top K (LINEAR) Node 0...
+Top K (LINEAR) Extracted Node 1: 1.04422 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 1...
+Top K (LINEAR) Extracted Node 0: 1.24986 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 0...
+Top K (BRUTEFORCE) Extracted Node 1: 0.121143 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 0: 1.4551 Seconds
+
+[readSparse] Read 1540110000 numbers, 140010000 vectors. 
+
+
+================================
+TOP K TREE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.815 
+S@10 = 0.763 
+S@20 = 0.731 
+S@30 = 0.706 
+S@32 = 0.702 
+S@40 = 0.687 
+S@50 = 0.670 
+S@64 = 0.650 
+S@100 = 0.613 
+S@128 = 0.590 
+1 10 20 30 32 40 50 64 100 128 
+0.815 0.763 0.731 0.706 0.702 0.687 0.670 0.650 0.613 0.590 
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.815 
+S@10 = 0.763 
+S@20 = 0.731 
+S@30 = 0.706 
+S@32 = 0.702 
+S@40 = 0.687 
+S@50 = 0.670 
+S@64 = 0.650 
+S@100 = 0.613 
+S@128 = 0.590 
+1 10 20 30 32 40 50 64 100 128 
+0.815 0.763 0.731 0.706 0.702 0.687 0.670 0.650 0.613 0.590 
+
+
+================================
+TOP K BRUTEFORCE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.833 
+S@10 = 0.797 
+S@20 = 0.778 
+S@30 = 0.763 
+S@32 = 0.761 
+S@40 = 0.751 
+S@50 = 0.740 
+S@64 = 0.728 
+S@100 = 0.704 
+S@128 = 0.687 
+1 10 20 30 32 40 50 64 100 128 
+0.833 0.797 0.778 0.763 0.761 0.751 0.740 0.728 0.704 0.687 
+Similarity Metric Computed

@@ -1,0 +1,160 @@
+
+=================
+== /scratch/ncm5/dataset/kdd12/kdd12
+=================
+
+LSH Initialized in Node 2
+140000000 Vectors, 10000 Queries
+Nodes: 4
+Tables: 16
+RangePow: 18
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+LSH Initialized in Node 1
+LSH Initialized in Node 3
+CMS Initialized in Node 2
+CMS Initialized in Node 0
+CMS Initialized in Node 1
+CMS Initialized in Node 3
+LSH Reservoir Initialized in Node 1
+LSH Reservoir Initialized in Node 3
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 0
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 2
+FLASH Controller Initialized in Node 3
+[readSparse] Read 110000 numbers, 10000 vectors. 
+Adding Vectors Node 0...
+Adding Vectors Node 2...
+Adding Vectors Node 1...
+Adding Vectors Node 3...
+[readSparse] Read 385000000 numbers, 35000000 vectors. 
+Vectors Read Node 0: 103.666 Seconds
+
+[readSparse] Read 385000000 numbers, 35000000 vectors. 
+Vectors Read Node 1: 151.787 Seconds
+
+Vectors Added Node 0: 155.561 Seconds
+
+Vectors Added Node 1: 193.209 Seconds
+
+[readSparse] Read 385000000 numbers, 35000000 vectors. 
+Vectors Read Node 2: 197.623 Seconds
+
+Vectors Added Node 2: 242.806 Seconds
+
+[readSparse] Read 385000000 numbers, 35000000 vectors. 
+Vectors Read Node 3: 262.714 Seconds
+
+Computing Query Hashes Node 0...
+Vectors Added Node 3: 306.687 Seconds
+
+Computing Query Hashes Node 3...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 2...
+Query Hashes Computed Node 1: 0.0149872 Seconds
+
+Query Hashes Computed Node 3: 0.0150123 Seconds
+
+Extracting Top K (TREE) Node 1...
+Extracting Top K (TREE) Node 3...
+Query Hashes Computed Node 0: 0.014955 Seconds
+
+Extracting Top K (TREE) Node 0...
+Query Hashes Computed Node 2: 0.0150001 Seconds
+
+Extracting Top K (TREE) Node 2...
+Top K (TREE) Extracted Node 1: 0.830496 Seconds
+
+Top K (TREE) Extracted Node 3: 0.845613 Seconds
+
+Top K (TREE) Extracted Node 2: 1.02389 Seconds
+
+Top K (TREE) Extracted Node 0: 1.24686 Seconds
+
+Extracting Top K (LINEAR) Node 0...
+Extracting Top K (LINEAR) Node 1...
+Extracting Top K (LINEAR) Node 3...
+Extracting Top K (LINEAR) Node 2...
+Top K (LINEAR) Extracted Node 1: 0.979576 Seconds
+
+Top K (LINEAR) Extracted Node 2: 1.2732 Seconds
+
+Top K (LINEAR) Extracted Node 3: 1.43795 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 1...
+Extracting Top K (BRUTEFORCE) Node 3...
+Extracting Top K (BRUTEFORCE) Node 2...
+Top K (LINEAR) Extracted Node 0: 1.90397 Seconds
+
+Extracting Top K (BRUTEFORCE) Node 0...
+Top K (BRUTEFORCE) Extracted Node 3: 0.137331 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 1: 0.178878 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 2: 0.217977 Seconds
+
+Top K (BRUTEFORCE) Extracted Node 0: 2.81159 Seconds
+
+[readSparse] Read 1540110000 numbers, 140010000 vectors. 
+
+
+================================
+TOP K TREE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.830 
+S@10 = 0.786 
+S@20 = 0.762 
+S@30 = 0.744 
+S@32 = 0.741 
+S@40 = 0.729 
+S@50 = 0.716 
+S@64 = 0.700 
+S@100 = 0.671 
+S@128 = 0.652 
+1 10 20 30 32 40 50 64 100 128 
+0.830 0.786 0.762 0.744 0.741 0.729 0.716 0.700 0.671 0.652 
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.827 
+S@10 = 0.783 
+S@20 = 0.758 
+S@30 = 0.740 
+S@32 = 0.737 
+S@40 = 0.724 
+S@50 = 0.711 
+S@64 = 0.694 
+S@100 = 0.663 
+S@128 = 0.644 
+1 10 20 30 32 40 50 64 100 128 
+0.827 0.783 0.758 0.740 0.737 0.724 0.711 0.694 0.663 0.644 
+
+
+================================
+TOP K BRUTEFORCE
+
+[similarityMetric] Averaging output. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.844 
+S@10 = 0.810 
+S@20 = 0.793 
+S@30 = 0.780 
+S@32 = 0.778 
+S@40 = 0.770 
+S@50 = 0.762 
+S@64 = 0.752 
+S@100 = 0.735 
+S@128 = 0.724 
+1 10 20 30 32 40 50 64 100 128 
+0.844 0.810 0.793 0.780 0.778 0.770 0.762 0.752 0.735 0.724 
+Similarity Metric Computed
