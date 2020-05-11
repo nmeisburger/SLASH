@@ -715,7 +715,7 @@ void criteoTesting() {
     std::string queryFile("/scratch/ncm5/dataset/criteo_tb.t");
 
     start = std::chrono::system_clock::now();
-    control->query(queryFile, "CriteoKNNResults", 10000, 100);
+    control->query(queryFile, "CriteoKNNResults", 10000, 20);
     end = std::chrono::system_clock::now();
     elapsed = end - start;
     std::cout << "Query complete Node " << myRank << ": " << elapsed.count() << " Seconds\n"
