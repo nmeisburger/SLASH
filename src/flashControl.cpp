@@ -185,7 +185,7 @@ void flashControl::addPartitioned(std::string base_filename, unsigned int numDat
 
     std::string filename(base_filename);
 
-    if (-_myRank < 10) {
+    if (_myRank < 10) {
         filename.append("0");
     }
 

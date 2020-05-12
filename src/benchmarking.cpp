@@ -28,18 +28,16 @@ void showConfig(std::string dataset, unsigned int numVectors, unsigned int queri
 }
 
 /*
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
- * WEBSPAM TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
+ * TESTING FUNCTION
  */
 
 void testing() {
@@ -52,7 +50,7 @@ void testing() {
     MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
     MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
     if (myRank == 0) {
-        showConfig("Webspam", NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
+        showConfig("KDD12", NUM_DATA_VECTORS, NUM_QUERY_VECTORS, worldSize, NUM_TABLES, RANGE_POW,
                    RESERVOIR_SIZE, NUM_HASHES, CMS_HASHES, CMS_BUCKET_SIZE);
     }
 
@@ -77,23 +75,11 @@ void testing() {
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
     /* ===============================================================
-  Partitioning Query Between Nodes
-  */
-
-    control->allocateQuery(BASEFILE);
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    /* ===============================================================
   Adding Vectors
   */
     std::cout << "Adding Vectors Node " << myRank << "..." << std::endl;
     auto start = std::chrono::system_clock::now();
-    control->add(BASEFILE, 5000, 300, NUM_BATCHES, BATCH_PRINT);
-
-    control->add(BASEFILE, 5000, 5300, NUM_BATCHES, BATCH_PRINT);
-
-    control->add(BASEFILE, 5000, 10300, NUM_BATCHES, BATCH_PRINT);
+    control->add(BASEFILE, NUM_DATA_VECTORS, 10000, NUM_BATCHES, BATCH_PRINT);
 
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = end - start;
@@ -106,32 +92,13 @@ void testing() {
     MPI_Barrier(MPI_COMM_WORLD);
 
     /* ===============================================================
-  Hashing Query Vectors
-  */
-    std::cout << "Computing Query Hashes Node " << myRank << "..." << std::endl;
-    start = std::chrono::system_clock::now();
-    control->hashQuery();
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
-    std::cout << "Query Hashes Computed Node " << myRank << ": " << elapsed.count() << " Seconds\n"
-              << std::endl;
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    /* ===============================================================
   Extracting Reservoirs and Preforming Top-K selection
   */
-    unsigned int *outputs = new unsigned int[TOPK * NUM_QUERY_VECTORS];
     start = std::chrono::system_clock::now();
     std::cout << "Extracting Top K (CMS) Node " << myRank << "..." << std::endl;
-    // #ifdef CMS_AGGREGATION
-    control->topKCMSAggregationTree(TOPK, outputs, 0);
-// #endif
-#ifdef BF_AGGREGATION
-    control->topKBruteForceAggretation(TOPK, outputs);
-#endif
-    end = std::chrono::system_clock::now();
-    elapsed = end - start;
+
+    control->query(BASEFILE, "./kdd12knn", 10, 128);
+
     std::cout << "Top K Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
 
@@ -154,6 +121,20 @@ void testing() {
         /* ===============================================================
     Similarity and Accuracy Calculations
     */
+        unsigned int *topk = new unsigned int[TOPK * 10000];
+
+        FILE *output_file = fopen("./kdd12knn", "r");
+        if (output_file == NULL) {
+            printf("Output file reopen error.\n");
+            exit(1);
+        }
+
+        unsigned int n = fread(topk, sizeof(unsigned int), TOPK * 10000, output_file);
+        if (n != (TOPK * 10000)) {
+            printf("unable to read all topk results.\n");
+            exit(1);
+        }
+
         unsigned int totalNumVectors = NUM_DATA_VECTORS + NUM_QUERY_VECTORS;
         unsigned int *sparseIndices = new unsigned int[totalNumVectors * DIMENSION];
         float *sparseVals = new float[totalNumVectors * DIMENSION];
@@ -168,8 +149,7 @@ void testing() {
         std::cout << "\n\n================================\nTOP K CMS\n" << std::endl;
 
         similarityMetric(sparseIndices, sparseVals, sparseMarkers, sparseIndices, sparseVals,
-                         sparseMarkers, outputs, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK, nList,
-                         nCnt);
+                         sparseMarkers, topk, NUM_QUERY_VECTORS, TOPK, AVAILABLE_TOPK, nList, nCnt);
         std::cout << "Similarity Metric Computed" << std::endl;
         std::cout << "Evaluation Complete" << std::endl;
 
@@ -180,7 +160,6 @@ void testing() {
         delete[] sparseVals;
         delete[] sparseMarkers;
     }
-    delete[] outputs;
 }
 
 /**
@@ -712,7 +691,7 @@ void criteoTesting() {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    std::string queryFile("/scratch/ncm5/dataset/criteo_tb.t");
+    std::string queryFile("/scratch/ncm5/dataset/criteo/criteo_tb.t");
 
     start = std::chrono::system_clock::now();
     control->query(queryFile, "CriteoKNNResults", 10000, 20);

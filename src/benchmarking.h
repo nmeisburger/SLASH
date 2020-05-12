@@ -8,7 +8,8 @@
 // #define WEBSPAM
 // #define KDD12
 // #define CRITEO
-#define FULL_CRITEO
+// #define FULL_CRITEO
+#define TEST_RUN
 
 #ifdef WEBSPAM
 
@@ -91,7 +92,7 @@
 
 #endif
 
-#ifdef TESTING
+#ifdef TEST_RUN
 
 #define NUM_BATCHES 1
 #define BATCH_PRINT 10
@@ -105,10 +106,9 @@
 #define QUERY_PROBES 1
 #define HASHING_PROBES 1
 
-#define DIMENSION 4000
-#define FULL_DIMENSION 16609143
-#define NUM_DATA_VECTORS 1000
-#define NUM_QUERY_VECTORS 10
+#define DIMENSION 15
+#define NUM_DATA_VECTORS 140000000
+#define NUM_QUERY_VECTORS 1000
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 8
 #define AVAILABLE_TOPK 128
@@ -116,7 +116,7 @@
 #define CMS_HASHES 2
 #define CMS_BUCKET_SIZE 128
 
-#define BASEFILE "scratch/ncm5/dataset/webspam/webspam_trigram.svm"
+#define BASEFILE "/scratch/ncm5/dataset/kdd12/kdd12"
 
 #endif
 
