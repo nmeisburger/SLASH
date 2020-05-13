@@ -563,7 +563,7 @@ void criteo() {
     /* ===============================================================
     Partitioning Query Between Nodes
     */
-    control->allocateQuery(BASEFILE);
+    control->allocateQuery("/scratch/ncm5/dataset/criteo/criteo_testing_subset");
 
     MPI_Barrier(MPI_COMM_WORLD);
 

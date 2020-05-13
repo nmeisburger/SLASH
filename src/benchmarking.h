@@ -7,9 +7,9 @@
 // #define EVAL_SIM
 // #define WEBSPAM
 // #define KDD12
-// #define CRITEO
+#define CRITEO
 // #define FULL_CRITEO
-#define TEST_RUN
+// #define TEST_RUN
 
 #ifdef WEBSPAM
 
@@ -73,20 +73,20 @@
 #define BATCH_PRINT 50
 
 #define NUM_HASHES 4
-#define RANGE_POW 19
+#define RANGE_POW 20
 
-#define NUM_TABLES 24
+#define NUM_TABLES 32
 #define RESERVOIR_SIZE 256
 
 #define DIMENSION 42
 #define NUM_DATA_VECTORS 200000000
-#define NUM_QUERY_VECTORS 15000
+#define NUM_QUERY_VECTORS 10000
 #define MAX_RESERVOIR_RAND 35000
 #define TOPK 128
 #define AVAILABLE_TOPK 1024
 
 #define CMS_HASHES 4
-#define CMS_BUCKET_SIZE 1024
+#define CMS_BUCKET_SIZE 2048
 
 #define BASEFILE "/scratch/ncm5/dataset/criteo/criteo_partition"
 
