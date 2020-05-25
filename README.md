@@ -19,23 +19,6 @@ Sketching based distributed locally sensitive hashing algorithm for similarity s
 3. Navigate back to the scripts director `$ cd ../scripts`.
 4. Run `$ sbatch eval.slurm` to preform the evaluation. The output will be in a slurm.out file in the scripts directory.
 
-```python
-import numpy as np
-from sklearn.metrics import roc_auc_score
-
-PREDICTIONS_FILE = "predictions"
-LABEL_FILE = "criteo_testing_labels"
-
-
-predictions_file = open(PREDICTIONS_FILE, "rb")
-labels_file = open(LABEL_FILE, "rb")
-
-predictions = np.fromfile(predictions_file, dtype="uint8")
-labels = np.fromfile(labels_file, dtype="uint8")
-
-print(roc_auc_score(predictions, labels))
-```
-
 ## Instructions for General Use
 1. Download and unzip either the `criteo_tb`, `webspam_wc_normalized_trigram.svm.bz2`, or `kdd12.bz2` from https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html. 
 * Note that the run on criteo the system requires that the dataset is split into a new file for each MPI process. Each MPI process will read from the file given by the value of `BASEFILE` in `benchmarking.h` concatentated with its MPI process id. For example process 0 will read from "criteo_tb0" and process 4 would read from "criteo_tb4". 
