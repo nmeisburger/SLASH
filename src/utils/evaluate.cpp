@@ -15,10 +15,10 @@
  * Parameters
  * =============================
  */
-#define DATASET_PATH "/scratch/ncm5/criteo/criteo_partition"
-#define QUERY_PATH "/scratch/ncm5/criteo/criteo_test_subset"
+#define DATASET_PATH "/scratch/ncm5/dataset/criteo/criteo_partition"
+#define QUERY_PATH "/scratch/ncm5/dataset/criteo/criteo_test_subset"
 #define TOPK_PATH "/scratch/ncm5/SLASH/src/scripts/Criteo-20"
-#define TEMP_PATH "/scratch/ncm5/criteo/temp/temp_partition"
+#define TEMP_PATH "/scratch/ncm5/dataset/criteo/temp/temp_partition"
 #define NUM_QUERY 10000
 #define TOPK 128
 /*
