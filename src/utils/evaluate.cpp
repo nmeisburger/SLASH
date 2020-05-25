@@ -337,15 +337,15 @@ void evaluate(string datafile, string queryfile, string resultfile, int n_files,
     readSparse(queryfile, 0, nquery, indices, values, markers, nquery * MAX_SIZE);
 
     unsigned int ns[] = {1, 2, 3, 5};
-    float *averages = new float[4];
+    dobule *averages = new double[4];
     for (size_t i = 0; i < nquery; i++) {
         unsigned int startA, endA;
         startA = markers[i];
         endA = markers[i + 1];
         for (unsigned int j = 0; j < k; j++) {
             Vec *b = cache[topk[i * k + j]];
-            float dist = cosineDist(indices + startA, values + startA, endA - startA, b->indices,
-                                    b->values, b->len);
+            double dist = cosineDist(indices + startA, values + startA, endA - startA, b->indices,
+                                     b->values, b->len);
             for (unsigned int n = 0; n < 4; n++) {
                 if (j < ns[n])
                     averages[n] += dist;
