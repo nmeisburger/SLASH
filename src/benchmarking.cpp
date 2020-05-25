@@ -563,7 +563,7 @@ void criteo() {
     /* ===============================================================
     Partitioning Query Between Nodes
     */
-    control->allocateQuery("/scratch/ncm5/dataset/criteo/criteo_testing_subset");
+    control->allocateQuery("/scratch/ncm5/dataset/criteo/criteo_test_subset");
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -606,19 +606,6 @@ void criteo() {
     elapsed = end - start;
     std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
-
-    for (size_t k = 0; k < TOPK; k++) {
-        unsigned int base = treeOutputs[TOPK + k];
-        unsigned int cnt = 0;
-        for (size_t q = 2; q < NUM_QUERY_VECTORS; q++) {
-            if (treeOutputs[q * TOPK + k] == base) {
-                cnt++;
-            }
-        }
-        if (cnt > (NUM_QUERY_VECTORS / 2)) {
-            printf("DUPLICATE OUTPUT ERROR\n");
-        }
-    }
 
     std::string filenameTree("Criteo-");
     filenameTree.append(std::to_string(worldSize));

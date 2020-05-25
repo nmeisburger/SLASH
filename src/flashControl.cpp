@@ -234,19 +234,6 @@ void flashControl::hashQuery() {
     MPI_Allgatherv(myPartitionHashes, _myHashCt, MPI_UNSIGNED, _allQueryHashes, _hashCts,
                    _hashOffsets, MPI_UNSIGNED, MPI_COMM_WORLD);
 
-    for (size_t t = 0; t < _numTables; t++) {
-        unsigned int base = _allQueryHashes[_numTables + t];
-        unsigned int cnt = 0;
-        for (size_t q = 2; q < _numQueryVectors; q++) {
-            if (_allQueryHashes[q * _numTables + t] == base) {
-                cnt++;
-            }
-        }
-        if (cnt > (NUM_QUERY_VECTORS / 2)) {
-            printf("DUPLICATE HASH ERROR\n");
-        }
-    }
-
     //     unsigned int len;
 
     //     unsigned int *old;

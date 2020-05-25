@@ -73,7 +73,7 @@
 #define BATCH_PRINT 50
 
 #define NUM_HASHES 4
-#define RANGE_POW 20
+#define RANGE_POW 19
 
 #define NUM_TABLES 32
 #define RESERVOIR_SIZE 256
