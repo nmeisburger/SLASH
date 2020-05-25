@@ -1,7 +1,7 @@
 # SLASH
 Sketching based distributed locally sensitive hashing algorithm for similarity search with ultra high dimensionality datasets.
 
-## Criteo Nearest Neighbor Classifier Instructions
+## Criteo Nearest Neighbor Instructions
 
 ### To get the list of nearest neighbors foreach query
 1. Clone this repository on NOTS. 
@@ -11,15 +11,13 @@ Sketching based distributed locally sensitive hashing algorithm for similarity s
 5. Compile program `$ make clean ; make`.
 6. Navigate to slurm script `$ cd scripts`.
 7. Submit job request `$ sbatch criteo.slurm`.
-8. The output will be in the file `CriteoKNNResults`.
+8. The output will be in the file `Criteo-20`.
 
 ### To analyze these results
-1. Move the data to yogi `$ scp CriteoKNNResults <netid>@yogi.cs.rice.edu:`
-2. Move the analysis programs to yogi `$ scp utils/predict.cpp <netid>@yogi.cs.rice.edu:` and `$ scp utils/precision_recall.cpp <netid>@yogi.cs.rice.edu:`.
-3. Login to yogi and compile the 2 analysis programs.
-4. Run `predict` to generate the predictions. Make sure that the paths defined at the top of the code are correct for the nearest neighbors and labels, and that the output file specified is correct.
-5. To compute precision and recall run `precision_recall`. Make sure that the path to the labels and preditions are again correct. 
-6. To compute ROC AUC run the following program:
+1. Navigate to the utils directory `$ cd ../utils`
+2. Make sure that the TOPK_PATH definition at the top of the file is the path to the `Criteo-20` results file. 
+3. Navigate back to the scripts director `$ cd ../scripts`.
+4. Run `$ sbatch eval.slurm` to preform the evaluation. The output will be in a slurm.out file in the scripts directory.
 
 ```python
 import numpy as np
