@@ -336,8 +336,7 @@ void evaluate(string datafile, string queryfile, string resultfile, int n_files,
     float *values = new float[nquery * MAX_SIZE];
     readSparse(queryfile, 0, nquery, indices, values, markers, nquery * MAX_SIZE);
 
-    // unsigned int ns[] = {1, 2, 3, 5};
-    unsigned int ns[] = {1, 1, 2, 2};
+    unsigned int ns[] = {1, 2, 3, 5};
     float *averages = new float[4];
     for (size_t i = 0; i < nquery; i++) {
         unsigned int startA, endA;

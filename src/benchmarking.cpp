@@ -556,9 +556,9 @@ void criteo() {
         new flashControl(reservoir, cms, myRank, worldSize, NUM_DATA_VECTORS, NUM_QUERY_VECTORS,
                          DIMENSION, NUM_TABLES, RESERVOIR_SIZE);
 
-    // if (myRank == 0) {
-    //     reservoir->showParams();
-    // }
+    if (myRank == 0) {
+        reservoir->showParams();
+    }
 
     /* ===============================================================
     Partitioning Query Between Nodes
@@ -606,6 +606,19 @@ void criteo() {
     elapsed = end - start;
     std::cout << "Top K (TREE) Extracted Node " << myRank << ": " << elapsed.count() << " Seconds\n"
               << std::endl;
+
+    for (size_t k = 0; k < TOPK; k++) {
+        unsigned int base = treeOutputs[TOPK + k];
+        unsigned int cnt = 0;
+        for (size_t q = 2; q < NUM_QUERY_VECTORS; q++) {
+            if (treeOutputs[q * TOPK + k] == base) {
+                cnt++;
+            }
+        }
+        if (cnt > (NUM_QUERY_VECTORS / 2)) {
+            printf("DUPLICATE OUTPUT ERROR\n");
+        }
+    }
 
     std::string filenameTree("Criteo-");
     filenameTree.append(std::to_string(worldSize));
