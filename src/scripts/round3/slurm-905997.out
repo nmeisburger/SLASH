@@ -1,0 +1,850 @@
+
+=================
+== Criteo
+=================
+
+LSH Initialized in Node 8
+LSH Initialized in Node 11
+LSH Initialized in Node 9
+LSH Initialized in Node 10
+LSH Initialized in Node 12
+LSH Initialized in Node 5
+LSH Initialized in Node 1
+LSH Initialized in Node 4
+LSH Initialized in Node 3
+LSH Initialized in Node 7
+LSH Initialized in Node 13
+LSH Initialized in Node 2
+LSH Initialized in Node 14
+LSH Initialized in Node 6
+270000000 Vectors, 10000 Queries
+Nodes: 15
+Tables: 32
+RangePow: 18
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+CMS Initialized in Node 8
+CMS Initialized in Node 4
+CMS Initialized in Node 12
+CMS Initialized in Node 14
+CMS Initialized in Node 6
+CMS Initialized in Node 2
+CMS Initialized in Node 10
+CMS Initialized in Node 9
+CMS Initialized in Node 13
+CMS Initialized in Node 5
+CMS Initialized in Node 1
+CMS Initialized in Node 0
+CMS Initialized in Node 7
+CMS Initialized in Node 11
+CMS Initialized in Node 3
+LSH Reservoir Initialized in Node 5
+LSH Reservoir Initialized in Node 13
+LSH Reservoir Initialized in Node 12
+LSH Reservoir Initialized in Node 11
+LSH Reservoir Initialized in Node 14
+LSH Reservoir Initialized in Node 7
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 9
+LSH Reservoir Initialized in Node 8
+LSH Reservoir Initialized in Node 6
+LSH Reservoir Initialized in Node 10
+LSH Reservoir Initialized in Node 1
+LSH Reservoir Initialized in Node 0
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 3
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 9
+FLASH Controller Initialized in Node 6
+FLASH Controller Initialized in Node 4
+FLASH Controller Initialized in Node 2
+FLASH Controller Initialized in Node 13
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 10
+FLASH Controller Initialized in Node 7
+FLASH Controller Initialized in Node 11
+FLASH Controller Initialized in Node 12
+FLASH Controller Initialized in Node 8
+FLASH Controller Initialized in Node 3
+FLASH Controller Initialized in Node 14
+FLASH Controller Initialized in Node 5
+
+<<< LSHR Parameters >>>
+_rangePow 18
+_numTables 32
+_reservoirSize 256
+_dimension 42
+_maxSamples 270010000
+_numReservoirs 262144
+_maxReservoirRand 27001000
+
+[readSparse] Read 389997 numbers, 10000 vectors. 
+Adding Vectors Node 0...
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition00 in node 0>>
+Adding Vectors Node 14...
+Adding Vectors Node 10...
+Adding Vectors Node 7...
+Adding Vectors Node 13...
+Adding Vectors Node 11...
+Adding Vectors Node 5...
+Adding Vectors Node 1...
+Adding Vectors Node 3...
+Adding Vectors Node 4...
+Adding Vectors Node 6...
+Adding Vectors Node 2...
+Adding Vectors Node 9...
+Adding Vectors Node 12...
+Adding Vectors Node 8...
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition13 in node 13>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition04 in node 4>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition09 in node 9>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition01 in node 1>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition06 in node 6>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition02 in node 2>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition05 in node 5>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition08 in node 8>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition11 in node 11>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition12 in node 12>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition07 in node 7>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition10 in node 10>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition03 in node 3>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition14 in node 14>>
+[readSparse] Read 263248400 numbers, 6750000 vectors. 
+[readSparse] Read 263248022 numbers, 6750000 vectors. 
+[readSparse] Read 263248728 numbers, 6750000 vectors. 
+[readSparse] Read 263248380 numbers, 6750000 vectors. 
+[readSparse] Read 263248397 numbers, 6750000 vectors. 
+[readSparse] Read 263248368 numbers, 6750000 vectors. 
+[readSparse] Read 263248777 numbers, 6750000 vectors. 
+[readSparse] Read 263248711 numbers, 6750000 vectors. 
+[readSparse] Read 263248914 numbers, 6750000 vectors. 
+[readSparse] Read 263248098 numbers, 6750000 vectors. 
+[readSparse] Read 263248485 numbers, 6750000 vectors. 
+[readSparse] Read 263248896 numbers, 6750000 vectors. 
+[readSparse] Read 263248459 numbers, 6750000 vectors. 
+[readSparse] Read 263248437 numbers, 6750000 vectors. 
+[readSparse] Read 263249126 numbers, 6750000 vectors. 
+Batch 0 Complete node 12
+Batch 0 Complete node 11
+Batch 0 Complete node 5
+Batch 0 Complete node 13
+Batch 0 Complete node 9
+Batch 0 Complete node 10
+Batch 0 Complete node 1
+Batch 0 Complete node 4
+Batch 0 Complete node 8
+Batch 0 Complete node 3
+Batch 0 Complete node 2
+Batch 0 Complete node 6
+Batch 0 Complete node 14
+Batch 0 Complete node 7
+Batch 0 Complete node 0
+[readSparse] Read 263248397 numbers, 6750000 vectors. 
+[readSparse] Read 263248039 numbers, 6750000 vectors. 
+[readSparse] Read 263248750 numbers, 6750000 vectors. 
+[readSparse] Read 263248400 numbers, 6750000 vectors. 
+[readSparse] Read 263248764 numbers, 6750000 vectors. 
+[readSparse] Read 263248924 numbers, 6750000 vectors. 
+[readSparse] Read 263248468 numbers, 6750000 vectors. 
+[readSparse] Read 263248689 numbers, 6750000 vectors. 
+[readSparse] Read 263248483 numbers, 6750000 vectors. 
+[readSparse] Read 263248476 numbers, 6750000 vectors. 
+[readSparse] Read 263248813 numbers, 6750000 vectors. 
+[readSparse] Read 263248278 numbers, 6750000 vectors. 
+[readSparse] Read 263248378 numbers, 6750000 vectors. 
+[readSparse] Read 263248520 numbers, 6750000 vectors. 
+[readSparse] Read 263249095 numbers, 6750000 vectors. 
+[readSparse] Read 263248358 numbers, 6750000 vectors. 
+[readSparse] Read 263248719 numbers, 6750000 vectors. 
+[readSparse] Read 263247955 numbers, 6750000 vectors. 
+[readSparse] Read 263248379 numbers, 6750000 vectors. 
+[readSparse] Read 263248399 numbers, 6750000 vectors. 
+[readSparse] Read 263248707 numbers, 6750000 vectors. 
+[readSparse] Read 263248859 numbers, 6750000 vectors. 
+[readSparse] Read 263248514 numbers, 6750000 vectors. 
+[readSparse] Read 263248772 numbers, 6750000 vectors. 
+[readSparse] Read 263248266 numbers, 6750000 vectors. 
+[readSparse] Read 263248465 numbers, 6750000 vectors. 
+[readSparse] Read 263248253 numbers, 6750000 vectors. 
+[readSparse] Read 263248705 numbers, 6750000 vectors. 
+[readSparse] Read 263248449 numbers, 6750000 vectors. 
+[readSparse] Read 263249095 numbers, 6750000 vectors. 
+[readSparse] Read 263248602 numbers, 6750000 vectors. 
+[readSparse] Read 263248333 numbers, 6750000 vectors. 
+[readSparse] Read 263248010 numbers, 6750000 vectors. 
+[readSparse] Read 263248408 numbers, 6750000 vectors. 
+[readSparse] Read 263248353 numbers, 6750000 vectors. 
+[readSparse] Read 263248430 numbers, 6750000 vectors. 
+[readSparse] Read 263248738 numbers, 6750000 vectors. 
+[readSparse] Read 263248126 numbers, 6750000 vectors. 
+[readSparse] Read 263248668 numbers, 6750000 vectors. 
+[readSparse] Read 263248232 numbers, 6750000 vectors. 
+[readSparse] Read 263248421 numbers, 6750000 vectors. 
+[readSparse] Read 263248881 numbers, 6750000 vectors. 
+[readSparse] Read 263248641 numbers, 6750000 vectors. 
+[readSparse] Read 263248447 numbers, 6750000 vectors. 
+[readSparse] Read 263249081 numbers, 6750000 vectors. 
+[readSparse] Read 263248622 numbers, 6750000 vectors. 
+[readSparse] Read 263248346 numbers, 6750000 vectors. 
+[readSparse] Read 263248507 numbers, 6750000 vectors. 
+[readSparse] Read 263248111 numbers, 6750000 vectors. 
+[readSparse] Read 263248692 numbers, 6750000 vectors. 
+[readSparse] Read 263248464 numbers, 6750000 vectors. 
+[readSparse] Read 263248022 numbers, 6750000 vectors. 
+[readSparse] Read 263248519 numbers, 6750000 vectors. 
+[readSparse] Read 263248078 numbers, 6750000 vectors. 
+[readSparse] Read 263248285 numbers, 6750000 vectors. 
+[readSparse] Read 263248497 numbers, 6750000 vectors. 
+[readSparse] Read 263248489 numbers, 6750000 vectors. 
+[readSparse] Read 263248950 numbers, 6750000 vectors. 
+[readSparse] Read 263248428 numbers, 6750000 vectors. 
+[readSparse] Read 263248941 numbers, 6750000 vectors. 
+[readSparse] Read 263248493 numbers, 6750000 vectors. 
+[readSparse] Read 263248295 numbers, 6750000 vectors. 
+[readSparse] Read 263248480 numbers, 6750000 vectors. 
+[readSparse] Read 263248426 numbers, 6750000 vectors. 
+[readSparse] Read 263248514 numbers, 6750000 vectors. 
+[readSparse] Read 263248500 numbers, 6750000 vectors. 
+[readSparse] Read 263247924 numbers, 6750000 vectors. 
+[readSparse] Read 263248726 numbers, 6750000 vectors. 
+[readSparse] Read 263248260 numbers, 6750000 vectors. 
+[readSparse] Read 263248258 numbers, 6750000 vectors. 
+[readSparse] Read 263248498 numbers, 6750000 vectors. 
+[readSparse] Read 263248479 numbers, 6750000 vectors. 
+[readSparse] Read 263248884 numbers, 6750000 vectors. 
+[readSparse] Read 263248272 numbers, 6750000 vectors. 
+[readSparse] Read 263249029 numbers, 6750000 vectors. 
+[readSparse] Read 263248490 numbers, 6750000 vectors. 
+[readSparse] Read 263248341 numbers, 6750000 vectors. 
+[readSparse] Read 263248681 numbers, 6750000 vectors. 
+[readSparse] Read 263248465 numbers, 6750000 vectors. 
+[readSparse] Read 263248539 numbers, 6750000 vectors. 
+[readSparse] Read 263248613 numbers, 6750000 vectors. 
+[readSparse] Read 263248641 numbers, 6750000 vectors. 
+[readSparse] Read 263247822 numbers, 6750000 vectors. 
+[readSparse] Read 263248563 numbers, 6750000 vectors. 
+[readSparse] Read 263248231 numbers, 6750000 vectors. 
+[readSparse] Read 263248486 numbers, 6750000 vectors. 
+[readSparse] Read 263248452 numbers, 6750000 vectors. 
+[readSparse] Read 263248788 numbers, 6750000 vectors. 
+[readSparse] Read 263248282 numbers, 6750000 vectors. 
+[readSparse] Read 263248965 numbers, 6750000 vectors. 
+[readSparse] Read 263248466 numbers, 6750000 vectors. 
+[readSparse] Read 263248330 numbers, 6750000 vectors. 
+[readSparse] Read 263248812 numbers, 6750000 vectors. 
+[readSparse] Read 263248828 numbers, 6750000 vectors. 
+[readSparse] Read 263248613 numbers, 6750000 vectors. 
+[readSparse] Read 263248814 numbers, 6750000 vectors. 
+[readSparse] Read 263247927 numbers, 6750000 vectors. 
+[readSparse] Read 263248612 numbers, 6750000 vectors. 
+[readSparse] Read 263248615 numbers, 6750000 vectors. 
+[readSparse] Read 263248252 numbers, 6750000 vectors. 
+[readSparse] Read 263248496 numbers, 6750000 vectors. 
+[readSparse] Read 263248687 numbers, 6750000 vectors. 
+[readSparse] Read 263248499 numbers, 6750000 vectors. 
+[readSparse] Read 263248431 numbers, 6750000 vectors. 
+[readSparse] Read 263248940 numbers, 6750000 vectors. 
+[readSparse] Read 263248460 numbers, 6750000 vectors. 
+[readSparse] Read 263248254 numbers, 6750000 vectors. 
+[readSparse] Read 263248925 numbers, 6750000 vectors. 
+[readSparse] Read 263248820 numbers, 6750000 vectors. 
+[readSparse] Read 263248521 numbers, 6750000 vectors. 
+[readSparse] Read 263248760 numbers, 6750000 vectors. 
+[readSparse] Read 263248544 numbers, 6750000 vectors. 
+[readSparse] Read 263247963 numbers, 6750000 vectors. 
+[readSparse] Read 263248549 numbers, 6750000 vectors. 
+[readSparse] Read 263248178 numbers, 6750000 vectors. 
+[readSparse] Read 263248455 numbers, 6750000 vectors. 
+[readSparse] Read 263248526 numbers, 6750000 vectors. 
+[readSparse] Read 263248356 numbers, 6750000 vectors. 
+[readSparse] Read 263248570 numbers, 6750000 vectors. 
+[readSparse] Read 263249019 numbers, 6750000 vectors. 
+[readSparse] Read 263248476 numbers, 6750000 vectors. 
+[readSparse] Read 263248355 numbers, 6750000 vectors. 
+[readSparse] Read 263249030 numbers, 6750000 vectors. 
+[readSparse] Read 263248796 numbers, 6750000 vectors. 
+[readSparse] Read 263248631 numbers, 6750000 vectors. 
+[readSparse] Read 263248744 numbers, 6750000 vectors. 
+[readSparse] Read 263247839 numbers, 6750000 vectors. 
+[readSparse] Read 263248531 numbers, 6750000 vectors. 
+[readSparse] Read 263248046 numbers, 6750000 vectors. 
+[readSparse] Read 263248586 numbers, 6750000 vectors. 
+[readSparse] Read 263248392 numbers, 6750000 vectors. 
+[readSparse] Read 263248404 numbers, 6750000 vectors. 
+[readSparse] Read 263248314 numbers, 6750000 vectors. 
+[readSparse] Read 263248618 numbers, 6750000 vectors. 
+[readSparse] Read 263248954 numbers, 6750000 vectors. 
+[readSparse] Read 263248464 numbers, 6750000 vectors. 
+[readSparse] Read 263248290 numbers, 6750000 vectors. 
+[readSparse] Read 263249068 numbers, 6750000 vectors. 
+[readSparse] Read 263248694 numbers, 6750000 vectors. 
+[readSparse] Read 263248642 numbers, 6750000 vectors. 
+[readSparse] Read 263248019 numbers, 6750000 vectors. 
+[readSparse] Read 263248638 numbers, 6750000 vectors. 
+[readSparse] Read 263248536 numbers, 6750000 vectors. 
+[readSparse] Read 263248028 numbers, 6750000 vectors. 
+[readSparse] Read 263248322 numbers, 6750000 vectors. 
+[readSparse] Read 263248386 numbers, 6750000 vectors. 
+[readSparse] Read 263248519 numbers, 6750000 vectors. 
+[readSparse] Read 263248301 numbers, 6750000 vectors. 
+[readSparse] Read 263248745 numbers, 6750000 vectors. 
+[readSparse] Read 263248879 numbers, 6750000 vectors. 
+[readSparse] Read 263248235 numbers, 6750000 vectors. 
+[readSparse] Read 263248199 numbers, 6750000 vectors. 
+[readSparse] Read 263248947 numbers, 6750000 vectors. 
+[readSparse] Read 263248740 numbers, 6750000 vectors. 
+[readSparse] Read 263248625 numbers, 6750000 vectors. 
+[readSparse] Read 263247989 numbers, 6750000 vectors. 
+[readSparse] Read 263248703 numbers, 6750000 vectors. 
+[readSparse] Read 263248568 numbers, 6750000 vectors. 
+[readSparse] Read 263248027 numbers, 6750000 vectors. 
+[readSparse] Read 263248229 numbers, 6750000 vectors. 
+[readSparse] Read 263248441 numbers, 6750000 vectors. 
+[readSparse] Read 263248443 numbers, 6750000 vectors. 
+[readSparse] Read 263248467 numbers, 6750000 vectors. 
+[readSparse] Read 263248956 numbers, 6750000 vectors. 
+[readSparse] Read 263248847 numbers, 6750000 vectors. 
+[readSparse] Read 263248315 numbers, 6750000 vectors. 
+[readSparse] Read 263248279 numbers, 6750000 vectors. 
+[readSparse] Read 263248926 numbers, 6750000 vectors. 
+[readSparse] Read 263248783 numbers, 6750000 vectors. 
+[readSparse] Read 263248520 numbers, 6750000 vectors. 
+[readSparse] Read 263248412 numbers, 6750000 vectors. 
+[readSparse] Read 263248605 numbers, 6750000 vectors. 
+[readSparse] Read 263248503 numbers, 6750000 vectors. 
+[readSparse] Read 263248144 numbers, 6750000 vectors. 
+[readSparse] Read 263247909 numbers, 6750000 vectors. 
+[readSparse] Read 263248419 numbers, 6750000 vectors. 
+[readSparse] Read 263248334 numbers, 6750000 vectors. 
+[readSparse] Read 263248500 numbers, 6750000 vectors. 
+[readSparse] Read 263248954 numbers, 6750000 vectors. 
+[readSparse] Read 263248858 numbers, 6750000 vectors. 
+[readSparse] Read 263248380 numbers, 6750000 vectors. 
+[readSparse] Read 263248143 numbers, 6750000 vectors. 
+[readSparse] Read 263248798 numbers, 6750000 vectors. 
+[readSparse] Read 263248763 numbers, 6750000 vectors. 
+[readSparse] Read 263248496 numbers, 6750000 vectors. 
+[readSparse] Read 263248356 numbers, 6750000 vectors. 
+[readSparse] Read 263248652 numbers, 6750000 vectors. 
+[readSparse] Read 263248550 numbers, 6750000 vectors. 
+[readSparse] Read 263248165 numbers, 6750000 vectors. 
+[readSparse] Read 263247948 numbers, 6750000 vectors. 
+[readSparse] Read 263248412 numbers, 6750000 vectors. 
+[readSparse] Read 263248446 numbers, 6750000 vectors. 
+[readSparse] Read 263248444 numbers, 6750000 vectors. 
+[readSparse] Read 263248901 numbers, 6750000 vectors. 
+[readSparse] Read 263248834 numbers, 6750000 vectors. 
+[readSparse] Read 263248349 numbers, 6750000 vectors. 
+[readSparse] Read 263248314 numbers, 6750000 vectors. 
+[readSparse] Read 263248629 numbers, 6750000 vectors. 
+[readSparse] Read 263248708 numbers, 6750000 vectors. 
+[readSparse] Read 263248314 numbers, 6750000 vectors. 
+[readSparse] Read 263248452 numbers, 6750000 vectors. 
+[readSparse] Read 263248497 numbers, 6750000 vectors. 
+[readSparse] Read 263248592 numbers, 6750000 vectors. 
+[readSparse] Read 263248397 numbers, 6750000 vectors. 
+[readSparse] Read 263247929 numbers, 6750000 vectors. 
+[readSparse] Read 263248215 numbers, 6750000 vectors. 
+[readSparse] Read 263248709 numbers, 6750000 vectors. 
+[readSparse] Read 263248541 numbers, 6750000 vectors. 
+[readSparse] Read 263248895 numbers, 6750000 vectors. 
+[readSparse] Read 263248915 numbers, 6750000 vectors. 
+[readSparse] Read 263248359 numbers, 6750000 vectors. 
+[readSparse] Read 263248420 numbers, 6750000 vectors. 
+[readSparse] Read 263248480 numbers, 6750000 vectors. 
+[readSparse] Read 263248677 numbers, 6750000 vectors. 
+[readSparse] Read 263248889 numbers, 6750000 vectors. 
+[readSparse] Read 263248380 numbers, 6750000 vectors. 
+[readSparse] Read 263248476 numbers, 6750000 vectors. 
+[readSparse] Read 263248544 numbers, 6750000 vectors. 
+[readSparse] Read 263248409 numbers, 6750000 vectors. 
+[readSparse] Read 263248052 numbers, 6750000 vectors. 
+[readSparse] Read 263248028 numbers, 6750000 vectors. 
+[readSparse] Read 263248532 numbers, 6750000 vectors. 
+[readSparse] Read 263248519 numbers, 6750000 vectors. 
+[readSparse] Read 263248864 numbers, 6750000 vectors. 
+[readSparse] Read 263248806 numbers, 6750000 vectors. 
+[readSparse] Read 263248441 numbers, 6750000 vectors. 
+[readSparse] Read 263248656 numbers, 6750000 vectors. 
+[readSparse] Read 263248543 numbers, 6750000 vectors. 
+[readSparse] Read 263248874 numbers, 6750000 vectors. 
+[readSparse] Read 263248290 numbers, 6750000 vectors. 
+[readSparse] Read 263248396 numbers, 6750000 vectors. 
+[readSparse] Read 263248298 numbers, 6750000 vectors. 
+[readSparse] Read 263248546 numbers, 6750000 vectors. 
+[readSparse] Read 263248372 numbers, 6750000 vectors. 
+[readSparse] Read 263248212 numbers, 6750000 vectors. 
+[readSparse] Read 263248077 numbers, 6750000 vectors. 
+[readSparse] Read 263248490 numbers, 6750000 vectors. 
+[readSparse] Read 263248626 numbers, 6750000 vectors. 
+[readSparse] Read 263248751 numbers, 6750000 vectors. 
+[readSparse] Read 263248734 numbers, 6750000 vectors. 
+[readSparse] Read 263248353 numbers, 6750000 vectors. 
+[readSparse] Read 263248745 numbers, 6750000 vectors. 
+[readSparse] Read 263248752 numbers, 6750000 vectors. 
+[readSparse] Read 263248621 numbers, 6750000 vectors. 
+[readSparse] Read 263248385 numbers, 6750000 vectors. 
+[readSparse] Read 263248393 numbers, 6750000 vectors. 
+[readSparse] Read 263248528 numbers, 6750000 vectors. 
+[readSparse] Read 263248417 numbers, 6750000 vectors. 
+[readSparse] Read 263248230 numbers, 6750000 vectors. 
+[readSparse] Read 263248113 numbers, 6750000 vectors. 
+[readSparse] Read 263248150 numbers, 6750000 vectors. 
+[readSparse] Read 263248534 numbers, 6750000 vectors. 
+[readSparse] Read 263248585 numbers, 6750000 vectors. 
+[readSparse] Read 263248706 numbers, 6750000 vectors. 
+[readSparse] Read 263248870 numbers, 6750000 vectors. 
+[readSparse] Read 263248306 numbers, 6750000 vectors. 
+[readSparse] Read 263248668 numbers, 6750000 vectors. 
+[readSparse] Read 263248850 numbers, 6750000 vectors. 
+[readSparse] Read 263248628 numbers, 6750000 vectors. 
+[readSparse] Read 263248374 numbers, 6750000 vectors. 
+[readSparse] Read 263248340 numbers, 6750000 vectors. 
+[readSparse] Read 263248734 numbers, 6750000 vectors. 
+[readSparse] Read 263248441 numbers, 6750000 vectors. 
+[readSparse] Read 263248269 numbers, 6750000 vectors. 
+[readSparse] Read 263248052 numbers, 6750000 vectors. 
+[readSparse] Read 263248313 numbers, 6750000 vectors. 
+[readSparse] Read 263247904 numbers, 6750000 vectors. 
+[readSparse] Read 263248694 numbers, 6750000 vectors. 
+[readSparse] Read 263248655 numbers, 6750000 vectors. 
+[readSparse] Read 263248764 numbers, 6750000 vectors. 
+[readSparse] Read 263248293 numbers, 6750000 vectors. 
+[readSparse] Read 263248741 numbers, 6750000 vectors. 
+[readSparse] Read 263248783 numbers, 6750000 vectors. 
+[readSparse] Read 263248526 numbers, 6750000 vectors. 
+[readSparse] Read 263248291 numbers, 6750000 vectors. 
+[readSparse] Read 263248424 numbers, 6750000 vectors. 
+[readSparse] Read 263248892 numbers, 6750000 vectors. 
+[readSparse] Read 263248494 numbers, 6750000 vectors. 
+[readSparse] Read 263248231 numbers, 6750000 vectors. 
+[readSparse] Read 263248250 numbers, 6750000 vectors. 
+[readSparse] Read 263248644 numbers, 6750000 vectors. 
+[readSparse] Read 263248614 numbers, 6750000 vectors. 
+[readSparse] Read 263248129 numbers, 6750000 vectors. 
+[readSparse] Read 263248690 numbers, 6750000 vectors. 
+[readSparse] Read 263248849 numbers, 6750000 vectors. 
+[readSparse] Read 263248267 numbers, 6750000 vectors. 
+[readSparse] Read 263248578 numbers, 6750000 vectors. 
+[readSparse] Read 263248712 numbers, 6750000 vectors. 
+[readSparse] Read 263248394 numbers, 6750000 vectors. 
+[readSparse] Read 263248569 numbers, 6750000 vectors. 
+[readSparse] Read 263248234 numbers, 6750000 vectors. 
+[readSparse] Read 263248628 numbers, 6750000 vectors. 
+[readSparse] Read 263248229 numbers, 6750000 vectors. 
+[readSparse] Read 263248730 numbers, 6750000 vectors. 
+[readSparse] Read 263248147 numbers, 6750000 vectors. 
+[readSparse] Read 263248724 numbers, 6750000 vectors. 
+[readSparse] Read 263248620 numbers, 6750000 vectors. 
+[readSparse] Read 263248316 numbers, 6750000 vectors. 
+[readSparse] Read 263248597 numbers, 6750000 vectors. 
+[readSparse] Read 263248854 numbers, 6750000 vectors. 
+[readSparse] Read 263248134 numbers, 6750000 vectors. 
+[readSparse] Read 263248469 numbers, 6750000 vectors. 
+[readSparse] Read 263248535 numbers, 6750000 vectors. 
+[readSparse] Read 263248436 numbers, 6750000 vectors. 
+[readSparse] Read 263248179 numbers, 6750000 vectors. 
+[readSparse] Read 263248720 numbers, 6750000 vectors. 
+[readSparse] Read 263248313 numbers, 6750000 vectors. 
+[readSparse] Read 263248640 numbers, 6750000 vectors. 
+[readSparse] Read 263248589 numbers, 6750000 vectors. 
+[readSparse] Read 263248120 numbers, 6750000 vectors. 
+[readSparse] Read 263248750 numbers, 6750000 vectors. 
+[readSparse] Read 263248548 numbers, 6750000 vectors. 
+[readSparse] Read 263248382 numbers, 6750000 vectors. 
+[readSparse] Read 263248573 numbers, 6750000 vectors. 
+[readSparse] Read 263248780 numbers, 6750000 vectors. 
+[readSparse] Read 263248508 numbers, 6750000 vectors. 
+[readSparse] Read 263248401 numbers, 6750000 vectors. 
+[readSparse] Read 263248460 numbers, 6750000 vectors. 
+[readSparse] Read 263248294 numbers, 6750000 vectors. 
+[readSparse] Read 263248403 numbers, 6750000 vectors. 
+[readSparse] Read 263248773 numbers, 6750000 vectors. 
+[readSparse] Read 263248244 numbers, 6750000 vectors. 
+[readSparse] Read 263248643 numbers, 6750000 vectors. 
+[readSparse] Read 263248308 numbers, 6750000 vectors. 
+[readSparse] Read 263248658 numbers, 6750000 vectors. 
+[readSparse] Read 263248801 numbers, 6750000 vectors. 
+[readSparse] Read 263248239 numbers, 6750000 vectors. 
+[readSparse] Read 263248514 numbers, 6750000 vectors. 
+[readSparse] Read 263248605 numbers, 6750000 vectors. 
+[readSparse] Read 263248631 numbers, 6750000 vectors. 
+[readSparse] Read 263248703 numbers, 6750000 vectors. 
+[readSparse] Read 263248502 numbers, 6750000 vectors. 
+[readSparse] Read 263248443 numbers, 6750000 vectors. 
+[readSparse] Read 263248291 numbers, 6750000 vectors. 
+[readSparse] Read 263248766 numbers, 6750000 vectors. 
+[readSparse] Read 263248323 numbers, 6750000 vectors. 
+[readSparse] Read 263248068 numbers, 6750000 vectors. 
+[readSparse] Read 263248568 numbers, 6750000 vectors. 
+[readSparse] Read 263248237 numbers, 6750000 vectors. 
+[readSparse] Read 263248839 numbers, 6750000 vectors. 
+[readSparse] Read 263248600 numbers, 6750000 vectors. 
+[readSparse] Read 263248339 numbers, 6750000 vectors. 
+[readSparse] Read 263248444 numbers, 6750000 vectors. 
+[readSparse] Read 263248707 numbers, 6750000 vectors. 
+[readSparse] Read 263248702 numbers, 6750000 vectors. 
+[readSparse] Read 263248641 numbers, 6750000 vectors. 
+[readSparse] Read 263248643 numbers, 6750000 vectors. 
+[readSparse] Read 263248274 numbers, 6750000 vectors. 
+[readSparse] Read 263248224 numbers, 6750000 vectors. 
+[readSparse] Read 263248824 numbers, 6750000 vectors. 
+[readSparse] Read 263248367 numbers, 6750000 vectors. 
+[readSparse] Read 263248225 numbers, 6750000 vectors. 
+[readSparse] Read 263248818 numbers, 6750000 vectors. 
+[readSparse] Read 263248862 numbers, 6750000 vectors. 
+[readSparse] Read 263248223 numbers, 6750000 vectors. 
+[readSparse] Read 263248459 numbers, 6750000 vectors. 
+[readSparse] Read 263248254 numbers, 6750000 vectors. 
+[readSparse] Read 263248539 numbers, 6750000 vectors. 
+[readSparse] Read 263248648 numbers, 6750000 vectors. 
+[readSparse] Read 263248634 numbers, 6750000 vectors. 
+[readSparse] Read 263248443 numbers, 6750000 vectors. 
+[readSparse] Read 263248575 numbers, 6750000 vectors. 
+[readSparse] Read 263248106 numbers, 6750000 vectors. 
+[readSparse] Read 263248352 numbers, 6750000 vectors. 
+[readSparse] Read 263248765 numbers, 6750000 vectors. 
+[readSparse] Read 263248357 numbers, 6750000 vectors. 
+[readSparse] Read 263248275 numbers, 6750000 vectors. 
+[readSparse] Read 263248902 numbers, 6750000 vectors. 
+[readSparse] Read 263248793 numbers, 6750000 vectors. 
+[readSparse] Read 263248323 numbers, 6750000 vectors. 
+[readSparse] Read 263248456 numbers, 6750000 vectors. 
+[readSparse] Read 263248489 numbers, 6750000 vectors. 
+[readSparse] Read 263248620 numbers, 6750000 vectors. 
+[readSparse] Read 263248606 numbers, 6750000 vectors. 
+[readSparse] Read 263248744 numbers, 6750000 vectors. 
+[readSparse] Read 263248638 numbers, 6750000 vectors. 
+[readSparse] Read 263248151 numbers, 6750000 vectors. 
+[readSparse] Read 263248589 numbers, 6750000 vectors. 
+[readSparse] Read 263248349 numbers, 6750000 vectors. 
+[readSparse] Read 263248653 numbers, 6750000 vectors. 
+[readSparse] Read 263248293 numbers, 6750000 vectors. 
+[readSparse] Read 263248264 numbers, 6750000 vectors. 
+[readSparse] Read 263248816 numbers, 6750000 vectors. 
+[readSparse] Read 263248821 numbers, 6750000 vectors. 
+[readSparse] Read 263248268 numbers, 6750000 vectors. 
+[readSparse] Read 263248408 numbers, 6750000 vectors. 
+[readSparse] Read 263248648 numbers, 6750000 vectors. 
+[readSparse] Read 263248538 numbers, 6750000 vectors. 
+[readSparse] Read 263248579 numbers, 6750000 vectors. 
+[readSparse] Read 263248679 numbers, 6750000 vectors. 
+[readSparse] Read 263248696 numbers, 6750000 vectors. 
+[readSparse] Read 263248211 numbers, 6750000 vectors. 
+[readSparse] Read 263248524 numbers, 6750000 vectors. 
+[readSparse] Read 263248599 numbers, 6750000 vectors. 
+[readSparse] Read 263248365 numbers, 6750000 vectors. 
+[readSparse] Read 263248147 numbers, 6750000 vectors. 
+[readSparse] Read 263248423 numbers, 6750000 vectors. 
+[readSparse] Read 263248709 numbers, 6750000 vectors. 
+[readSparse] Read 263248685 numbers, 6750000 vectors. 
+[readSparse] Read 263248346 numbers, 6750000 vectors. 
+[readSparse] Read 263248332 numbers, 6750000 vectors. 
+[readSparse] Read 263248604 numbers, 6750000 vectors. 
+[readSparse] Read 263248586 numbers, 6750000 vectors. 
+[readSparse] Read 263248602 numbers, 6750000 vectors. 
+[readSparse] Read 263248733 numbers, 6750000 vectors. 
+[readSparse] Read 263249018 numbers, 6750000 vectors. 
+[readSparse] Read 263248168 numbers, 6750000 vectors. 
+[readSparse] Read 263248527 numbers, 6750000 vectors. 
+[readSparse] Read 263248554 numbers, 6750000 vectors. 
+[readSparse] Read 263248382 numbers, 6750000 vectors. 
+[readSparse] Read 263248019 numbers, 6750000 vectors. 
+[readSparse] Read 263248411 numbers, 6750000 vectors. 
+[readSparse] Read 263248809 numbers, 6750000 vectors. 
+[readSparse] Read 263248675 numbers, 6750000 vectors. 
+[readSparse] Read 263248280 numbers, 6750000 vectors. 
+[readSparse] Read 263248347 numbers, 6750000 vectors. 
+[readSparse] Read 263248389 numbers, 6750000 vectors. 
+[readSparse] Read 263248633 numbers, 6750000 vectors. 
+[readSparse] Read 263248584 numbers, 6750000 vectors. 
+[readSparse] Read 263248786 numbers, 6750000 vectors. 
+[readSparse] Read 263248718 numbers, 6750000 vectors. 
+[readSparse] Read 263248204 numbers, 6750000 vectors. 
+[readSparse] Read 263248498 numbers, 6750000 vectors. 
+[readSparse] Read 263248432 numbers, 6750000 vectors. 
+[readSparse] Read 263248385 numbers, 6750000 vectors. 
+[readSparse] Read 263248144 numbers, 6750000 vectors. 
+[readSparse] Read 263248584 numbers, 6750000 vectors. 
+[readSparse] Read 263248429 numbers, 6750000 vectors. 
+[readSparse] Read 263248256 numbers, 6750000 vectors. 
+[readSparse] Read 263248584 numbers, 6750000 vectors. 
+[readSparse] Read 263248246 numbers, 6750000 vectors. 
+[readSparse] Read 263248668 numbers, 6750000 vectors. 
+[readSparse] Read 263248602 numbers, 6750000 vectors. 
+[readSparse] Read 263248612 numbers, 6750000 vectors. 
+[readSparse] Read 263248875 numbers, 6750000 vectors. 
+[readSparse] Read 263248795 numbers, 6750000 vectors. 
+[readSparse] Read 263248358 numbers, 6750000 vectors. 
+[readSparse] Read 263248288 numbers, 6750000 vectors. 
+[readSparse] Read 263248198 numbers, 6750000 vectors. 
+[readSparse] Read 263248264 numbers, 6750000 vectors. 
+[readSparse] Read 263248599 numbers, 6750000 vectors. 
+[readSparse] Read 263248648 numbers, 6750000 vectors. 
+[readSparse] Read 263248309 numbers, 6750000 vectors. 
+[readSparse] Read 263248289 numbers, 6750000 vectors. 
+[readSparse] Read 263248591 numbers, 6750000 vectors. 
+[readSparse] Read 263248277 numbers, 6750000 vectors. 
+[readSparse] Read 263248878 numbers, 6750000 vectors. 
+[readSparse] Read 263248581 numbers, 6750000 vectors. 
+[readSparse] Read 263248491 numbers, 6750000 vectors. 
+[readSparse] Read 263248800 numbers, 6750000 vectors. 
+[readSparse] Read 263248851 numbers, 6750000 vectors. 
+[readSparse] Read 263248428 numbers, 6750000 vectors. 
+[readSparse] Read 263248471 numbers, 6750000 vectors. 
+[readSparse] Read 263248219 numbers, 6750000 vectors. 
+[readSparse] Read 263248435 numbers, 6750000 vectors. 
+[readSparse] Read 263248303 numbers, 6750000 vectors. 
+[readSparse] Read 263248508 numbers, 6750000 vectors. 
+[readSparse] Read 263248420 numbers, 6750000 vectors. 
+[readSparse] Read 263248268 numbers, 6750000 vectors. 
+[readSparse] Read 263248444 numbers, 6750000 vectors. 
+[readSparse] Read 263248243 numbers, 6750000 vectors. 
+[readSparse] Read 263248896 numbers, 6750000 vectors. 
+[readSparse] Read 263248601 numbers, 6750000 vectors. 
+[readSparse] Read 263248488 numbers, 6750000 vectors. 
+[readSparse] Read 263248759 numbers, 6750000 vectors. 
+[readSparse] Read 263248877 numbers, 6750000 vectors. 
+[readSparse] Read 263248519 numbers, 6750000 vectors. 
+[readSparse] Read 263248406 numbers, 6750000 vectors. 
+[readSparse] Read 263248392 numbers, 6750000 vectors. 
+[readSparse] Read 263248523 numbers, 6750000 vectors. 
+[readSparse] Read 263248311 numbers, 6750000 vectors. 
+[readSparse] Read 263248542 numbers, 6750000 vectors. 
+[readSparse] Read 263248134 numbers, 6750000 vectors. 
+[readSparse] Read 263248393 numbers, 6750000 vectors. 
+[readSparse] Read 263248447 numbers, 6750000 vectors. 
+[readSparse] Read 263248247 numbers, 6750000 vectors. 
+[readSparse] Read 263248935 numbers, 6750000 vectors. 
+[readSparse] Read 263248481 numbers, 6750000 vectors. 
+[readSparse] Read 263248409 numbers, 6750000 vectors. 
+[readSparse] Read 263248603 numbers, 6750000 vectors. 
+[readSparse] Read 263248604 numbers, 6750000 vectors. 
+[readSparse] Read 263248662 numbers, 6750000 vectors. 
+[readSparse] Read 263248446 numbers, 6750000 vectors. 
+[readSparse] Read 263248469 numbers, 6750000 vectors. 
+[readSparse] Read 263248539 numbers, 6750000 vectors. 
+[readSparse] Read 263248314 numbers, 6750000 vectors. 
+[readSparse] Read 263248695 numbers, 6750000 vectors. 
+[readSparse] Read 263248617 numbers, 6750000 vectors. 
+[readSparse] Read 263248299 numbers, 6750000 vectors. 
+[readSparse] Read 263248495 numbers, 6750000 vectors. 
+[readSparse] Read 263248113 numbers, 6750000 vectors. 
+[readSparse] Read 263248889 numbers, 6750000 vectors. 
+[readSparse] Read 263248590 numbers, 6750000 vectors. 
+[readSparse] Read 263248315 numbers, 6750000 vectors. 
+[readSparse] Read 263248485 numbers, 6750000 vectors. 
+[readSparse] Read 263248786 numbers, 6750000 vectors. 
+[readSparse] Read 263248455 numbers, 6750000 vectors. 
+[readSparse] Read 263248798 numbers, 6750000 vectors. 
+[readSparse] Read 263248690 numbers, 6750000 vectors. 
+[readSparse] Read 263248477 numbers, 6750000 vectors. 
+[readSparse] Read 263248238 numbers, 6750000 vectors. 
+[readSparse] Read 263248591 numbers, 6750000 vectors. 
+[readSparse] Read 263248569 numbers, 6750000 vectors. 
+[readSparse] Read 263248412 numbers, 6750000 vectors. 
+[readSparse] Read 263248450 numbers, 6750000 vectors. 
+[readSparse] Read 263248066 numbers, 6750000 vectors. 
+[readSparse] Read 263248766 numbers, 6750000 vectors. 
+[readSparse] Read 263248514 numbers, 6750000 vectors. 
+[readSparse] Read 263248291 numbers, 6750000 vectors. 
+[readSparse] Read 263248445 numbers, 6750000 vectors. 
+[readSparse] Read 263248718 numbers, 6750000 vectors. 
+[readSparse] Read 263248515 numbers, 6750000 vectors. 
+[readSparse] Read 263249052 numbers, 6750000 vectors. 
+[readSparse] Read 263248642 numbers, 6750000 vectors. 
+[readSparse] Read 263248476 numbers, 6750000 vectors. 
+[readSparse] Read 263248259 numbers, 6750000 vectors. 
+[readSparse] Read 263248337 numbers, 6750000 vectors. 
+[readSparse] Read 263248517 numbers, 6750000 vectors. 
+[readSparse] Read 263248769 numbers, 6750000 vectors. 
+[readSparse] Read 263248443 numbers, 6750000 vectors. 
+[readSparse] Read 263248068 numbers, 6750000 vectors. 
+[readSparse] Read 263248700 numbers, 6750000 vectors. 
+[readSparse] Read 263248482 numbers, 6750000 vectors. 
+[readSparse] Read 263248403 numbers, 6750000 vectors. 
+[readSparse] Read 263248479 numbers, 6750000 vectors. 
+[readSparse] Read 263248691 numbers, 6750000 vectors. 
+[readSparse] Read 263248489 numbers, 6750000 vectors. 
+[readSparse] Read 263249001 numbers, 6750000 vectors. 
+[readSparse] Read 263248431 numbers, 6750000 vectors. 
+[readSparse] Read 263248567 numbers, 6750000 vectors. 
+[readSparse] Read 263248575 numbers, 6750000 vectors. 
+[readSparse] Read 263248257 numbers, 6750000 vectors. 
+[readSparse] Read 263248569 numbers, 6750000 vectors. 
+[readSparse] Read 263248601 numbers, 6750000 vectors. 
+[readSparse] Read 263248441 numbers, 6750000 vectors. 
+[readSparse] Read 263248174 numbers, 6750000 vectors. 
+[readSparse] Read 263248680 numbers, 6750000 vectors. 
+[readSparse] Read 263248802 numbers, 6750000 vectors. 
+[readSparse] Read 263248340 numbers, 6750000 vectors. 
+[readSparse] Read 263248644 numbers, 6750000 vectors. 
+[readSparse] Read 263248572 numbers, 6750000 vectors. 
+[readSparse] Read 263248443 numbers, 6750000 vectors. 
+[readSparse] Read 263248945 numbers, 6750000 vectors. 
+[readSparse] Read 263248385 numbers, 6750000 vectors. 
+[readSparse] Read 263248444 numbers, 6750000 vectors. 
+[readSparse] Read 263248662 numbers, 6750000 vectors. 
+[readSparse] Read 263248195 numbers, 6750000 vectors. 
+[readSparse] Read 263248631 numbers, 6750000 vectors. 
+[readSparse] Read 263248588 numbers, 6750000 vectors. 
+[readSparse] Read 263248497 numbers, 6750000 vectors. 
+[readSparse] Read 263248092 numbers, 6750000 vectors. 
+[readSparse] Read 263248482 numbers, 6750000 vectors. 
+[readSparse] Read 263248576 numbers, 6750000 vectors. 
+[readSparse] Read 263248580 numbers, 6750000 vectors. 
+[readSparse] Read 263248568 numbers, 6750000 vectors. 
+[readSparse] Read 263248327 numbers, 6750000 vectors. 
+[readSparse] Read 263248778 numbers, 6750000 vectors. 
+[readSparse] Read 263248878 numbers, 6750000 vectors. 
+[readSparse] Read 263248396 numbers, 6750000 vectors. 
+[readSparse] Read 263248365 numbers, 6750000 vectors. 
+[readSparse] Read 263248840 numbers, 6750000 vectors. 
+[readSparse] Read 263248283 numbers, 6750000 vectors. 
+[readSparse] Read 263248740 numbers, 6750000 vectors. 
+[readSparse] Read 263248552 numbers, 6750000 vectors. 
+[readSparse] Read 263248530 numbers, 6750000 vectors. 
+[readSparse] Read 263248051 numbers, 6750000 vectors. 
+[readSparse] Read 263248407 numbers, 6750000 vectors. 
+[readSparse] Read 263248573 numbers, 6750000 vectors. 
+[readSparse] Read 263248730 numbers, 6750000 vectors. 
+[readSparse] Read 263248361 numbers, 6750000 vectors. 
+Vectors Added Node 5: 2713.53 Seconds
+
+[readSparse] Read 263248769 numbers, 6750000 vectors. 
+[readSparse] Read 263248453 numbers, 6750000 vectors. 
+Vectors Added Node 11: 2724.67 Seconds
+
+Vectors Added Node 12: 2724.71 Seconds
+
+[readSparse] Read 263248828 numbers, 6750000 vectors. 
+[readSparse] Read 263248231 numbers, 6750000 vectors. 
+[readSparse] Read 263248381 numbers, 6750000 vectors. 
+[readSparse] Read 263248832 numbers, 6750000 vectors. 
+[readSparse] Read 263248227 numbers, 6750000 vectors. 
+[readSparse] Read 263248819 numbers, 6750000 vectors. 
+[readSparse] Read 263248529 numbers, 6750000 vectors. 
+[readSparse] Read 263248516 numbers, 6750000 vectors. 
+Vectors Added Node 7: 2737.63 Seconds
+
+Vectors Added Node 1: 2737.79 Seconds
+
+Vectors Added Node 4: 2738.36 Seconds
+
+Vectors Added Node 2: 2739.3 Seconds
+
+Vectors Added Node 6: 2739.32 Seconds
+
+Vectors Added Node 3: 2740.98 Seconds
+
+Vectors Added Node 13: 2742.73 Seconds
+
+[readSparse] Read 263247929 numbers, 6750000 vectors. 
+Vectors Added Node 10: 2751.89 Seconds
+
+[readSparse] Read 263248431 numbers, 6750000 vectors. 
+[readSparse] Read 263248601 numbers, 6750000 vectors. 
+Vectors Added Node 9: 2760.31 Seconds
+
+Vectors Added Node 8: 2764.67 Seconds
+
+[readSparse] Read 263248975 numbers, 6750000 vectors. 
+Vectors Added Node 14: 2777.01 Seconds
+
+[readSparse] Read 263248758 numbers, 6750000 vectors. 
+Vectors Added Node 0: 2806.04 Seconds
+
+Computing Query Hashes Node 2...
+Computing Query Hashes Node 4...
+Computing Query Hashes Node 9...
+Computing Query Hashes Node 5...
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 7...
+Computing Query Hashes Node 13...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 14...
+Computing Query Hashes Node 10...
+Computing Query Hashes Node 12...
+Computing Query Hashes Node 11...
+Computing Query Hashes Node 3...
+Computing Query Hashes Node 6...
+Computing Query Hashes Node 8...
+Query Hashes Computed Node 14: 0.0159766 Seconds
+
+Query Hashes Computed Node 0: 0.0159722 Seconds
+
+Query Hashes Computed Node 13: 0.0160249 Seconds
+
+Query Hashes Computed Node 1: 0.0160274 Seconds
+
+Query Hashes Computed Node 2: 0.0160597 Seconds
+
+Query Hashes Computed Node 3: 0.0160742 Seconds
+
+Query Hashes Computed Node 5: 0.016172 Seconds
+
+Extracting Top K (TREE) Node 14...
+Extracting Top K (TREE) Node 2...
+Query Hashes Computed Node 4: 0.0161363 Seconds
+
+Query Hashes Computed Node 9: 0.01623 Seconds
+
+Query Hashes Computed Node 10: 0.0161589 Seconds
+
+Extracting Top K (TREE) Node 13...
+Query Hashes Computed Node 12: 0.0161275 Seconds
+
+Query Hashes Computed Node 11: 0.0161486 Seconds
+
+Extracting Top K (TREE) Node 1...
+Extracting Top K (TREE) Node 3...
+Query Hashes Computed Node 6: 0.0161937 Seconds
+
+Query Hashes Computed Node 8: 0.0162823 Seconds
+
+Extracting Top K (TREE) Node 0...
+Extracting Top K (TREE) Node 4...
+Extracting Top K (TREE) Node 9...
+Extracting Top K (TREE) Node 10...
+Query Hashes Computed Node 7: 0.0162308 Seconds
+
+Extracting Top K (TREE) Node 7...
+Extracting Top K (TREE) Node 12...
+Extracting Top K (TREE) Node 11...
+Extracting Top K (TREE) Node 5...
+Extracting Top K (TREE) Node 6...
+Extracting Top K (TREE) Node 8...
+Top K (TREE) Extracted Node 7: 0.769088 Seconds
+
+Top K (TREE) Extracted Node 9: 0.782257 Seconds
+
+Top K (TREE) Extracted Node 13: 0.788018 Seconds
+
+Top K (TREE) Extracted Node 5: 0.799731 Seconds
+
+Top K (TREE) Extracted Node 11: 0.801511 Seconds
+
+Top K (TREE) Extracted Node 1: 0.802515 Seconds
+
+Top K (TREE) Extracted Node 3: 0.814099 Seconds
+
+Top K (TREE) Extracted Node 14: 0.898244 Seconds
+
+Top K (TREE) Extracted Node 2: 0.928283 Seconds
+
+Top K (TREE) Extracted Node 10: 0.944757 Seconds
+
+Top K (TREE) Extracted Node 6: 0.946403 Seconds
+
+Top K (TREE) Extracted Node 4: 1.03256 Seconds
+
+Top K (TREE) Extracted Node 12: 1.05881 Seconds
+
+Top K (TREE) Extracted Node 8: 1.139 Seconds
+
+Top K (TREE) Extracted Node 0: 1.192 Seconds
+

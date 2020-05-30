@@ -1,0 +1,2769 @@
+
+=================
+== Criteo
+=================
+
+LSH Initialized in Node 4
+LSH Initialized in Node 6
+LSH Initialized in Node 5
+LSH Initialized in Node 8
+LSH Initialized in Node 12
+LSH Initialized in Node 17
+LSH Initialized in Node 9
+LSH Initialized in Node 16
+LSH Initialized in Node 2
+LSH Initialized in Node 18
+LSH Initialized in Node 13
+LSH Initialized in Node 1
+LSH Initialized in Node 19
+LSH Initialized in Node 14
+LSH Initialized in Node 10
+LSH Initialized in Node 11
+LSH Initialized in Node 7
+LSH Initialized in Node 3
+LSH Initialized in Node 15
+200000000 Vectors, 10000 Queries
+Nodes: 20
+Tables: 32
+RangePow: 18
+Reservoir Size: 256
+Hashes: 4
+CMS Bucket Size: 2048
+CMS Hashes: 4
+
+LSH Initialized in Node 0
+CMS Initialized in Node 12
+CMS Initialized in Node 10
+CMS Initialized in Node 18
+CMS Initialized in Node 9
+CMS Initialized in Node 7
+CMS Initialized in Node 0
+CMS Initialized in Node 14
+CMS Initialized in Node 4
+CMS Initialized in Node 3
+CMS Initialized in Node 6
+CMS Initialized in Node 13
+CMS Initialized in Node 8
+CMS Initialized in Node 11
+CMS Initialized in Node 5
+CMS Initialized in Node 1
+CMS Initialized in Node 2
+CMS Initialized in Node 16
+CMS Initialized in Node 17
+CMS Initialized in Node 19
+CMS Initialized in Node 15
+LSH Reservoir Initialized in Node 18
+LSH Reservoir Initialized in Node 17
+LSH Reservoir Initialized in Node 19
+LSH Reservoir Initialized in Node 14
+LSH Reservoir Initialized in Node 12
+LSH Reservoir Initialized in Node 15
+LSH Reservoir Initialized in Node 9
+LSH Reservoir Initialized in Node 13
+LSH Reservoir Initialized in Node 11
+LSH Reservoir Initialized in Node 16
+LSH Reservoir Initialized in Node 7
+LSH Reservoir Initialized in Node 5
+LSH Reservoir Initialized in Node 10
+LSH Reservoir Initialized in Node 8
+LSH Reservoir Initialized in Node 6
+LSH Reservoir Initialized in Node 2
+LSH Reservoir Initialized in Node 4
+LSH Reservoir Initialized in Node 3
+LSH Reservoir Initialized in Node 0
+FLASH Controller Initialized in Node 0
+FLASH Controller Initialized in Node 4
+FLASH Controller Initialized in Node 6
+FLASH Controller Initialized in Node 5
+LSH Reservoir Initialized in Node 1
+FLASH Controller Initialized in Node 17
+FLASH Controller Initialized in Node 14
+FLASH Controller Initialized in Node 19
+FLASH Controller Initialized in Node 9
+FLASH Controller Initialized in Node 7
+FLASH Controller Initialized in Node 10
+FLASH Controller Initialized in Node 15
+FLASH Controller Initialized in Node 3
+FLASH Controller Initialized in Node 12
+FLASH Controller Initialized in Node 16
+FLASH Controller Initialized in Node 11
+FLASH Controller Initialized in Node 8
+FLASH Controller Initialized in Node 18
+FLASH Controller Initialized in Node 13
+FLASH Controller Initialized in Node 1
+FLASH Controller Initialized in Node 2
+
+<<< LSHR Parameters >>>
+_rangePow 18
+_numTables 32
+_reservoirSize 256
+_dimension 42
+_maxSamples 200010000
+_numReservoirs 262144
+_maxReservoirRand 20001000
+
+[readSparse] Read 389997 numbers, 10000 vectors. 
+Adding Vectors Node 12...
+Adding Vectors Node 10...
+Adding Vectors Node 18...
+Adding Vectors Node 9...
+Adding Vectors Node 7...
+Adding Vectors Node 0...
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition00 in node 0>>
+Adding Vectors Node 14...
+Adding Vectors Node 4...
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition04 in node 4>>
+Adding Vectors Node 3...
+Adding Vectors Node 15...
+Adding Vectors Node 6...
+Adding Vectors Node 13...
+Adding Vectors Node 8...
+Adding Vectors Node 11...
+Adding Vectors Node 5...
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition05 in node 5>>
+Adding Vectors Node 1...
+Adding Vectors Node 2...
+Adding Vectors Node 16...
+Adding Vectors Node 17...
+Adding Vectors Node 19...
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition06 in node 6>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition14 in node 14>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition17 in node 17>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition10 in node 10>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition09 in node 9>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition02 in node 2>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition07 in node 7>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition15 in node 15>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition12 in node 12>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition03 in node 3>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition11 in node 11>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition18 in node 18>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition16 in node 16>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition13 in node 13>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition08 in node 8>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition01 in node 1>>
+<<Reading from file /scratch/ncm5/dataset/criteo/criteo_partition19 in node 19>>
+[readSparse] Read 194998836 numbers, 5000000 vectors. 
+[readSparse] Read 194998878 numbers, 5000000 vectors. 
+[readSparse] Read 194998946 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+Batch 0 Complete node 19
+GOT HASHES NODE 17
+Batch 0 Complete node 17
+GOT HASHES NODE 18
+Batch 0 Complete node 18
+[readSparse] Read 194999100 numbers, 5000000 vectors. 
+[readSparse] Read 194998557 numbers, 5000000 vectors. 
+[readSparse] Read 194998621 numbers, 5000000 vectors. 
+[readSparse] Read 194998793 numbers, 5000000 vectors. 
+[readSparse] Read 194998882 numbers, 5000000 vectors. 
+[readSparse] Read 194998898 numbers, 5000000 vectors. 
+[readSparse] Read 194998892 numbers, 5000000 vectors. 
+[readSparse] Read 194998972 numbers, 5000000 vectors. 
+[readSparse] Read 194998775 numbers, 5000000 vectors. 
+[readSparse] Read 194998671 numbers, 5000000 vectors. 
+[readSparse] Read 194998915 numbers, 5000000 vectors. 
+[readSparse] Read 194999104 numbers, 5000000 vectors. 
+[readSparse] Read 194999155 numbers, 5000000 vectors. 
+[readSparse] Read 194999146 numbers, 5000000 vectors. 
+[readSparse] Read 194999088 numbers, 5000000 vectors. 
+[readSparse] Read 194998986 numbers, 5000000 vectors. 
+[readSparse] Read 194999356 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+Batch 0 Complete node 16
+GOT HASHES NODE 14
+Batch 0 Complete node 14
+GOT HASHES NODE 15
+Batch 0 Complete node 15
+GOT HASHES NODE 13
+Batch 0 Complete node 13
+GOT HASHES NODE 9
+Batch 0 Complete node 9
+GOT HASHES NODE 7
+Batch 0 Complete node 7
+GOT HASHES NODE 11
+Batch 0 Complete node 11
+GOT HASHES NODE 12
+Batch 0 Complete node 12
+GOT HASHES NODE 5
+Batch 0 Complete node 5
+GOT HASHES NODE 10
+Batch 0 Complete node 10
+GOT HASHES NODE 8
+Batch 0 Complete node 8
+GOT HASHES NODE 4
+Batch 0 Complete node 4
+GOT HASHES NODE 3
+Batch 0 Complete node 3
+GOT HASHES NODE 6
+Batch 0 Complete node 6
+GOT HASHES NODE 2
+Batch 0 Complete node 2
+GOT HASHES NODE 1
+Batch 0 Complete node 1
+GOT HASHES NODE 0
+Batch 0 Complete node 0
+[readSparse] Read 194998861 numbers, 5000000 vectors. 
+[readSparse] Read 194998976 numbers, 5000000 vectors. 
+[readSparse] Read 194998826 numbers, 5000000 vectors. 
+[readSparse] Read 194998783 numbers, 5000000 vectors. 
+[readSparse] Read 194998818 numbers, 5000000 vectors. 
+[readSparse] Read 194999111 numbers, 5000000 vectors. 
+[readSparse] Read 194998867 numbers, 5000000 vectors. 
+[readSparse] Read 194999123 numbers, 5000000 vectors. 
+[readSparse] Read 194998611 numbers, 5000000 vectors. 
+[readSparse] Read 194998575 numbers, 5000000 vectors. 
+[readSparse] Read 194998970 numbers, 5000000 vectors. 
+[readSparse] Read 194998848 numbers, 5000000 vectors. 
+[readSparse] Read 194998853 numbers, 5000000 vectors. 
+[readSparse] Read 194998984 numbers, 5000000 vectors. 
+[readSparse] Read 194998781 numbers, 5000000 vectors. 
+[readSparse] Read 194999050 numbers, 5000000 vectors. 
+[readSparse] Read 194999122 numbers, 5000000 vectors. 
+[readSparse] Read 194999177 numbers, 5000000 vectors. 
+[readSparse] Read 194999330 numbers, 5000000 vectors. 
+[readSparse] Read 194999052 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998776 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998959 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998914 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998741 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998967 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998822 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998795 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998898 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998993 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998897 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998523 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998913 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998849 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998997 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998577 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998972 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998876 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998762 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999019 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999344 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999174 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999211 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999091 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998724 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998940 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998735 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998812 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998760 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194999043 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998953 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998647 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998979 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998921 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998939 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998619 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998766 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999048 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998676 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999067 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999319 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999006 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999124 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998904 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998773 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998897 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998798 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998728 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998765 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998876 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998892 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998708 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998940 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998779 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998840 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998696 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998805 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999127 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998882 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998761 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998905 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998864 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999051 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999339 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998988 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999017 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999057 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998959 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998868 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998852 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998803 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998706 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998768 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998892 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998605 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998966 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998698 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998897 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998852 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999097 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998975 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998737 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999200 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999233 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999170 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998938 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999062 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998916 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998876 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998907 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998752 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998743 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998785 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998932 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998626 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999023 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998758 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998744 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194999011 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999026 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999087 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998748 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999017 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999224 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998988 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998773 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998960 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999044 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999289 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999005 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998823 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998740 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999148 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998848 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999029 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998880 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998993 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998655 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998747 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999165 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998677 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999181 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998680 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194999067 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999062 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999057 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999283 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999142 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999318 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998932 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999250 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998938 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998797 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998818 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998741 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998817 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998972 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998697 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998815 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998699 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999169 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999177 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998748 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194999049 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998987 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999145 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999253 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999183 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999190 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999223 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998887 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998994 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998851 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998802 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998759 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998793 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998868 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999221 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998607 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998794 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998681 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999158 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999240 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998840 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998654 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999172 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194999089 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999048 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999167 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999243 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999135 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999201 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998872 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999213 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998816 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998706 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999116 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998851 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998806 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998961 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998600 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999204 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998772 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998742 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998746 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999130 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194999116 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999015 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999138 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999189 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999167 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999102 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999156 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998860 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999157 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998908 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998924 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998672 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998805 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998905 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998695 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999138 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998786 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998706 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999187 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998714 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999238 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998934 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998985 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999103 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998885 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998982 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999288 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999033 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999171 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998931 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998898 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998710 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999107 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998785 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999118 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998948 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998894 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998707 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999111 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998860 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998761 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998705 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999211 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194999014 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998922 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998963 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999215 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999125 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999099 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998861 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999083 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998957 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999086 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998725 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998947 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998745 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998971 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998777 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999055 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998734 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998793 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998800 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999184 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998896 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998734 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999018 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998995 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999023 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999041 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999202 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998976 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998991 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999076 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998855 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998650 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998770 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998870 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999053 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998701 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998973 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998811 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999079 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194999015 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998699 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998886 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998767 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999089 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998658 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998886 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999181 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998992 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998717 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998950 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999068 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998824 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998958 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999100 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998988 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998730 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998934 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998586 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998705 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194999036 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998751 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998821 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998823 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999104 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998671 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999059 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998803 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998965 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999165 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999036 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998925 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998717 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998785 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998960 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999077 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998796 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998884 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998760 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998484 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998868 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998966 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998716 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998777 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998826 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998973 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999099 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998933 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998564 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194999016 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998829 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998680 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999096 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998820 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998852 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999037 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998953 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998744 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999073 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998851 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998712 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998927 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998573 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998813 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998703 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998830 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998793 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998913 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998971 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998536 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998839 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998563 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998929 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999149 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999096 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998829 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998862 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998909 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999032 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998734 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998621 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998722 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998765 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998840 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998724 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998795 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998732 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998985 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998877 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998976 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999019 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998508 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998894 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998667 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998820 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999193 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998872 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998929 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999080 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998700 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999059 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998713 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998648 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998802 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998974 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998856 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998614 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998839 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998704 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998751 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998968 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998818 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998778 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998481 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998766 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999188 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999016 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998815 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998892 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998856 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999038 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998852 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998751 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998922 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998667 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998861 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998800 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998842 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998690 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998712 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998925 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998878 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998948 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998715 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998764 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998911 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998764 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998841 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999133 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998811 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998877 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999025 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999028 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998769 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998760 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998985 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998785 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998827 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999016 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998914 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998707 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998874 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998708 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998867 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998843 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998645 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998878 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998835 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998854 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999075 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998964 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998846 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999068 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999062 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998911 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998765 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998841 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998865 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998853 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998970 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998911 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998828 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998612 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998714 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998853 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998462 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998711 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998917 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998748 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999017 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998760 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998874 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999088 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998920 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998924 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998991 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998677 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998898 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998788 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998783 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998871 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998928 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998967 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998686 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998682 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998879 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998626 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998871 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998903 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998748 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998731 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998856 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999152 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998836 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998925 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998684 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998972 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998992 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194999043 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998982 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998795 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998864 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999000 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998891 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998949 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998755 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998766 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998705 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998903 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998842 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194999007 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998746 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194999026 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998771 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998938 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999138 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998675 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998872 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194999010 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998823 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998964 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998678 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998930 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194999016 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999048 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998913 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998784 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998548 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194999058 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998884 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998944 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998921 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998868 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998861 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998638 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999032 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998640 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999096 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998924 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998816 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998932 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998895 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998956 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998480 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998936 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998992 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999158 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998972 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998758 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998562 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998961 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998874 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998903 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998834 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998887 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998708 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999113 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998914 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998733 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998828 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999129 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998783 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998881 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999130 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998869 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998921 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998468 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998961 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999177 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998624 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998583 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998849 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+[readSparse] Read 194998822 numbers, 5000000 vectors. 
+GOT HASHES NODE 19
+Vectors Added Node 19: 1988.95 Seconds
+
+GOT HASHES NODE 8
+[readSparse] Read 194999103 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+[readSparse] Read 194998912 numbers, 5000000 vectors. 
+GOT HASHES NODE 17
+Vectors Added Node 17: 1997.43 Seconds
+
+GOT HASHES NODE 3
+[readSparse] Read 194998809 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+[readSparse] Read 194998857 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999268 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998793 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998780 numbers, 5000000 vectors. 
+GOT HASHES NODE 18
+Vectors Added Node 18: 2013.49 Seconds
+
+GOT HASHES NODE 10
+[readSparse] Read 194998803 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999141 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998824 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998942 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999188 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998926 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998383 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998926 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999308 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998582 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998586 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998909 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194999107 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998813 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999068 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998946 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998837 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998814 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998993 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999115 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998971 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999115 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998402 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998836 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998918 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999305 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998638 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998642 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998849 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194999174 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998750 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194999031 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999048 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998794 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998929 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194999003 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998848 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999216 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998491 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998820 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999070 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998915 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999292 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998690 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998561 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998742 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194999068 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998821 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194999081 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999144 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998670 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194998987 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998936 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998748 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999102 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998474 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998878 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998898 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194998992 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999228 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998656 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998618 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998346 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194999042 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998805 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194999016 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999110 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998824 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998961 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998664 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999069 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999021 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998471 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998913 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998944 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999046 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998611 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999207 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998487 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998676 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998990 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998801 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194999052 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998780 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999110 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998949 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998637 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999111 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999077 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998413 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998849 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998927 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998680 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999167 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999003 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998487 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998738 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998893 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194999039 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998712 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998891 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194999049 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998862 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998671 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999113 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998970 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998555 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998864 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998711 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998958 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999070 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999012 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998555 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998846 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998969 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998830 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998836 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998874 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998947 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998924 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998599 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194999004 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999112 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998550 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998725 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998844 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998949 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998991 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998546 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998751 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999050 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998861 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998897 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999021 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998968 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998827 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998857 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998702 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998931 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999112 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998457 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998822 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998892 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194999042 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998922 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998475 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998663 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999037 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998884 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998875 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998741 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999048 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998866 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998890 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998584 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998900 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+[readSparse] Read 194998470 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999077 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998910 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998861 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194998791 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998881 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998522 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998760 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999023 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998788 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+[readSparse] Read 194998869 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998888 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+[readSparse] Read 194998889 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998962 numbers, 5000000 vectors. 
+GOT HASHES NODE 11
+Vectors Added Node 11: 2718.18 Seconds
+
+GOT HASHES NODE 8
+[readSparse] Read 194998652 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+[readSparse] Read 194998568 numbers, 5000000 vectors. 
+GOT HASHES NODE 9
+Vectors Added Node 9: 2726.37 Seconds
+
+GOT HASHES NODE 13
+[readSparse] Read 194998466 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998857 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+[readSparse] Read 194999028 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+[readSparse] Read 194998919 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+[readSparse] Read 194998741 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+[readSparse] Read 194999106 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998940 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998544 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998699 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+[readSparse] Read 194999089 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+[readSparse] Read 194998883 numbers, 5000000 vectors. 
+GOT HASHES NODE 16
+Vectors Added Node 16: 2786.03 Seconds
+
+GOT HASHES NODE 7
+[readSparse] Read 194998839 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+[readSparse] Read 194998876 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194998999 numbers, 5000000 vectors. 
+GOT HASHES NODE 7
+Vectors Added Node 7: 2791.48 Seconds
+
+GOT HASHES NODE 8
+[readSparse] Read 194998794 numbers, 5000000 vectors. 
+GOT HASHES NODE 10
+Vectors Added Node 10: 2793.1 Seconds
+
+GOT HASHES NODE 13
+[readSparse] Read 194998440 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+[readSparse] Read 194998869 numbers, 5000000 vectors. 
+GOT HASHES NODE 13
+Vectors Added Node 13: 2804.84 Seconds
+
+GOT HASHES NODE 4
+[readSparse] Read 194998939 numbers, 5000000 vectors. 
+GOT HASHES NODE 6
+Vectors Added Node 6: 2807.92 Seconds
+
+GOT HASHES NODE 15
+[readSparse] Read 194999028 numbers, 5000000 vectors. 
+GOT HASHES NODE 15
+Vectors Added Node 15: 2816.45 Seconds
+
+GOT HASHES NODE 5
+[readSparse] Read 194998807 numbers, 5000000 vectors. 
+GOT HASHES NODE 5
+Vectors Added Node 5: 2823.3 Seconds
+
+GOT HASHES NODE 2
+[readSparse] Read 194999146 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194998944 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+[readSparse] Read 194998549 numbers, 5000000 vectors. 
+GOT HASHES NODE 12
+[readSparse] Read 194998796 numbers, 5000000 vectors. 
+GOT HASHES NODE 14
+Vectors Added Node 14: 2834.22 Seconds
+
+GOT HASHES NODE 12
+Vectors Added Node 12: 2836.15 Seconds
+
+GOT HASHES NODE 0
+[readSparse] Read 194999096 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+[readSparse] Read 194999021 numbers, 5000000 vectors. 
+GOT HASHES NODE 8
+[readSparse] Read 194998778 numbers, 5000000 vectors. 
+GOT HASHES NODE 3
+Vectors Added Node 3: 2868.16 Seconds
+
+GOT HASHES NODE 8
+Vectors Added Node 8: 2870.2 Seconds
+
+GOT HASHES NODE 4
+[readSparse] Read 194998998 numbers, 5000000 vectors. 
+GOT HASHES NODE 4
+Vectors Added Node 4: 2884.05 Seconds
+
+GOT HASHES NODE 2
+[readSparse] Read 194999108 numbers, 5000000 vectors. 
+GOT HASHES NODE 1
+[readSparse] Read 194999175 numbers, 5000000 vectors. 
+GOT HASHES NODE 2
+Vectors Added Node 2: 2904.55 Seconds
+
+GOT HASHES NODE 1
+Vectors Added Node 1: 2905.98 Seconds
+
+GOT HASHES NODE 0
+[readSparse] Read 194999200 numbers, 5000000 vectors. 
+GOT HASHES NODE 0
+Vectors Added Node 0: 2928.29 Seconds
+
+Computing Query Hashes Node 12...
+Computing Query Hashes Node 0...
+Computing Query Hashes Node 15...
+Computing Query Hashes Node 16...
+Computing Query Hashes Node 10...
+Computing Query Hashes Node 18...
+Computing Query Hashes Node 9...
+Computing Query Hashes Node 7...
+Computing Query Hashes Node 14...
+Computing Query Hashes Node 4...
+Computing Query Hashes Node 3...
+Computing Query Hashes Node 6...
+Computing Query Hashes Node 13...
+Computing Query Hashes Node 8...
+Computing Query Hashes Node 11...
+Computing Query Hashes Node 5...
+Computing Query Hashes Node 1...
+Computing Query Hashes Node 2...
+Computing Query Hashes Node 17...
+Computing Query Hashes Node 19...
+Query Hashes Computed Node 6: 0.015597 Seconds
+
+Query Hashes Computed Node 18: 0.0156742 Seconds
+
+Query Hashes Computed Node 5: 0.0156692 Seconds
+
+Query Hashes Computed Node 17: 0.0157828 Seconds
+
+Query Hashes Computed Node 7: 0.0157604 Seconds
+
+Query Hashes Computed Node 4: 0.0158477 Seconds
+
+Query Hashes Computed Node 8: 0.0158163 Seconds
+
+Query Hashes Computed Node 3: 0.0158635 Seconds
+
+Query Hashes Computed Node 19: 0.0158753 Seconds
+
+Query Hashes Computed Node 2: 0.0158928 Seconds
+
+Query Hashes Computed Node 9: 0.0159558 Seconds
+
+Query Hashes Computed Node 1: 0.0159606 Seconds
+
+Query Hashes Computed Node 0: 0.0160999 Seconds
+
+Query Hashes Computed Node 10: 0.0160065 Seconds
+
+Query Hashes Computed Node 11: 0.0160809 Seconds
+
+Query Hashes Computed Node 12: 0.0161361 Seconds
+
+Query Hashes Computed Node 16: 0.0161081 Seconds
+
+Query Hashes Computed Node 13: 0.0161707 Seconds
+
+Query Hashes Computed Node 14: 0.016162 Seconds
+
+Extracting Top K (TREE) Node 18...
+Extracting Top K (TREE) Node 0...
+Query Hashes Computed Node 15: 0.0164069 Seconds
+
+Extracting Top K (TREE) Node 6...
+Extracting Top K (TREE) Node 13...
+Extracting Top K (TREE) Node 17...
+Extracting Top K (TREE) Node 19...
+Extracting Top K (TREE) Node 12...
+Extracting Top K (TREE) Node 10...
+Extracting Top K (TREE) Node 9...
+Extracting Top K (TREE) Node 7...
+Extracting Top K (TREE) Node 4...
+Extracting Top K (TREE) Node 3...
+Extracting Top K (TREE) Node 15...
+Extracting Top K (TREE) Node 8...
+Extracting Top K (TREE) Node 11...
+Extracting Top K (TREE) Node 5...
+Extracting Top K (TREE) Node 1...
+Extracting Top K (TREE) Node 2...
+Extracting Top K (TREE) Node 16...
+Extracting Top K (TREE) Node 14...
+Top K (TREE) Extracted Node 19: 0.649057 Seconds
+
+Top K (TREE) Extracted Node 15: 0.882444 Seconds
+
+Top K (TREE) Extracted Node 17: 0.886238 Seconds
+
+Top K (TREE) Extracted Node 18: 0.989251 Seconds
+
+Top K (TREE) Extracted Node 11: 1.01687 Seconds
+
+Top K (TREE) Extracted Node 13: 1.02098 Seconds
+
+Top K (TREE) Extracted Node 9: 1.04867 Seconds
+
+Top K (TREE) Extracted Node 1: 1.06202 Seconds
+
+Top K (TREE) Extracted Node 5: 1.07153 Seconds
+
+Top K (TREE) Extracted Node 3: 1.12763 Seconds
+
+Top K (TREE) Extracted Node 14: 1.13201 Seconds
+
+Top K (TREE) Extracted Node 7: 1.17356 Seconds
+
+Top K (TREE) Extracted Node 10: 1.22413 Seconds
+
+Top K (TREE) Extracted Node 2: 1.27251 Seconds
+
+Top K (TREE) Extracted Node 12: 1.30067 Seconds
+
+Top K (TREE) Extracted Node 6: 1.33919 Seconds
+
+Top K (TREE) Extracted Node 4: 1.45005 Seconds
+
+Top K (TREE) Extracted Node 8: 1.56054 Seconds
+
+Top K (TREE) Extracted Node 16: 1.62773 Seconds
+
+Top K (TREE) Extracted Node 0: 1.77261 Seconds
+
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR
+DUPLICATE OUTPUT ERROR

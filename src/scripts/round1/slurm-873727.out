@@ -1,0 +1,90 @@
+Read top 128 vectors for 10000 Queries
+Selected 63253/63253 vectors from /scratch/ncm5/dataset/criteo/criteo_partition08
+
+Read top 128 vectors for 10000 Queries
+Selected 63213/63213 vectors from /scratch/ncm5/dataset/criteo/criteo_partition03
+
+Read top 128 vectors for 10000 Queries
+Selected 63042/63042 vectors from /scratch/ncm5/dataset/criteo/criteo_partition06
+
+Read top 128 vectors for 10000 Queries
+Selected 66442/66442 vectors from /scratch/ncm5/dataset/criteo/criteo_partition19
+
+Read top 128 vectors for 10000 Queries
+Selected 62531/62531 vectors from /scratch/ncm5/dataset/criteo/criteo_partition00
+
+Read top 128 vectors for 10000 Queries
+Selected 62950/62950 vectors from /scratch/ncm5/dataset/criteo/criteo_partition10
+
+Read top 128 vectors for 10000 Queries
+Selected 65192/65192 vectors from /scratch/ncm5/dataset/criteo/criteo_partition16
+
+Read top 128 vectors for 10000 Queries
+Selected 63539/63539 vectors from /scratch/ncm5/dataset/criteo/criteo_partition15
+
+Read top 128 vectors for 10000 Queries
+Selected 62860/62860 vectors from /scratch/ncm5/dataset/criteo/criteo_partition04
+
+Read top 128 vectors for 10000 Queries
+Selected 65437/65437 vectors from /scratch/ncm5/dataset/criteo/criteo_partition17
+
+Read top 128 vectors for 10000 Queries
+Selected 63188/63188 vectors from /scratch/ncm5/dataset/criteo/criteo_partition09
+
+Read top 128 vectors for 10000 Queries
+Selected 62673/62673 vectors from /scratch/ncm5/dataset/criteo/criteo_partition01
+
+Read top 128 vectors for 10000 Queries
+Selected 62911/62911 vectors from /scratch/ncm5/dataset/criteo/criteo_partition11
+
+Read top 128 vectors for 10000 Queries
+Selected 63212/63212 vectors from /scratch/ncm5/dataset/criteo/criteo_partition14
+
+Read top 128 vectors for 10000 Queries
+Selected 62753/62753 vectors from /scratch/ncm5/dataset/criteo/criteo_partition07
+
+Read top 128 vectors for 10000 Queries
+Selected 63257/63257 vectors from /scratch/ncm5/dataset/criteo/criteo_partition12
+
+Read top 128 vectors for 10000 Queries
+Selected 63342/63342 vectors from /scratch/ncm5/dataset/criteo/criteo_partition13
+
+Read top 128 vectors for 10000 Queries
+Selected 65412/65412 vectors from /scratch/ncm5/dataset/criteo/criteo_partition18
+
+Read top 128 vectors for 10000 Queries
+Selected 62969/62969 vectors from /scratch/ncm5/dataset/criteo/criteo_partition05
+
+Read top 128 vectors for 10000 Queries
+Selected 62967/62967 vectors from /scratch/ncm5/dataset/criteo/criteo_partition02
+
+Read top 128 vectors for 10000 Queries
+TOPK Read
+Loaded datafile 0
+Loaded datafile 1
+Loaded datafile 2
+Loaded datafile 3
+Loaded datafile 4
+Loaded datafile 5
+Loaded datafile 6
+Loaded datafile 7
+Loaded datafile 8
+Loaded datafile 9
+Loaded datafile 10
+Loaded datafile 11
+Loaded datafile 12
+Loaded datafile 13
+Loaded datafile 14
+Loaded datafile 15
+Loaded datafile 16
+Loaded datafile 17
+Loaded datafile 18
+Loaded datafile 19
+[readSparse] Read 389997 numbers, 10000 vectors. 
+
+S@k = s_out(s_true): In top k, average output similarity (average groundtruth similarity). 
+S@1 = 0.502 
+S@2 = 0.471 
+S@3 = 0.449 
+S@5 = 0.420 
+
