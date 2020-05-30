@@ -10,8 +10,9 @@ Sketching based distributed locally sensitive hashing algorithm for similarity s
 4. Make sure that only `#define FULL_CRITEO` is uncommented at the top of `benchmarking.h`.
 5. Compile program `$ make clean ; make`.
 6. Navigate to slurm script `$ cd scripts`.
-7. Submit job request `$ sbatch criteo.slurm`.
-8. The output will be in the file `Criteo-20`.
+7. Change the email at the bottom of `criteo.slurm` to recieve notifactions when the jobs starts and completes.
+8. Submit job request `$ sbatch criteo.slurm`.
+9. The output will be in the file `Criteo-20`.
 
 ### To analyze these results
 1. Navigate to the utils directory `$ cd ../utils`
