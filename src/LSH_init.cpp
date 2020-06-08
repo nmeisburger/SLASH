@@ -30,11 +30,17 @@ LSH::LSH(DOPH *hashFamIn, unsigned int numHashPerFamily, unsigned int numHashFam
         _global_rand[i] = rand() % i;
     }
 
-    _tableMem = new unsigned int[_numTables * (1 + _reservoirSize) * _numReservoirs]();
+    size_t tempNumTables = _numTables;
+    size_t tempReservoirSize = _reservoirSize + 1;
+    size_t tempNumReservoirs = _numReservoirs;
+
+    size_t totalMem = tempNumReservoirs * tempNumTables * tempReservoirSize;
+
+    _tableMem = new unsigned int[totalMem]();
     _reservoirs = new unsigned int *[_numTables * _numReservoirs];
     _reservoirsLock = new omp_lock_t[_numTables * _numReservoirs];
     for (size_t i = 0; i < _numTables * _numReservoirs; i++) {
-        _reservoirs[i] = _tableMem + i * (1 + _reservoirSize);
+        _reservoirs[i] = _tableMem + i * tempReservoirSize;
         omp_init_lock(_reservoirsLock + i);
     }
     /* Hashing counter. */
